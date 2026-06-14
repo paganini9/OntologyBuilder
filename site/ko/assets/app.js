@@ -62,12 +62,19 @@ function statusLabel(s) { return (T.statusMap && T.statusMap[s]) || s; }
 function renderList() {
   const box = $("#methods");
   box.innerHTML = "";
-  SITE.methods.forEach(m => {
+  SITE.methods.forEach((m, i) => {
     const el = document.createElement("div");
     el.className = "method-item"; el.dataset.id = m.id;
-    el.innerHTML = `<div class="nm">${esc(m.name)}</div>
-      <div class="meta"><span class="badge ${m.status}">${statusLabel(m.status)}</span>
-      <span>${T.difficulty} ${m.difficulty.score}</span></div>`;
+    const score = m.difficulty.score;
+    el.innerHTML = `<div class="idx">${String(i + 1).padStart(2, "0")}</div>
+      <div>
+        <div class="nm">${esc(m.name)}</div>
+        <div class="meta">
+          <span class="badge ${m.status}">${statusLabel(m.status)}</span>
+          <span class="diff" title="${T.difficulty} ${score}"><span style="width:${Math.min(score, 10) * 10}%"></span></span>
+          <span class="diff-label">${T.difficulty} ${score}</span>
+        </div>
+      </div>`;
     el.onclick = () => selectMethod(m.id);
     box.appendChild(el);
   });

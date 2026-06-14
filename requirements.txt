@@ -11,3 +11,4 @@ pytest>=8.0
 # anthropic>=0.40              # anthropic backend
 # transformers>=4.44           # hf_local backend
 # torch                        # hf_local backend
+# playwright                   # UI smoke test: python scripts/verify_ui.py (then: python -m playwright install chromium)
