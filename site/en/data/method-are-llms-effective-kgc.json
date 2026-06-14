@@ -1,0 +1,38 @@
+{
+  "id": "are-llms-effective-kgc",
+  "name": "Hierarchical extraction (Are LLMs Effective KG Constructors?)",
+  "status": "queued",
+  "difficulty": {
+    "score": 4,
+    "rank": 6,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "multi-level hierarchical extraction + systematic evaluation framework"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "AreLLMsEffectiveKGC",
+    "arxiv": "2510.11297",
+    "venue": "2025",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "ontogenia",
+  "name": "Ontogenia (iterative + metacognitive CQ → OWL)",
+  "status": "queued",
+  "difficulty": {
+    "score": 4,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "adds iterative self-reflection (metacognitive) loop on top of CQbyCQ; reuses CQbyCQ emit"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Lippolis_Ontogenia",
+    "arxiv": "2503.05388",
+    "venue": "ESWC 2024",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "competency_questions.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

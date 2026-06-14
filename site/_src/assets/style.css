@@ -1,0 +1,65 @@
+:root {
+  --bg: #0f1115; --panel: #181b22; --panel2: #1f232c; --border: #2a2f3a;
+  --text: #e6e9ef; --muted: #9aa3b2; --accent: #5b9dff; --accent2: #43d39e;
+  --warn: #f5a524;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: -apple-system, "Segoe UI", Roboto, "Malgun Gothic", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.55;
+}
+header {
+  display: flex; align-items: baseline; gap: 16px; padding: 14px 22px;
+  border-bottom: 1px solid var(--border); background: var(--panel);
+}
+header h1 { font-size: 18px; margin: 0; }
+header .sub { color: var(--muted); font-size: 13px; }
+header .spacer { flex: 1; }
+header a.lang { color: var(--accent); text-decoration: none; font-size: 13px;
+  border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; }
+.layout { display: grid; grid-template-columns: 300px 1fr; height: calc(100vh - 53px); }
+.sidebar { border-right: 1px solid var(--border); overflow-y: auto; background: var(--panel); }
+.sidebar h2 { font-size: 12px; text-transform: uppercase; color: var(--muted);
+  letter-spacing: .06em; padding: 14px 16px 6px; margin: 0; }
+.method-item { padding: 10px 16px; cursor: pointer; border-bottom: 1px solid var(--border); }
+.method-item:hover { background: var(--panel2); }
+.method-item.active { background: var(--panel2); border-left: 3px solid var(--accent); }
+.method-item .nm { font-size: 14px; }
+.method-item .meta { font-size: 11px; color: var(--muted); margin-top: 3px;
+  display: flex; gap: 8px; }
+.badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px;
+  border: 1px solid var(--border); }
+.badge.implemented, .badge.published, .badge.tested { color: var(--accent2); border-color: var(--accent2); }
+.badge.queued, .badge.discovered, .badge.analyzed { color: var(--warn); border-color: var(--warn); }
+.main { overflow-y: auto; padding: 22px 28px; }
+.main h2 { margin-top: 0; }
+.kv { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted);
+  font-size: 13px; margin-bottom: 14px; }
+.kv b { color: var(--text); }
+.doc { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 4px 20px; margin: 16px 0; }
+.doc h1 { font-size: 20px; } .doc h2 { font-size: 16px; } .doc h3 { font-size: 14px; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.doc th, .doc td { border: 1px solid var(--border); padding: 6px 9px; text-align: left; }
+.doc code { background: var(--panel2); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+.doc blockquote { border-left: 3px solid var(--accent); margin: 8px 0; padding: 2px 12px; color: var(--muted); }
+.runbox { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 16px 18px; margin: 16px 0; }
+.runbox textarea { width: 100%; min-height: 120px; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-family: ui-monospace, monospace; font-size: 12px; }
+.controls { display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+button, select { background: var(--accent); color: #fff; border: none; padding: 8px 16px;
+  border-radius: 7px; cursor: pointer; font-size: 13px; }
+button.secondary { background: var(--panel2); color: var(--text); border: 1px solid var(--border); }
+select { background: var(--panel2); color: var(--text); border: 1px solid var(--border); }
+button:disabled { opacity: .5; cursor: default; }
+.hint { font-size: 12px; color: var(--muted); }
+.err { color: var(--warn); font-size: 13px; white-space: pre-wrap; }
+#graph { height: 420px; background: var(--panel); border: 1px solid var(--border);
+  border-radius: 10px; margin-top: 8px; }
+.stepbar { display: flex; align-items: center; gap: 12px; margin: 14px 0 4px; }
+.stepbar input[type=range] { flex: 1; }
+.cq { font-style: italic; color: var(--accent); }
+.added-list { font-size: 12px; color: var(--muted); margin: 4px 0 0; }
+.counts span { margin-right: 14px; }
+a.dl { color: var(--accent); font-size: 13px; }

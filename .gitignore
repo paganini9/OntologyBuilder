@@ -1,0 +1,21 @@
+# transient pipeline runs (FastAPI writes here)
+runs/
+
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+
+# HuggingFace / model caches
+.hf_cache/
+models/
+
+# OS
+Thumbs.db
+.DS_Store

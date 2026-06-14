@@ -1,0 +1,38 @@
+{
+  "id": "peshevski-product-kg",
+  "name": "AI Agent-Driven Product KG (3 agents: ontology → refine → populate)",
+  "status": "queued",
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "3 LLM agents; product-domain (closest to project goal); ontology-first then population"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Peshevski_ProductKG",
+    "arxiv": "2511.11017",
+    "venue": "GOBLIN Workshop 2025",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "product_descriptions.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

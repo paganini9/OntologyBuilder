@@ -1,0 +1,39 @@
+{
+  "id": "agentigraph",
+  "name": "AGENTiGraph (interactive multi-agent KG construction)",
+  "status": "queued",
+  "difficulty": {
+    "score": 4,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "intent classification + task planning + integration; conversational/in-the-loop UI"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "AGENTiGraph",
+    "arxiv": "2508.02999",
+    "venue": "CIKM 2025 Demo",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "seed_text.txt",
+    "user_turns.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

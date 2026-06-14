@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>{{TITLE}}</h1>
+    <span class="sub">{{SUBTITLE}}</span>
+    <span class="spacer"></span>
+    <a class="lang" href="{{OTHER_HREF}}">{{LANG_SWITCH}}</a>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>{{METHODS_HEADER}}</h2>
+      <div id="methods"></div>
+    </aside>
+    <main class="main" id="main">
+      <p class="hint">{{SELECT_HINT}}</p>
+    </main>
+  </div>
+  <script>window.SITE = {{SITE_JSON}};</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

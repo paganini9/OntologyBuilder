@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "note": "New methods discovered by the daily 7am search land here with approved_by_user=false. Use /impl-approve <id> to promote one into registry/methods.json.",
+  "candidates": []
+}

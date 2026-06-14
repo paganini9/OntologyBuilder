@@ -1,0 +1,39 @@
+{
+  "id": "karma",
+  "name": "KARMA (9 collaborative agents for KG enrichment)",
+  "status": "queued",
+  "difficulty": {
+    "score": 6,
+    "rank": 8,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "9 specialized agents (discovery/extraction/alignment/conflict); enrichment of an existing KG"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Lu_KARMA",
+    "arxiv": null,
+    "venue": "NeurIPS 2025 Spotlight",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "seed_kg.ttl",
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

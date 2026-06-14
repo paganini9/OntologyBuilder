@@ -1,0 +1,39 @@
+{
+  "id": "odke-plus",
+  "name": "ODKE+ (5-stage ontology-guided open-domain extraction)",
+  "status": "queued",
+  "difficulty": {
+    "score": 8,
+    "rank": 9,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": true,
+      "code_public": false
+    },
+    "rationale": "production-grade 5-stage pipeline (initiator/retriever/extractor/grounder/corroborator); web-scale"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Khorshidi_ODKE",
+    "arxiv": "2509.04696",
+    "venue": "Apple Research 2025",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "entities.txt",
+    "evidence_dir"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

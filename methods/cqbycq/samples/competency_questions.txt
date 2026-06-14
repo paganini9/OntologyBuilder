@@ -1,0 +1,10 @@
+# Product-design competency questions (one per line).
+# Capitalized words become candidate ontology classes; relational verbs become
+# object properties. Edit / add your own and re-run the pipeline.
+Which Parts does a Product consist of?
+What Material is a Part made of?
+Which Supplier supplies a Part?
+What Function does a Component perform?
+Which Requirement does a Product satisfy?
+Which Assembly contains a Component?
+What Tolerance does a Part have?

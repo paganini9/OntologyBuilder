@@ -1,0 +1,39 @@
+{
+  "id": "sac-kg",
+  "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
+  "status": "queued",
+  "difficulty": {
+    "score": 10,
+    "rank": 10,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": true,
+      "needs_gpu": true,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "T5+LoRA Pruner needs finetuning/GPU; multi-level recursion; already has a teaching notebook in product-ontology"
+  },
+  "llm_dependency": "hf-local",
+  "paper": {
+    "key": "Chen_SAC-KG",
+    "arxiv": null,
+    "venue": "ACL 2024",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "seed_entities.txt",
+    "domain_corpus_dir"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}

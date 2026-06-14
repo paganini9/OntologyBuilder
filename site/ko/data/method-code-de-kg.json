@@ -1,0 +1,38 @@
+{
+  "id": "code-de-kg",
+  "name": "CoDe-KG (coreference + sentence decomposition → triples)",
+  "status": "queued",
+  "difficulty": {
+    "score": 3,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "public code; coreference + decomposition + per-complexity prompts; runs on plain text"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "CoDe-KG_EMNLP_2025",
+    "arxiv": "2509.17289",
+    "venue": "EMNLP 2025",
+    "code_url": "https://github.com/KaushikMahmud/CoDe-KG_EMNLP_2025"
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": null,
+    "en": null
+  },
+  "sample_input": null,
+  "implemented": false
+}
