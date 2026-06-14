@@ -1,0 +1,7 @@
+# Product descriptions (one product per line). Lines starting with # are ignored.
+AirConditioner has a Compressor and uses 220 voltage with 9000 power
+Refrigerator contains Compressors and features 1.5 capacity
+WaterPump driven by a Motor produces 50 pressure with 380 voltage
+ElectricMotor powered by a Battery has 1500 power and 12 voltage
+CeilingFan uses a Motor with white color and 75 power
+HeatPump consistsOf a Compressor with 4.2 efficiency and 240 voltage

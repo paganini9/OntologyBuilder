@@ -1,0 +1,2388 @@
+[
+  {
+    "step": 1,
+    "cq": "AirConditioner has a Compressor and uses 220 voltage with 9000 power",
+    "added": {
+      "classes": [
+        "AirConditioner",
+        "Compressor"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "AirConditioner",
+          "range": "Compressor"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "voltage",
+          "domain": "AirConditioner",
+          "datatype": "string"
+        },
+        {
+          "name": "power",
+          "domain": "AirConditioner",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "Refrigerator contains Compressors and features 1.5 capacity",
+    "added": {
+      "classes": [
+        "Refrigerator",
+        "Compressors"
+      ],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Refrigerator",
+          "range": "Compressors"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "capacity",
+          "domain": "Refrigerator",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressors",
+            "label": "Compressors",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressors",
+            "source": "Refrigerator",
+            "target": "Compressors",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "WaterPump driven by a Motor produces 50 pressure with 380 voltage",
+    "added": {
+      "classes": [
+        "WaterPump",
+        "Motor"
+      ],
+      "object_properties": [
+        {
+          "name": "drivenBy",
+          "domain": "WaterPump",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "pressure",
+          "domain": "WaterPump",
+          "datatype": "string"
+        },
+        {
+          "name": "voltage",
+          "domain": "WaterPump",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressors",
+            "label": "Compressors",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressors",
+            "source": "Refrigerator",
+            "target": "Compressors",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "ElectricMotor powered by a Battery has 1500 power and 12 voltage",
+    "added": {
+      "classes": [
+        "ElectricMotor",
+        "Battery"
+      ],
+      "object_properties": [
+        {
+          "name": "poweredBy",
+          "domain": "ElectricMotor",
+          "range": "Battery"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "power",
+          "domain": "ElectricMotor",
+          "datatype": "string"
+        },
+        {
+          "name": "voltage",
+          "domain": "ElectricMotor",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressors",
+            "label": "Compressors",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressors",
+            "source": "Refrigerator",
+            "target": "Compressors",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "CeilingFan uses a Motor with white color and 75 power",
+    "added": {
+      "classes": [
+        "CeilingFan"
+      ],
+      "object_properties": [
+        {
+          "name": "uses",
+          "domain": "CeilingFan",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "color",
+          "domain": "CeilingFan",
+          "datatype": "string"
+        },
+        {
+          "name": "power",
+          "domain": "CeilingFan",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressors",
+            "label": "Compressors",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressors",
+            "source": "Refrigerator",
+            "target": "Compressors",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "HeatPump consistsOf a Compressor with 4.2 efficiency and 240 voltage",
+    "added": {
+      "classes": [
+        "HeatPump"
+      ],
+      "object_properties": [],
+      "data_properties": [
+        {
+          "name": "efficiency",
+          "domain": "HeatPump",
+          "datatype": "string"
+        },
+        {
+          "name": "voltage",
+          "domain": "HeatPump",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressors",
+            "label": "Compressors",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressors",
+            "source": "Refrigerator",
+            "target": "Compressors",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "cq": "(refinement)",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "merged": [
+        {
+          "from": "Compressors",
+          "into": "Compressor"
+        }
+      ],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "cq": "(populate) AirConditioner has a Compressor and uses 220 voltage with 9000 power",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "AirConditioner_1",
+          "class": "AirConditioner",
+          "data": {
+            "voltage": "220",
+            "power": "9000"
+          },
+          "links": [
+            {
+              "name": "has",
+              "target": "Compressor"
+            }
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "cq": "(populate) Refrigerator contains Compressors and features 1.5 capacity",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "Refrigerator_2",
+          "class": "Refrigerator",
+          "data": {
+            "capacity": "1.5"
+          },
+          "links": [
+            {
+              "name": "contains",
+              "target": "Compressor"
+            }
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2",
+            "label": "Refrigerator contains Compressors and features 1",
+            "type": "individual",
+            "attributes": [
+              "capacity=1.5"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-instanceOf-Refrigerator",
+            "source": "Refrigerator_2",
+            "target": "Refrigerator",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-contains-Compressor",
+            "source": "Refrigerator_2",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "cq": "(populate) WaterPump driven by a Motor produces 50 pressure with 380 voltage",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "WaterPump_3",
+          "class": "WaterPump",
+          "data": {
+            "pressure": "50",
+            "voltage": "380"
+          },
+          "links": [
+            {
+              "name": "drivenBy",
+              "target": "Motor"
+            }
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2",
+            "label": "Refrigerator contains Compressors and features 1",
+            "type": "individual",
+            "attributes": [
+              "capacity=1.5"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3",
+            "label": "WaterPump driven by a Motor produces 50 pressure",
+            "type": "individual",
+            "attributes": [
+              "pressure=50",
+              "voltage=380"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-instanceOf-Refrigerator",
+            "source": "Refrigerator_2",
+            "target": "Refrigerator",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-contains-Compressor",
+            "source": "Refrigerator_2",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-instanceOf-WaterPump",
+            "source": "WaterPump_3",
+            "target": "WaterPump",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-drivenBy-Motor",
+            "source": "WaterPump_3",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 11,
+    "cq": "(populate) ElectricMotor powered by a Battery has 1500 power and 12 voltage",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "ElectricMotor_4",
+          "class": "ElectricMotor",
+          "data": {
+            "power": "1500",
+            "voltage": "12"
+          },
+          "links": [
+            {
+              "name": "poweredBy",
+              "target": "Battery"
+            }
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2",
+            "label": "Refrigerator contains Compressors and features 1",
+            "type": "individual",
+            "attributes": [
+              "capacity=1.5"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3",
+            "label": "WaterPump driven by a Motor produces 50 pressure",
+            "type": "individual",
+            "attributes": [
+              "pressure=50",
+              "voltage=380"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4",
+            "label": "ElectricMotor powered by a Battery has 1500 powe",
+            "type": "individual",
+            "attributes": [
+              "power=1500",
+              "voltage=12"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-instanceOf-Refrigerator",
+            "source": "Refrigerator_2",
+            "target": "Refrigerator",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-contains-Compressor",
+            "source": "Refrigerator_2",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-instanceOf-WaterPump",
+            "source": "WaterPump_3",
+            "target": "WaterPump",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-drivenBy-Motor",
+            "source": "WaterPump_3",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-instanceOf-ElectricMotor",
+            "source": "ElectricMotor_4",
+            "target": "ElectricMotor",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-poweredBy-Battery",
+            "source": "ElectricMotor_4",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "cq": "(populate) CeilingFan uses a Motor with white color and 75 power",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "CeilingFan_5",
+          "class": "CeilingFan",
+          "data": {
+            "color": "white",
+            "power": "75"
+          },
+          "links": [
+            {
+              "name": "uses",
+              "target": "Motor"
+            }
+          ]
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2",
+            "label": "Refrigerator contains Compressors and features 1",
+            "type": "individual",
+            "attributes": [
+              "capacity=1.5"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3",
+            "label": "WaterPump driven by a Motor produces 50 pressure",
+            "type": "individual",
+            "attributes": [
+              "pressure=50",
+              "voltage=380"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4",
+            "label": "ElectricMotor powered by a Battery has 1500 powe",
+            "type": "individual",
+            "attributes": [
+              "power=1500",
+              "voltage=12"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5",
+            "label": "CeilingFan uses a Motor with white color and 75 ",
+            "type": "individual",
+            "attributes": [
+              "color=white",
+              "power=75"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-instanceOf-Refrigerator",
+            "source": "Refrigerator_2",
+            "target": "Refrigerator",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-contains-Compressor",
+            "source": "Refrigerator_2",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-instanceOf-WaterPump",
+            "source": "WaterPump_3",
+            "target": "WaterPump",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-drivenBy-Motor",
+            "source": "WaterPump_3",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-instanceOf-ElectricMotor",
+            "source": "ElectricMotor_4",
+            "target": "ElectricMotor",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-poweredBy-Battery",
+            "source": "ElectricMotor_4",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5-instanceOf-CeilingFan",
+            "source": "CeilingFan_5",
+            "target": "CeilingFan",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5-uses-Motor",
+            "source": "CeilingFan_5",
+            "target": "Motor",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 13,
+    "cq": "(populate) HeatPump consistsOf a Compressor with 4.2 efficiency and 240 voltage",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "individuals": [
+        {
+          "id": "HeatPump_6",
+          "class": "HeatPump",
+          "data": {
+            "efficiency": "4.2",
+            "voltage": "240"
+          },
+          "links": []
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "AirConditioner",
+            "label": "AirConditioner",
+            "type": "class",
+            "attributes": [
+              "voltage",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Compressor",
+            "label": "Compressor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator",
+            "label": "Refrigerator",
+            "type": "class",
+            "attributes": [
+              "capacity"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump",
+            "label": "WaterPump",
+            "type": "class",
+            "attributes": [
+              "pressure",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": [
+              "power",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan",
+            "label": "CeilingFan",
+            "type": "class",
+            "attributes": [
+              "color",
+              "power"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump",
+            "label": "HeatPump",
+            "type": "class",
+            "attributes": [
+              "efficiency",
+              "voltage"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1",
+            "label": "AirConditioner has a Compressor and uses 220 vol",
+            "type": "individual",
+            "attributes": [
+              "voltage=220",
+              "power=9000"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2",
+            "label": "Refrigerator contains Compressors and features 1",
+            "type": "individual",
+            "attributes": [
+              "capacity=1.5"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3",
+            "label": "WaterPump driven by a Motor produces 50 pressure",
+            "type": "individual",
+            "attributes": [
+              "pressure=50",
+              "voltage=380"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4",
+            "label": "ElectricMotor powered by a Battery has 1500 powe",
+            "type": "individual",
+            "attributes": [
+              "power=1500",
+              "voltage=12"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5",
+            "label": "CeilingFan uses a Motor with white color and 75 ",
+            "type": "individual",
+            "attributes": [
+              "color=white",
+              "power=75"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump_6",
+            "label": "HeatPump consistsOf a Compressor with 4.2 effici",
+            "type": "individual",
+            "attributes": [
+              "efficiency=4.2",
+              "voltage=240"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "AirConditioner-has-Compressor",
+            "source": "AirConditioner",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator-contains-Compressor",
+            "source": "Refrigerator",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump-drivenBy-Motor",
+            "source": "WaterPump",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-poweredBy-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan-uses-Motor",
+            "source": "CeilingFan",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-instanceOf-AirConditioner",
+            "source": "AirConditioner_1",
+            "target": "AirConditioner",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "AirConditioner_1-has-Compressor",
+            "source": "AirConditioner_1",
+            "target": "Compressor",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-instanceOf-Refrigerator",
+            "source": "Refrigerator_2",
+            "target": "Refrigerator",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Refrigerator_2-contains-Compressor",
+            "source": "Refrigerator_2",
+            "target": "Compressor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-instanceOf-WaterPump",
+            "source": "WaterPump_3",
+            "target": "WaterPump",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "WaterPump_3-drivenBy-Motor",
+            "source": "WaterPump_3",
+            "target": "Motor",
+            "label": "drivenBy"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-instanceOf-ElectricMotor",
+            "source": "ElectricMotor_4",
+            "target": "ElectricMotor",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor_4-poweredBy-Battery",
+            "source": "ElectricMotor_4",
+            "target": "Battery",
+            "label": "poweredBy"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5-instanceOf-CeilingFan",
+            "source": "CeilingFan_5",
+            "target": "CeilingFan",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "CeilingFan_5-uses-Motor",
+            "source": "CeilingFan_5",
+            "target": "Motor",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "HeatPump_6-instanceOf-HeatPump",
+            "source": "HeatPump_6",
+            "target": "HeatPump",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  }
+]

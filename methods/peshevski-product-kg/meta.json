@@ -1,0 +1,34 @@
+{
+  "id": "peshevski-product-kg",
+  "name": "AI Agent-Driven Product KG (3 agents: ontology → refine → populate)",
+  "paper": {
+    "key": "Peshevski_ProductKG",
+    "title": "An AI Agent-Driven Framework for Automated Product Knowledge Graph Construction in E-Commerce",
+    "arxiv": "2511.11017",
+    "venue": "GOBLIN Workshop 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "3 LLM agents (create/expand -> refine -> populate); ontology-first then individuals; deterministic mock possible; no data/GPU/finetuning. Product domain = closest to project goal."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["product_descriptions.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/product_descriptions.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

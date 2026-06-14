@@ -1,0 +1,288 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "AirConditioner",
+        "label": "AirConditioner",
+        "type": "class",
+        "attributes": [
+          "voltage",
+          "power"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Compressor",
+        "label": "Compressor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator",
+        "label": "Refrigerator",
+        "type": "class",
+        "attributes": [
+          "capacity"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "WaterPump",
+        "label": "WaterPump",
+        "type": "class",
+        "attributes": [
+          "pressure",
+          "voltage"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor",
+        "label": "ElectricMotor",
+        "type": "class",
+        "attributes": [
+          "power",
+          "voltage"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CeilingFan",
+        "label": "CeilingFan",
+        "type": "class",
+        "attributes": [
+          "color",
+          "power"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "HeatPump",
+        "label": "HeatPump",
+        "type": "class",
+        "attributes": [
+          "efficiency",
+          "voltage"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "AirConditioner_1",
+        "label": "AirConditioner has a Compressor and uses 220 vol",
+        "type": "individual",
+        "attributes": [
+          "voltage=220",
+          "power=9000"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator_2",
+        "label": "Refrigerator contains Compressors and features 1",
+        "type": "individual",
+        "attributes": [
+          "capacity=1.5"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "WaterPump_3",
+        "label": "WaterPump driven by a Motor produces 50 pressure",
+        "type": "individual",
+        "attributes": [
+          "pressure=50",
+          "voltage=380"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor_4",
+        "label": "ElectricMotor powered by a Battery has 1500 powe",
+        "type": "individual",
+        "attributes": [
+          "power=1500",
+          "voltage=12"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "CeilingFan_5",
+        "label": "CeilingFan uses a Motor with white color and 75 ",
+        "type": "individual",
+        "attributes": [
+          "color=white",
+          "power=75"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "HeatPump_6",
+        "label": "HeatPump consistsOf a Compressor with 4.2 effici",
+        "type": "individual",
+        "attributes": [
+          "efficiency=4.2",
+          "voltage=240"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "AirConditioner-has-Compressor",
+        "source": "AirConditioner",
+        "target": "Compressor",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator-contains-Compressor",
+        "source": "Refrigerator",
+        "target": "Compressor",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "WaterPump-drivenBy-Motor",
+        "source": "WaterPump",
+        "target": "Motor",
+        "label": "drivenBy"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor-poweredBy-Battery",
+        "source": "ElectricMotor",
+        "target": "Battery",
+        "label": "poweredBy"
+      }
+    },
+    {
+      "data": {
+        "id": "CeilingFan-uses-Motor",
+        "source": "CeilingFan",
+        "target": "Motor",
+        "label": "uses"
+      }
+    },
+    {
+      "data": {
+        "id": "AirConditioner_1-instanceOf-AirConditioner",
+        "source": "AirConditioner_1",
+        "target": "AirConditioner",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "AirConditioner_1-has-Compressor",
+        "source": "AirConditioner_1",
+        "target": "Compressor",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator_2-instanceOf-Refrigerator",
+        "source": "Refrigerator_2",
+        "target": "Refrigerator",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator_2-contains-Compressor",
+        "source": "Refrigerator_2",
+        "target": "Compressor",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "WaterPump_3-instanceOf-WaterPump",
+        "source": "WaterPump_3",
+        "target": "WaterPump",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "WaterPump_3-drivenBy-Motor",
+        "source": "WaterPump_3",
+        "target": "Motor",
+        "label": "drivenBy"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor_4-instanceOf-ElectricMotor",
+        "source": "ElectricMotor_4",
+        "target": "ElectricMotor",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor_4-poweredBy-Battery",
+        "source": "ElectricMotor_4",
+        "target": "Battery",
+        "label": "poweredBy"
+      }
+    },
+    {
+      "data": {
+        "id": "CeilingFan_5-instanceOf-CeilingFan",
+        "source": "CeilingFan_5",
+        "target": "CeilingFan",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "CeilingFan_5-uses-Motor",
+        "source": "CeilingFan_5",
+        "target": "Motor",
+        "label": "uses"
+      }
+    },
+    {
+      "data": {
+        "id": "HeatPump_6-instanceOf-HeatPump",
+        "source": "HeatPump_6",
+        "target": "HeatPump",
+        "label": "instanceOf"
+      }
+    }
+  ]
+}

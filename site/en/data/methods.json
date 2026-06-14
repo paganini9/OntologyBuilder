@@ -98,7 +98,7 @@
   {
     "id": "peshevski-product-kg",
     "name": "AI Agent-Driven Product KG (3 agents: ontology → refine → populate)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 4,
       "rank": 4,
