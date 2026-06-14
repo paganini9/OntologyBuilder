@@ -1,0 +1,34 @@
+{
+  "id": "ontology-grounded-wikidata",
+  "name": "Ontology-Grounded KG under Wikidata schema",
+  "paper": {
+    "key": "OntologyGroundedWikidata",
+    "title": "Ontology-grounded Automatic Knowledge Graph Construction by LLM under Wikidata schema",
+    "arxiv": "2412.20942",
+    "venue": "2024",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 6,
+    "rank": 7,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": true,
+      "code_public": false
+    },
+    "rationale": "CQ authoring -> grounding to Wikidata properties (external schema dependency, demonstrated via built-in dictionary in mock); deterministic mock possible; no GPU/finetuning."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["competency_questions.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/competency_questions.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

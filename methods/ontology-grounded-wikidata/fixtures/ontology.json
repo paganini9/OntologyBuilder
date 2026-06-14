@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Material",
+        "label": "Material",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier",
+        "label": "Supplier",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Function",
+        "label": "Function",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Component",
+        "label": "Component",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Requirement",
+        "label": "Requirement",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Tolerance",
+        "label": "Tolerance",
+        "type": "class",
+        "attributes": [
+          "tolerance"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Part-consistsOf-Product",
+        "source": "Part",
+        "target": "Product",
+        "label": "consistsOf (P527)",
+        "wikidata": "P527",
+        "wikidata_label": "has part"
+      }
+    },
+    {
+      "data": {
+        "id": "Material-madeOf-Part",
+        "source": "Material",
+        "target": "Part",
+        "label": "madeOf (P186)",
+        "wikidata": "P186",
+        "wikidata_label": "made from material"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Part",
+        "source": "Supplier",
+        "target": "Part",
+        "label": "supplies (P176)",
+        "wikidata": "P176",
+        "wikidata_label": "manufacturer"
+      }
+    },
+    {
+      "data": {
+        "id": "Function-performs-Component",
+        "source": "Function",
+        "target": "Component",
+        "label": "performs (P366)",
+        "wikidata": "P366",
+        "wikidata_label": "has use"
+      }
+    },
+    {
+      "data": {
+        "id": "Requirement-satisfies-Product",
+        "source": "Requirement",
+        "target": "Product",
+        "label": "satisfies (P366)",
+        "wikidata": "P366",
+        "wikidata_label": "has use"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-contains-Component",
+        "source": "Assembly",
+        "target": "Component",
+        "label": "contains (P527)",
+        "wikidata": "P527",
+        "wikidata_label": "has part"
+      }
+    },
+    {
+      "data": {
+        "id": "Tolerance-has-Part",
+        "source": "Tolerance",
+        "target": "Part",
+        "label": "has (P527)",
+        "wikidata": "P527",
+        "wikidata_label": "has part"
+      }
+    }
+  ]
+}
