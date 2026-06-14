@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller",
+        "label": "Impeller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Casing",
+        "label": "Casing",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Torque",
+        "label": "Torque",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor",
+        "label": "Sensor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Steel",
+        "label": "Steel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Seal",
+        "label": "Seal",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Gearbox",
+        "label": "Gearbox",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Bearing",
+        "label": "Bearing",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Pump-consistsOf-Impeller",
+        "source": "Pump",
+        "target": "Impeller",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-requires-Motor",
+        "source": "Pump",
+        "target": "Motor",
+        "label": "requires"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-produces-Torque",
+        "source": "Motor",
+        "target": "Torque",
+        "label": "produces"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-has-Controller",
+        "source": "Motor",
+        "target": "Controller",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-madeOf-Steel",
+        "source": "Pump",
+        "target": "Steel",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-contains-Seal",
+        "source": "Pump",
+        "target": "Seal",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Gearbox-transmits-Torque",
+        "source": "Gearbox",
+        "target": "Torque",
+        "label": "transmits"
+      }
+    },
+    {
+      "data": {
+        "id": "Gearbox-includes-Bearing",
+        "source": "Gearbox",
+        "target": "Bearing",
+        "label": "includes"
+      }
+    }
+  ]
+}

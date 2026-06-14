@@ -1,0 +1,34 @@
+{
+  "id": "itext2kg",
+  "name": "iText2KG (incremental zero-shot KG construction)",
+  "paper": {
+    "key": "Lairgi_iText2KG",
+    "title": "iText2KG: Incremental Knowledge Graphs Construction Using Large Language Models",
+    "arxiv": "2409.03284",
+    "venue": "WISE 2024",
+    "code_url": "https://github.com/AuvaLab/itext2kg"
+  },
+  "difficulty": {
+    "score": 3,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "4 modules (distiller/entity/relation/integrator); zero-shot incremental over documents; semantic de-dup; public code; deterministic mock feasible."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

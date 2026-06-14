@@ -1,0 +1,7 @@
+The Pump consists of an Impeller and a Casing. The Pump requires a Motor to operate.
+
+A Motor produces Torque. The Motor has a Controller that uses a Sensor.
+
+The Pumps are made of Steel. Each Pump contains a Seal and an Impeller.
+
+The Gearbox transmits Torque to the Pump. The Gearbox includes a Bearing.

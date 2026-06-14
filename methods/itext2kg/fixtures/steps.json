@@ -1,0 +1,537 @@
+[
+  {
+    "step": 1,
+    "cq": "The Pump consists of an Impeller and a Casing.",
+    "document": 1,
+    "distilled": "The Pump consists of an Impeller and a Casing. The Pump requires a Motor to operate.",
+    "added": {
+      "classes": [
+        "Pump",
+        "Impeller",
+        "Casing",
+        "Motor"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Pump",
+          "range": "Impeller"
+        },
+        {
+          "name": "requires",
+          "domain": "Pump",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Casing",
+            "label": "Casing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Motor",
+            "source": "Pump",
+            "target": "Motor",
+            "label": "requires"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "A Motor produces Torque.",
+    "document": 2,
+    "distilled": "A Motor produces Torque. The Motor has a Controller that uses a Sensor.",
+    "added": {
+      "classes": [
+        "Torque",
+        "Controller",
+        "Sensor"
+      ],
+      "object_properties": [
+        {
+          "name": "produces",
+          "domain": "Motor",
+          "range": "Torque"
+        },
+        {
+          "name": "has",
+          "domain": "Motor",
+          "range": "Controller"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Casing",
+            "label": "Casing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Torque",
+            "label": "Torque",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Motor",
+            "source": "Pump",
+            "target": "Motor",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-produces-Torque",
+            "source": "Motor",
+            "target": "Torque",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-has-Controller",
+            "source": "Motor",
+            "target": "Controller",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "The Pumps are made of Steel.",
+    "document": 3,
+    "distilled": "The Pumps are made of Steel. Each Pump contains a Seal and an Impeller.",
+    "added": {
+      "classes": [
+        "Steel",
+        "Seal"
+      ],
+      "object_properties": [
+        {
+          "name": "madeOf",
+          "domain": "Pump",
+          "range": "Steel"
+        },
+        {
+          "name": "contains",
+          "domain": "Pump",
+          "range": "Seal"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Casing",
+            "label": "Casing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Torque",
+            "label": "Torque",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Seal",
+            "label": "Seal",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Motor",
+            "source": "Pump",
+            "target": "Motor",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-produces-Torque",
+            "source": "Motor",
+            "target": "Torque",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-has-Controller",
+            "source": "Motor",
+            "target": "Controller",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-madeOf-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-contains-Seal",
+            "source": "Pump",
+            "target": "Seal",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "The Gearbox transmits Torque to the Pump.",
+    "document": 4,
+    "distilled": "The Gearbox transmits Torque to the Pump. The Gearbox includes a Bearing.",
+    "added": {
+      "classes": [
+        "Gearbox",
+        "Bearing"
+      ],
+      "object_properties": [
+        {
+          "name": "transmits",
+          "domain": "Gearbox",
+          "range": "Torque"
+        },
+        {
+          "name": "includes",
+          "domain": "Gearbox",
+          "range": "Bearing"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Casing",
+            "label": "Casing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Torque",
+            "label": "Torque",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Seal",
+            "label": "Seal",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Gearbox",
+            "label": "Gearbox",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Motor",
+            "source": "Pump",
+            "target": "Motor",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-produces-Torque",
+            "source": "Motor",
+            "target": "Torque",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-has-Controller",
+            "source": "Motor",
+            "target": "Controller",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-madeOf-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-contains-Seal",
+            "source": "Pump",
+            "target": "Seal",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Gearbox-transmits-Torque",
+            "source": "Gearbox",
+            "target": "Torque",
+            "label": "transmits"
+          }
+        },
+        {
+          "data": {
+            "id": "Gearbox-includes-Bearing",
+            "source": "Gearbox",
+            "target": "Bearing",
+            "label": "includes"
+          }
+        }
+      ]
+    }
+  }
+]

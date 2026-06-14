@@ -140,6 +140,21 @@
       "updated": "2026-06-15"
     },
     {
+      "id": "itext2kg",
+      "name": "iText2KG (incremental zero-shot KG construction)",
+      "paper": {"key": "Lairgi_iText2KG", "arxiv": "2409.03284", "venue": "WISE 2024", "code_url": "https://github.com/AuvaLab/itext2kg"},
+      "difficulty": {"score": 3, "rank": 2, "factors": {"pipeline_stages": 4, "needs_finetuning": false, "needs_gpu": false, "needs_large_data": false, "code_public": true}, "rationale": "4 modules (distiller/entity/relation/integrator); zero-shot incremental; public code; deterministic mock feasible"},
+      "llm_dependency": "api",
+      "inputs_needed": ["text.txt"],
+      "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {"dir": "methods/itext2kg"},
+      "updated": "2026-06-15"
+    },
+    {
       "id": "sac-kg",
       "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
       "paper": {"key": "Chen_SAC-KG", "arxiv": null, "venue": "ACL 2024", "code_url": null},
