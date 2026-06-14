@@ -1,0 +1,7 @@
+A Product contains many Components sourced from different suppliers.
+Each Component requires a Material selected by the engineering team.
+The Material has a Supplier that ships parts on a fixed schedule.
+Every Product uses a Process that the factory performs each shift.
+The Process produces a Component ready for final assembly.
+A Component contains a Material certified for safety compliance.
+A Material belongs to a Component listed in the bill of materials.

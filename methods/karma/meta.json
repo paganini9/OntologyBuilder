@@ -1,0 +1,34 @@
+{
+  "id": "karma",
+  "name": "KARMA (9 collaborative agents for KG enrichment)",
+  "paper": {
+    "key": "Lu_KARMA",
+    "title": "KARMA: Leveraging Multi-Agent LLMs for Automated Knowledge Graph Enrichment",
+    "arxiv": null,
+    "venue": "NeurIPS 2025 Spotlight",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 6,
+    "rank": 8,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "5 multi-agent stages (discovery/extraction/alignment/conflict-resolution + merge); enrichment of an existing KG; deterministic mock possible; no GPU/finetuning."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

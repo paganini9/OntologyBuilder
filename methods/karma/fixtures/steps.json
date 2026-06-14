@@ -1,0 +1,528 @@
+[
+  {
+    "step": 1,
+    "stage": "entity-discovery",
+    "cq": "(discover)",
+    "agent": "entity-discovery",
+    "added": {
+      "classes": [
+        "Material",
+        "Supplier",
+        "Process"
+      ],
+      "object_properties": []
+    },
+    "note": "discovered 3 new entities from 7 sentence(s)",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "seed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "relation-extraction",
+    "cq": "(extract)",
+    "agent": "relation-extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Product",
+          "range": "Component",
+          "origin": "new"
+        },
+        {
+          "name": "requires",
+          "domain": "Component",
+          "range": "Material",
+          "origin": "new"
+        },
+        {
+          "name": "has",
+          "domain": "Material",
+          "range": "Supplier",
+          "origin": "new"
+        },
+        {
+          "name": "uses",
+          "domain": "Product",
+          "range": "Process",
+          "origin": "new"
+        },
+        {
+          "name": "produces",
+          "domain": "Process",
+          "range": "Component",
+          "origin": "new"
+        },
+        {
+          "name": "contains",
+          "domain": "Component",
+          "range": "Material",
+          "origin": "new"
+        },
+        {
+          "name": "belongsTo",
+          "domain": "Material",
+          "range": "Component",
+          "origin": "new"
+        }
+      ]
+    },
+    "note": "extracted 7 object properties",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-requires-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "requires",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-has-Supplier",
+            "source": "Material",
+            "target": "Supplier",
+            "label": "has",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-uses-Process",
+            "source": "Product",
+            "target": "Process",
+            "label": "uses",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process-produces-Component",
+            "source": "Process",
+            "target": "Component",
+            "label": "produces",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-contains-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "contains",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-belongsTo-Component",
+            "source": "Material",
+            "target": "Component",
+            "label": "belongsTo",
+            "origin": "new"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "schema-alignment",
+    "cq": "(align)",
+    "agent": "schema-alignment",
+    "added": {
+      "classes": [],
+      "object_properties": []
+    },
+    "merged": [
+      {
+        "variant": "Components",
+        "merged_into": "Component"
+      }
+    ],
+    "note": "aligned 1 class variant(s) to existing classes",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-requires-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "requires",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-has-Supplier",
+            "source": "Material",
+            "target": "Supplier",
+            "label": "has",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-uses-Process",
+            "source": "Product",
+            "target": "Process",
+            "label": "uses",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process-produces-Component",
+            "source": "Process",
+            "target": "Component",
+            "label": "produces",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-contains-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "contains",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-belongsTo-Component",
+            "source": "Material",
+            "target": "Component",
+            "label": "belongsTo",
+            "origin": "new"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "conflict-resolution",
+    "cq": "(resolve)",
+    "agent": "conflict-resolution",
+    "added": {
+      "classes": [],
+      "object_properties": []
+    },
+    "removed": [
+      {
+        "name": "contains",
+        "domain": "Product",
+        "range": "Component",
+        "origin": "new",
+        "reason": "duplicate"
+      }
+    ],
+    "note": "removed 1 conflicting/duplicate edge(s)",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": [],
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": [],
+            "origin": "new"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-contains-Component",
+            "source": "Product",
+            "target": "Component",
+            "label": "contains",
+            "origin": "seed"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-requires-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "requires",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-has-Supplier",
+            "source": "Material",
+            "target": "Supplier",
+            "label": "has",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-uses-Process",
+            "source": "Product",
+            "target": "Process",
+            "label": "uses",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Process-produces-Component",
+            "source": "Process",
+            "target": "Component",
+            "label": "produces",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-contains-Material",
+            "source": "Component",
+            "target": "Material",
+            "label": "contains",
+            "origin": "new"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-belongsTo-Component",
+            "source": "Material",
+            "target": "Component",
+            "label": "belongsTo",
+            "origin": "new"
+          }
+        }
+      ]
+    }
+  }
+]
