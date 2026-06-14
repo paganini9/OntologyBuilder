@@ -1,0 +1,2158 @@
+[
+  {
+    "step": 1,
+    "cq": "Which Parts does a Product consist of?",
+    "added": {
+      "classes": [
+        "Part",
+        "Product"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Part",
+          "range": "Product"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "(self-critique) Which Parts does a Product consist of?",
+    "added": {
+      "classes": [
+        "Part",
+        "Product"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Part",
+          "range": "Product"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "What Material is a Part made of?",
+    "added": {
+      "classes": [
+        "Material"
+      ],
+      "object_properties": [
+        {
+          "name": "madeOf",
+          "domain": "Material",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "(self-critique) What Material is a Part made of?",
+    "added": {
+      "classes": [
+        "Material"
+      ],
+      "object_properties": [
+        {
+          "name": "madeOf",
+          "domain": "Material",
+          "range": "Part"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "Which Supplier supplies a Part?",
+    "added": {
+      "classes": [
+        "Supplier"
+      ],
+      "object_properties": [
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "(self-critique) Which Supplier supplies a Part?",
+    "added": {
+      "classes": [
+        "Supplier"
+      ],
+      "object_properties": [
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "cq": "What Function does a Component perform?",
+    "added": {
+      "classes": [
+        "Function",
+        "Component"
+      ],
+      "object_properties": [
+        {
+          "name": "performs",
+          "domain": "Function",
+          "range": "Component"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "cq": "(self-critique) What Function does a Component perform?",
+    "added": {
+      "classes": [
+        "Function",
+        "Component"
+      ],
+      "object_properties": [
+        {
+          "name": "performs",
+          "domain": "Function",
+          "range": "Component"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "cq": "Which Subassembly contains a Component?",
+    "added": {
+      "classes": [
+        "Subassembly"
+      ],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Subassembly",
+          "range": "Component"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "cq": "(self-critique) Which Subassembly contains a Component?",
+    "added": {
+      "classes": [
+        "Subassembly"
+      ],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Subassembly",
+          "range": "Component"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 11,
+    "cq": "Which Subassemblies make up a Product?",
+    "added": {
+      "classes": [
+        "Subassemblie"
+      ],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassemblie",
+            "label": "Subassemblie",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "cq": "(self-critique) Which Subassemblies make up a Product?",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "merged": [
+        {
+          "from": "Subassemblie",
+          "into": "Subassembly"
+        }
+      ],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 13,
+    "cq": "Which Requirement does a Product satisfy?",
+    "added": {
+      "classes": [
+        "Requirement"
+      ],
+      "object_properties": [
+        {
+          "name": "satisfies",
+          "domain": "Requirement",
+          "range": "Product"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 14,
+    "cq": "(self-critique) Which Requirement does a Product satisfy?",
+    "added": {
+      "classes": [
+        "Requirement"
+      ],
+      "object_properties": [
+        {
+          "name": "satisfies",
+          "domain": "Requirement",
+          "range": "Product"
+        }
+      ],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 15,
+    "cq": "What Tolerance does a Part have?",
+    "added": {
+      "classes": [
+        "Tolerance"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "Tolerance",
+          "range": "Part"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "tolerance",
+          "domain": "Tolerance",
+          "datatype": "string"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance",
+            "label": "Tolerance",
+            "type": "class",
+            "attributes": [
+              "tolerance"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance-has-Part",
+            "source": "Tolerance",
+            "target": "Part",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 16,
+    "cq": "(self-critique) What Tolerance does a Part have?",
+    "added": {
+      "classes": [
+        "Tolerance"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "Tolerance",
+          "range": "Part"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "tolerance",
+          "domain": "Tolerance",
+          "datatype": "string"
+        }
+      ],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance",
+            "label": "Tolerance",
+            "type": "class",
+            "attributes": [
+              "tolerance"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance-has-Part",
+            "source": "Tolerance",
+            "target": "Part",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 17,
+    "cq": "Which Standard applies?",
+    "added": {
+      "classes": [
+        "Standard"
+      ],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance",
+            "label": "Tolerance",
+            "type": "class",
+            "attributes": [
+              "tolerance"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Standard",
+            "label": "Standard",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance-has-Part",
+            "source": "Tolerance",
+            "target": "Part",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 18,
+    "cq": "(self-critique) Which Standard applies?",
+    "added": {
+      "classes": [
+        "Standard"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "merged": [],
+      "renamed": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance",
+            "label": "Tolerance",
+            "type": "class",
+            "attributes": [
+              "tolerance"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Standard",
+            "label": "Standard",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance-has-Part",
+            "source": "Tolerance",
+            "target": "Part",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 19,
+    "cq": "(final refinement)",
+    "added": {
+      "classes": [
+        "Entity"
+      ],
+      "object_properties": [
+        {
+          "name": "subClassOf",
+          "domain": "Standard",
+          "range": "Entity"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly",
+            "label": "Subassembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance",
+            "label": "Tolerance",
+            "type": "class",
+            "attributes": [
+              "tolerance"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Standard",
+            "label": "Standard",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Entity",
+            "label": "Entity",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Part-consistsOf-Product",
+            "source": "Part",
+            "target": "Product",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Material-madeOf-Part",
+            "source": "Material",
+            "target": "Part",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Function-performs-Component",
+            "source": "Function",
+            "target": "Component",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Subassembly-contains-Component",
+            "source": "Subassembly",
+            "target": "Component",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement-satisfies-Product",
+            "source": "Requirement",
+            "target": "Product",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Tolerance-has-Part",
+            "source": "Tolerance",
+            "target": "Part",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Standard-subClassOf-Entity",
+            "source": "Standard",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        }
+      ]
+    }
+  }
+]

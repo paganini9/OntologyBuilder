@@ -1,0 +1,13 @@
+# Product-design competency questions (one per line).
+# Capitalized words become candidate ontology classes; relational verbs become
+# object properties. Ontogenia processes them memoryfully and self-critiques each
+# draft, so near-duplicate / irregular-plural classes get merged or normalized.
+Which Parts does a Product consist of?
+What Material is a Part made of?
+Which Supplier supplies a Part?
+What Function does a Component perform?
+Which Subassembly contains a Component?
+Which Subassemblies make up a Product?
+Which Requirement does a Product satisfy?
+What Tolerance does a Part have?
+Which Standard applies?

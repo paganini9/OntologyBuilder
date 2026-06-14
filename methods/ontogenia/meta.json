@@ -1,0 +1,34 @@
+{
+  "id": "ontogenia",
+  "name": "Ontogenia (iterative + metacognitive CQ → OWL)",
+  "paper": {
+    "key": "Lippolis_Ontogenia",
+    "title": "Ontology Generation using Large Language Models (Ontogenia variant)",
+    "arxiv": "2503.05388",
+    "venue": "ESWC 2024",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "iterative + metacognitive self-critique loop per CQ plus a final whole-ontology refinement pass (3 stages: draft, self-critique, refine); memoryful context carried across CQs; deterministic mock possible; no data/GPU/finetuning."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["competency_questions.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/competency_questions.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

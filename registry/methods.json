@@ -42,12 +42,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["competency_questions.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/ontogenia"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "peshevski-product-kg",

@@ -1,0 +1,160 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Material",
+        "label": "Material",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier",
+        "label": "Supplier",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Function",
+        "label": "Function",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Component",
+        "label": "Component",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Subassembly",
+        "label": "Subassembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Requirement",
+        "label": "Requirement",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Tolerance",
+        "label": "Tolerance",
+        "type": "class",
+        "attributes": [
+          "tolerance"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Standard",
+        "label": "Standard",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Entity",
+        "label": "Entity",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Part-consistsOf-Product",
+        "source": "Part",
+        "target": "Product",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Material-madeOf-Part",
+        "source": "Material",
+        "target": "Part",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Part",
+        "source": "Supplier",
+        "target": "Part",
+        "label": "supplies"
+      }
+    },
+    {
+      "data": {
+        "id": "Function-performs-Component",
+        "source": "Function",
+        "target": "Component",
+        "label": "performs"
+      }
+    },
+    {
+      "data": {
+        "id": "Subassembly-contains-Component",
+        "source": "Subassembly",
+        "target": "Component",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Requirement-satisfies-Product",
+        "source": "Requirement",
+        "target": "Product",
+        "label": "satisfies"
+      }
+    },
+    {
+      "data": {
+        "id": "Tolerance-has-Part",
+        "source": "Tolerance",
+        "target": "Part",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "Standard-subClassOf-Entity",
+        "source": "Standard",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    }
+  ]
+}

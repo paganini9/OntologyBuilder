@@ -3,7 +3,9 @@
 param(
   [Parameter(Mandatory = $true)][string]$MethodId
 )
-$ErrorActionPreference = "Stop"
+# Continue (not Stop): git writes harmless warnings (e.g. LF->CRLF) to stderr,
+# which would otherwise abort the script under Stop.
+$ErrorActionPreference = "Continue"
 $root = Split-Path -Parent $PSScriptRoot   # implementation/
 
 if (-not (Test-Path (Join-Path $root ".git"))) {
