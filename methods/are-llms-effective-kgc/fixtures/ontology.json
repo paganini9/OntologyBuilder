@@ -1,0 +1,142 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CoolantPump",
+        "label": "CoolantPump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Radiator",
+        "label": "Radiator",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor",
+        "label": "ElectricMotor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Engineer",
+        "label": "Engineer",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Product-consistsOf-Part",
+        "source": "Product",
+        "target": "Part",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-drives-Assembly",
+        "source": "Motor",
+        "target": "Assembly",
+        "label": "drives"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor-uses-Battery",
+        "source": "ElectricMotor",
+        "target": "Battery",
+        "label": "uses"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-controls-Battery",
+        "source": "Motor",
+        "target": "Battery",
+        "label": "controls"
+      }
+    },
+    {
+      "data": {
+        "id": "CoolantPump-subClassOf-Pump",
+        "source": "CoolantPump",
+        "target": "Pump",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricMotor-subClassOf-Motor",
+        "source": "ElectricMotor",
+        "target": "Motor",
+        "label": "subClassOf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "are-llms-effective-kgc",
+  "name": "Hierarchical extraction (Are LLMs Effective KG Constructors?)",
+  "paper": {
+    "key": "AreLLMsEffectiveKGC",
+    "title": "Are Large Language Models Effective Knowledge Graph Constructors?",
+    "arxiv": "2510.11297",
+    "venue": "2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 6,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "multi-level hierarchical extraction (L1 entities -> L2 relations -> L3 hierarchy); deterministic mock possible; no data/GPU/finetuning."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

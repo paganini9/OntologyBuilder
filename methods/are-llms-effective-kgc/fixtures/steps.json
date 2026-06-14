@@ -1,0 +1,835 @@
+[
+  {
+    "step": 1,
+    "level": "L1",
+    "cq": "A Product consists of several Parts that engineers design and assemble",
+    "added": {
+      "classes": [
+        "Product",
+        "Part"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "level": "L1",
+    "cq": "Each Pump moves coolant through the cooling channels of the engine",
+    "added": {
+      "classes": [
+        "Pump"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 3,
+    "level": "L1",
+    "cq": "A CoolantPump is installed near the Radiator to keep temperatures stable",
+    "added": {
+      "classes": [
+        "CoolantPump",
+        "Radiator"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 4,
+    "level": "L1",
+    "cq": "A Motor drives the mechanical Assembly during normal operation",
+    "added": {
+      "classes": [
+        "Motor",
+        "Assembly"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 5,
+    "level": "L1",
+    "cq": "An ElectricMotor uses a Battery and a Controller to power the wheels",
+    "added": {
+      "classes": [
+        "ElectricMotor",
+        "Battery",
+        "Controller"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 6,
+    "level": "L1",
+    "cq": "The Controller controls the Motor and monitors the Battery state",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 7,
+    "level": "L1",
+    "cq": "Engineers test every Assembly before the Product ships to customers",
+    "added": {
+      "classes": [
+        "Engineer"
+      ],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engineer",
+            "label": "Engineer",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 8,
+    "level": "L2",
+    "cq": "(L2 relations)",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "drives",
+          "domain": "Motor",
+          "range": "Assembly"
+        },
+        {
+          "name": "uses",
+          "domain": "ElectricMotor",
+          "range": "Battery"
+        },
+        {
+          "name": "controls",
+          "domain": "Motor",
+          "range": "Battery"
+        }
+      ],
+      "data_properties": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engineer",
+            "label": "Engineer",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Assembly",
+            "source": "Motor",
+            "target": "Assembly",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-uses-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-controls-Battery",
+            "source": "Motor",
+            "target": "Battery",
+            "label": "controls"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "level": "L3",
+    "cq": "(L3 hierarchy)",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": [],
+      "subclass_of": [
+        {
+          "child": "CoolantPump",
+          "parent": "Pump"
+        },
+        {
+          "child": "ElectricMotor",
+          "parent": "Motor"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Radiator",
+            "label": "Radiator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engineer",
+            "label": "Engineer",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Assembly",
+            "source": "Motor",
+            "target": "Assembly",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-uses-Battery",
+            "source": "ElectricMotor",
+            "target": "Battery",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-controls-Battery",
+            "source": "Motor",
+            "target": "Battery",
+            "label": "controls"
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump-subClassOf-Pump",
+            "source": "CoolantPump",
+            "target": "Pump",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricMotor-subClassOf-Motor",
+            "source": "ElectricMotor",
+            "target": "Motor",
+            "label": "subClassOf"
+          }
+        }
+      ]
+    }
+  }
+]

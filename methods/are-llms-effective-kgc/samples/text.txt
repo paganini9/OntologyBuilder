@@ -1,0 +1,7 @@
+A Product consists of several Parts that engineers design and assemble.
+Each Pump moves coolant through the cooling channels of the engine.
+A CoolantPump is installed near the Radiator to keep temperatures stable.
+A Motor drives the mechanical Assembly during normal operation.
+An ElectricMotor uses a Battery and a Controller to power the wheels.
+The Controller controls the Motor and monitors the Battery state.
+Engineers test every Assembly before the Product ships to customers.
