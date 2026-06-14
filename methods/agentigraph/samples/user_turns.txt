@@ -1,0 +1,10 @@
+# AGENTiGraph sample conversation - product design domain
+# one user utterance per line; blank lines and # comments are ignored
+Add a Product to the graph.
+A Product consists of several Parts.
+What materials does a Part use?
+Connect a Part to a Material.
+A Supplier supplies the Material.
+Add an Assembly.
+An Assembly contains many Parts.
+Which Supplier produces the Component?

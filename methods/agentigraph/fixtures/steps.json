@@ -1,0 +1,585 @@
+[
+  {
+    "step": 1,
+    "cq": "Add a Product to the graph.",
+    "intent": "add-entity",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "cq": "A Product consists of several Parts.",
+    "intent": "add-relation",
+    "added": {
+      "classes": [
+        "Part"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "What materials does a Part use?",
+    "intent": "query",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "Connect a Part to a Material.",
+    "intent": "add-relation",
+    "added": {
+      "classes": [
+        "Material"
+      ],
+      "object_properties": [
+        {
+          "name": "connectsTo",
+          "domain": "Part",
+          "range": "Material"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "connectsTo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "A Supplier supplies the Material.",
+    "intent": "add-relation",
+    "added": {
+      "classes": [
+        "Supplier"
+      ],
+      "object_properties": [
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Material"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Material",
+            "source": "Supplier",
+            "target": "Material",
+            "label": "supplies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "Add an Assembly.",
+    "intent": "add-entity",
+    "added": {
+      "classes": [
+        "Assembly"
+      ],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Material",
+            "source": "Supplier",
+            "target": "Material",
+            "label": "supplies"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "cq": "An Assembly contains many Parts.",
+    "intent": "add-relation",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Assembly",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Material",
+            "source": "Supplier",
+            "target": "Material",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Part",
+            "source": "Assembly",
+            "target": "Part",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "cq": "Which Supplier produces the Component?",
+    "intent": "query",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Catalog",
+            "label": "Catalog",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Material",
+            "source": "Supplier",
+            "target": "Material",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Part",
+            "source": "Assembly",
+            "target": "Part",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  }
+]

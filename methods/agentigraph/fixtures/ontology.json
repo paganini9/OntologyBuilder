@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Catalog",
+        "label": "Catalog",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Material",
+        "label": "Material",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier",
+        "label": "Supplier",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Product-consistsOf-Part",
+        "source": "Product",
+        "target": "Part",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Part-connectsTo-Material",
+        "source": "Part",
+        "target": "Material",
+        "label": "connectsTo"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Material",
+        "source": "Supplier",
+        "target": "Material",
+        "label": "supplies"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-contains-Part",
+        "source": "Assembly",
+        "target": "Part",
+        "label": "contains"
+      }
+    }
+  ]
+}
