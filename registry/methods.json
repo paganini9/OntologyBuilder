@@ -148,11 +148,11 @@
       "inputs_needed": ["seed_entities.txt", "domain_corpus_dir"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
       "status": "queued",
-      "blockers": [],
+      "blockers": ["needs GPU + T5/LoRA finetuning for real run; awaiting user decision on hf-local compute (MOCK simplification deferred per user)"],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/sac-kg"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     }
   ]
 }
