@@ -18,6 +18,7 @@
   "notImplemented": "This method is not implemented yet. It is in the implementation queue.",
   "processSteps": "Construction process (step by step)",
   "step": "Step",
+  "stepInput": "Processed input",
   "of": "of",
   "added": "Added at this step",
   "classes": "Classes",

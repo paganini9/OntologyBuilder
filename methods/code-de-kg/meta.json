@@ -1,0 +1,34 @@
+{
+  "id": "code-de-kg",
+  "name": "CoDe-KG (coreference + sentence decomposition → triples)",
+  "paper": {
+    "key": "Anuyah_CoDeKG",
+    "title": "Automated Knowledge Graph Construction using Large Language Models and Sentence Complexity Modelling (CoDe-KG)",
+    "arxiv": "2509.17289",
+    "venue": "EMNLP 2025",
+    "code_url": "https://github.com/KaushikMahmud/CoDe-KG_EMNLP_2025"
+  },
+  "difficulty": {
+    "score": 3,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "macro stages preprocess(coref+decompose) -> extract -> merge; BERT classifier replaced by deterministic rule classifier so no GPU/finetuning; deterministic mock path; public code. Score = 1*3 + 1(api) - 1(code_public) = 3."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

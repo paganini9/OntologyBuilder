@@ -2,7 +2,7 @@
   {
     "id": "cqbycq",
     "name": "CQbyCQ (CQ → OWL, memoryless)",
-    "status": "implemented",
+    "status": "published",
     "difficulty": {
       "score": 2,
       "rank": 1,
@@ -34,7 +34,7 @@
   {
     "id": "code-de-kg",
     "name": "CoDe-KG (coreference + sentence decomposition → triples)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 3,
       "rank": 2,

@@ -178,7 +178,7 @@ function renderResult(data) {
 function showStep(n) {
   const step = lastSteps[n - 1];
   $("#stepLbl").textContent = `${T.step} ${n} ${T.of} ${lastSteps.length}`;
-  $("#cqLine").innerHTML = `<span class="cq">CQ: ${esc(step.cq)}</span>`;
+  $("#cqLine").innerHTML = `<span class="cq">${T.stepInput}: ${esc(step.cq)}</span>`;
   const a = step.added;
   const parts = [];
   if (a.classes.length) parts.push(`${T.classes}: ${a.classes.join(", ")}`);

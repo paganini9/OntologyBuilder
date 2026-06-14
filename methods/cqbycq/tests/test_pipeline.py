@@ -4,6 +4,7 @@ With the MOCK backend the pipeline is fully deterministic, so we assert the
 graph/steps against committed golden fixtures and check the TTL is valid OWL.
 Real-backend output is non-deterministic and is therefore NOT asserted here.
 """
+import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -12,11 +13,15 @@ import pytest
 
 METHOD_DIR = Path(__file__).resolve().parents[1]
 IMPL_ROOT = METHOD_DIR.parents[1]
-for p in (str(IMPL_ROOT), str(METHOD_DIR)):
-    if p not in sys.path:
-        sys.path.insert(0, p)
+if str(IMPL_ROOT) not in sys.path:
+    sys.path.insert(0, str(IMPL_ROOT))  # for `backend.llm`
 
-import pipeline  # noqa: E402
+# Load this method's pipeline under a UNIQUE module name to avoid colliding with
+# other methods' top-level `pipeline` module when the whole suite runs.
+_spec = importlib.util.spec_from_file_location(
+    "pipeline_" + METHOD_DIR.name.replace("-", "_"), METHOD_DIR / "pipeline.py")
+pipeline = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(pipeline)
 
 
 def _run(tmp_path):

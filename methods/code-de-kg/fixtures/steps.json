@@ -1,0 +1,734 @@
+[
+  {
+    "step": 1,
+    "cq": "The Engine drives the Pump and the Controller monitors the Engine.",
+    "added": {
+      "classes": [
+        "Engine",
+        "Pump",
+        "Controller"
+      ],
+      "object_properties": [
+        {
+          "name": "drives",
+          "domain": "Engine",
+          "range": "Pump"
+        },
+        {
+          "name": "monitors",
+          "domain": "Controller",
+          "range": "Engine"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "The Engine drives the Pump and the Controller monitors the Engine.",
+      "resolved": "The Engine drives the Pump and the Controller monitors the Engine.",
+      "changed": false
+    },
+    "complexity": "compound",
+    "prompt_profile": "split-conjuncts-fewshot"
+  },
+  {
+    "step": 2,
+    "cq": "The Pump circulates the Coolant which cools the Engine.",
+    "added": {
+      "classes": [
+        "Coolant"
+      ],
+      "object_properties": [
+        {
+          "name": "circulates",
+          "domain": "Pump",
+          "range": "Coolant"
+        },
+        {
+          "name": "cools",
+          "domain": "Pump",
+          "range": "Engine"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-circulates-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "circulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-cools-Engine",
+            "source": "Pump",
+            "target": "Engine",
+            "label": "cools"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "The Pump circulates the Coolant which cools the Engine.",
+      "resolved": "The Pump circulates the Coolant which cools the Engine.",
+      "changed": false
+    },
+    "complexity": "complex",
+    "prompt_profile": "clause-decompose-cot"
+  },
+  {
+    "step": 3,
+    "cq": "Engine feeds the Motor through a Pipe.",
+    "added": {
+      "classes": [
+        "Motor"
+      ],
+      "object_properties": [
+        {
+          "name": "feeds",
+          "domain": "Engine",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-circulates-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "circulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-cools-Engine",
+            "source": "Pump",
+            "target": "Engine",
+            "label": "cools"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-feeds-Motor",
+            "source": "Engine",
+            "target": "Motor",
+            "label": "feeds"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "It feeds the Motor through a Pipe.",
+      "resolved": "Engine feeds the Motor through a Pipe.",
+      "changed": true
+    },
+    "complexity": "simple",
+    "prompt_profile": "direct-extract"
+  },
+  {
+    "step": 4,
+    "cq": "The Motor powers the Pump and Pump's Sensor monitors the Coolant.",
+    "added": {
+      "classes": [
+        "Sensor"
+      ],
+      "object_properties": [
+        {
+          "name": "powers",
+          "domain": "Motor",
+          "range": "Pump"
+        },
+        {
+          "name": "monitors",
+          "domain": "Pump",
+          "range": "Sensor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-circulates-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "circulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-cools-Engine",
+            "source": "Pump",
+            "target": "Engine",
+            "label": "cools"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-feeds-Motor",
+            "source": "Engine",
+            "target": "Motor",
+            "label": "feeds"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-powers-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-monitors-Sensor",
+            "source": "Pump",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "The Motor powers the Pump and its Sensor monitors the Coolant.",
+      "resolved": "The Motor powers the Pump and Pump's Sensor monitors the Coolant.",
+      "changed": true
+    },
+    "complexity": "compound",
+    "prompt_profile": "split-conjuncts-fewshot"
+  },
+  {
+    "step": 5,
+    "cq": "The Controller regulates the Motor because the Engine requires steady Power.",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "name": "regulates",
+          "domain": "Controller",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-circulates-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "circulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-cools-Engine",
+            "source": "Pump",
+            "target": "Engine",
+            "label": "cools"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-feeds-Motor",
+            "source": "Engine",
+            "target": "Motor",
+            "label": "feeds"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-powers-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-monitors-Sensor",
+            "source": "Pump",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "The Controller regulates the Motor because the Engine requires steady Power.",
+      "resolved": "The Controller regulates the Motor because the Engine requires steady Power.",
+      "changed": false
+    },
+    "complexity": "complex",
+    "prompt_profile": "clause-decompose-cot"
+  },
+  {
+    "step": 6,
+    "cq": "Power protect the System.",
+    "added": {
+      "classes": [
+        "Power",
+        "System"
+      ],
+      "object_properties": [
+        {
+          "name": "protects",
+          "domain": "Power",
+          "range": "System"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Power",
+            "label": "Power",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-drives-Pump",
+            "source": "Engine",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Engine",
+            "source": "Controller",
+            "target": "Engine",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-circulates-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "circulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-cools-Engine",
+            "source": "Pump",
+            "target": "Engine",
+            "label": "cools"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-feeds-Motor",
+            "source": "Engine",
+            "target": "Motor",
+            "label": "feeds"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-powers-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-monitors-Sensor",
+            "source": "Pump",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Power-protects-System",
+            "source": "Power",
+            "target": "System",
+            "label": "protects"
+          }
+        }
+      ]
+    },
+    "coref": {
+      "raw": "They protect the System.",
+      "resolved": "Power protect the System.",
+      "changed": true
+    },
+    "complexity": "simple",
+    "prompt_profile": "direct-extract"
+  }
+]

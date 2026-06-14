@@ -12,12 +12,12 @@
       "llm_dependency": "mock",
       "inputs_needed": ["competency_questions.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "implemented",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/cqbycq"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "code-de-kg",
@@ -27,12 +27,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["text.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/code-de-kg"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "ontogenia",

@@ -1,0 +1,10 @@
+# Free-form product-design text for CoDe-KG.
+# Capitalized words become entities; relational verbs become relations.
+# Pronouns (It / They / Its / This) are resolved to the nearest preceding entity,
+# so coreference visibly fires. Edit this and re-run the pipeline.
+The Engine drives the Pump and the Controller monitors the Engine.
+The Pump circulates the Coolant which cools the Engine.
+It feeds the Motor through a Pipe.
+The Motor powers the Pump and its Sensor monitors the Coolant.
+The Controller regulates the Motor because the Engine requires steady Power.
+They protect the System.

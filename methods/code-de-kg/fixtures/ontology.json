@@ -1,0 +1,142 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Engine",
+        "label": "Engine",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Coolant",
+        "label": "Coolant",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor",
+        "label": "Sensor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Power",
+        "label": "Power",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "System",
+        "label": "System",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Engine-drives-Pump",
+        "source": "Engine",
+        "target": "Pump",
+        "label": "drives"
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-monitors-Engine",
+        "source": "Controller",
+        "target": "Engine",
+        "label": "monitors"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-circulates-Coolant",
+        "source": "Pump",
+        "target": "Coolant",
+        "label": "circulates"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-cools-Engine",
+        "source": "Pump",
+        "target": "Engine",
+        "label": "cools"
+      }
+    },
+    {
+      "data": {
+        "id": "Engine-feeds-Motor",
+        "source": "Engine",
+        "target": "Motor",
+        "label": "feeds"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-powers-Pump",
+        "source": "Motor",
+        "target": "Pump",
+        "label": "powers"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-monitors-Sensor",
+        "source": "Pump",
+        "target": "Sensor",
+        "label": "monitors"
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-regulates-Motor",
+        "source": "Controller",
+        "target": "Motor",
+        "label": "regulates"
+      }
+    },
+    {
+      "data": {
+        "id": "Power-protects-System",
+        "source": "Power",
+        "target": "System",
+        "label": "protects"
+      }
+    }
+  ]
+}
