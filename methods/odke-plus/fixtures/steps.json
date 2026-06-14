@@ -1,0 +1,586 @@
+[
+  {
+    "step": 1,
+    "stage": "extraction-initiator",
+    "cq": "(initiate)",
+    "detail": {
+      "slots": {
+        "Bicycle": [
+          "madeOf",
+          "hasPart",
+          "manufacturer"
+        ],
+        "Frame": [
+          "madeOf",
+          "hasPart",
+          "manufacturer"
+        ],
+        "Wheel": [
+          "madeOf",
+          "hasPart",
+          "manufacturer"
+        ],
+        "Engine": [
+          "madeOf",
+          "hasPart",
+          "manufacturer"
+        ]
+      }
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Bicycle",
+            "label": "Bicycle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "stage": "evidence-retriever",
+    "cq": "(retrieve)",
+    "detail": {
+      "retrieved": {
+        "Bicycle": [
+          "A Bicycle consists of a Frame and two Wheels mounted on it.",
+          "A Bicycle requires regular maintenance to stay safe on the road."
+        ],
+        "Frame": [
+          "A Bicycle consists of a Frame and two Wheels mounted on it.",
+          "The Frame is made of Aluminium and supports the rider's weight."
+        ],
+        "Wheel": [
+          "A Bicycle consists of a Frame and two Wheels mounted on it.",
+          "Each Wheel contains a Tyre and a metal Rim for durability."
+        ],
+        "Engine": [
+          "The Engine produces Torque that drives the rear axle in motor vehicles."
+        ]
+      }
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Bicycle",
+            "label": "Bicycle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 3,
+    "stage": "hybrid-extractor",
+    "cq": "(extract)",
+    "detail": {
+      "candidates": [
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Frame"
+        },
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Wheel"
+        },
+        {
+          "subject": "Bicycle",
+          "relation": "manufacturer",
+          "object": "Manufacturer"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Bicycle"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Wheel"
+        },
+        {
+          "subject": "Frame",
+          "relation": "madeOf",
+          "object": "Aluminium"
+        },
+        {
+          "subject": "Frame",
+          "relation": "manufacturer",
+          "object": "Manufacturer"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Bicycle"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Frame"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Tyre"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Rim"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "manufacturer",
+          "object": "Manufacturer"
+        },
+        {
+          "subject": "Engine",
+          "relation": "produces",
+          "object": "Torque"
+        },
+        {
+          "subject": "Engine",
+          "relation": "manufacturer",
+          "object": "Manufacturer"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Bicycle",
+            "label": "Bicycle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 4,
+    "stage": "grounder",
+    "cq": "(ground/verify)",
+    "detail": {
+      "kept": [
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Frame",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Wheel",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Bicycle",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Wheel",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Frame",
+          "relation": "madeOf",
+          "object": "Aluminium",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Bicycle",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Frame",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Tyre",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Rim",
+          "reason": "subject+object co-occur in evidence"
+        },
+        {
+          "subject": "Engine",
+          "relation": "produces",
+          "object": "Torque",
+          "reason": "subject+object co-occur in evidence"
+        }
+      ],
+      "dropped": [
+        {
+          "subject": "Bicycle",
+          "relation": "manufacturer",
+          "object": "Manufacturer",
+          "reason": "object not grounded in evidence"
+        },
+        {
+          "subject": "Frame",
+          "relation": "manufacturer",
+          "object": "Manufacturer",
+          "reason": "object not grounded in evidence"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "manufacturer",
+          "object": "Manufacturer",
+          "reason": "object not grounded in evidence"
+        },
+        {
+          "subject": "Engine",
+          "relation": "manufacturer",
+          "object": "Manufacturer",
+          "reason": "object not grounded in evidence"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Bicycle",
+            "label": "Bicycle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 5,
+    "stage": "corroborator",
+    "cq": "(corroborate)",
+    "detail": {
+      "loaded": [
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Frame"
+        },
+        {
+          "subject": "Bicycle",
+          "relation": "consistsOf",
+          "object": "Wheel"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Bicycle"
+        },
+        {
+          "subject": "Frame",
+          "relation": "consistsOf",
+          "object": "Wheel"
+        },
+        {
+          "subject": "Frame",
+          "relation": "madeOf",
+          "object": "Aluminium"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Bicycle"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "consistsOf",
+          "object": "Frame"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Tyre"
+        },
+        {
+          "subject": "Wheel",
+          "relation": "contains",
+          "object": "Rim"
+        },
+        {
+          "subject": "Engine",
+          "relation": "produces",
+          "object": "Torque"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Bicycle",
+            "label": "Bicycle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Aluminium",
+            "label": "Aluminium",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Tyre",
+            "label": "Tyre",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Rim",
+            "label": "Rim",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Torque",
+            "label": "Torque",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Bicycle-consistsOf-Frame",
+            "source": "Bicycle",
+            "target": "Frame",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bicycle-consistsOf-Wheel",
+            "source": "Bicycle",
+            "target": "Wheel",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-consistsOf-Bicycle",
+            "source": "Frame",
+            "target": "Bicycle",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-consistsOf-Wheel",
+            "source": "Frame",
+            "target": "Wheel",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-madeOf-Aluminium",
+            "source": "Frame",
+            "target": "Aluminium",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel-consistsOf-Bicycle",
+            "source": "Wheel",
+            "target": "Bicycle",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel-consistsOf-Frame",
+            "source": "Wheel",
+            "target": "Frame",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel-contains-Tyre",
+            "source": "Wheel",
+            "target": "Tyre",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel-contains-Rim",
+            "source": "Wheel",
+            "target": "Rim",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-produces-Torque",
+            "source": "Engine",
+            "target": "Torque",
+            "label": "produces"
+          }
+        }
+      ]
+    }
+  }
+]

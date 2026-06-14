@@ -1,0 +1,34 @@
+{
+  "id": "odke-plus",
+  "name": "ODKE+ (5-stage ontology-guided open-domain extraction)",
+  "paper": {
+    "key": "Khorshidi_ODKE",
+    "title": "ODKE+: Ontology-Guided Open-Domain Knowledge Extraction with LLMs",
+    "arxiv": "2509.04696",
+    "venue": "Apple Research 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 8,
+    "rank": 9,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": true,
+      "code_public": false
+    },
+    "rationale": "production-grade 5-stage pipeline (initiator/retriever/extractor/grounder/corroborator) with generation-verification separation; deterministic mock possible; no GPU/finetuning but large-data oriented."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["entities.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/entities.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

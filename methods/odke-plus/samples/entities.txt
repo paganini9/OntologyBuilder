@@ -1,0 +1,5 @@
+# Entities to extract facts for (one per line)
+Bicycle
+Frame
+Wheel
+Engine

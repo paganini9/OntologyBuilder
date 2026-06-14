@@ -1,0 +1,5 @@
+A Bicycle consists of a Frame and two Wheels mounted on it.
+The Frame is made of Aluminium and supports the rider's weight.
+Each Wheel contains a Tyre and a metal Rim for durability.
+The Engine produces Torque that drives the rear axle in motor vehicles.
+A Bicycle requires regular maintenance to stay safe on the road.

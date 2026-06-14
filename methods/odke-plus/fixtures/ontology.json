@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Bicycle",
+        "label": "Bicycle",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Frame",
+        "label": "Frame",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel",
+        "label": "Wheel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Engine",
+        "label": "Engine",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Aluminium",
+        "label": "Aluminium",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Tyre",
+        "label": "Tyre",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Rim",
+        "label": "Rim",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Torque",
+        "label": "Torque",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Bicycle-consistsOf-Frame",
+        "source": "Bicycle",
+        "target": "Frame",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Bicycle-consistsOf-Wheel",
+        "source": "Bicycle",
+        "target": "Wheel",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Frame-consistsOf-Bicycle",
+        "source": "Frame",
+        "target": "Bicycle",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Frame-consistsOf-Wheel",
+        "source": "Frame",
+        "target": "Wheel",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Frame-madeOf-Aluminium",
+        "source": "Frame",
+        "target": "Aluminium",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel-consistsOf-Bicycle",
+        "source": "Wheel",
+        "target": "Bicycle",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel-consistsOf-Frame",
+        "source": "Wheel",
+        "target": "Frame",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel-contains-Tyre",
+        "source": "Wheel",
+        "target": "Tyre",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel-contains-Rim",
+        "source": "Wheel",
+        "target": "Rim",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Engine-produces-Torque",
+        "source": "Engine",
+        "target": "Torque",
+        "label": "produces"
+      }
+    }
+  ]
+}
