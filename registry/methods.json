@@ -72,12 +72,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["seed_text.txt", "user_turns.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/agentigraph"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "are-llms-effective-kgc",
@@ -87,12 +87,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["text.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/are-llms-effective-kgc"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "ontology-grounded-wikidata",
@@ -102,12 +102,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["competency_questions.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/ontology-grounded-wikidata"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "karma",
@@ -117,12 +117,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["seed_kg.ttl", "text.txt"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/karma"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "odke-plus",
@@ -132,12 +132,12 @@
       "llm_dependency": "api",
       "inputs_needed": ["entities.txt", "evidence_dir"],
       "produces": ["ontology.ttl", "ontology.json", "steps.json"],
-      "status": "queued",
+      "status": "published",
       "blockers": [],
       "source": "library",
       "approved_by_user": true,
       "paths": {"dir": "methods/odke-plus"},
-      "updated": "2026-06-14"
+      "updated": "2026-06-15"
     },
     {
       "id": "sac-kg",

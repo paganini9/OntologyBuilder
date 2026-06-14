@@ -130,7 +130,7 @@
   {
     "id": "agentigraph",
     "name": "AGENTiGraph (interactive multi-agent KG construction)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 4,
       "rank": 5,
@@ -163,7 +163,7 @@
   {
     "id": "are-llms-effective-kgc",
     "name": "Hierarchical extraction (Are LLMs Effective KG Constructors?)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 4,
       "rank": 6,
@@ -195,7 +195,7 @@
   {
     "id": "ontology-grounded-wikidata",
     "name": "Ontology-Grounded KG under Wikidata schema",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 6,
       "rank": 7,
@@ -227,7 +227,7 @@
   {
     "id": "karma",
     "name": "KARMA (9 collaborative agents for KG enrichment)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 6,
       "rank": 8,
@@ -260,7 +260,7 @@
   {
     "id": "odke-plus",
     "name": "ODKE+ (5-stage ontology-guided open-domain extraction)",
-    "status": "queued",
+    "status": "published",
     "difficulty": {
       "score": 8,
       "rank": 9,
