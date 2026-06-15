@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pressure",
+        "label": "Pressure",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Housing",
+        "label": "Housing",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Motor-drives-Pump",
+        "source": "Motor",
+        "target": "Pump",
+        "label": "drives"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-produces-Pressure",
+        "source": "Pump",
+        "target": "Pressure",
+        "label": "produces"
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-regulates-Motor",
+        "source": "Controller",
+        "target": "Motor",
+        "label": "regulates"
+      }
+    },
+    {
+      "data": {
+        "id": "Battery-powers-Motor",
+        "source": "Battery",
+        "target": "Motor",
+        "label": "powers"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-consistsOf-Housing",
+        "source": "Pump",
+        "target": "Housing",
+        "label": "consistsOf"
+      }
+    }
+  ]
+}

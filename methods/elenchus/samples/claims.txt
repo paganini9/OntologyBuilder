@@ -1,0 +1,12 @@
+# Candidate claims for the prover-skeptic dialogue.
+# Each line is a natural sentence expressing one candidate triple.
+# The skeptic rejects unparseable, contradictory, or duplicate claims.
+
+A Motor drives a Pump
+A Pump produces Pressure
+A Controller regulates the Motor
+A Battery powers the Motor
+A Motor drives a Compressor
+The Pump consists of a Housing
+A Pump produces Pressure
+Reliability matters a lot

@@ -1,0 +1,771 @@
+[
+  {
+    "step": 1,
+    "cq": "A Motor drives a Pump",
+    "prover": {
+      "subject": "Motor",
+      "relation": "drives",
+      "object": "Pump"
+    },
+    "skeptic": {
+      "verdict": "accepted",
+      "reason": "survives the dialectic: parseable, consistent, novel"
+    },
+    "verdict": "accepted",
+    "added": {
+      "classes": [
+        "Motor",
+        "Pump"
+      ],
+      "object_properties": [
+        {
+          "name": "drives",
+          "domain": "Motor",
+          "range": "Pump"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "A Pump produces Pressure",
+    "prover": {
+      "subject": "Pump",
+      "relation": "produces",
+      "object": "Pressure"
+    },
+    "skeptic": {
+      "verdict": "accepted",
+      "reason": "survives the dialectic: parseable, consistent, novel"
+    },
+    "verdict": "accepted",
+    "added": {
+      "classes": [
+        "Pressure"
+      ],
+      "object_properties": [
+        {
+          "name": "produces",
+          "domain": "Pump",
+          "range": "Pressure"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "A Controller regulates the Motor",
+    "prover": {
+      "subject": "Controller",
+      "relation": "regulates",
+      "object": "Motor"
+    },
+    "skeptic": {
+      "verdict": "accepted",
+      "reason": "survives the dialectic: parseable, consistent, novel"
+    },
+    "verdict": "accepted",
+    "added": {
+      "classes": [
+        "Controller"
+      ],
+      "object_properties": [
+        {
+          "name": "regulates",
+          "domain": "Controller",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "A Battery powers the Motor",
+    "prover": {
+      "subject": "Battery",
+      "relation": "powers",
+      "object": "Motor"
+    },
+    "skeptic": {
+      "verdict": "accepted",
+      "reason": "survives the dialectic: parseable, consistent, novel"
+    },
+    "verdict": "accepted",
+    "added": {
+      "classes": [
+        "Battery"
+      ],
+      "object_properties": [
+        {
+          "name": "powers",
+          "domain": "Battery",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "A Motor drives a Compressor",
+    "prover": {
+      "subject": "Motor",
+      "relation": "drives",
+      "object": "Compressor"
+    },
+    "skeptic": {
+      "verdict": "rejected",
+      "reason": "contradiction: Motor drives already accepted with object Pump"
+    },
+    "verdict": "rejected",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "The Pump consists of a Housing",
+    "prover": {
+      "subject": "Pump",
+      "relation": "consistsOf",
+      "object": "Housing"
+    },
+    "skeptic": {
+      "verdict": "accepted",
+      "reason": "survives the dialectic: parseable, consistent, novel"
+    },
+    "verdict": "accepted",
+    "added": {
+      "classes": [
+        "Housing"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Pump",
+          "range": "Housing"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Housing",
+            "label": "Housing",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-consistsOf-Housing",
+            "source": "Pump",
+            "target": "Housing",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "cq": "A Pump produces Pressure",
+    "prover": {
+      "subject": "Pump",
+      "relation": "produces",
+      "object": "Pressure"
+    },
+    "skeptic": {
+      "verdict": "rejected",
+      "reason": "redundant: duplicates an accepted claim"
+    },
+    "verdict": "rejected",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Housing",
+            "label": "Housing",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-consistsOf-Housing",
+            "source": "Pump",
+            "target": "Housing",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "cq": "Reliability matters a lot",
+    "prover": {
+      "subject": "",
+      "relation": "",
+      "object": ""
+    },
+    "skeptic": {
+      "verdict": "rejected",
+      "reason": "unparseable: not a full subject-relation-object triple"
+    },
+    "verdict": "rejected",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pressure",
+            "label": "Pressure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Housing",
+            "label": "Housing",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-produces-Pressure",
+            "source": "Pump",
+            "target": "Pressure",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-regulates-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "regulates"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-consistsOf-Housing",
+            "source": "Pump",
+            "target": "Housing",
+            "label": "consistsOf"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "elenchus",
+  "name": "Elenchus (prover-skeptic dialogue KB construction)",
+  "paper": {
+    "key": "Allen_Elenchus",
+    "title": "Elenchus: Generating Knowledge Bases from Prover-Skeptic Dialogues",
+    "arxiv": "2603.06974",
+    "venue": "arXiv 2026",
+    "code_url": "https://github.com/bradleypallen/elenchus"
+  },
+  "difficulty": {
+    "score": 6,
+    "rank": 6,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "adversarial two-role (prover vs skeptic) dialogue with stateful KB-aware acceptance; 3-stage loop and contradiction tracking make it harder than memoryless/single-critique methods, but no data/GPU/finetuning and a deterministic mock is feasible"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["claims.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/claims.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}
