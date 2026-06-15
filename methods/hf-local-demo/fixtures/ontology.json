@@ -1,0 +1,102 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Coolant",
+        "label": "Coolant",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor",
+        "label": "Sensor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Motor-drives-Pump",
+        "source": "Motor",
+        "target": "Pump",
+        "label": "drives"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-uses-Coolant",
+        "source": "Pump",
+        "target": "Coolant",
+        "label": "uses"
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-monitors-Sensor",
+        "source": "Controller",
+        "target": "Sensor",
+        "label": "monitors"
+      }
+    },
+    {
+      "data": {
+        "id": "Battery-powers-Motor",
+        "source": "Battery",
+        "target": "Motor",
+        "label": "powers"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-contains-Controller",
+        "source": "Assembly",
+        "target": "Controller",
+        "label": "contains"
+      }
+    }
+  ]
+}

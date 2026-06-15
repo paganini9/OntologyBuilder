@@ -1,0 +1,423 @@
+[
+  {
+    "step": 1,
+    "cq": "The Motor drives the Pump.",
+    "added": {
+      "classes": [
+        "Motor",
+        "Pump"
+      ],
+      "object_properties": [
+        {
+          "name": "drives",
+          "domain": "Motor",
+          "range": "Pump"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "The Pump uses Coolant.",
+    "added": {
+      "classes": [
+        "Coolant"
+      ],
+      "object_properties": [
+        {
+          "name": "uses",
+          "domain": "Pump",
+          "range": "Coolant"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "The Controller monitors the Sensor.",
+    "added": {
+      "classes": [
+        "Controller",
+        "Sensor"
+      ],
+      "object_properties": [
+        {
+          "name": "monitors",
+          "domain": "Controller",
+          "range": "Sensor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "The Battery powers the Motor.",
+    "added": {
+      "classes": [
+        "Battery"
+      ],
+      "object_properties": [
+        {
+          "name": "powers",
+          "domain": "Battery",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "The Assembly contains the Controller.",
+    "added": {
+      "classes": [
+        "Assembly"
+      ],
+      "object_properties": [
+        {
+          "name": "contains",
+          "domain": "Assembly",
+          "range": "Controller"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Battery-powers-Motor",
+            "source": "Battery",
+            "target": "Motor",
+            "label": "powers"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Controller",
+            "source": "Assembly",
+            "target": "Controller",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  }
+]

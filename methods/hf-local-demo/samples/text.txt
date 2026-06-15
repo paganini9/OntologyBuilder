@@ -1,0 +1,1 @@
+The Motor drives the Pump. The Pump uses Coolant. The Controller monitors the Sensor. The Battery powers the Motor. The Assembly contains the Controller.
