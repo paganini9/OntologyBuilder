@@ -1,0 +1,17 @@
+# Engineering Standard EX-100: Product Data Exchange (excerpt)
+
+## Scope
+This Standard specifies the Product Data model for mechanical Assemblies.
+The Product references a Component and a Material.
+A Product consists of one or more Components.
+
+## Product Structure
+A Product consists of Components.
+Each Component contains a Part.
+An Assembly contains Components and Parts.
+A Component requires a Material.
+
+## Material Requirements
+A Material specifies a Property.
+Each Component uses a Material that satisfies the Property.
+The Supplier supplies the Material for a Component.

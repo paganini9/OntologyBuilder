@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Standard",
+        "label": "Standard",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Data",
+        "label": "Data",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Component",
+        "label": "Component",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Material",
+        "label": "Material",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Property",
+        "label": "Property",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier",
+        "label": "Supplier",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Standard-specifies-Product",
+        "source": "Standard",
+        "target": "Product",
+        "label": "specifies"
+      }
+    },
+    {
+      "data": {
+        "id": "Product-references-Component",
+        "source": "Product",
+        "target": "Component",
+        "label": "references"
+      }
+    },
+    {
+      "data": {
+        "id": "Product-consistsOf-Component",
+        "source": "Product",
+        "target": "Component",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-contains-Part",
+        "source": "Component",
+        "target": "Part",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-contains-Component",
+        "source": "Assembly",
+        "target": "Component",
+        "label": "contains"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-requires-Material",
+        "source": "Component",
+        "target": "Material",
+        "label": "requires"
+      }
+    },
+    {
+      "data": {
+        "id": "Material-specifies-Property",
+        "source": "Material",
+        "target": "Property",
+        "label": "specifies"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-uses-Material",
+        "source": "Component",
+        "target": "Material",
+        "label": "uses"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Material",
+        "source": "Supplier",
+        "target": "Material",
+        "label": "supplies"
+      }
+    }
+  ]
+}

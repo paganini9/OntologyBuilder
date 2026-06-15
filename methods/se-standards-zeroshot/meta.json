@@ -1,0 +1,34 @@
+{
+  "id": "se-standards-zeroshot",
+  "name": "Zero-shot triple extraction from engineering standards",
+  "paper": {
+    "key": "Yue_SEStandards",
+    "title": "LLM-based Zero-shot Triple Extraction for Automated Ontology Generation from Software Engineering Standards",
+    "arxiv": "2509.00140",
+    "venue": "IEEE ICSC 2026 (SDI workshop)",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 2,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "Five-stage zero-shot pipeline over standard documents; no fine-tuning/GPU/labelled data, fully deterministic mock possible, but more stages (segmentation, mining, relation inference, normalization, cross-section alignment) than the single-step CQ method."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["standard_text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/standard_text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}
