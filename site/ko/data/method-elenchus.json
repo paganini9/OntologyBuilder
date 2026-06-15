@@ -1,0 +1,38 @@
+{
+  "id": "elenchus",
+  "name": "Elenchus (prover-skeptic dialogue KB construction)",
+  "status": "published",
+  "difficulty": {
+    "score": 6,
+    "rank": 6,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "adversarial prover-skeptic dialogue converges claims into a KB; verification-heavy"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Allen_Elenchus",
+    "arxiv": "2603.06974",
+    "venue": "arXiv 2026",
+    "code_url": "https://github.com/bradleypallen/elenchus"
+  },
+  "inputs_needed": [
+    "claims.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# Elenchus — 증명자-회의자 대화로 지식베이스 구축\n\n> 출처: Bradley P. Allen, *Elenchus: Generating Knowledge Bases from Prover-Skeptic Dialogues*, arXiv:2603.06974 (2026). 코드: github.com/bradleypallen/elenchus.\n\n## 1. 한 줄 요약\n**적대적 2-역할 대화**로 지식베이스를 키운다. **증명자(prover)**가 각 후보 주장을 제시하면 **회의자(skeptic)**가 반박하고, 변증법을 통과한 주장 — 파싱 가능·일관·중복 아님 — 만 채택(accept)되며 나머지는 **기각(reject)**된다.\n\n## 2. 핵심 아이디어\n- **Elenchus(엘렝코스)**: 소크라테스식 논박법 — 지식은 단순한 주장이 아니라 반론을 견뎌냄으로써 성립한다.\n- **증명자(제시)**: 자연어 주장을 후보 트리플 `(주어, 관계, 목적어)`로 파싱해 내놓는다.\n- **회의자(반박)**: 지금까지 쌓인 KB와 대조해 후보를 검증하고 사유와 함께 `accepted`/`rejected` 판정을 내린다.\n- **자기비판이 아니라 적대적/양자적**: Ontogenia의 단일 자기비판 루프(한 모델이 *자기 출력*을 비판)와 달리, 제시 역할과 반박 역할이 **분리**되어 있다. 판정이 자기 확인이 아니라 다투어지므로, 실제로 일부 주장은 KB에서 **탈락**한다.\n- **생존 = 소속**: 채택된 주장만 KB 그래프와 OWL 출력에 들어간다. 기각된 주장은 투명성을 위해 기록되지만 제외된다.\n\n## 3. 구축 과정 (단계별)\n1. **주장 수집** — `claims.txt`에 한 줄당 후보 주장 하나. 각 줄은 트리플을 표현하는 자연어 문장(예: \"A Motor drives a Pump\").\n2. **증명자 제시(루프)** — 각 주장에 대해 증명자(LLM 또는 MOCK 휴리스틱)가 `{subject, relation, object}`로 파싱.\n3. **회의자 반박(루프)** — 다음에 해당하면 기각:\n   - **(a) 파싱 불가** — 완전한 주어–관계–목적어 트리플로 읽을 수 없음;\n   - **(b) 모순** — 동일 주어+관계가 이미 *다른* 목적어로 채택됨, 또는 역방향 엣지가 이미 채택됨;\n   - **(c) 중복** — 이미 채택된 주장과 동일.\n   그 외에는 **채택**.\n4. **KB 갱신** — 채택된 주장만 성장하는 그래프에 추가(클래스와 객체 속성). 각 주장은 증명자의 트리플, 회의자의 판정+사유, 결과 그래프를 담은 스냅샷 1개를 남겨 논쟁을 재생할 수 있다.\n5. **출력** — `ontology.ttl`(OWL/Turtle, 채택분만), `ontology.json`(그래프), `steps.json`(주장별 스냅샷).\n\n## 4. 입력 / 출력\n| 종류 | 파일 | 비고 |\n|------|------|------|\n| 입력 | `claims.txt` | 후보 주장 목록(한 줄당 하나, `#` 주석/빈 줄 무시) |\n| 출력 | `ontology.ttl` | 생존한 KB의 OWL(Turtle) — 채택 트리플만 |\n| 출력 | `ontology.json` | Cytoscape 노드/엣지(시각화용) — 채택분만 |\n| 출력 | `steps.json` | 주장별 스냅샷(증명자/회의자/판정) — 재생용 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적으로 동작(테스트 golden 안정). 증명자는 대문자 명사를 주어/목적어로, 관계 동사(drives/produces/regulates/powers …)를 관계로 추출하고, 회의자는 누적 KB에 대해 (a)/(b)/(c) 규칙을 적용한다.\n- `api`(`gemini`/`anthropic`): 환경변수에 키가 있으면 실제 LLM이 증명자, 독립 LLM이 회의자를 맡아 더 풍부한 반박을 한다. 키가 없으면 자동으로 MOCK으로 폴백한다.\n\n## 6. 직접 해보기\n1. `samples/claims.txt`를 편집 — 다른 주장과 모순되거나 중복되는 주장, 또는 완전한 트리플이 아닌 주장을 넣고 기각되는지 확인.\n2. 사이트의 **Run** 버튼(또는 `python pipeline.py samples runs/out --backend mock`).\n3. 단계 슬라이더로 증명자-회의자 논쟁과, 채택된 주장만으로 KB가 자라는 과정을 본다.\n",
+    "en": "# Elenchus — Building a Knowledge Base via Prover-Skeptic Dialogue\n\n> Source: Bradley P. Allen, *Elenchus: Generating Knowledge Bases from Prover-Skeptic Dialogues*, arXiv:2603.06974 (2026). Code: github.com/bradleypallen/elenchus.\n\n## 1. One-line summary\nGrow a knowledge base through an **adversarial two-role dialogue**: a **prover** asserts each candidate claim, a **skeptic** challenges it, and only claims that survive the dialectic — parseable, consistent, non-redundant — are accepted; the rest are **rejected**.\n\n## 2. Key ideas\n- **Elenchus**: the Socratic method of cross-examination — knowledge is established by surviving challenges, not by assertion alone.\n- **Prover (assert)**: parses a natural-language claim into a candidate triple `(subject, relation, object)` and puts it forward.\n- **Skeptic (challenge)**: tests the candidate against the KB built so far and returns a verdict `accepted` / `rejected` with a reason.\n- **Adversarial / bilateral, not self-critique**: unlike Ontogenia's single self-critique loop (one model criticising *its own* output), the asserting role and the challenging role are **distinct**. The verdict is contested rather than self-confirmed, so some claims are genuinely **thrown out** of the KB.\n- **Survival = membership**: only accepted claims enter the KB graph and the OWL output. Rejected claims are recorded (for transparency) but excluded.\n\n## 3. Construction process (step by step)\n1. **Collect claims** — one candidate claim per line in `claims.txt`, each a natural sentence expressing a triple (e.g. \"A Motor drives a Pump\").\n2. **Prover asserts (loop)** — for each claim the prover (LLM or MOCK heuristic) parses it into `{subject, relation, object}`.\n3. **Skeptic challenges (loop)** — the skeptic rejects the candidate if it is:\n   - **(a) unparseable** — cannot be read as a full subject–relation–object triple;\n   - **(b) contradictory** — same subject+relation already accepted with a *different* object, or the reverse edge is already accepted;\n   - **(c) redundant** — duplicates an already-accepted claim.\n   Otherwise it **accepts**.\n4. **Update KB** — accepted claims are added to the growing graph (their classes and the object property). Each claim produces one snapshot recording the prover's triple, the skeptic's verdict + reason, and the resulting graph — so you can replay the debate.\n5. **Emit** — `ontology.ttl` (OWL/Turtle, accepted only), `ontology.json` (graph), and `steps.json` (per-claim snapshots).\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `claims.txt` | candidate claims (one per line, `#` comments / blanks ignored) |\n| Output | `ontology.ttl` | OWL of the surviving KB (Turtle) — accepted triples only |\n| Output | `ontology.json` | Cytoscape nodes/edges (for visualization) — accepted only |\n| Output | `steps.json` | per-claim snapshots (prover/skeptic/verdict) — for replay |\n\n## 5. LLM backend\n- Default `mock`: runs deterministically with no key (stable test golden files). The prover extracts capitalized nouns as the subject/object and a relational verb (drives/produces/regulates/powers …) as the relation; the skeptic applies the (a)/(b)/(c) rules against the accumulated KB.\n- `api` (`gemini`/`anthropic`): with a key in the env, a real LLM plays the prover and an independent LLM plays the skeptic for richer challenges. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. Edit `samples/claims.txt` — add a claim that contradicts or duplicates another, or one that is not a full triple, and watch it get rejected.\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out --backend mock`).\n3. Use the step slider to watch the prover-skeptic debate and the KB grow only with accepted claims.\n"
+  },
+  "sample_input": "# Candidate claims for the prover-skeptic dialogue.\n# Each line is a natural sentence expressing one candidate triple.\n# The skeptic rejects unparseable, contradictory, or duplicate claims.\n\nA Motor drives a Pump\nA Pump produces Pressure\nA Controller regulates the Motor\nA Battery powers the Motor\nA Motor drives a Compressor\nThe Pump consists of a Housing\nA Pump produces Pressure\nReliability matters a lot\n",
+  "implemented": true
+}

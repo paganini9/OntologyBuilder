@@ -1,0 +1,38 @@
+{
+  "id": "autoschemakg",
+  "name": "AutoSchemaKG (dynamic schema induction + extraction)",
+  "status": "published",
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": true,
+      "code_public": true
+    },
+    "rationale": "simultaneously induces schema AND extracts triples bottom-up (zero predefined schema); public code"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Bai_AutoSchemaKG",
+    "arxiv": "2505.23628",
+    "venue": "arXiv 2025",
+    "code_url": "https://github.com/HKUST-KnowComp/AutoSchemaKG"
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# AutoSchemaKG — 동적 스키마 귀납 + 추출\n\n## 한 줄 요약\n사전 정의된 스키마 **없이** 원시 텍스트에서 지식 그래프를 만든다: 트리플을 추출하면서 동시에 스키마(엔티티 타입 + 관계 타입)를 **데이터로부터 상향식(bottom-up)으로 귀납**한다.\n\n## 핵심 개념\n전통적인 KG/온톨로지 파이프라인은 사람이 미리 작성한 스키마(클래스, 속성)에서 출발해 텍스트를 거기에 맞춘다. AutoSchemaKG (Bai 외, arXiv 2505.23628, 2025)는 이를 뒤집는다: 스키마는 **입력이 아니라 추출의 산출물**이다.\n\n- **스키마를 주지 않는다.** 모델은 먼저 텍스트를 읽고 `(주어, 관계, 목적어)` 트리플을 뽑는다.\n- **스키마는 인스턴스로부터 떠오른다.** 추출된 모든 엔티티에 타입을 부여하고, 모든 관계 레이블이 관계 타입이 된다 — 전부 실제 말뭉치에서 발견된 것으로부터 귀납된다.\n- 따라서 스키마를 사전에 열거할 수 없는 오픈 도메인·웹 스케일 텍스트에 적합하다.\n\n기억할 핵심: AutoSchemaKG에서 온톨로지/스키마는 **미리 주어지는 것이 아니라 데이터로부터 귀납된다(INDUCED).**\n\n## 구축 프로세스 (단계별)\n1. **단계 A — 트리플 추출.** 각 문장을 LLM에 보내 `(주어, 관계, 목적어)` 트리플을 받는다. 주어·목적어는 *인스턴스*(구체적 엔티티)가 되고 관계 레이블은 모인다. 문장마다 스냅샷 단계가 하나씩 생겨 인스턴스 그래프가 자라는 과정을 보여준다.\n2. **단계 B — 스키마 귀납(상향식).** 인스턴스가 모이면, 결정론적 귀납 규칙으로 각 인스턴스에 엔티티 타입을 부여한다(목 구현에서는 작은 키워드/접미사 표 → `Device` / `Material` / `System` / `Entity`). 서로 다른 관계 레이블들은 관계 타입이 된다. 귀납된 타입마다 클래스 노드를 추가하고, 각 인스턴스를 자기 타입에 잇는 `instanceOf` 엣지를 만든다. *스키마*가 등장하는 유일한 단계이며 — 처음부터 주어진 적이 없다.\n3. **직렬화.** 귀납된 타입은 `owl:Class`, 인스턴스는 자기 클래스로 타입 지정된 `owl:NamedIndividual`, 관계는 `owl:ObjectProperty`가 되고 개체 사이에 트리플이 채워진다.\n\n## 입력·출력\n\n| | 파일 | 설명 |\n|---|---|---|\n| 입력 | `samples/text.txt` | 자유 텍스트, 한 줄당 한 문장(또는 `.`로 구분). 스키마 없음. |\n| 출력 | `ontology.ttl` | 귀납된 스키마 + 인스턴스를 OWL/Turtle로(rdflib). |\n| 출력 | `ontology.json` | Cytoscape 그래프: 클래스 노드(귀납된 타입) + 인스턴스 노드 + 관계/`instanceOf` 엣지. |\n| 출력 | `steps.json` | 문장마다 스냅샷 한 개(추출) + 마지막 `(schema induction)` 단계. |\n| 출력 | `manifest.json` | 백엔드, 카운트(인스턴스 / 귀납 클래스 / 트리플 / 관계). |\n\n## LLM 백엔드\n추출 단계(단계 A)만 LLM을 호출하며 `backend.llm.get_backend`를 통한다. `--backend mock`이면 결정론적 `mock_responder`가 문장을 트리플로 파싱하므로 전체 파이프라인이 **API 키 없이** 돌고 재현 가능한 출력을 낸다. 스키마 귀납(단계 B)은 결정론적 후처리라 LLM이 전혀 필요 없다. 키를 설정하면 실제 백엔드(`api`: gemini / anthropic)가 단계 A를 대체할 수 있다.\n\n## 직접 해보기\n```bash\npython methods/autoschemakg/pipeline.py methods/autoschemakg/samples runs/out --backend mock\npython -m pytest methods/autoschemakg/tests/ -q\n```\n사이트 뷰어에서 `runs/out/ontology.json`을 열면 인스턴스가 먼저 추출되고, 마지막 스키마 귀납 단계에서 귀납된 클래스가 나타나는 과정을 볼 수 있다.\n",
+    "en": "# AutoSchemaKG — dynamic schema induction + extraction\n\n## One-line summary\nBuild a knowledge graph from raw text with **zero predefined schema**: the system extracts triples *and* induces the schema (entity types + relation types) **bottom-up from the data itself**.\n\n## Core idea\nTraditional KG/ontology pipelines start from a schema a human wrote (classes, properties) and force the text into it. AutoSchemaKG (Bai et al., arXiv 2505.23628, 2025) flips this: the schema is **a product of extraction, not an input**.\n\n- **No schema is given.** The model reads text and pulls out `(subject, relation, object)` triples first.\n- **The schema emerges from the instances.** Every extracted entity is assigned a TYPE, and every relation label becomes a relation type — all induced from what was actually found in the corpus.\n- This makes it suitable for open-domain, web-scale text where you cannot enumerate the schema in advance.\n\nThe key point to remember: in AutoSchemaKG the ontology/schema is **INDUCED from the data, not supplied beforehand**.\n\n## Construction process (step by step)\n1. **Stage A — Triple extraction.** Each sentence is sent to the LLM, which returns triples `(subject, relation, object)`. Subjects and objects become *instances* (concrete entities); relation labels are collected. One snapshot step per sentence shows the instance graph growing.\n2. **Stage B — Schema induction (bottom-up).** Once instances exist, each one is assigned an entity TYPE by a deterministic induction rule (in the mock: a small keyword/suffix table → `Device` / `Material` / `System` / `Entity`). The distinct relation labels become relation types. A class node is added per induced type, and an `instanceOf` edge links each instance to its type. This is the one step where the *schema* appears — it was never given.\n3. **Serialization.** Induced types become `owl:Class`, instances become `owl:NamedIndividual` typed by their induced class, and relations become `owl:ObjectProperty` with the corresponding triples between individuals.\n\n## Inputs and outputs\n\n| | File | Description |\n|---|---|---|\n| Input | `samples/text.txt` | Free text, one sentence per line (or `.`-separated). No schema. |\n| Output | `ontology.ttl` | Induced schema + instances as OWL/Turtle (rdflib). |\n| Output | `ontology.json` | Cytoscape graph: class nodes (induced types) + instance nodes + relation/`instanceOf` edges. |\n| Output | `steps.json` | One snapshot per sentence (extraction) plus a final `(schema induction)` step. |\n| Output | `manifest.json` | Backend, counts (instances / induced classes / triples / relations). |\n\n## LLM backend\nThe extraction step (Stage A) is the only LLM call, accessed through `backend.llm.get_backend`. With `--backend mock` a deterministic `mock_responder` parses sentences into triples, so the whole pipeline runs **with no API key** and produces reproducible output. Schema induction (Stage B) is a deterministic post-process and never needs the LLM. Real backends (`api`: gemini / anthropic) can replace Stage A when keys are configured.\n\n## Try it yourself\n```bash\npython methods/autoschemakg/pipeline.py methods/autoschemakg/samples runs/out --backend mock\npython -m pytest methods/autoschemakg/tests/ -q\n```\nOpen `runs/out/ontology.json` in the site viewer to watch instances get extracted first, then the induced classes appear in the final schema-induction step.\n"
+  },
+  "sample_input": "# Free text about a product design. No schema is given; AutoSchemaKG induces it.\nThe Motor drives the Pump.\nThe Pump uses Coolant.\nThe Controller monitors the Sensor.\nThe Assembly contains the Motor and the Controller.\nThe Motor is made of Steel and Copper.\nThe Sensor produces Data.\n",
+  "implemented": true
+}

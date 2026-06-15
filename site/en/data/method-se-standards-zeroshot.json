@@ -1,0 +1,38 @@
+{
+  "id": "se-standards-zeroshot",
+  "name": "Zero-shot triple extraction from engineering standards",
+  "status": "published",
+  "difficulty": {
+    "score": 2,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "zero-shot prompting over standards text; segment/term-mine/relation-infer/normalize/cross-align; on-domain (SPMM/STEP)"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Yue_SEStandards",
+    "arxiv": "2509.00140",
+    "venue": "IEEE ICSC 2026 (SDI workshop)",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "standard_text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# 엔지니어링 표준 문서로부터의 제로샷 트리플 추출\n\n> 출처: Songhui Yue, *LLM-based Zero-shot Triple Extraction for Automated Ontology Generation from Software Engineering Standards*, IEEE ICSC 2026 (SDI 워크숍), arXiv:2509.00140.\n\n## 1. 한 줄 요약\n**엔지니어링 표준 문서를 직접**(섹션 단위로) 읽어, **제로샷(zero-shot)** 5단계 파이프라인으로 OWL 온톨로지를 만든다 — 파인튜닝/라벨 데이터/CQ 불필요.\n\n## 2. 핵심 아이디어\n- **표준 문서 입력**: CQ 기반 방법과 달리 입력이 표준 문서 자체(예: STEP/SPMM 류 스펙)다. 문서의 각 **섹션**이 작업 단위다.\n- **제로샷**: LLM이 예시 없이 지시 프롬프트만으로 각 섹션에서 (주어, 관계, 목적어) 트리플을 추론한다.\n- **섹션 간 정렬(cross-section alignment)**: 여러 섹션에 등장하는 동일 용어(예: \"Scope\", \"Product Structure\", \"Material Requirements\"에 모두 나오는 *Component*)를 하나의 온톨로지 노드로 통합해, 표준 전체에 걸쳐 일관된 온톨로지를 만든다.\n\n## 3. 구축 과정 (5단계)\n1. **문서 분할(segmentation)** — 헤딩 라인(`## 섹션`, 또는 `2.1 Product Structure` 같은 번호 헤딩)으로 표준을 섹션으로 나눈다.\n2. **후보 용어 채굴(term mining)** — 각 섹션 안의 대문자 도메인 용어를 수집한다(*Shall/Section/Scope* 등 불용어 제외).\n3. **관계 추론(LLM, 제로샷)** — 섹션별로 모델(또는 MOCK 규칙)이 `{terms, triples}`를 내며, 각 트리플은 `{subject, relation, object}`(예: *Product consistsOf Component*)다.\n4. **용어 정규화(normalization)** — 타이틀케이스 + 단수화로 *Materials*, *material*, *Material*을 하나의 표준 용어로 합쳐 표기 변형을 병합한다.\n5. **섹션 간 정렬(alignment)** — 서로 다른 섹션의 동일(정규화) 용어를 하나의 노드로 병합하고, 관계를 그 단일 노드에 연결한다.\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 설명 |\n|------|------|------|\n| 입력 | `standard_text.txt` | 엔지니어링 표준 발췌. `## 헤딩` 또는 번호 헤딩으로 섹션 구분 |\n| 출력 | `ontology.ttl` | OWL 온톨로지(Turtle): 용어=`owl:Class`, 관계=`owl:ObjectProperty` + 트리플 |\n| 출력 | `ontology.json` | Cytoscape nodes/edges (시각화용) |\n| 출력 | `steps.json` | 섹션마다 스냅샷(1-3단계) + 마지막 `(normalize+align)` 스냅샷(4-5단계) |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적으로 동작(고정 golden). 대문자 용어를 채굴하고 관계 동사(consist/contain/require/supply/satisfy …)를 객체 속성 트리플로 변환한다.\n- `api`(gemini/anthropic): env에 키가 있으면 실제 LLM이 더 풍부한 제로샷 트리플 추출을 수행한다. 키가 없으면 자동으로 MOCK으로 폴백한다.\n\n## 6. 직접 해보기\n1. `samples/standard_text.txt`를 자신의 표준 발췌로 교체한다(`## 헤딩` 스타일 섹션 유지).\n2. 사이트의 **Run** 버튼을 누른다(또는 `python pipeline.py samples runs/out --backend mock`).\n3. 스텝 슬라이더로 각 섹션이 용어·트리플을 추가하는 과정을 보고, 마지막 정렬 단계에서 섹션 간 용어가 병합되는 것을 확인한다.\n",
+    "en": "# Zero-shot Triple Extraction from Engineering Standards\n\n> Source: Songhui Yue, *LLM-based Zero-shot Triple Extraction for Automated Ontology Generation from Software Engineering Standards*, IEEE ICSC 2026 (SDI workshop), arXiv:2509.00140.\n\n## 1. One-line summary\nRead an **engineering standard document directly** (section by section) and build an OWL ontology with a **zero-shot**, five-stage pipeline — no fine-tuning, no labelled data, no competency questions.\n\n## 2. Key ideas\n- **Standard-document input**: unlike CQ-driven methods, the source is the standard itself (e.g. a STEP/SPMM-style spec). Sections of the document are the unit of work.\n- **Zero-shot**: the LLM infers (subject, relation, object) triples from each section with only an instruction prompt — no examples, no training.\n- **Cross-section alignment**: the same term mentioned in different sections (e.g. *Component* in \"Scope\", \"Product Structure\" and \"Material Requirements\") is unified into a single ontology node, so the resulting ontology is consistent across the whole standard.\n\n## 3. Construction process (the five stages)\n1. **Document segmentation** — split the standard into sections using heading lines (`## Section`, or numbered headings like `2.1 Product Structure`).\n2. **Candidate term mining** — collect capitalized domain terms inside each section (stop-words like *Shall/Section/Scope* removed).\n3. **Relation inference (LLM, zero-shot)** — for each section the model (or the MOCK rule) emits `{terms, triples}` where each triple is `{subject, relation, object}` (e.g. *Product consistsOf Component*).\n4. **Term normalization** — title-case + singularize terms so *Materials*, *material*, *Material* collapse to one canonical term, merging surface variants.\n5. **Cross-section alignment** — identical normalized terms appearing in different sections are merged into one node; their relations are attached to that single node.\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `standard_text.txt` | Engineering-standard excerpt. Sections delimited by `## Heading` or numbered headings |\n| Output | `ontology.ttl` | OWL ontology (Turtle): terms as `owl:Class`, relations as `owl:ObjectProperty` + triples |\n| Output | `ontology.json` | Cytoscape nodes/edges (for visualization) |\n| Output | `steps.json` | one snapshot per section (stages 1-3), plus a final `(normalize+align)` snapshot (stages 4-5) |\n\n## 5. LLM backend\n- Default `mock`: runs deterministically with no key (stable golden files). Mines capitalized terms and turns relational verbs (consist/contain/require/supply/satisfy …) into object-property triples.\n- `api` (gemini/anthropic): if a key is in the env, a real LLM performs richer zero-shot triple extraction. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. Replace `samples/standard_text.txt` with your own standard excerpt (keep `## Heading` style sections).\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out --backend mock`).\n3. Use the step slider to watch each section contribute terms and triples, then see cross-section terms merge in the final alignment step.\n"
+  },
+  "sample_input": "# Engineering Standard EX-100: Product Data Exchange (excerpt)\n\n## Scope\nThis Standard specifies the Product Data model for mechanical Assemblies.\nThe Product references a Component and a Material.\nA Product consists of one or more Components.\n\n## Product Structure\nA Product consists of Components.\nEach Component contains a Part.\nAn Assembly contains Components and Parts.\nA Component requires a Material.\n\n## Material Requirements\nA Material specifies a Property.\nEach Component uses a Material that satisfies the Property.\nThe Supplier supplies the Material for a Component.\n",
+  "implemented": true
+}

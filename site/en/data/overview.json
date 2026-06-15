@@ -1,0 +1,191 @@
+{
+  "columns": {
+    "input": "Input",
+    "mechanism": "Core mechanism",
+    "output_unit": "Output unit",
+    "paradigm": "Paradigm",
+    "distinct": "Distinctive"
+  },
+  "rows": [
+    {
+      "id": "cqbycq",
+      "name": "CQbyCQ (CQ → OWL, memoryless)",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "mock",
+      "input": "CQ list",
+      "mechanism": "Per-CQ independent (memoryless) fragment→merge",
+      "output_unit": "Classes & properties",
+      "paradigm": "Schema-first",
+      "distinct": "Simplest, no context"
+    },
+    {
+      "id": "code-de-kg",
+      "name": "CoDe-KG (coreference + sentence decomposition → triples)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "Coref→decompose→complexity prompt→triples",
+      "output_unit": "Triples",
+      "paradigm": "Triple-first",
+      "distinct": "Robust to long/pronoun text, public code"
+    },
+    {
+      "id": "ontogenia",
+      "name": "Ontogenia (iterative + metacognitive CQ → OWL)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "CQ list",
+      "mechanism": "Draft→self-critique (metacognitive)→refine (memoryful)",
+      "output_unit": "Classes & properties",
+      "paradigm": "Schema-first",
+      "distinct": "Self-critique loop + global refinement"
+    },
+    {
+      "id": "peshevski-product-kg",
+      "name": "AI Agent-Driven Product KG (3 agents: ontology → refine → populate)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "Product descriptions",
+      "mechanism": "3 agents: create→refine→populate",
+      "output_unit": "Schema + individuals",
+      "paradigm": "Ontology-first",
+      "distinct": "Individual population, product domain"
+    },
+    {
+      "id": "agentigraph",
+      "name": "AGENTiGraph (interactive multi-agent KG construction)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "User utterances",
+      "mechanism": "Intent→planning→integration",
+      "output_unit": "Classes & relations",
+      "paradigm": "Conversational incremental",
+      "distinct": "User in-the-loop, per-turn"
+    },
+    {
+      "id": "are-llms-effective-kgc",
+      "name": "Hierarchical extraction (Are LLMs Effective KG Constructors?)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "Hierarchical L1 entities→L2 relations→L3 is-a",
+      "output_unit": "Classes + hierarchy (subClassOf)",
+      "paradigm": "Triple + hierarchy",
+      "distinct": "Explicit class-hierarchy inference"
+    },
+    {
+      "id": "ontology-grounded-wikidata",
+      "name": "Ontology-Grounded KG under Wikidata schema",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "CQ list",
+      "mechanism": "Author→Wikidata property (P-id) grounding",
+      "output_unit": "Classes & properties + external ids",
+      "paradigm": "Schema-first + standard alignment",
+      "distinct": "External-standard interoperability"
+    },
+    {
+      "id": "karma",
+      "name": "KARMA (9 collaborative agents for KG enrichment)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "Text (+seed KG)",
+      "mechanism": "Discover→extract→align→resolve conflicts",
+      "output_unit": "Enriched KG",
+      "paradigm": "Enrichment of existing KG",
+      "distinct": "Enrich over seed, resolve conflicts"
+    },
+    {
+      "id": "odke-plus",
+      "name": "ODKE+ (5-stage ontology-guided open-domain extraction)",
+      "status": "published",
+      "difficulty": 8,
+      "llm": "api",
+      "input": "Entities + evidence",
+      "mechanism": "Initiate→retrieve→extract→verify (2nd LLM)→corroborate",
+      "output_unit": "Verified facts",
+      "paradigm": "Triple-first + verification",
+      "distinct": "Gen/verify split, drop unsupported"
+    },
+    {
+      "id": "itext2kg",
+      "name": "iText2KG (incremental zero-shot KG construction)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "Multiple documents",
+      "mechanism": "Distill→incr. entities→incr. relations→integrate",
+      "output_unit": "Incremental KG",
+      "paradigm": "Incremental (per document)",
+      "distinct": "Cross-document semantic de-dup"
+    },
+    {
+      "id": "se-standards-zeroshot",
+      "name": "Zero-shot triple extraction from engineering standards",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "api",
+      "input": "Standard document text",
+      "mechanism": "Segment→term mining→relation infer→normalize→cross-align",
+      "output_unit": "Triples",
+      "paradigm": "Triple-first (zero-shot)",
+      "distinct": "Targets engineering standards directly"
+    },
+    {
+      "id": "gptkb",
+      "name": "GPTKB (materialize KB from LLM parametric knowledge)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "Seed entities",
+      "mechanism": "Recursive query of LLM parametric knowledge→consolidate",
+      "output_unit": "Triples (KB)",
+      "paradigm": "KB from the model itself",
+      "distinct": "No input corpus — recursive seed expansion"
+    },
+    {
+      "id": "autoschemakg",
+      "name": "AutoSchemaKG (dynamic schema induction + extraction)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "Induce schema while extracting triples",
+      "output_unit": "Schema + triples",
+      "paradigm": "Schema bottom-up induction",
+      "distinct": "Zero predefined schema — induced from data"
+    },
+    {
+      "id": "elenchus",
+      "name": "Elenchus (prover-skeptic dialogue KB construction)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "Claim list",
+      "mechanism": "Prover↔skeptic dialogue converges→KB",
+      "output_unit": "Verified KB (positions)",
+      "paradigm": "Dialectical dialogue",
+      "distinct": "Adversarial 2-role dialogue"
+    },
+    {
+      "id": "sac-kg",
+      "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
+      "status": "published",
+      "difficulty": 10,
+      "llm": "api",
+      "input": "Seed entities + domain corpus",
+      "mechanism": "Generator→Verifier→Pruner, multi-level loop",
+      "output_unit": "Domain KG",
+      "paradigm": "Triple-first + verify & prune",
+      "distinct": "Recursive multi-level (real run needs GPU/finetune)"
+    }
+  ]
+}

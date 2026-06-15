@@ -1,0 +1,38 @@
+{
+  "id": "gptkb",
+  "name": "GPTKB (materialize KB from LLM parametric knowledge)",
+  "status": "published",
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "recursive query of the LLM's own knowledge from seed entities -> consolidate; no input corpus"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Hu_GPTKB",
+    "arxiv": "2411.04920",
+    "venue": "ACL 2025",
+    "code_url": "https://gptkb.org"
+  },
+  "inputs_needed": [
+    "seed_entities.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# GPTKB — LLM의 파라미터 지식을 추출해 지식베이스로 구체화\n\n> 출처: Hu, Nguyen, Ghosh, Razniewski, *GPTKB: Enabling LLM Knowledge Analysis via Extensive Materialization*, ACL 2025 (arXiv:2411.04920), [gptkb.org](https://gptkb.org).\n\n## 1. 한 줄 요약\n**입력 코퍼스 없이**, 시드 엔티티 몇 개에서 출발해 LLM에게 \"이 엔티티에 대해 무엇을 아는가?\"를 **재귀적으로 질의**하여, 모델 자체의 (파라미터에 저장된) 지식을 트리플로 추출하고 새로 발견된 엔티티를 재귀 확장해 지식베이스를 만든다.\n\n## 2. 핵심 아이디어\n- **입력 코퍼스 없음**: 읽을 문서 집합이 없다. 지식은 전적으로 모델 자체에서 나온다(\"코퍼스가 곧 모델\"). 사용자는 시드 엔티티만 제공한다.\n- **재귀적 시드 확장**: 각 엔티티에 대해 LLM에게 질의하고, 응답을 `(주어, 관계, 목적어)` 트리플로 파싱한다. 목적어가 다시 엔티티이면 새 노드로 등록되어 다음 확장 대상이 된다.\n- **깊이 제한(depth limit)**: 너비 우선(BFS)으로 고정 깊이(여기서는 depth 2)까지만 확장해 무한 확장 없이 종료한다.\n- **통합/중복 제거(consolidation/dedup)**: 여러 트리플이 같은 엔티티를 가리켜도 그 엔티티는 한 번만 질의한다(`visited` 집합). 따라서 구체화된 KB에 중복 노드가 없다.\n\n## 3. 구축 과정 (단계별)\n1. **시드** — `seed_entities.txt`에 시드 엔티티를 한 줄에 하나씩. (코퍼스 없음.)\n2. **모델 질의(루프)** — BFS 큐에서 다음 엔티티를 꺼내, LLM(또는 MOCK 지식 테이블)이 JSON `{entity, facts:[{relation, object}]}`를 반환한다.\n3. **구체화 + 재귀** — 각 fact를 트리플로 추가하고, 목적어를 새 엔티티로 등록한 뒤, 깊이 제한 이내이고 아직 방문하지 않았다면 확장 큐에 넣는다.\n4. **통합** — 이미 방문한 엔티티는 건너뛰어 KB를 중복 제거한다.\n5. **산출** — 엔티티를 확장할 때마다 스냅샷을 남겨 시드에서 바깥으로 KB가 자라는 과정을 볼 수 있게 하고, 최종적으로 `ontology.ttl`(OWL/Turtle, 트리플 구체화 포함), `ontology.json`(그래프), `steps.json`(단계별 스냅샷)을 기록한다.\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 설명 |\n|------|------|------|\n| 입력 | `seed_entities.txt` | 시드 엔티티(한 줄에 하나, `#` 주석/빈 줄 무시). **코퍼스 없음.** |\n| 출력 | `ontology.ttl` | 구체화된 KB (OWL/Turtle) |\n| 출력 | `ontology.json` | Cytoscape 노드/엣지 (시각화용) |\n| 출력 | `steps.json` | 엔티티별 스냅샷 — 재귀 크롤링 단계 재생용 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적으로 동작. 작은 내장 지식 테이블이 각 \"X에 대해 알려줘\" 질의에 답하므로 재귀 확장과 골든 파일이 안정적이다.\n- `api`(gemini/anthropic): env에 키가 있으면 실제 LLM이 자신의 파라미터 지식을 구체화한다(훨씬 크고 풍부). 키가 없으면 자동으로 MOCK으로 폴백한다.\n\n## 6. 직접 해보기\n1. `samples/seed_entities.txt`를 편집한다(예: `Motor`, `Pump`).\n2. 사이트의 **Run** 버튼을 누른다(또는 `python pipeline.py samples runs/out`).\n3. 스텝 슬라이더로 KB가 시드 → depth 1 → depth 2로 확장되는 과정을 본다.\n",
+    "en": "# GPTKB — Materialize a Knowledge Base from an LLM's Parametric Knowledge\n\n> Source: Hu, Nguyen, Ghosh, Razniewski, *GPTKB: Enabling LLM Knowledge Analysis via Extensive Materialization*, ACL 2025 (arXiv:2411.04920), [gptkb.org](https://gptkb.org).\n\n## 1. One-line summary\nBuild a knowledge base **without any input corpus** by recursively querying an LLM about entities — starting from a few seeds, the model's own (parametric) knowledge is extracted into triples and the newly discovered entities are expanded recursively.\n\n## 2. Key ideas\n- **No input corpus**: there is no document collection to read. The knowledge comes entirely from the model itself (\"the corpus is the model\"). You only provide seed entities.\n- **Recursive seed expansion**: for each entity the LLM is asked \"what do you know about X?\". Its answer is parsed into `(subject, relation, object)` triples; every object that is itself an entity becomes a new node to be expanded.\n- **Depth limit**: the recursion is run breadth-first up to a fixed depth (here, depth 2) so the crawl terminates instead of expanding forever.\n- **Consolidation / dedup**: an entity is queried at most once even if many triples point to it (a `visited` set), so the materialized KB has no duplicate nodes.\n\n## 3. Construction process (step by step)\n1. **Seeds** — one seed entity per line in `seed_entities.txt`. (No corpus.)\n2. **Query the model (loop)** — pop the next entity from the BFS queue; the LLM (or the MOCK knowledge table) returns JSON `{entity, facts:[{relation, object}]}`.\n3. **Materialize + recurse** — add each fact as a triple, register the object as a new entity, and enqueue it for expansion if we are still under the depth limit and it has not been visited.\n4. **Consolidate** — skip any entity already visited so the KB is deduplicated.\n5. **Emit** — after each expanded entity a snapshot is recorded so you can watch the KB grow outward from the seeds; finally `ontology.ttl` (OWL/Turtle, with materialized triples), `ontology.json` (graph) and `steps.json` (per-step snapshots) are written.\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `seed_entities.txt` | seed entities (one per line, `#` comments / blanks ignored). **No corpus.** |\n| Output | `ontology.ttl` | materialized KB (OWL/Turtle) |\n| Output | `ontology.json` | Cytoscape nodes/edges (for visualization) |\n| Output | `steps.json` | per-entity snapshots — for step replay of the recursive crawl |\n\n## 5. LLM backend\n- Default `mock`: runs deterministically with no key. A small built-in knowledge table answers each \"tell me about X\" query, so the recursive expansion and golden files are stable.\n- `api` (gemini/anthropic): with a key in the env, a real LLM materializes its actual parametric knowledge — far larger and richer. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. Edit `samples/seed_entities.txt` (e.g. `Motor`, `Pump`).\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out`).\n3. Use the step slider to watch the KB expand seed → depth 1 → depth 2.\n"
+  },
+  "sample_input": "# GPTKB seed entities - one per line.\n# No input corpus: each seed is recursively expanded against the model's\n# parametric knowledge up to the depth limit.\nMotor\nPump\n",
+  "implemented": true
+}

@@ -1,0 +1,191 @@
+{
+  "columns": {
+    "input": "입력",
+    "mechanism": "핵심 메커니즘",
+    "output_unit": "산출 단위",
+    "paradigm": "패러다임",
+    "distinct": "차별점"
+  },
+  "rows": [
+    {
+      "id": "cqbycq",
+      "name": "CQbyCQ (CQ → OWL, memoryless)",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "mock",
+      "input": "CQ 목록",
+      "mechanism": "CQ별 독립(memoryless) 조각→병합",
+      "output_unit": "클래스·속성",
+      "paradigm": "스키마-우선",
+      "distinct": "가장 단순, 맥락 없이 직진"
+    },
+    {
+      "id": "code-de-kg",
+      "name": "CoDe-KG (coreference + sentence decomposition → triples)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "상호참조→문장분해→복잡도별 프롬프트→트리플",
+      "output_unit": "트리플",
+      "paradigm": "트리플-우선",
+      "distinct": "긴 문장·대명사 강건, 코드 공개"
+    },
+    {
+      "id": "ontogenia",
+      "name": "Ontogenia (iterative + metacognitive CQ → OWL)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "CQ 목록",
+      "mechanism": "초안→자기비평(메타인지)→정련 (memoryful)",
+      "output_unit": "클래스·속성",
+      "paradigm": "스키마-우선",
+      "distinct": "자기비평 루프 + 전체 정련"
+    },
+    {
+      "id": "peshevski-product-kg",
+      "name": "AI Agent-Driven Product KG (3 agents: ontology → refine → populate)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "제품 설명",
+      "mechanism": "3-agent: 생성→정제→개체 채우기",
+      "output_unit": "스키마 + 개체",
+      "paradigm": "스키마-우선(ontology-first)",
+      "distinct": "개체 인스턴스화, 제품 도메인"
+    },
+    {
+      "id": "agentigraph",
+      "name": "AGENTiGraph (interactive multi-agent KG construction)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "사용자 발화",
+      "mechanism": "의도분류→작업계획→지식통합",
+      "output_unit": "클래스·관계",
+      "paradigm": "대화형 점진",
+      "distinct": "사용자 in-the-loop, 발화 단위"
+    },
+    {
+      "id": "are-llms-effective-kgc",
+      "name": "Hierarchical extraction (Are LLMs Effective KG Constructors?)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "계층적 L1 엔티티→L2 관계→L3 is-a",
+      "output_unit": "클래스 + 계층(subClassOf)",
+      "paradigm": "트리플+계층",
+      "distinct": "명시적 클래스 계층 추론"
+    },
+    {
+      "id": "ontology-grounded-wikidata",
+      "name": "Ontology-Grounded KG under Wikidata schema",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "CQ 목록",
+      "mechanism": "저작→Wikidata 속성(P-id) grounding",
+      "output_unit": "클래스·속성 + 외부 id",
+      "paradigm": "스키마-우선 + 표준정렬",
+      "distinct": "외부 표준 상호운용성"
+    },
+    {
+      "id": "karma",
+      "name": "KARMA (9 collaborative agents for KG enrichment)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "텍스트 (+seed KG)",
+      "mechanism": "발견→추출→스키마정렬→충돌해소",
+      "output_unit": "증축된 KG",
+      "paradigm": "기존 KG 증축(enrichment)",
+      "distinct": "seed 위에 증축·충돌 정리"
+    },
+    {
+      "id": "odke-plus",
+      "name": "ODKE+ (5-stage ontology-guided open-domain extraction)",
+      "status": "published",
+      "difficulty": 8,
+      "llm": "api",
+      "input": "엔티티 + 근거",
+      "mechanism": "개시→근거수집→추출→검증(2차 LLM)→보강",
+      "output_unit": "검증된 사실",
+      "paradigm": "트리플-우선 + 검증",
+      "distinct": "생성/검증 분리, 근거 없으면 탈락"
+    },
+    {
+      "id": "itext2kg",
+      "name": "iText2KG (incremental zero-shot KG construction)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "여러 문서",
+      "mechanism": "정제→증분 엔티티→증분 관계→통합",
+      "output_unit": "증분 KG",
+      "paradigm": "증분(문서 단위)",
+      "distinct": "문서 간 의미 중복 제거"
+    },
+    {
+      "id": "se-standards-zeroshot",
+      "name": "Zero-shot triple extraction from engineering standards",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "api",
+      "input": "표준 문서 텍스트",
+      "mechanism": "분할→용어채굴→관계추론→정규화→교차정렬",
+      "output_unit": "트리플",
+      "paradigm": "트리플-우선 (zero-shot)",
+      "distinct": "엔지니어링 표준 직접 대상 (도메인 적합)"
+    },
+    {
+      "id": "gptkb",
+      "name": "GPTKB (materialize KB from LLM parametric knowledge)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "시드 엔티티",
+      "mechanism": "LLM 내부지식 재귀 질의→통합",
+      "output_unit": "트리플(KB)",
+      "paradigm": "모델 자체에서 KB 추출",
+      "distinct": "입력 코퍼스 없음 — 시드 재귀 확장"
+    },
+    {
+      "id": "autoschemakg",
+      "name": "AutoSchemaKG (dynamic schema induction + extraction)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "트리플 추출과 동시에 스키마 유도",
+      "output_unit": "스키마 + 트리플",
+      "paradigm": "스키마 bottom-up 유도",
+      "distinct": "사전 스키마 0 — 데이터에서 스키마 자동 생성"
+    },
+    {
+      "id": "elenchus",
+      "name": "Elenchus (prover-skeptic dialogue KB construction)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "주장(claim) 목록",
+      "mechanism": "prover↔skeptic 대화로 입장 수렴→KB",
+      "output_unit": "검증된 KB(입장)",
+      "paradigm": "대화형 변증법",
+      "distinct": "적대적 2역할 대화(단일 자기비평과 구분)"
+    },
+    {
+      "id": "sac-kg",
+      "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
+      "status": "published",
+      "difficulty": 10,
+      "llm": "api",
+      "input": "시드 엔티티 + 도메인 코퍼스",
+      "mechanism": "Generator→Verifier→Pruner, multi-level 반복",
+      "output_unit": "도메인 KG",
+      "paradigm": "트리플-우선 + 검증·가지치기",
+      "distinct": "재귀적 다단계 확장(실구동은 GPU/파인튜닝)"
+    }
+  ]
+}

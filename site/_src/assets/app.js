@@ -9,7 +9,8 @@ let current = null, cy = null, lastSteps = null;
 
 /* ---------- tiny markdown renderer (headings/lists/tables/bold/code/quote) ---- */
 function esc(s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 function inline(s) {
   return esc(s)
@@ -62,6 +63,15 @@ function statusLabel(s) { return (T.statusMap && T.statusMap[s]) || s; }
 function renderList() {
   const box = $("#methods");
   box.innerHTML = "";
+
+  // Overview pseudo-entry (comparison table)
+  const ov = document.createElement("div");
+  ov.className = "method-item overview-item"; ov.dataset.id = "__overview__";
+  ov.innerHTML = `<div class="idx">★</div>
+    <div><div class="nm">${esc(T.overview)}</div></div>`;
+  ov.onclick = () => selectOverview();
+  box.appendChild(ov);
+
   SITE.methods.forEach((m, i) => {
     const el = document.createElement("div");
     el.className = "method-item"; el.dataset.id = m.id;
@@ -78,6 +88,46 @@ function renderList() {
     el.onclick = () => selectMethod(m.id);
     box.appendChild(el);
   });
+}
+
+/* ---------- overview / comparison table ---------- */
+async function selectOverview() {
+  current = "__overview__";
+  document.querySelectorAll(".method-item").forEach(e =>
+    e.classList.toggle("active", e.dataset.id === "__overview__"));
+  let data;
+  try {
+    data = await (await fetch("data/overview.json")).json();
+  } catch (e) {
+    $("#main").innerHTML = `<p class="err">overview.json not found</p>`;
+    return;
+  }
+  const c = data.columns || {};
+  const head = ["#", T.colMethod, c.input, c.mechanism, c.output_unit,
+    c.paradigm, c.distinct, T.difficulty, T.llmBackend, T.status];
+  let rows = "";
+  data.rows.forEach((r, i) => {
+    rows += `<tr class="ov-row" data-id="${r.id}">
+      <td class="ov-idx">${String(i + 1).padStart(2, "0")}</td>
+      <td><b>${esc(r.name)}</b></td>
+      <td>${esc(r.input || "")}</td>
+      <td>${esc(r.mechanism || "")}</td>
+      <td>${esc(r.output_unit || "")}</td>
+      <td>${esc(r.paradigm || "")}</td>
+      <td>${esc(r.distinct || "")}</td>
+      <td class="ov-num">${r.difficulty ?? ""}</td>
+      <td><code>${esc(r.llm || "")}</code></td>
+      <td><span class="badge ${r.status}">${statusLabel(r.status)}</span></td>
+    </tr>`;
+  });
+  $("#main").innerHTML = `<h2>${esc(T.overviewTitle)}</h2>
+    <p class="hint">${esc(T.overviewIntro)}</p>
+    <div class="ov-wrap"><table class="ov-table">
+      <thead><tr>${head.map(h => `<th>${esc(h || "")}</th>`).join("")}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  document.querySelectorAll(".ov-row").forEach(tr =>
+    tr.addEventListener("click", () => selectMethod(tr.dataset.id)));
 }
 
 /* ---------- detail ---------- */
@@ -182,19 +232,29 @@ function renderResult(data) {
   showStep(data.steps.length);
 }
 
+function labelOf(x) {
+  if (x == null) return "";
+  if (typeof x === "string") return x;
+  return x.name || x.label || x.id ||
+    [x.entity_1 || x.source, x.relationship || x.label, x.entity_2 || x.target]
+      .filter(Boolean).join("→") || JSON.stringify(x);
+}
+
 function showStep(n) {
-  const step = lastSteps[n - 1];
+  const step = lastSteps[n - 1] || {};
   $("#stepLbl").textContent = `${T.step} ${n} ${T.of} ${lastSteps.length}`;
-  $("#cqLine").innerHTML = `<span class="cq">${T.stepInput}: ${esc(step.cq)}</span>`;
-  const a = step.added;
+  const cq = step.cq || step.label || step.entity || "";
+  $("#cqLine").innerHTML = cq ? `<span class="cq">${T.stepInput}: ${esc(cq)}</span>` : "";
+  // Generic: render any array-valued field under `added` (classes, object_properties,
+  // entities, relations, candidates, …) so every method's step shape is supported.
+  const a = step.added || {};
   const parts = [];
-  if (a.classes.length) parts.push(`${T.classes}: ${a.classes.join(", ")}`);
-  if (a.object_properties.length)
-    parts.push(`${T.objectProperties}: ${a.object_properties.map(p => p.name).join(", ")}`);
-  if (a.data_properties.length)
-    parts.push(`${T.dataProperties}: ${a.data_properties.map(p => p.name).join(", ")}`);
+  for (const [k, v] of Object.entries(a)) {
+    if (Array.isArray(v) && v.length)
+      parts.push(`${k}: ${v.map(labelOf).filter(Boolean).join(", ")}`);
+  }
   $("#addedLine").textContent = parts.length ? `${T.added} — ${parts.join(" | ")}` : "";
-  drawGraph(step.graph);
+  drawGraph(step.graph || { nodes: [], edges: [] });
 }
 
 function drawGraph(graph) {
@@ -202,7 +262,12 @@ function drawGraph(graph) {
     $("#graph").innerHTML = `<p class="hint" style="padding:16px">cytoscape.js not loaded (offline?)</p>`;
     return;
   }
-  const elements = [...graph.nodes, ...graph.edges];
+  const nodes = graph.nodes || [];
+  const ids = new Set(nodes.map(n => n.data.id));
+  // drop dangling edges (source/target not in this snapshot) so cytoscape won't throw
+  const edges = (graph.edges || []).filter(
+    e => ids.has(e.data.source) && ids.has(e.data.target));
+  const elements = [...nodes, ...edges];
   if (!cy) {
     cy = cytoscape({
       container: $("#graph"), elements,
@@ -225,3 +290,4 @@ function drawGraph(graph) {
 }
 
 renderList();
+selectOverview();  // land on the comparison table

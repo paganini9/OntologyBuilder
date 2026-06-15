@@ -44,10 +44,37 @@ def render(tmpl: str, mapping: dict) -> str:
     return tmpl
 
 
+def overview_for(lang: str, methods: list[dict], comp: dict) -> dict:
+    """Join registry rows with comparison.json into a per-language table.
+
+    Every published/implemented method appears automatically; qualitative
+    columns come from comparison.json when present (else blank), so newly added
+    methods show up in the table even before their comparison row is filled in.
+    """
+    cols = comp.get("columns", {}).get(lang, {})
+    rows = comp.get("rows", {})
+    table = []
+    for m in methods:
+        c = rows.get(m["id"], {})
+        cell = lambda k: (c.get(k, {}) or {}).get(lang, "")
+        table.append({
+            "id": m["id"], "name": m["name"],
+            "status": m.get("status"),
+            "difficulty": m.get("difficulty", {}).get("score"),
+            "llm": m.get("llm_dependency"),
+            "input": cell("input"), "mechanism": cell("mechanism"),
+            "output_unit": cell("output_unit"), "paradigm": cell("paradigm"),
+            "distinct": cell("distinct"),
+        })
+    return {"columns": cols, "rows": table}
+
+
 def build():
     reg = json.loads(REG.read_text(encoding="utf-8"))
     methods = reg.get("methods", [])
     summaries = [method_summary(m) for m in methods]
+    comp_path = SRC / "comparison.json"
+    comp = json.loads(comp_path.read_text(encoding="utf-8")) if comp_path.exists() else {}
     tmpl = (SRC / "index.html.tmpl").read_text(encoding="utf-8")
 
     for lang in LANGS:
@@ -75,6 +102,9 @@ def build():
         (out / "index.html").write_text(html, encoding="utf-8")
         (out / "data" / "methods.json").write_text(
             json.dumps(summaries, ensure_ascii=False, indent=2), encoding="utf-8")
+        (out / "data" / "overview.json").write_text(
+            json.dumps(overview_for(lang, methods, comp), ensure_ascii=False, indent=2),
+            encoding="utf-8")
         for m in methods:
             (out / "data" / f"method-{m['id']}.json").write_text(
                 json.dumps(method_detail(m), ensure_ascii=False, indent=2),

@@ -13,7 +13,20 @@ BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8000"
 OUT = Path(__file__).resolve().parents[1] / "runs" / "ui"
 OUT.mkdir(parents=True, exist_ok=True)
 
-CASES = [("ko", "cqbycq"), ("ko", "code-de-kg"), ("en", "peshevski-product-kg")]
+CASES = [("ko", "autoschemakg"), ("ko", "sac-kg"), ("en", "elenchus"),
+         ("en", "gptkb"), ("ko", "se-standards-zeroshot")]
+
+
+def check_overview(page, lang):
+    page.goto(f"{BASE}/{lang}/", wait_until="networkidle")
+    # landing view is the overview comparison table
+    page.wait_for_selector(".ov-table tbody tr", timeout=8000)
+    rows = page.eval_on_selector_all(".ov-table tbody tr", "els => els.length")
+    shot = OUT / f"overview-{lang}.png"
+    page.screenshot(path=str(shot), full_page=True)
+    ok = rows >= 15
+    print(f"[{'OK' if ok else 'FAIL'}] overview/{lang}: rows={rows} -> {shot.name}")
+    return ok
 
 
 def check(page, lang, method):
@@ -43,6 +56,12 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1400, "height": 1000})
+        for lang in ("ko", "en"):
+            try:
+                all_ok &= check_overview(page, lang)
+            except Exception as exc:
+                all_ok = False
+                print(f"[FAIL] overview/{lang}: {exc}")
         for lang, method in CASES:
             try:
                 all_ok &= check(page, lang, method)

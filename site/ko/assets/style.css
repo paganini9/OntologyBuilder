@@ -208,6 +208,28 @@ a.dl { color: var(--blue); text-decoration: none; border: 1px solid var(--line2)
   padding: 7px 14px; border-radius: 9px; display: inline-block; }
 a.dl:hover { border-color: var(--blue); }
 
+/* overview / comparison table */
+.method-item.overview-item { border-bottom: 2px solid var(--line2); }
+.method-item.overview-item .nm { color: var(--amber); font-family: var(--mono);
+  font-size: 13px; letter-spacing: .04em; }
+.ov-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius);
+  margin-top: 16px; background: var(--panel); }
+.ov-table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 880px; }
+.ov-table th {
+  position: sticky; top: 0; background: var(--panel2); z-index: 1;
+  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); text-align: left;
+  padding: 10px 12px; border-bottom: 1px solid var(--line2); white-space: nowrap;
+}
+.ov-table td { padding: 11px 12px; border-bottom: 1px solid var(--line);
+  vertical-align: top; color: var(--text); }
+.ov-row { cursor: pointer; transition: background .14s; }
+.ov-row:hover { background: var(--panel2); }
+.ov-idx { font-family: var(--mono); color: var(--faint); }
+.ov-num { font-family: var(--mono); color: var(--amber); text-align: center; font-weight: 600; }
+.ov-table code { font-family: var(--mono); background: var(--ink); color: var(--blue);
+  padding: 1px 6px; border-radius: 5px; font-size: 11px; }
+
 /* scrollbars */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 6px; }
