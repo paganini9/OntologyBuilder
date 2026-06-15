@@ -176,6 +176,18 @@
       "distinct": "적대적 2역할 대화(단일 자기비평과 구분)"
     },
     {
+      "id": "hf-local-demo",
+      "name": "HF-Local Demo (real on-device LLM triple extraction)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "hf-local",
+      "input": "자유 텍스트",
+      "mechanism": "문장→로컬 LLM JSON 트리플→그래프",
+      "output_unit": "트리플",
+      "paradigm": "온디바이스 추출",
+      "distinct": "실제 로컬 HF 모델 GPU 구동(키 없음)"
+    },
+    {
       "id": "sac-kg",
       "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
       "status": "published",

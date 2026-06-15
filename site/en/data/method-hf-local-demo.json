@@ -1,0 +1,38 @@
+{
+  "id": "hf-local-demo",
+  "name": "HF-Local Demo (real on-device LLM triple extraction)",
+  "status": "published",
+  "difficulty": {
+    "score": 3,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "runs a REAL local HF model on GPU when backend=hf_local; deterministic MOCK otherwise"
+  },
+  "llm_dependency": "hf-local",
+  "paper": {
+    "key": "project_demo",
+    "arxiv": null,
+    "venue": "this project",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# HF-Local Demo — 로컬 오픈모델로 실제 온톨로지 추출\n\n> 본 프로젝트 데모. 클라우드·API 키 없이 **이 PC의 GPU에서 HuggingFace 오픈모델을 직접 구동**해 텍스트에서 트리플(온톨로지)을 추출한다.\n\n## 1. 한 줄 요약\n문장마다 로컬 LLM에게 \"(주어, 관계, 목적어) 트리플을 JSON으로 내라\"고 요청하고, 그 트리플을 모아 온톨로지 그래프를 만든다. **MOCK**(키·GPU 불필요, 결정론)과 **hf_local**(실제 GPU 추론)을 같은 코드로 전환한다.\n\n## 2. 핵심 개념\n- **로컬 추론**: 외부 API 없이 `transformers`로 오픈모델(기본 `Qwen/Qwen2.5-1.5B-Instruct`)을 내려받아 GPU(`device_map=\"auto\"`)에서 구동. 키가 없어도, 인터넷 없이도(최초 다운로드 후) 동작.\n- **이중 백엔드**: `mock`은 규칙 기반 결정론 추출(테스트 golden 고정), `hf_local`은 실제 모델이 JSON 트리플 생성. 사이트의 백엔드 드롭다운에서 `hf_local`을 고르면 실제 모델이 돈다.\n- **강건한 JSON 파싱**: 모델 응답에서 `{\"triples\":[...]}` 블록만 안전하게 추출(주변 잡설 무시).\n\n## 3. 구축 프로세스 (단계별)\n1. **텍스트 입력** — `text.txt` (문장 단위 자동 분리).\n2. **문장→트리플 (반복)** — 각 문장을 LLM(mock 또는 hf_local)에 보내 JSON 트리플을 받는다.\n3. **그래프 병합** — 주어·목적어는 클래스 노드로, 관계는 엣지로 누적(중복 제거). 문장마다 스냅샷.\n4. **산출** — `ontology.ttl`·`ontology.json`·`steps.json`.\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 설명 |\n|------|------|------|\n| 입력 | `text.txt` | 자유 텍스트(문장 자동 분리) |\n| 출력 | `ontology.ttl` | OWL (Turtle) |\n| 출력 | `ontology.json` | Cytoscape nodes/edges |\n| 출력 | `steps.json` | 문장별 스냅샷 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키·GPU 없이 결정론(대문자 주어/관계동사/대문자 목적어). 테스트·키리스 사이트용.\n- **`hf_local`(실구동)**: `transformers`로 `HF_MODEL`(기본 Qwen2.5-1.5B-Instruct) 다운로드 후 GPU 추론. 최초 1회 모델 다운로드(수 GB). 환경변수 `HF_MODEL`로 모델 교체 가능(예: `Qwen/Qwen2.5-3B-Instruct`).\n- `transformers`/`torch` 미설치 시 자동으로 MOCK 폴백(루프 불중단).\n\n## 6. 직접 해보기\n1. (실구동 준비) `pip install torch transformers accelerate` — GPU면 CUDA torch 권장.\n2. 로컬: `python pipeline.py samples runs/out --backend hf_local` (최초 다운로드 후 GPU 추론).\n3. 사이트: 백엔드 드롭다운에서 **hf_local** 선택 후 **Run**. (mock으로 두면 즉시 결정론 결과)\n",
+    "en": "# HF-Local Demo — Real On-Device Ontology Extraction\n\n> Project demo. With NO cloud and NO API key, run a **HuggingFace open model directly on this machine's GPU** to extract triples (an ontology) from text.\n\n## 1. One-line summary\nFor each sentence, ask a local LLM to return (subject, relation, object) triples as JSON, then assemble them into an ontology graph. The same code switches between **MOCK** (no key/GPU, deterministic) and **hf_local** (real GPU inference).\n\n## 2. Key ideas\n- **Local inference**: no external API — download an open model (default `Qwen/Qwen2.5-1.5B-Instruct`) via `transformers` and run it on the GPU (`device_map=\"auto\"`). Works with no key and offline (after the first download).\n- **Dual backend**: `mock` does rule-based deterministic extraction (stable test goldens); `hf_local` has the real model emit JSON triples. Pick `hf_local` in the site's backend dropdown to run the real model.\n- **Robust JSON parsing**: safely extract the `{\"triples\":[...]}` block from the model response (ignore surrounding prose).\n\n## 3. Construction process (step by step)\n1. **Text input** — `text.txt` (auto-split into sentences).\n2. **Sentence → triples (loop)** — send each sentence to the LLM (mock or hf_local) and get JSON triples.\n3. **Graph merge** — subjects/objects become class nodes, relations become edges, accumulated (deduped). Snapshot per sentence.\n4. **Emit** — `ontology.ttl`, `ontology.json`, `steps.json`.\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `text.txt` | Free text (auto sentence split) |\n| Output | `ontology.ttl` | OWL (Turtle) |\n| Output | `ontology.json` | Cytoscape nodes/edges |\n| Output | `steps.json` | Per-sentence snapshots |\n\n## 5. LLM backend\n- Default `mock`: deterministic with no key/GPU (capitalized subject / relation verb / capitalized object). For tests and the keyless site.\n- **`hf_local` (real run)**: downloads `HF_MODEL` (default Qwen2.5-1.5B-Instruct) via `transformers` and runs GPU inference. First run downloads the model (a few GB). Override with env `HF_MODEL` (e.g. `Qwen/Qwen2.5-3B-Instruct`).\n- If `transformers`/`torch` are missing it auto-falls back to MOCK (loop never breaks).\n\n## 6. Try it\n1. (For real runs) `pip install torch transformers accelerate` — prefer CUDA torch on a GPU.\n2. Local: `python pipeline.py samples runs/out --backend hf_local` (downloads once, then GPU inference).\n3. Site: choose **hf_local** in the backend dropdown, then **Run**. (Leave it on mock for instant deterministic output.)\n"
+  },
+  "sample_input": "The Motor drives the Pump. The Pump uses Coolant. The Controller monitors the Sensor. The Battery powers the Motor. The Assembly contains the Controller.\n",
+  "implemented": true
+}

@@ -9,6 +9,9 @@ pytest>=8.0
 # Optional LLM backends (installed on demand by methods that need them)
 # google-generativeai>=0.8     # gemini backend
 # anthropic>=0.40              # anthropic backend
-# transformers>=4.44           # hf_local backend
-# torch                        # hf_local backend
+# --- hf_local backend (installed; used by hf-local-demo for real on-device inference) ---
+# GPU build of torch installed via:  pip install torch --index-url https://download.pytorch.org/whl/cu128
+torch
+transformers
+accelerate
 # playwright                   # UI smoke test: python scripts/verify_ui.py (then: python -m playwright install chromium)

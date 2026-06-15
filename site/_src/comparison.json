@@ -103,6 +103,13 @@
       "paradigm": {"ko": "대화형 변증법", "en": "Dialectical dialogue"},
       "distinct": {"ko": "적대적 2역할 대화(단일 자기비평과 구분)", "en": "Adversarial 2-role dialogue"}
     },
+    "hf-local-demo": {
+      "input": {"ko": "자유 텍스트", "en": "Free text"},
+      "mechanism": {"ko": "문장→로컬 LLM JSON 트리플→그래프", "en": "Sentence→local-LLM JSON triples→graph"},
+      "output_unit": {"ko": "트리플", "en": "Triples"},
+      "paradigm": {"ko": "온디바이스 추출", "en": "On-device extraction"},
+      "distinct": {"ko": "실제 로컬 HF 모델 GPU 구동(키 없음)", "en": "Runs a real local HF model on GPU (no key)"}
+    },
     "sac-kg": {
       "input": {"ko": "시드 엔티티 + 도메인 코퍼스", "en": "Seed entities + domain corpus"},
       "mechanism": {"ko": "Generator→Verifier→Pruner, multi-level 반복", "en": "Generator→Verifier→Pruner, multi-level loop"},

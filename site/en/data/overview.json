@@ -176,6 +176,18 @@
       "distinct": "Adversarial 2-role dialogue"
     },
     {
+      "id": "hf-local-demo",
+      "name": "HF-Local Demo (real on-device LLM triple extraction)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "hf-local",
+      "input": "Free text",
+      "mechanism": "Sentence→local-LLM JSON triples→graph",
+      "output_unit": "Triples",
+      "paradigm": "On-device extraction",
+      "distinct": "Runs a real local HF model on GPU (no key)"
+    },
+    {
       "id": "sac-kg",
       "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
       "status": "published",

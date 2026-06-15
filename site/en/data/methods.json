@@ -451,6 +451,38 @@
     ]
   },
   {
+    "id": "hf-local-demo",
+    "name": "HF-Local Demo (real on-device LLM triple extraction)",
+    "status": "published",
+    "difficulty": {
+      "score": 3,
+      "rank": 3,
+      "factors": {
+        "pipeline_stages": 2,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": true
+      },
+      "rationale": "runs a REAL local HF model on GPU when backend=hf_local; deterministic MOCK otherwise"
+    },
+    "llm_dependency": "hf-local",
+    "paper": {
+      "key": "project_demo",
+      "arxiv": null,
+      "venue": "this project",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "text.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
     "id": "sac-kg",
     "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
     "status": "published",
