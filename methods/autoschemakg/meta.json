@@ -1,0 +1,34 @@
+{
+  "id": "autoschemakg",
+  "name": "AutoSchemaKG (dynamic schema induction + extraction)",
+  "paper": {
+    "key": "Bai_AutoSchemaKG",
+    "title": "AutoSchemaKG: Autonomous Knowledge Graph Construction through Dynamic Schema Induction from Web-Scale Corpora",
+    "arxiv": "2505.23628",
+    "venue": "arXiv 2025",
+    "code_url": "https://github.com/HKUST-KnowComp/AutoSchemaKG"
+  },
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": true,
+      "code_public": true
+    },
+    "rationale": "schema is induced bottom-up while extracting triples; multi-stage and aimed at web-scale corpora, but a deterministic mock captures extraction + induction without GPU or finetuning"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

@@ -1,0 +1,7 @@
+# Free text about a product design. No schema is given; AutoSchemaKG induces it.
+The Motor drives the Pump.
+The Pump uses Coolant.
+The Controller monitors the Sensor.
+The Assembly contains the Motor and the Controller.
+The Motor is made of Steel and Copper.
+The Sensor produces Data.

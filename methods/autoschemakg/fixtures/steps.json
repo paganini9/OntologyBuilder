@@ -1,0 +1,905 @@
+[
+  {
+    "step": 1,
+    "cq": "The Motor drives the Pump",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Motor",
+          "relation": "drives",
+          "object": "Pump"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Motor",
+        "Pump"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "The Pump uses Coolant",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Pump",
+          "relation": "uses",
+          "object": "Coolant"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Coolant"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "The Controller monitors the Sensor",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Controller",
+          "relation": "monitors",
+          "object": "Sensor"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Controller",
+        "Sensor"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "The Assembly contains the Motor and the Controller",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Assembly",
+          "relation": "contains",
+          "object": "Motor"
+        },
+        {
+          "subject": "Assembly",
+          "relation": "contains",
+          "object": "Controller"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Assembly"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Motor",
+            "source": "Assembly",
+            "target": "Motor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Controller",
+            "source": "Assembly",
+            "target": "Controller",
+            "label": "contains"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "The Motor is made of Steel and Copper",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Motor",
+          "relation": "madeOf",
+          "object": "Steel"
+        },
+        {
+          "subject": "Motor",
+          "relation": "madeOf",
+          "object": "Copper"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Steel",
+        "Copper"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Motor",
+            "source": "Assembly",
+            "target": "Motor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Controller",
+            "source": "Assembly",
+            "target": "Controller",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Steel",
+            "source": "Motor",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "madeOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "The Sensor produces Data",
+    "stage": "extraction",
+    "added": {
+      "classes": [],
+      "object_properties": [
+        {
+          "subject": "Sensor",
+          "relation": "produces",
+          "object": "Data"
+        }
+      ],
+      "data_properties": [],
+      "instances": [
+        "Data"
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Data",
+            "label": "Data",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Motor",
+            "source": "Assembly",
+            "target": "Motor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Controller",
+            "source": "Assembly",
+            "target": "Controller",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Steel",
+            "source": "Motor",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-produces-Data",
+            "source": "Sensor",
+            "target": "Data",
+            "label": "produces"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "cq": "(schema induction)",
+    "stage": "schema_induction",
+    "added": {
+      "classes": [
+        "Device",
+        "Material",
+        "System",
+        "Entity"
+      ],
+      "object_properties": [
+        "drives",
+        "uses",
+        "monitors",
+        "contains",
+        "madeOf",
+        "produces"
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Entity",
+            "label": "Entity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "instance",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Data",
+            "label": "Data",
+            "type": "instance",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Motor-drives-Pump",
+            "source": "Motor",
+            "target": "Pump",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-uses-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Sensor",
+            "source": "Controller",
+            "target": "Sensor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Motor",
+            "source": "Assembly",
+            "target": "Motor",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-contains-Controller",
+            "source": "Assembly",
+            "target": "Controller",
+            "label": "contains"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Steel",
+            "source": "Motor",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-madeOf-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-produces-Data",
+            "source": "Sensor",
+            "target": "Data",
+            "label": "produces"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-instanceOf-Device",
+            "source": "Motor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-instanceOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-instanceOf-Device",
+            "source": "Sensor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-instanceOf-System",
+            "source": "Assembly",
+            "target": "System",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Copper-instanceOf-Material",
+            "source": "Copper",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Data-instanceOf-Entity",
+            "source": "Data",
+            "target": "Entity",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  }
+]
