@@ -1,0 +1,595 @@
+[
+  {
+    "step": 1,
+    "level": 1,
+    "stage": "generate",
+    "label": "L1 generate",
+    "frontier": [
+      "Engine"
+    ],
+    "added": {
+      "candidates": [
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Piston"
+        },
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Crankshaft"
+        },
+        {
+          "parent": "Engine",
+          "relation": "consistsOf",
+          "child": "Cylinder"
+        },
+        {
+          "parent": "Engine",
+          "relation": "requires",
+          "child": "Fuel"
+        },
+        {
+          "parent": "Engine",
+          "relation": "magicallyBecomes",
+          "child": "Unicorn"
+        },
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Engine"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "level": 1,
+    "stage": "verify",
+    "label": "L1 verify",
+    "frontier": [
+      "Engine"
+    ],
+    "added": {
+      "verified": [
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Piston",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Crankshaft",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Engine",
+          "relation": "consistsOf",
+          "child": "Cylinder",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Engine",
+          "relation": "requires",
+          "child": "Fuel",
+          "confidence": 0.75
+        },
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Engine",
+          "confidence": 0.9
+        }
+      ],
+      "dropped": [
+        {
+          "parent": "Engine",
+          "relation": "magicallyBecomes",
+          "child": "Unicorn",
+          "reason": "relation-not-allowed"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 3,
+    "level": 1,
+    "stage": "prune",
+    "label": "L1 prune",
+    "frontier": [
+      "Engine"
+    ],
+    "added": {
+      "edges": [
+        {
+          "name": "hasPart",
+          "domain": "Engine",
+          "range": "Piston",
+          "confidence": 0.9
+        },
+        {
+          "name": "hasPart",
+          "domain": "Engine",
+          "range": "Crankshaft",
+          "confidence": 0.9
+        }
+      ],
+      "dropped": [
+        {
+          "parent": "Engine",
+          "relation": "consistsOf",
+          "child": "Cylinder",
+          "confidence": 0.9,
+          "reason": "branching-cap"
+        },
+        {
+          "parent": "Engine",
+          "relation": "requires",
+          "child": "Fuel",
+          "confidence": 0.75,
+          "reason": "branching-cap"
+        },
+        {
+          "parent": "Engine",
+          "relation": "hasPart",
+          "child": "Engine",
+          "confidence": 0.9,
+          "reason": "cycle"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Piston",
+            "label": "Piston",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft",
+            "label": "Crankshaft",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-hasPart-Piston",
+            "source": "Engine",
+            "target": "Piston",
+            "label": "hasPart"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-hasPart-Crankshaft",
+            "source": "Engine",
+            "target": "Crankshaft",
+            "label": "hasPart"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "level": 2,
+    "stage": "generate",
+    "label": "L2 generate",
+    "frontier": [
+      "Piston",
+      "Crankshaft"
+    ],
+    "added": {
+      "candidates": [
+        {
+          "parent": "Piston",
+          "relation": "madeOf",
+          "child": "Aluminum"
+        },
+        {
+          "parent": "Piston",
+          "relation": "connectsTo",
+          "child": "Crankshaft"
+        },
+        {
+          "parent": "Piston",
+          "relation": "hasPart",
+          "child": "PistonRing"
+        },
+        {
+          "parent": "Piston",
+          "relation": "requires",
+          "child": "Lubricant"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "madeOf",
+          "child": "Steel"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "connectsTo",
+          "child": "Bearing"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "hasPart",
+          "child": "Engine"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "controls",
+          "child": "Vibration"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Piston",
+            "label": "Piston",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft",
+            "label": "Crankshaft",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-hasPart-Piston",
+            "source": "Engine",
+            "target": "Piston",
+            "label": "hasPart"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-hasPart-Crankshaft",
+            "source": "Engine",
+            "target": "Crankshaft",
+            "label": "hasPart"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "level": 2,
+    "stage": "verify",
+    "label": "L2 verify",
+    "frontier": [
+      "Piston",
+      "Crankshaft"
+    ],
+    "added": {
+      "verified": [
+        {
+          "parent": "Piston",
+          "relation": "madeOf",
+          "child": "Aluminum",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Piston",
+          "relation": "connectsTo",
+          "child": "Crankshaft",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Piston",
+          "relation": "hasPart",
+          "child": "PistonRing",
+          "confidence": 0.75
+        },
+        {
+          "parent": "Piston",
+          "relation": "requires",
+          "child": "Lubricant",
+          "confidence": 0.75
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "madeOf",
+          "child": "Steel",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "connectsTo",
+          "child": "Bearing",
+          "confidence": 0.75
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "hasPart",
+          "child": "Engine",
+          "confidence": 0.9
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "controls",
+          "child": "Vibration",
+          "confidence": 0.75
+        }
+      ],
+      "dropped": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Piston",
+            "label": "Piston",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft",
+            "label": "Crankshaft",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-hasPart-Piston",
+            "source": "Engine",
+            "target": "Piston",
+            "label": "hasPart"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-hasPart-Crankshaft",
+            "source": "Engine",
+            "target": "Crankshaft",
+            "label": "hasPart"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "level": 2,
+    "stage": "prune",
+    "label": "L2 prune",
+    "frontier": [
+      "Piston",
+      "Crankshaft"
+    ],
+    "added": {
+      "edges": [
+        {
+          "name": "madeOf",
+          "domain": "Piston",
+          "range": "Aluminum",
+          "confidence": 0.9
+        },
+        {
+          "name": "connectsTo",
+          "domain": "Piston",
+          "range": "Crankshaft",
+          "confidence": 0.9
+        },
+        {
+          "name": "madeOf",
+          "domain": "Crankshaft",
+          "range": "Steel",
+          "confidence": 0.9
+        },
+        {
+          "name": "connectsTo",
+          "domain": "Crankshaft",
+          "range": "Bearing",
+          "confidence": 0.75
+        }
+      ],
+      "dropped": [
+        {
+          "parent": "Piston",
+          "relation": "hasPart",
+          "child": "PistonRing",
+          "confidence": 0.75,
+          "reason": "branching-cap"
+        },
+        {
+          "parent": "Piston",
+          "relation": "requires",
+          "child": "Lubricant",
+          "confidence": 0.75,
+          "reason": "branching-cap"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "hasPart",
+          "child": "Engine",
+          "confidence": 0.9,
+          "reason": "cycle"
+        },
+        {
+          "parent": "Crankshaft",
+          "relation": "controls",
+          "child": "Vibration",
+          "confidence": 0.75,
+          "reason": "branching-cap"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Engine",
+            "label": "Engine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Piston",
+            "label": "Piston",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft",
+            "label": "Crankshaft",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Aluminum",
+            "label": "Aluminum",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Engine-hasPart-Piston",
+            "source": "Engine",
+            "target": "Piston",
+            "label": "hasPart"
+          }
+        },
+        {
+          "data": {
+            "id": "Engine-hasPart-Crankshaft",
+            "source": "Engine",
+            "target": "Crankshaft",
+            "label": "hasPart"
+          }
+        },
+        {
+          "data": {
+            "id": "Piston-madeOf-Aluminum",
+            "source": "Piston",
+            "target": "Aluminum",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Piston-connectsTo-Crankshaft",
+            "source": "Piston",
+            "target": "Crankshaft",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft-madeOf-Steel",
+            "source": "Crankshaft",
+            "target": "Steel",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Crankshaft-connectsTo-Bearing",
+            "source": "Crankshaft",
+            "target": "Bearing",
+            "label": "connectsTo"
+          }
+        }
+      ]
+    }
+  }
+]

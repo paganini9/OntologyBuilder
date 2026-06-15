@@ -1,0 +1,34 @@
+{
+  "id": "sac-kg",
+  "name": "SAC-KG (Generator → Verifier → Pruner, multi-level)",
+  "paper": {
+    "key": "Chen_SAC-KG",
+    "title": "SAC-KG: Exploiting Large Language Models as Skilled Automatic Constructors for Domain Knowledge Graph",
+    "arxiv": null,
+    "venue": "ACL 2024",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 10,
+    "rank": 10,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": true,
+      "needs_gpu": true,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "real run needs GPU/T5-LoRA pruner; implemented as deterministic MOCK simplification"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["seed_entities.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/seed_entities.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

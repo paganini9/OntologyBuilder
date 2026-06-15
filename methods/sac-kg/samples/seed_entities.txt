@@ -1,0 +1,3 @@
+# SAC-KG seed entities (one per line, # comments / blanks ignored)
+# These seeds expand across LEVELS=2 via the deterministic domain lexicon.
+Engine

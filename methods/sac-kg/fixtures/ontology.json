@@ -1,0 +1,102 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Engine",
+        "label": "Engine",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Piston",
+        "label": "Piston",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Crankshaft",
+        "label": "Crankshaft",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Aluminum",
+        "label": "Aluminum",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Steel",
+        "label": "Steel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Bearing",
+        "label": "Bearing",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Engine-hasPart-Piston",
+        "source": "Engine",
+        "target": "Piston",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Engine-hasPart-Crankshaft",
+        "source": "Engine",
+        "target": "Crankshaft",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Piston-madeOf-Aluminum",
+        "source": "Piston",
+        "target": "Aluminum",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Piston-connectsTo-Crankshaft",
+        "source": "Piston",
+        "target": "Crankshaft",
+        "label": "connectsTo"
+      }
+    },
+    {
+      "data": {
+        "id": "Crankshaft-madeOf-Steel",
+        "source": "Crankshaft",
+        "target": "Steel",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Crankshaft-connectsTo-Bearing",
+        "source": "Crankshaft",
+        "target": "Bearing",
+        "label": "connectsTo"
+      }
+    }
+  ]
+}
