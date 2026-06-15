@@ -1,0 +1,34 @@
+{
+  "id": "gptkb",
+  "name": "GPTKB (materialize KB from LLM parametric knowledge)",
+  "paper": {
+    "key": "Hu_GPTKB",
+    "title": "GPTKB: Enabling LLM Knowledge Analysis via Extensive Materialization",
+    "arxiv": "2411.04920",
+    "venue": "ACL 2025",
+    "code_url": "https://gptkb.org"
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "no input corpus, but recursive BFS expansion + consolidation/dedup + depth control across many LLM queries make it a multi-stage crawl; deterministic mock possible, no data/GPU/finetuning"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["seed_entities.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/seed_entities.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-15"
+}

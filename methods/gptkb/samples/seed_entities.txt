@@ -1,0 +1,5 @@
+# GPTKB seed entities - one per line.
+# No input corpus: each seed is recursively expanded against the model's
+# parametric knowledge up to the depth limit.
+Motor
+Pump

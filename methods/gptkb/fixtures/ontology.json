@@ -1,0 +1,294 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Rotor",
+        "label": "Rotor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Stator",
+        "label": "Stator",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Power",
+        "label": "Power",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller",
+        "label": "Impeller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Coolant",
+        "label": "Coolant",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Steel",
+        "label": "Steel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Copper",
+        "label": "Copper",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Winding",
+        "label": "Winding",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Watt",
+        "label": "Watt",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Water",
+        "label": "Water",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Metal",
+        "label": "Metal",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Lithium",
+        "label": "Lithium",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Motor-hasPart-Rotor",
+        "source": "Motor",
+        "target": "Rotor",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-hasPart-Stator",
+        "source": "Motor",
+        "target": "Stator",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-requires-Power",
+        "source": "Motor",
+        "target": "Power",
+        "label": "requires"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-hasPart-Impeller",
+        "source": "Pump",
+        "target": "Impeller",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-movesFluid-Coolant",
+        "source": "Pump",
+        "target": "Coolant",
+        "label": "movesFluid"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-requires-Power",
+        "source": "Pump",
+        "target": "Power",
+        "label": "requires"
+      }
+    },
+    {
+      "data": {
+        "id": "Rotor-madeOf-Steel",
+        "source": "Rotor",
+        "target": "Steel",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Rotor-rotatesIn-Stator",
+        "source": "Rotor",
+        "target": "Stator",
+        "label": "rotatesIn"
+      }
+    },
+    {
+      "data": {
+        "id": "Stator-madeOf-Copper",
+        "source": "Stator",
+        "target": "Copper",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Stator-hasPart-Winding",
+        "source": "Stator",
+        "target": "Winding",
+        "label": "hasPart"
+      }
+    },
+    {
+      "data": {
+        "id": "Power-suppliedBy-Battery",
+        "source": "Power",
+        "target": "Battery",
+        "label": "suppliedBy"
+      }
+    },
+    {
+      "data": {
+        "id": "Power-measuredIn-Watt",
+        "source": "Power",
+        "target": "Watt",
+        "label": "measuredIn"
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller-madeOf-Steel",
+        "source": "Impeller",
+        "target": "Steel",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller-movesFluid-Coolant",
+        "source": "Impeller",
+        "target": "Coolant",
+        "label": "movesFluid"
+      }
+    },
+    {
+      "data": {
+        "id": "Coolant-flowsThrough-Pump",
+        "source": "Coolant",
+        "target": "Pump",
+        "label": "flowsThrough"
+      }
+    },
+    {
+      "data": {
+        "id": "Coolant-madeOf-Water",
+        "source": "Coolant",
+        "target": "Water",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Steel-isA-Metal",
+        "source": "Steel",
+        "target": "Metal",
+        "label": "isA"
+      }
+    },
+    {
+      "data": {
+        "id": "Copper-isA-Metal",
+        "source": "Copper",
+        "target": "Metal",
+        "label": "isA"
+      }
+    },
+    {
+      "data": {
+        "id": "Winding-madeOf-Copper",
+        "source": "Winding",
+        "target": "Copper",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Battery-storesEnergy-Power",
+        "source": "Battery",
+        "target": "Power",
+        "label": "storesEnergy"
+      }
+    },
+    {
+      "data": {
+        "id": "Battery-madeOf-Lithium",
+        "source": "Battery",
+        "target": "Lithium",
+        "label": "madeOf"
+      }
+    }
+  ]
+}
