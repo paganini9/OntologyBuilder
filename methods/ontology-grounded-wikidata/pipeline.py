@@ -41,6 +41,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 WD = "http://www.wikidata.org/entity/"
@@ -155,6 +156,38 @@ _PROMPT = (
     "data_properties (list of {{name, domain, datatype}}), restrictions (list).\n"
     "Competency question: {cq}\n"
 )
+
+
+def _triples_to_fragment(triples: list[dict]) -> dict:
+    """Shape real-LLM triples into the SAME authoring fragment the mock emits.
+
+    Each triple becomes:
+      - subject  -> a class
+      - object   -> a class
+      - relation -> an object_property {name, domain=subject, range=object}
+    Names arrive already URI-sanitised (PascalCase / camelCase) from
+    backend.llm.extract. The resulting object-property names flow UNCHANGED into
+    the shared Wikidata grounding stage (known names get a P-id, unknown ones
+    keep their local name). Order is preserved for deterministic output.
+    """
+    classes: list[str] = []
+    object_properties: list[dict] = []
+    for t in triples:
+        s, r, o = t.get("subject"), t.get("relation"), t.get("object")
+        if not (s and r and o):
+            continue
+        for c in (s, o):
+            if c not in classes:
+                classes.append(c)
+        op = {"name": r, "domain": s, "range": o}
+        if op not in object_properties:
+            object_properties.append(op)
+    return {
+        "classes": classes,
+        "object_properties": object_properties,
+        "data_properties": [],
+        "restrictions": [],
+    }
 
 
 def _read_cqs(input_dir: Path) -> list[str]:
@@ -282,17 +315,25 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     llm = get_backend(backend, mock_responder=mock_responder)
     cqs = _read_cqs(input_dir)
 
+    mock = is_mock(llm)
     model = _Model()
     steps = []
     # --- Phase 1: authoring (one step per CQ) ---
     for i, cq in enumerate(cqs, 1):
-        raw = llm.complete(_PROMPT.format(cq=cq), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"classes": [], "object_properties": [],
-                    "data_properties": [], "restrictions": []}
+        if mock:
+            # MOCK path: unchanged deterministic per-CQ fragment (golden-tested).
+            raw = llm.complete(_PROMPT.format(cq=cq), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"classes": [], "object_properties": [],
+                        "data_properties": [], "restrictions": []}
+        else:
+            # REAL path: extract triples with the actual model, then shape them
+            # into the SAME fragment dict the merge code below consumes. The
+            # object-property names then feed the shared Wikidata grounding stage.
+            frag = _triples_to_fragment(extract_triples(llm, cq))
 
         added_c, added_o, added_d = [], [], []
         for c in frag.get("classes", []):

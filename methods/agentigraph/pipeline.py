@@ -39,6 +39,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -266,21 +267,50 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     for c in seed_classes:
         model.add_class(c)
 
+    mock = is_mock(llm)
     intent_counts: dict[str, int] = {}
     for i, turn in enumerate(turns, 1):
-        raw = llm.complete(_PROMPT.format(turn=turn), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"intent": "add-entity", "classes": [],
-                    "object_properties": [], "data_properties": []}
-
-        intent = frag.get("intent", "add-entity")
+        # Intent classification stays rule-based & deterministic for BOTH paths.
+        intent = _classify_intent(turn)
         intent_counts[intent] = intent_counts.get(intent, 0) + 1
 
+        if intent == "query":
+            # query turns record intent only -> no graph change (both paths)
+            frag = {"classes": [], "object_properties": [], "data_properties": []}
+        elif mock:
+            # MOCK: keep EXACTLY the existing deterministic extraction/merge so
+            # the golden fixtures and tests stay unchanged.
+            raw = llm.complete(_PROMPT.format(turn=turn), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                parsed = json.loads(raw)
+            except json.JSONDecodeError:
+                parsed = {"classes": [], "object_properties": [],
+                          "data_properties": []}
+            frag = {
+                "classes": parsed.get("classes", []),
+                "object_properties": parsed.get("object_properties", []),
+                "data_properties": parsed.get("data_properties", []),
+            }
+        else:
+            # REAL backend: extract (subject, relation, object) triples for this
+            # add-* turn and turn them into classes + object properties, merged
+            # into the SAME accumulating graph.
+            trips = extract_triples(llm, turn)
+            classes: list[str] = []
+            obj_props: list[dict] = []
+            for t in trips:
+                for k in (t["subject"], t["object"]):
+                    if k not in classes:
+                        classes.append(k)
+                p = {"name": t["relation"], "domain": t["subject"],
+                     "range": t["object"]}
+                if p not in obj_props:
+                    obj_props.append(p)
+            frag = {"classes": classes, "object_properties": obj_props,
+                    "data_properties": []}
+
         added_c, added_o, added_d = [], [], []
-        # query turns record intent only -> no graph change
         for c in frag.get("classes", []):
             if model.add_class(c):
                 added_c.append(c)

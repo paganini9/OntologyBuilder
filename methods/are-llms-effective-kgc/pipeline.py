@@ -40,6 +40,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -174,6 +175,26 @@ _L3_PROMPT = (
 )
 
 
+def _infer_subclasses(classes: list[str]) -> list[dict]:
+    """Deterministic L3 rule (shared by mock and real paths).
+
+    A compound class name whose tail matches another known class becomes a
+    child (rdfs:subClassOf) of that class. This is the same rule encoded in
+    mock_responder's L3 branch, lifted out so the real backend gets identical
+    hierarchy behaviour without consulting the model.
+    """
+    subs: list[dict] = []
+    for c in classes:
+        for parent in classes:
+            if parent == c:
+                continue
+            if len(c) > len(parent) and c.endswith(parent):
+                pair = {"child": c, "parent": parent}
+                if pair not in subs:
+                    subs.append(pair)
+    return subs
+
+
 def _read_text(input_dir: Path) -> str:
     f = input_dir / "text.txt"
     if not f.exists():
@@ -267,18 +288,35 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     model = _Model()
     steps: list[dict] = []
     step_no = 0
+    mock = is_mock(llm)
+    real_props: list[dict] = []  # L2 relations accumulated on the real path
 
     # ---- L1: per-sentence entity extraction ---------------------------------
     for sent in sentences:
         step_no += 1
-        raw = llm.complete(_L1_PROMPT.format(sentence=sent), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"classes": []}
+        if mock:
+            raw = llm.complete(_L1_PROMPT.format(sentence=sent), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"classes": []}
+            sent_classes = list(frag.get("classes", []))
+        else:
+            # Real backend: one extraction per sentence. Subjects/objects become
+            # L1 classes; the same triples' relations feed L2 below.
+            triples = extract_triples(llm, sent)
+            sent_classes = []
+            for t in triples:
+                for ent in (t["subject"], t["object"]):
+                    if ent not in sent_classes:
+                        sent_classes.append(ent)
+                prop = {"name": t["relation"], "domain": t["subject"],
+                        "range": t["object"]}
+                if prop not in real_props:
+                    real_props.append(prop)
         added_c = []
-        for c in frag.get("classes", []):
+        for c in sent_classes:
             if model.add_class(c):
                 added_c.append(c)
         steps.append({
@@ -292,16 +330,20 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
 
     # ---- L2: relation extraction across sentences ---------------------------
     step_no += 1
-    raw = llm.complete(
-        _L2_PROMPT.format(classes=", ".join(model.classes),
-                          sentences="\n".join(sentences)),
-        temperature=0.0, json_schema={"type": "object"})
-    try:
-        frag = json.loads(raw)
-    except json.JSONDecodeError:
-        frag = {"object_properties": []}
+    if mock:
+        raw = llm.complete(
+            _L2_PROMPT.format(classes=", ".join(model.classes),
+                              sentences="\n".join(sentences)),
+            temperature=0.0, json_schema={"type": "object"})
+        try:
+            frag = json.loads(raw)
+        except json.JSONDecodeError:
+            frag = {"object_properties": []}
+        l2_props = list(frag.get("object_properties", []))
+    else:
+        l2_props = real_props
     added_o = []
-    for p in frag.get("object_properties", []):
+    for p in l2_props:
         for k in ("domain", "range"):
             model.add_class(p.get(k, ""))
         if model.add_obj(p):
@@ -316,16 +358,10 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     })
 
     # ---- L3: hierarchy (is-a) inference -------------------------------------
+    # Deterministic compound-tail subClassOf rule, identical for both paths.
     step_no += 1
-    raw = llm.complete(
-        _L3_PROMPT.format(classes=", ".join(model.classes)),
-        temperature=0.0, json_schema={"type": "object"})
-    try:
-        frag = json.loads(raw)
-    except json.JSONDecodeError:
-        frag = {"subclass_of": []}
     added_s = []
-    for s in frag.get("subclass_of", []):
+    for s in _infer_subclasses(list(model.classes)):
         model.add_class(s.get("child", ""))
         model.add_class(s.get("parent", ""))
         if model.add_subclass(s):

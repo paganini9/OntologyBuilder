@@ -48,6 +48,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 ROOT = "Entity"  # generic super-class used by the refinement passes
@@ -150,6 +151,32 @@ _PROMPT = (
     "Ontology so far (classes): {context}\n"
     "Competency question: {cq}\n"
 )
+
+
+def _frag_from_triples(triples: list[dict]) -> dict:
+    """Convert shared-extractor triples into the same draft fragment shape the
+    mock path produces (classes + object_properties{name,domain,range}).
+
+    Subject/object become classes; relation becomes an object property whose
+    domain/range are the subject/object classes. Insertion order is preserved so
+    the downstream (identical) self-critique + refinement passes are stable.
+    """
+    classes: list[str] = []
+    object_properties: list[dict] = []
+    for t in triples:
+        s, r, o = t["subject"], t["relation"], t["object"]
+        for c in (s, o):
+            if c not in classes:
+                classes.append(c)
+        prop = {"name": r, "domain": s, "range": o}
+        if prop not in object_properties:
+            object_properties.append(prop)
+    return {
+        "classes": classes,
+        "object_properties": object_properties,
+        "data_properties": [],
+        "restrictions": [],
+    }
 
 
 def _read_cqs(input_dir: Path) -> list[str]:
@@ -391,16 +418,23 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     steps = []
     step_no = 0
     for cq in cqs:
-        context = ", ".join(model.classes) or "(empty)"
-        raw = llm.complete(
-            _PROMPT.format(cq=cq, context=context),
-            temperature=0.0, json_schema={"type": "object"},
-        )
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"classes": [], "object_properties": [],
-                    "data_properties": [], "restrictions": []}
+        # --- DRAFT unit = one CQ -------------------------------------------
+        if is_mock(llm):
+            # Deterministic mock path: UNCHANGED (golden-tested).
+            context = ", ".join(model.classes) or "(empty)"
+            raw = llm.complete(
+                _PROMPT.format(cq=cq, context=context),
+                temperature=0.0, json_schema={"type": "object"},
+            )
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"classes": [], "object_properties": [],
+                        "data_properties": [], "restrictions": []}
+        else:
+            # Real-LLM path: robust triple extraction -> same fragment shape.
+            triples = extract_triples(llm, cq)
+            frag = _frag_from_triples(triples)
 
         # --- phase 1: draft (record before critique, do NOT merge yet) ------
         draft_model = _Model()

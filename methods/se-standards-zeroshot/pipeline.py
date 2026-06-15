@@ -49,6 +49,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/standard#"
 
@@ -280,15 +281,30 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
         # Stage 2: candidate term mining (reported in the step).
         mined = _mine_terms(section_text)
 
-        # Stage 3: relation inference via the (mock) LLM.
-        raw = llm.complete(
-            _PROMPT.format(title=sec["title"], text=section_text),
-            temperature=0.0, json_schema={"type": "object"},
-        )
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"terms": [], "triples": []}
+        # Stage 3: relation inference. The UNIT is one section. For each section
+        # we produce a `frag` of {terms, triples}; downstream stages 4-5
+        # (normalize + cross-section alignment) are identical for both backends.
+        if is_mock(llm):
+            # MOCK: deterministic rule via the method's mock_responder. Unchanged.
+            raw = llm.complete(
+                _PROMPT.format(title=sec["title"], text=section_text),
+                temperature=0.0, json_schema={"type": "object"},
+            )
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"terms": [], "triples": []}
+        else:
+            # REAL backend: robust zero-shot triple extraction on the section
+            # text. Terms are derived from the triples' subjects/objects (plus the
+            # mined candidates) so a real model yields a non-empty ontology.
+            trips = extract_triples(llm, section_text)
+            term_seq: list[str] = []
+            for t in trips:
+                for e in (t["subject"], t["object"]):
+                    if e not in term_seq:
+                        term_seq.append(e)
+            frag = {"terms": term_seq, "triples": trips}
 
         added_c: list[str] = []
         added_o: list[dict] = []

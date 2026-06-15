@@ -40,6 +40,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/gptkb#"
 
@@ -86,6 +87,46 @@ _PROMPT = (
     "camelCase predicate and object is an entity or value).\n"
     "Entity: {entity}\n"
 )
+
+
+def _facts_for(llm, entity: str) -> list[tuple[str, str]]:
+    """Return an entity's facts as [(relation, object)] for either backend.
+
+    MOCK: keep the EXACT built-in knowledge-table lookup (via mock_responder /
+    _PROMPT), so the deterministic golden output is unchanged.
+
+    REAL: ask the model to recall, from its OWN parametric knowledge, triples
+    whose subject is this entity. GPTKB's whole point is that the model is the
+    corpus, so we use the model's recalled triples as this entity's facts. The
+    returned (relation, object) pairs feed the SAME recursion / visited-dedup /
+    consolidation logic as the mock path.
+    """
+    if is_mock(llm):
+        raw = llm.complete(_PROMPT.format(entity=entity), temperature=0.0,
+                           json_schema={"type": "object"})
+        try:
+            ans = json.loads(raw)
+        except json.JSONDecodeError:
+            ans = {"entity": entity, "facts": []}
+        facts = []
+        for fact in ans.get("facts", []):
+            rel, obj = fact.get("relation", ""), fact.get("object", "")
+            if rel and obj:
+                facts.append((rel, obj))
+        return facts
+
+    # REAL backend: materialise the model's parametric knowledge about `entity`.
+    triples = extract_triples(
+        llm,
+        f"Facts about {entity}: list (subject, relation, object) triples where "
+        f"subject is {entity}.",
+    )
+    facts = []
+    for t in triples:
+        rel, obj = t.get("relation", ""), t.get("object", "")
+        if rel and obj:
+            facts.append((rel, obj))
+    return facts
 
 
 def _read_seeds(input_dir: Path) -> list[str]:
@@ -189,17 +230,13 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
             continue
         visited.add(entity)
 
-        raw = llm.complete(_PROMPT.format(entity=entity), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            ans = json.loads(raw)
-        except json.JSONDecodeError:
-            ans = {"entity": entity, "facts": []}
+        # Per expanded entity: mock -> built-in knowledge table; real -> the
+        # model recalls its own facts. Both yield (relation, object) pairs that
+        # flow through the SAME recursion / visited-dedup / consolidation below.
+        facts = _facts_for(llm, entity)
 
         added_e, added_r = [], []
-        for fact in ans.get("facts", []):
-            obj = fact.get("object", "")
-            rel = fact.get("relation", "")
+        for rel, obj in facts:
             if not obj or not rel:
                 continue
             if model.add_entity(obj):

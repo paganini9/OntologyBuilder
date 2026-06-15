@@ -12,6 +12,10 @@ from typing import Optional
 
 _MODEL = os.getenv("HF_MODEL", "Qwen/Qwen2.5-1.5B-Instruct")
 
+# Process-level cache: load each model once per process and reuse across every
+# get_backend("hf_local") call / pipeline run in the same process.
+_PIPES: dict = {}
+
 
 class HFLocalBackend:
     name = "hf_local"
@@ -30,16 +34,20 @@ class HFLocalBackend:
 
     def _ensure(self):
         if self._pipe is None:
-            import torch
-            from transformers import pipeline
+            if self._model_id in _PIPES:
+                self._pipe = _PIPES[self._model_id]
+            else:
+                import torch
+                from transformers import pipeline
 
-            use_cuda = torch.cuda.is_available()
-            self._pipe = pipeline(
-                "text-generation",
-                model=self._model_id,
-                device_map="auto" if use_cuda else None,
-                torch_dtype="auto",
-            )
+                use_cuda = torch.cuda.is_available()
+                self._pipe = pipeline(
+                    "text-generation",
+                    model=self._model_id,
+                    device_map="auto" if use_cuda else None,
+                    torch_dtype="auto",
+                )
+                _PIPES[self._model_id] = self._pipe
         return self._pipe
 
     def complete(
@@ -57,7 +65,7 @@ class HFLocalBackend:
         messages.append({"role": "user", "content": prompt})
         out = pipe(
             messages,
-            max_new_tokens=512,
+            max_new_tokens=1024,
             do_sample=temperature > 0,
             temperature=temperature if temperature > 0 else None,
             return_full_text=False,

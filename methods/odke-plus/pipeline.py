@@ -38,9 +38,12 @@ Outputs (out_dir):
     manifest.json   - summary (backend, counts, file list)
 
 The LLM step is abstracted via backend.llm.get_backend; MOCK is deterministic so
-the output is reproducible and testable. With a real api backend an extraction
-LLM proposes candidates and a separate verification LLM grounds them; with no
-key it auto-falls back to MOCK.
+the output is reproducible and testable. With a real backend the extraction LLM
+(stage 3, via backend.llm.extract.extract_triples) proposes candidate triples
+from the retrieved evidence, and the grounder (stage 4) applies the SAME
+deterministic co-occurrence rule used by MOCK to keep only evidence-supported
+candidates - so the final graph is real, non-empty when grounded, and verified
+the same way for both paths. With no key it auto-falls back to MOCK.
 """
 from __future__ import annotations
 
@@ -57,6 +60,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/odke#"
 
@@ -322,20 +326,39 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     })
 
     # --- Stage 3: hybrid-extractor -----------------------------------------
+    # MOCK: keep the exact deterministic candidate extraction (golden-tested).
+    # REAL: let the shared real-LLM helper extract candidate triples from the
+    #       retrieved evidence text. Either way the candidates then flow into
+    #       the UNCHANGED grounder (Stage 4), whose rule keeps only triples
+    #       whose subject AND object co-occur in the evidence.
     candidates: list[dict] = []
-    for e in entities:
-        prompt = _EXTRACT_PROMPT.format(
-            entity=e, slots=", ".join(slots[e]),
-            sentences="\n".join(retrieved[e]) or "(none)")
-        raw = llm.complete(prompt, temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            cands = json.loads(raw).get("candidates", [])
-        except json.JSONDecodeError:
-            cands = []
-        for c in cands:
-            if c not in candidates:
-                candidates.append(c)
+    if is_mock(llm):
+        for e in entities:
+            prompt = _EXTRACT_PROMPT.format(
+                entity=e, slots=", ".join(slots[e]),
+                sentences="\n".join(retrieved[e]) or "(none)")
+            raw = llm.complete(prompt, temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                cands = json.loads(raw).get("candidates", [])
+            except json.JSONDecodeError:
+                cands = []
+            for c in cands:
+                if c not in candidates:
+                    candidates.append(c)
+    else:
+        # Real backend: extract per entity from its retrieved evidence (fall
+        # back to the full evidence text when retrieval found nothing for it),
+        # so candidate subjects/objects are anchored to evidence the grounder
+        # can later verify against.
+        for e in entities:
+            text = "\n".join(retrieved[e]) or evidence
+            for t in extract_triples(llm, text):
+                cand = {"subject": t["subject"],
+                        "relation": t["relation"],
+                        "object": t["object"]}
+                if cand not in candidates:
+                    candidates.append(cand)
     steps.append({
         "step": 3,
         "stage": "hybrid-extractor",
@@ -345,18 +368,31 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     })
 
     # --- Stage 4: grounder (2nd-pass verification) -------------------------
+    # The grounder is the generation-verification separation: it runs the SAME
+    # deterministic rule for BOTH paths - keep a candidate only if its subject
+    # AND object co-occur in the evidence text, drop otherwise. On the MOCK
+    # backend this is routed through llm.complete -> mock_responder (golden-
+    # tested); on a REAL backend we apply the identical rule directly (the
+    # verdict must not depend on a stochastic LLM), so the real-extracted
+    # candidates are filtered exactly as the mock ones are.
     kept: list[dict] = []
     dropped: list[dict] = []
     if candidates:
-        prompt = _VERIFY_PROMPT.format(
-            evidence=evidence,
-            candidates=json.dumps(candidates, ensure_ascii=False))
-        raw = llm.complete(prompt, temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            verdicts = json.loads(raw).get("verdicts", [])
-        except json.JSONDecodeError:
-            verdicts = []
+        if is_mock(llm):
+            prompt = _VERIFY_PROMPT.format(
+                evidence=evidence,
+                candidates=json.dumps(candidates, ensure_ascii=False))
+            raw = llm.complete(prompt, temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                verdicts = json.loads(raw).get("verdicts", [])
+            except json.JSONDecodeError:
+                verdicts = []
+        else:
+            verdicts = _verify_from_prompt(_VERIFY_PROMPT.format(
+                evidence=evidence,
+                candidates=json.dumps(candidates, ensure_ascii=False))
+            ).get("verdicts", [])
         for c, v in zip(candidates, verdicts):
             entry = {**c, "reason": v.get("reason", "")}
             (kept if v.get("keep") else dropped).append(entry)

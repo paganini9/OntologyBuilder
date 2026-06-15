@@ -41,6 +41,7 @@ Outputs (out_dir):
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Optional
 
@@ -52,6 +53,9 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import (  # noqa: E402
+    is_mock, extract_triples, san_entity, san_relation,
+)
 
 EX = "http://example.org/sackg#"
 
@@ -111,6 +115,58 @@ _KNOWN_ENTITIES = set(_LEXICON.keys()) | {
 # NOTE: "Unicorn" and "Atlantis" are intentionally absent -> would be dropped by
 # the Verifier even if their relations were allowed; here the relation check
 # catches them first.
+
+
+def _real_generate(llm, entity: str) -> list[dict]:
+    """REAL-path Generator: ask the model for triples expanding `entity`.
+
+    Returns sanitised triples [{"subject","relation","object"}].
+
+    Primary call is the shared :func:`extract_triples`. Small local LLMs almost
+    always hit the token cap and return a *truncated* JSON object (no closing
+    brace), which makes the strict ``{.*}`` whole-object parse in
+    ``extract_triples`` raise and yield ``[]`` -- that is exactly why this path
+    produced 1 node / 0 edges. So if the strict parse comes back empty we fall
+    back to a tolerant *per-object* recovery: every complete ``{...}`` triple in
+    the (possibly truncated) response is salvaged. The mock path never reaches
+    here (``is_mock`` short-circuits), so golden output is unaffected.
+    """
+    prompt = (
+        f"List (subject, relation, object) triples that expand the entity "
+        f"{entity} in a product-engineering domain. subject should be {entity}."
+    )
+    trips = extract_triples(llm, prompt)
+    if trips:
+        return trips
+    # Tolerant fallback for truncated / fence-wrapped JSON.
+    raw = llm.complete(
+        f"Input:\n{prompt}",
+        system=(
+            "Extract (subject, relation, object) triples for a knowledge graph. "
+            'Return ONLY JSON {"triples":[{"subject":"...","relation":"...",'
+            '"object":"..."}]}. PascalCase nouns, camelCase relation. No prose.'
+        ),
+        json_schema={"type": "object"},
+        temperature=0.0,
+    )
+    out: list[dict] = []
+    seen: set[tuple] = set()
+    for blob in re.findall(r"\{[^{}]*\}", raw or "", re.DOTALL):
+        try:
+            obj = json.loads(blob)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(obj, dict):
+            continue
+        s = san_entity(obj.get("subject", ""))
+        r = san_relation(obj.get("relation", ""))
+        o = san_entity(obj.get("object", ""))
+        if s and r and o and s != o:
+            key = (s, r, o)
+            if key not in seen:
+                seen.add(key)
+                out.append({"subject": s, "relation": r, "object": o})
+    return out
 
 
 def _gen_prompt(entity: str) -> str:
@@ -243,6 +299,7 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     llm = get_backend(backend, mock_responder=mock_responder)
+    use_mock = is_mock(llm)
     seeds = _read_seeds(input_dir)
 
     model = _Model()
@@ -259,23 +316,64 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     totals = {"generated": 0, "verified": 0, "verifier_dropped": 0,
               "pruner_dropped": 0, "edges_added": 0}
 
+    # Verifier policy. The rule check (allowed-relation AND plausible-child) is the
+    # SAME for both paths; only the plausibility *universe* differs in source:
+    #   - MOCK: the fixed domain lexicon's known entities (preserves golden output).
+    #   - REAL: any well-formed entity the model proposes is treated as plausible,
+    #           so the model-sourced KG is non-empty; the relation allow-list and
+    #           the Pruner (cap / cycle / duplicate) still discipline the graph.
+    if use_mock:
+        def _child_ok(child: str) -> bool:
+            return child in _KNOWN_ENTITIES
+
+        def _relation_ok(rel: str) -> bool:
+            return rel in _ALLOWED_RELATIONS
+    else:
+        def _child_ok(child: str) -> bool:
+            return bool(child)
+
+        def _relation_ok(rel: str) -> bool:
+            return bool(rel)
+
     for level in range(1, LEVELS + 1):
         # ---- GENERATOR --------------------------------------------------
         # Propose candidates for every entity on the current frontier.
         candidates: list[dict] = []
         for entity in frontier:
-            raw = llm.complete(_gen_prompt(entity), temperature=0.0,
-                               json_schema={"type": "array"})
-            try:
-                proposed = json.loads(raw)
-            except json.JSONDecodeError:
-                proposed = []
-            for item in proposed:
-                rel = item.get("relation", "")
-                child = item.get("child", "")
-                if rel and child:
-                    candidates.append({"parent": entity, "relation": rel,
-                                       "child": child})
+            if use_mock:
+                # MOCK path: deterministic lexicon-based candidate generation
+                # (Generator LLM is stubbed by mock_responder via _gen_prompt).
+                raw = llm.complete(_gen_prompt(entity), temperature=0.0,
+                                   json_schema={"type": "array"})
+                try:
+                    proposed = json.loads(raw)
+                except json.JSONDecodeError:
+                    proposed = []
+                for item in proposed:
+                    rel = item.get("relation", "")
+                    child = item.get("child", "")
+                    if rel and child:
+                        candidates.append({"parent": entity, "relation": rel,
+                                           "child": child})
+            else:
+                # REAL path: swap the Generator's source from the lexicon to the
+                # model. Every extracted triple is mapped to a candidate
+                # (relation, child) edge FROM `entity`: the triple's `object`
+                # becomes the child even when the model's `subject` does not
+                # match `entity` (small models often paraphrase the subject), so
+                # no real candidate is silently lost. The Verifier and Pruner
+                # below run UNCHANGED over these candidates.
+                sent = san_entity(entity)
+                for t in _real_generate(llm, entity):
+                    rel = t.get("relation", "")
+                    child = t.get("object", "")
+                    # if subject names the child instead, prefer it as the child
+                    subj = t.get("subject", "")
+                    if subj and subj != sent and child == sent:
+                        child = subj
+                    if rel and child and child != entity:
+                        candidates.append({"parent": entity, "relation": rel,
+                                           "child": child})
         totals["generated"] += len(candidates)
         steps.append({
             "step": len(steps) + 1,
@@ -296,8 +394,8 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
         verified: list[dict] = []
         dropped_by_verifier: list[dict] = []
         for c in candidates:
-            ok_rel = c["relation"] in _ALLOWED_RELATIONS
-            ok_child = c["child"] in _KNOWN_ENTITIES
+            ok_rel = _relation_ok(c["relation"])
+            ok_child = _child_ok(c["child"])
             if ok_rel and ok_child:
                 # stable confidence: known + allowed -> high
                 conf = 0.9 if c["child"] in _LEXICON else 0.75

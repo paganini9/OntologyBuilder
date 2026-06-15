@@ -37,6 +37,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -214,6 +215,37 @@ def _to_ttl(model: _Model) -> str:
     return g.serialize(format="turtle")
 
 
+def _triples_to_fragment(triples: list[dict]) -> dict:
+    """Map real-LLM (subject, relation, object) triples to the SAME fragment
+    shape the mock path emits, so the downstream merge/step/emit code is shared.
+
+    Each triple becomes:
+      - subject  -> a class
+      - object   -> a class
+      - relation -> an object_property {name, domain=subject, range=object}
+    Names arrive already URI-sanitised (PascalCase / camelCase) from
+    backend.llm.extract. Order is preserved for deterministic output.
+    """
+    classes: list[str] = []
+    object_properties: list[dict] = []
+    for t in triples:
+        s, r, o = t.get("subject"), t.get("relation"), t.get("object")
+        if not (s and r and o):
+            continue
+        for c in (s, o):
+            if c not in classes:
+                classes.append(c)
+        op = {"name": r, "domain": s, "range": o}
+        if op not in object_properties:
+            object_properties.append(op)
+    return {
+        "classes": classes,
+        "object_properties": object_properties,
+        "data_properties": [],
+        "restrictions": [],
+    }
+
+
 def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     input_dir = Path(input_dir)
     out_dir = Path(out_dir)
@@ -222,16 +254,25 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     llm = get_backend(backend, mock_responder=mock_responder)
     cqs = _read_cqs(input_dir)
 
+    mock = is_mock(llm)
     model = _Model()
     steps = []
     for i, cq in enumerate(cqs, 1):
-        raw = llm.complete(_PROMPT.format(cq=cq), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"classes": [], "object_properties": [],
-                    "data_properties": [], "restrictions": []}
+        if mock:
+            # MOCK path: unchanged deterministic per-CQ fragment (golden-tested).
+            raw = llm.complete(_PROMPT.format(cq=cq), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"classes": [], "object_properties": [],
+                        "data_properties": [], "restrictions": []}
+        else:
+            # REAL path: use the actual model via the shared triple extractor,
+            # then shape the triples into the SAME fragment dict the merge code
+            # below consumes (subject/object -> classes; relation -> object
+            # property with domain=subject, range=object).
+            frag = _triples_to_fragment(extract_triples(llm, cq))
 
         added_c, added_o, added_d = [], [], []
         for c in frag.get("classes", []):

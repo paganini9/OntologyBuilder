@@ -51,6 +51,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -277,6 +278,82 @@ def _doc_label(distilled: str) -> str:
     return head if len(head) <= 80 else head[:77] + "..."
 
 
+# ---------------------------------------------------------------------------
+# Shared Module 4: Graph Integrator. Both the MOCK heuristic and the REAL-LLM
+# path produce (entities, relations) for a document and funnel them through
+# THIS single integrator, so cross-document semantic de-dup is identical for
+# both backends. `relations` are dicts {name, domain, range}.
+# ---------------------------------------------------------------------------
+def _integrate(model: "_Model", ents: list[str], rels: list[dict]) -> dict:
+    added_c: list[str] = []
+    for e in ents:
+        # semantic de-dup against the GLOBAL accumulated entity set
+        if model.add_class(e):
+            added_c.append(e)
+
+    added_o: list[dict] = []
+    for r in rels:
+        for k in ("domain", "range"):
+            # endpoint may be a brand-new entity only seen in a relation
+            if model.add_class(r.get(k, "")):
+                added_c.append(model.canonical(r[k]))
+        edge = {"name": r["name"],
+                "domain": model.canonical(r["domain"]),
+                "range": model.canonical(r["range"])}
+        if model.add_obj(edge):
+            added_o.append(edge)
+
+    return {"classes": added_c, "object_properties": added_o,
+            "data_properties": []}
+
+
+def _extract_mock(llm, doc: str) -> tuple[str, list[str], list[dict]]:
+    """MOCK path: distill -> entities -> relations via the deterministic
+    mock_responder modules (EXACTLY the original logic)."""
+    # --- Module 1: Document Distiller ------------------------------------
+    raw = llm.complete(_DISTILL_PROMPT.format(doc=doc), temperature=0.0,
+                       json_schema={"type": "object"})
+    try:
+        distilled = json.loads(raw).get("distilled", _distill(doc))
+    except json.JSONDecodeError:
+        distilled = _distill(doc)
+
+    # --- Module 2: Incremental Entity Extractor --------------------------
+    raw = llm.complete(_ENTITY_PROMPT.format(doc=distilled),
+                       temperature=0.0, json_schema={"type": "object"})
+    try:
+        ents = json.loads(raw).get("entities", [])
+    except json.JSONDecodeError:
+        ents = []
+
+    # --- Module 3: Incremental Relation Extractor ------------------------
+    payload = json.dumps({"distilled": distilled}, ensure_ascii=False)
+    raw = llm.complete(_RELATION_PROMPT.format(payload=payload),
+                       temperature=0.0, json_schema={"type": "object"})
+    try:
+        rels = json.loads(raw).get("object_properties", [])
+    except json.JSONDecodeError:
+        rels = []
+    return distilled, ents, rels
+
+
+def _extract_real(llm, doc: str) -> tuple[str, list[str], list[dict]]:
+    """REAL-LLM path: the model extracts (subject, relation, object) triples for
+    the document; we derive entities + {name,domain,range} relations from them,
+    then feed the SAME incremental integrator the mock path uses."""
+    distilled = _distill(doc)
+    trips = extract_triples(llm, distilled)
+    ents: list[str] = []
+    rels: list[dict] = []
+    for t in trips:
+        s, o = t["subject"], t["object"]
+        for e in (s, o):
+            if e not in ents:
+                ents.append(e)
+        rels.append({"name": t["relation"], "domain": s, "range": o})
+    return distilled, ents, rels
+
+
 def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     input_dir = Path(input_dir)
     out_dir = Path(out_dir)
@@ -288,59 +365,26 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     model = _Model()
     steps: list[dict] = []
 
+    mock = is_mock(llm)
     for i, doc in enumerate(documents, 1):
-        # --- Module 1: Document Distiller --------------------------------
-        raw = llm.complete(_DISTILL_PROMPT.format(doc=doc), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            distilled = json.loads(raw).get("distilled", _distill(doc))
-        except json.JSONDecodeError:
-            distilled = _distill(doc)
+        # Modules 1-3 differ by backend; the MOCK heuristic and the REAL model
+        # each produce (distilled, entities, relations) for this document.
+        if mock:
+            distilled, ents, rels = _extract_mock(llm, doc)
+        else:
+            distilled, ents, rels = _extract_real(llm, doc)
 
-        # --- Module 2: Incremental Entity Extractor ----------------------
-        raw = llm.complete(_ENTITY_PROMPT.format(doc=distilled),
-                           temperature=0.0, json_schema={"type": "object"})
-        try:
-            ents = json.loads(raw).get("entities", [])
-        except json.JSONDecodeError:
-            ents = []
-        added_c: list[str] = []
-        for e in ents:
-            # semantic de-dup against the GLOBAL accumulated entity set
-            if model.add_class(e):
-                added_c.append(e)
+        # --- Module 4: Graph Integrator (SHARED) -------------------------
+        # Cross-document semantic de-dup + edge merge, identical for both paths.
+        added = _integrate(model, ents, rels)
 
-        # --- Module 3: Incremental Relation Extractor --------------------
-        payload = json.dumps({"distilled": distilled}, ensure_ascii=False)
-        raw = llm.complete(_RELATION_PROMPT.format(payload=payload),
-                           temperature=0.0, json_schema={"type": "object"})
-        try:
-            rels = json.loads(raw).get("object_properties", [])
-        except json.JSONDecodeError:
-            rels = []
-
-        # --- Module 4: Graph Integrator ----------------------------------
-        # Map relation endpoints onto canonical (deduped) classes, ensure they
-        # exist, then merge edges dropping duplicates.
-        added_o: list[dict] = []
-        for r in rels:
-            for k in ("domain", "range"):
-                # endpoint may be a brand-new entity only seen in a relation
-                if model.add_class(r.get(k, "")):
-                    added_c.append(model.canonical(r[k]))
-            edge = {"name": r["name"],
-                    "domain": model.canonical(r["domain"]),
-                    "range": model.canonical(r["range"])}
-            if model.add_obj(edge):
-                added_o.append(edge)
-
+        # --- Shared step emit (cqbycq-compatible schema) -----------------
         steps.append({
             "step": i,
             "cq": _doc_label(distilled),
             "document": i,
             "distilled": distilled,
-            "added": {"classes": added_c, "object_properties": added_o,
-                      "data_properties": []},
+            "added": added,
             "graph": model.to_graph(),
         })
 

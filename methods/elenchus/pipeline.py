@@ -50,6 +50,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/elenchus#"
 
@@ -270,25 +271,36 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     rejected: list[dict] = []
     steps: list[dict] = []
 
+    use_mock = is_mock(llm)
+
     for i, claim in enumerate(claims, 1):
         # --- PROVER asserts a candidate triple ---
-        raw = llm.complete(_PROVE_PROMPT.format(claim=claim), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            cand = json.loads(raw)
-        except json.JSONDecodeError:
-            cand = {"subject": "", "relation": "", "object": ""}
+        if use_mock:
+            # MOCK: deterministic prover parse (routed through mock_responder).
+            raw = llm.complete(_PROVE_PROMPT.format(claim=claim), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                cand = json.loads(raw)
+            except json.JSONDecodeError:
+                cand = {"subject": "", "relation": "", "object": ""}
+        else:
+            # REAL: extract triples with the shared real-LLM helper; the PROVER's
+            # candidate is the FIRST triple (none -> unparseable, skeptic rejects).
+            trips = extract_triples(llm, claim)
+            if trips:
+                t0 = trips[0]
+                cand = {"subject": t0["subject"], "relation": t0["relation"],
+                        "object": t0["object"]}
+            else:
+                cand = {"subject": "", "relation": "", "object": ""}
 
         # --- SKEPTIC challenges it against the KB so far ---
-        raw_v = llm.complete(
+        # Deterministic for BOTH paths: the accept/reject rules (unparseable /
+        # contradiction / duplicate) govern the real-extracted candidate too.
+        verdict = _skeptic_from_prompt(
             _SKEPTIC_PROMPT.format(
                 candidate=json.dumps(cand, ensure_ascii=False),
-                kb=json.dumps(kb, ensure_ascii=False)),
-            temperature=0.0, json_schema={"type": "object"})
-        try:
-            verdict = json.loads(raw_v)
-        except json.JSONDecodeError:
-            verdict = {"verdict": "rejected", "reason": "skeptic parse error"}
+                kb=json.dumps(kb, ensure_ascii=False)))
 
         v = verdict.get("verdict", "rejected")
         reason = verdict.get("reason", "")

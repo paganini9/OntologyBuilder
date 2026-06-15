@@ -40,6 +40,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/codekg#"
 
@@ -336,20 +337,32 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     raw_sentences = _split_sentences(text)
     resolved = resolve_coreference(raw_sentences)
 
+    mock = is_mock(llm)
     model = _Model()
     steps = []
     for i, ((sentence, changed), raw) in enumerate(zip(resolved, raw_sentences), 1):
         complexity, profile = classify_complexity(sentence)
-        prompt = _PROMPT.format(profile=profile, complexity=complexity,
-                                sentence=sentence)
-        raw_out = llm.complete(prompt, temperature=0.0,
-                               json_schema={"type": "object"})
-        try:
-            parsed = json.loads(raw_out)
-            triples = parsed.get("triples", parsed) if isinstance(parsed, dict) \
-                else parsed
-        except json.JSONDecodeError:
-            triples = []
+        if mock:
+            # ---- MOCK path: unchanged deterministic heuristic via mock_responder.
+            prompt = _PROMPT.format(profile=profile, complexity=complexity,
+                                    sentence=sentence)
+            raw_out = llm.complete(prompt, temperature=0.0,
+                                   json_schema={"type": "object"})
+            try:
+                parsed = json.loads(raw_out)
+                triples = parsed.get("triples", parsed) \
+                    if isinstance(parsed, dict) else parsed
+            except json.JSONDecodeError:
+                triples = []
+        else:
+            # ---- REAL path: the actual model extracts (subject,relation,object)
+            # from the coreference-resolved sentence; map to the same triple
+            # shape the merge code below consumes (entity_1/relationship/entity_2).
+            triples = [
+                {"entity_1": t["subject"], "relationship": t["relation"],
+                 "entity_2": t["object"]}
+                for t in extract_triples(llm, sentence)
+            ]
 
         added_c, added_o = [], []
         for tr in triples:

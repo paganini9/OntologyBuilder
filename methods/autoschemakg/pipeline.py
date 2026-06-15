@@ -42,6 +42,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/autoschemakg#"
 
@@ -275,18 +276,30 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     model = _Model()
     steps = []
 
+    mock = is_mock(llm)
+
     # ---- Stage A: triple extraction (one step per sentence) ----------------
+    # Unit of extraction is the SENTENCE. MOCK keeps the deterministic heuristic
+    # responder + JSON parsing; a REAL backend uses the shared robust
+    # prompt/parse helper. Both paths feed the SAME graph-update logic below, so
+    # Stage B (schema induction) operates identically on the accumulated
+    # instances regardless of backend.
     for i, sent in enumerate(sentences, 1):
-        raw = llm.complete(_PROMPT.format(sent=sent), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"triples": []}
+        if mock:
+            raw = llm.complete(_PROMPT.format(sent=sent), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"triples": []}
+            triples = frag.get("triples", [])
+        else:
+            # Real backend: robust extraction returns sanitised triples.
+            triples = extract_triples(llm, sent)
 
         added_inst: list[str] = []
         added_rel: list[dict] = []
-        for t in frag.get("triples", []):
+        for t in triples:
             if not all(k in t for k in ("subject", "relation", "object")):
                 continue
             for k in ("subject", "object"):

@@ -43,6 +43,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -273,53 +274,88 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     seed_classes = _load_seed(input_dir, model)
     steps: list[dict] = []
 
+    # The LLM stages produce two parallel structures, then stages 3-4 (schema
+    # alignment + conflict resolution) run UNCHANGED over them for both paths:
+    #   discovered  - per-sentence raw entity names (drives alignment reporting)
+    #   raw_edges   - candidate object-property edges (drives conflict reporting)
+    # MOCK keeps the deterministic per-sentence agent calls; a REAL backend uses
+    # the shared robust triple extractor over the whole text instead.
+    discovered: list[list[str]] = []
+    raw_edges: list[dict] = []
+    real_triples: list[dict] = []
+    if not is_mock(llm):
+        real_triples = extract_triples(llm, text)
+
     # ---- Stage 1: entity-discovery --------------------------------------
-    discovered: list[list[str]] = []   # per-sentence raw entity names
     added_entities: list[str] = []
-    for s in sentences:
-        raw = llm.complete(_ENTITY_PROMPT.format(sentence=s),
-                           temperature=0.0, json_schema={"type": "object"})
-        try:
-            ents = json.loads(raw).get("entities", [])
-        except json.JSONDecodeError:
-            ents = []
-        discovered.append(ents)
-        for e in ents:
-            # provisionally add as new class (alignment refines later, but
-            # add_class already aligns case/number against existing classes)
-            if model.add_class(e, "new"):
-                added_entities.append(e)
+    if is_mock(llm):
+        for s in sentences:
+            raw = llm.complete(_ENTITY_PROMPT.format(sentence=s),
+                               temperature=0.0, json_schema={"type": "object"})
+            try:
+                ents = json.loads(raw).get("entities", [])
+            except json.JSONDecodeError:
+                ents = []
+            discovered.append(ents)
+            for e in ents:
+                # provisionally add as new class (alignment refines later, but
+                # add_class already aligns case/number against existing classes)
+                if model.add_class(e, "new"):
+                    added_entities.append(e)
+    else:
+        # Real backend: the triple subjects/objects ARE the discovered entities.
+        # One pseudo-"sentence" per triple keeps the discovered[] shape so the
+        # schema-alignment stage below works identically.
+        for t in real_triples:
+            ents = [t["subject"], t["object"]]
+            discovered.append(ents)
+            for e in ents:
+                if model.add_class(e, "new"):
+                    added_entities.append(e)
     steps.append({
         "step": 1, "stage": "entity-discovery", "cq": "(discover)",
         "agent": "entity-discovery",
         "added": {"classes": added_entities, "object_properties": []},
         "note": f"discovered {len(added_entities)} new entit"
                 f"{'y' if len(added_entities) == 1 else 'ies'} from "
-                f"{len(sentences)} sentence(s)",
+                f"{len(sentences)} sentence(s)"
+                + ("" if is_mock(llm)
+                   else f" via {len(real_triples)} extracted triple(s)"),
         "graph": model.to_graph(),
     })
 
     # ---- Stage 2: relation-extraction -----------------------------------
-    raw_edges: list[dict] = []
     added_rel: list[dict] = []
-    for s, ents in zip(sentences, discovered):
-        payload = json.dumps({"sentence": s, "entities": ents},
-                             ensure_ascii=False)
-        raw = llm.complete(_RELATION_PROMPT.format(payload=payload),
-                           temperature=0.0, json_schema={"type": "object"})
-        try:
-            rel = json.loads(raw).get("object_property")
-        except json.JSONDecodeError:
-            rel = None
-        if not rel:
-            continue
-        edge = {"name": rel["name"],
-                "domain": model.canonical(rel["domain"]),
-                "range": model.canonical(rel["range"]),
-                "origin": "new"}
-        raw_edges.append(edge)
-        if model.add_obj(edge):
-            added_rel.append(edge)
+    if is_mock(llm):
+        for s, ents in zip(sentences, discovered):
+            payload = json.dumps({"sentence": s, "entities": ents},
+                                 ensure_ascii=False)
+            raw = llm.complete(_RELATION_PROMPT.format(payload=payload),
+                               temperature=0.0, json_schema={"type": "object"})
+            try:
+                rel = json.loads(raw).get("object_property")
+            except json.JSONDecodeError:
+                rel = None
+            if not rel:
+                continue
+            edge = {"name": rel["name"],
+                    "domain": model.canonical(rel["domain"]),
+                    "range": model.canonical(rel["range"]),
+                    "origin": "new"}
+            raw_edges.append(edge)
+            if model.add_obj(edge):
+                added_rel.append(edge)
+    else:
+        # Real backend: each extracted triple is already a relation; canonicalize
+        # its endpoints against seed/accumulated classes (same as mock edges).
+        for t in real_triples:
+            edge = {"name": t["relation"],
+                    "domain": model.canonical(t["subject"]),
+                    "range": model.canonical(t["object"]),
+                    "origin": "new"}
+            raw_edges.append(edge)
+            if model.add_obj(edge):
+                added_rel.append(edge)
     steps.append({
         "step": 2, "stage": "relation-extraction", "cq": "(extract)",
         "agent": "relation-extraction",

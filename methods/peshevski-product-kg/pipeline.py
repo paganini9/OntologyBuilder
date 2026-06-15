@@ -49,6 +49,7 @@ if str(_IMPL_ROOT) not in sys.path:
     sys.path.insert(0, str(_IMPL_ROOT))
 
 from backend.llm import get_backend  # noqa: E402
+from backend.llm.extract import is_mock, extract_triples  # noqa: E402
 
 EX = "http://example.org/product#"
 
@@ -165,6 +166,43 @@ _PROMPT = (
     "(list of {{name, domain, datatype}}).\n"
     "Product description: {desc}\n"
 )
+
+
+def _triples_to_fragment(triples: list[dict]) -> dict:
+    """Map real-LLM (subject, relation, object) triples into the SAME creation
+    fragment dict the mock path emits, so the downstream merge / refinement /
+    population code is shared and unchanged.
+
+    Each triple becomes:
+      - subject  -> a class
+      - object   -> a class
+      - relation -> an object_property {name, domain=subject, range=object}
+    main_class is the first subject seen (the product's primary class), which
+    Stage 3 uses to instantiate the per-product individual. Names arrive already
+    URI-sanitised (PascalCase / camelCase) from backend.llm.extract; order is
+    preserved for deterministic output. data_properties may stay empty.
+    """
+    classes: list[str] = []
+    object_properties: list[dict] = []
+    main_class = ""
+    for t in triples:
+        s, r, o = t.get("subject"), t.get("relation"), t.get("object")
+        if not (s and r and o):
+            continue
+        if not main_class:
+            main_class = s
+        for c in (s, o):
+            if c not in classes:
+                classes.append(c)
+        op = {"name": r, "domain": s, "range": o}
+        if op not in object_properties:
+            object_properties.append(op)
+    return {
+        "main_class": main_class,
+        "classes": classes,
+        "object_properties": object_properties,
+        "data_properties": [],
+    }
 
 
 def _read_products(input_dir: Path) -> list[str]:
@@ -421,6 +459,7 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     llm = get_backend(backend, mock_responder=mock_responder)
+    mock = is_mock(llm)
     products = _read_products(input_dir)
 
     model = _Model()
@@ -430,13 +469,20 @@ def run(input_dir, out_dir, backend: Optional[str] = None) -> dict:
     # ---- Stage 1: creation / expansion (one step per product) --------------
     frags: list[dict] = []
     for desc in products:
-        raw = llm.complete(_PROMPT.format(desc=desc), temperature=0.0,
-                           json_schema={"type": "object"})
-        try:
-            frag = json.loads(raw)
-        except json.JSONDecodeError:
-            frag = {"main_class": "", "classes": [],
-                    "object_properties": [], "data_properties": []}
+        if mock:
+            # MOCK path: unchanged deterministic per-product fragment (golden).
+            raw = llm.complete(_PROMPT.format(desc=desc), temperature=0.0,
+                               json_schema={"type": "object"})
+            try:
+                frag = json.loads(raw)
+            except json.JSONDecodeError:
+                frag = {"main_class": "", "classes": [],
+                        "object_properties": [], "data_properties": []}
+        else:
+            # REAL path: run the actual model via the shared triple extractor,
+            # then shape the triples into the SAME fragment dict the merge code
+            # below consumes (Stages 2 & 3 run unchanged on the result).
+            frag = _triples_to_fragment(extract_triples(llm, desc))
         frags.append(frag)
 
         added_c, added_o, added_d = _merge_fragment(model, frag)
