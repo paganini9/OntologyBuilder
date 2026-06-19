@@ -1,0 +1,6 @@
+The Chassis supports the Battery and the Motor.
+The Battery powers the Motor through a Controller.
+The Controller controls the Motor speed.
+The Housing protects them from dust and water.
+The Frame connects the Wheel to the Chassis.
+The Sensor uses the Controller for feedback.

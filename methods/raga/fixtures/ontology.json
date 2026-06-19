@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Chassi",
+        "label": "Chassi",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Battery",
+        "label": "Battery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Frame",
+        "label": "Frame",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Wheel",
+        "label": "Wheel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor",
+        "label": "Sensor",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Chassi-supports-Battery",
+        "source": "Chassi",
+        "target": "Battery",
+        "label": "supports"
+      }
+    },
+    {
+      "data": {
+        "id": "Chassi-supports-Motor",
+        "source": "Chassi",
+        "target": "Motor",
+        "label": "supports"
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-controls-Motor",
+        "source": "Controller",
+        "target": "Motor",
+        "label": "controls"
+      }
+    },
+    {
+      "data": {
+        "id": "Frame-connectsTo-Wheel",
+        "source": "Frame",
+        "target": "Wheel",
+        "label": "connectsTo"
+      }
+    },
+    {
+      "data": {
+        "id": "Frame-connectsTo-Chassi",
+        "source": "Frame",
+        "target": "Chassi",
+        "label": "connectsTo"
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor-uses-Controller",
+        "source": "Sensor",
+        "target": "Controller",
+        "label": "uses"
+      }
+    }
+  ]
+}

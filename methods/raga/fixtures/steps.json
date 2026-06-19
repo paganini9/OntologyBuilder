@@ -1,0 +1,670 @@
+[
+  {
+    "step": 1,
+    "cq": "The Chassis supports the Battery and the Motor.",
+    "read": {
+      "candidates": [
+        {
+          "subject": "Chassi",
+          "relation": "supports",
+          "object": "Battery"
+        },
+        {
+          "subject": "Chassi",
+          "relation": "supports",
+          "object": "Motor"
+        }
+      ]
+    },
+    "search": {
+      "existing_entities": [],
+      "matched": []
+    },
+    "verify": {
+      "kept": [
+        {
+          "subject": "Chassi",
+          "relation": "supports",
+          "object": "Battery",
+          "reason": "subject+object both anchored in sentence evidence"
+        },
+        {
+          "subject": "Chassi",
+          "relation": "supports",
+          "object": "Motor",
+          "reason": "subject+object both anchored in sentence evidence"
+        }
+      ],
+      "dropped": []
+    },
+    "constructed": [
+      {
+        "subject": "Chassi",
+        "relation": "supports",
+        "object": "Battery"
+      },
+      {
+        "subject": "Chassi",
+        "relation": "supports",
+        "object": "Motor"
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "The Battery powers the Motor through a Controller.",
+    "read": {
+      "candidates": []
+    },
+    "search": {
+      "existing_entities": [
+        "Chassi",
+        "Battery",
+        "Motor"
+      ],
+      "matched": []
+    },
+    "verify": {
+      "kept": [],
+      "dropped": []
+    },
+    "constructed": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "The Controller controls the Motor speed.",
+    "read": {
+      "candidates": [
+        {
+          "subject": "Controller",
+          "relation": "controls",
+          "object": "Motor"
+        }
+      ]
+    },
+    "search": {
+      "existing_entities": [
+        "Chassi",
+        "Battery",
+        "Motor"
+      ],
+      "matched": [
+        "Motor"
+      ]
+    },
+    "verify": {
+      "kept": [
+        {
+          "subject": "Controller",
+          "relation": "controls",
+          "object": "Motor",
+          "reason": "subject+object both anchored in sentence evidence"
+        }
+      ],
+      "dropped": []
+    },
+    "constructed": [
+      {
+        "subject": "Controller",
+        "relation": "controls",
+        "object": "Motor"
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-controls-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "controls"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "The Housing protects them from dust and water.",
+    "read": {
+      "candidates": [
+        {
+          "subject": "Housing",
+          "relation": "protects",
+          "object": "Them"
+        }
+      ]
+    },
+    "search": {
+      "existing_entities": [
+        "Chassi",
+        "Battery",
+        "Motor",
+        "Controller"
+      ],
+      "matched": []
+    },
+    "verify": {
+      "kept": [],
+      "dropped": [
+        {
+          "subject": "Housing",
+          "relation": "protects",
+          "object": "Them",
+          "reason": "object not anchored in sentence evidence (implied/pronoun)"
+        }
+      ]
+    },
+    "constructed": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-controls-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "controls"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "The Frame connects the Wheel to the Chassis.",
+    "read": {
+      "candidates": [
+        {
+          "subject": "Frame",
+          "relation": "connectsTo",
+          "object": "Wheel"
+        },
+        {
+          "subject": "Frame",
+          "relation": "connectsTo",
+          "object": "Chassi"
+        }
+      ]
+    },
+    "search": {
+      "existing_entities": [
+        "Chassi",
+        "Battery",
+        "Motor",
+        "Controller"
+      ],
+      "matched": [
+        "Chassi"
+      ]
+    },
+    "verify": {
+      "kept": [
+        {
+          "subject": "Frame",
+          "relation": "connectsTo",
+          "object": "Wheel",
+          "reason": "subject+object both anchored in sentence evidence"
+        },
+        {
+          "subject": "Frame",
+          "relation": "connectsTo",
+          "object": "Chassi",
+          "reason": "subject+object both anchored in sentence evidence"
+        }
+      ],
+      "dropped": []
+    },
+    "constructed": [
+      {
+        "subject": "Frame",
+        "relation": "connectsTo",
+        "object": "Wheel"
+      },
+      {
+        "subject": "Frame",
+        "relation": "connectsTo",
+        "object": "Chassi"
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-controls-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "controls"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-connectsTo-Wheel",
+            "source": "Frame",
+            "target": "Wheel",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-connectsTo-Chassi",
+            "source": "Frame",
+            "target": "Chassi",
+            "label": "connectsTo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "cq": "The Sensor uses the Controller for feedback.",
+    "read": {
+      "candidates": [
+        {
+          "subject": "Sensor",
+          "relation": "uses",
+          "object": "Controller"
+        }
+      ]
+    },
+    "search": {
+      "existing_entities": [
+        "Chassi",
+        "Battery",
+        "Motor",
+        "Controller",
+        "Frame",
+        "Wheel"
+      ],
+      "matched": [
+        "Controller"
+      ]
+    },
+    "verify": {
+      "kept": [
+        {
+          "subject": "Sensor",
+          "relation": "uses",
+          "object": "Controller",
+          "reason": "subject+object both anchored in sentence evidence"
+        }
+      ],
+      "dropped": []
+    },
+    "constructed": [
+      {
+        "subject": "Sensor",
+        "relation": "uses",
+        "object": "Controller"
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Chassi",
+            "label": "Chassi",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Battery",
+            "label": "Battery",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Frame",
+            "label": "Frame",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Wheel",
+            "label": "Wheel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Chassi-supports-Battery",
+            "source": "Chassi",
+            "target": "Battery",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Chassi-supports-Motor",
+            "source": "Chassi",
+            "target": "Motor",
+            "label": "supports"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-controls-Motor",
+            "source": "Controller",
+            "target": "Motor",
+            "label": "controls"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-connectsTo-Wheel",
+            "source": "Frame",
+            "target": "Wheel",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Frame-connectsTo-Chassi",
+            "source": "Frame",
+            "target": "Chassi",
+            "label": "connectsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-uses-Controller",
+            "source": "Sensor",
+            "target": "Controller",
+            "label": "uses"
+          }
+        }
+      ]
+    }
+  }
+]
