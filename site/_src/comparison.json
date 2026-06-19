@@ -124,6 +124,27 @@
       "paradigm": {"ko": "분류체계 backbone", "en": "Taxonomic backbone"},
       "distinct": {"ko": "관계 아닌 is-a 계층 end-to-end (코드 공개)", "en": "End-to-end is-a hierarchy (public code)"}
     },
+    "ontoekg": {
+      "input": {"ko": "자유 텍스트", "en": "Free text"},
+      "mechanism": {"ko": "추출(클래스·속성)→entailment 계층화", "en": "Extract (classes+props)→entailment hierarchy"},
+      "output_unit": {"ko": "클래스·속성 + 계층", "en": "Classes/props + hierarchy"},
+      "paradigm": {"ko": "2단계 엔터프라이즈 온톨로지", "en": "Two-phase enterprise ontology"},
+      "distinct": {"ko": "추출 + 함의 기반 subClassOf 동시", "en": "Extraction + entailment subClassOf together"}
+    },
+    "raga": {
+      "input": {"ko": "자유 텍스트", "en": "Free text"},
+      "mechanism": {"ko": "ReAct 루프 Read→Search→Verify→Construct", "en": "ReAct loop Read→Search→Verify→Construct"},
+      "output_unit": {"ko": "검증된 트리플", "en": "Verified triples"},
+      "paradigm": {"ko": "단일 에이전트 ReAct", "en": "Single-agent ReAct"},
+      "distinct": {"ko": "근거 기반 검증으로 비근거 후보 탈락", "en": "Evidence-anchored verify drops unsupported"}
+    },
+    "dial-kg": {
+      "input": {"ko": "여러 문서", "en": "Multiple documents"},
+      "mechanism": {"ko": "증분 추출+거버넌스 판정+스키마 진화", "en": "Incremental extract + governance + schema evolution"},
+      "output_unit": {"ko": "증분 KG + 진화 스키마", "en": "Incremental KG + evolving schema"},
+      "paradigm": {"ko": "스키마-free 증분(Meta-KB)", "en": "Schema-free incremental (Meta-KB)"},
+      "distinct": {"ko": "거버넌스 판정 + 동적 스키마 진화", "en": "Governance adjudication + dynamic schema evolution"}
+    },
     "hf-local-demo": {
       "input": {"ko": "자유 텍스트", "en": "Free text"},
       "mechanism": {"ko": "문장→로컬 LLM JSON 트리플→그래프", "en": "Sentence→local-LLM JSON triples→graph"},

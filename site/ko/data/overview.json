@@ -234,6 +234,42 @@
       "output_unit": "분류체계(계층)",
       "paradigm": "분류체계 backbone",
       "distinct": "관계 아닌 is-a 계층 end-to-end (코드 공개)"
+    },
+    {
+      "id": "ontoekg",
+      "name": "OntoEKG (extraction + entailment-hierarchy enterprise ontology)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "추출(클래스·속성)→entailment 계층화",
+      "output_unit": "클래스·속성 + 계층",
+      "paradigm": "2단계 엔터프라이즈 온톨로지",
+      "distinct": "추출 + 함의 기반 subClassOf 동시"
+    },
+    {
+      "id": "raga",
+      "name": "RAGA (Read-Search-Verify-Construct agent)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "ReAct 루프 Read→Search→Verify→Construct",
+      "output_unit": "검증된 트리플",
+      "paradigm": "단일 에이전트 ReAct",
+      "distinct": "근거 기반 검증으로 비근거 후보 탈락"
+    },
+    {
+      "id": "dial-kg",
+      "name": "DIAL-KG (schema-free incremental + governance + schema evolution)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "여러 문서",
+      "mechanism": "증분 추출+거버넌스 판정+스키마 진화",
+      "output_unit": "증분 KG + 진화 스키마",
+      "paradigm": "스키마-free 증분(Meta-KB)",
+      "distinct": "거버넌스 판정 + 동적 스키마 진화"
     }
   ]
 }

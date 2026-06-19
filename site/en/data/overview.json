@@ -234,6 +234,42 @@
       "output_unit": "Taxonomy (hierarchy)",
       "paradigm": "Taxonomic backbone",
       "distinct": "End-to-end is-a hierarchy (public code)"
+    },
+    {
+      "id": "ontoekg",
+      "name": "OntoEKG (extraction + entailment-hierarchy enterprise ontology)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "Extract (classes+props)→entailment hierarchy",
+      "output_unit": "Classes/props + hierarchy",
+      "paradigm": "Two-phase enterprise ontology",
+      "distinct": "Extraction + entailment subClassOf together"
+    },
+    {
+      "id": "raga",
+      "name": "RAGA (Read-Search-Verify-Construct agent)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "ReAct loop Read→Search→Verify→Construct",
+      "output_unit": "Verified triples",
+      "paradigm": "Single-agent ReAct",
+      "distinct": "Evidence-anchored verify drops unsupported"
+    },
+    {
+      "id": "dial-kg",
+      "name": "DIAL-KG (schema-free incremental + governance + schema evolution)",
+      "status": "published",
+      "difficulty": 6,
+      "llm": "api",
+      "input": "Multiple documents",
+      "mechanism": "Incremental extract + governance + schema evolution",
+      "output_unit": "Incremental KG + evolving schema",
+      "paradigm": "Schema-free incremental (Meta-KB)",
+      "distinct": "Governance adjudication + dynamic schema evolution"
     }
   ]
 }

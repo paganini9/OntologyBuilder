@@ -1,5 +1,32 @@
 {
   "schema_version": 1,
-  "note": "New methods discovered by the daily 7am search land here with approved_by_user=false. The daily job auto-implements MOCK-feasible ones (user pre-approved); GPU/paid-key/missing-PDF/difficulty>=8 stay here for /impl-approve. Empty = all discovered candidates have been implemented.",
-  "candidates": []
+  "note": "Discovered-but-not-yet-implemented methods. The daily job auto-implements MOCK-feasible ones; entries here need GPU/RL/finetuning or are off-core (RAG/reasoning), so they wait for /impl-approve or a dedicated effort.",
+  "candidates": [
+    {
+      "id": "agentic-kgr",
+      "name": "Agentic-KGR (multi-agent RL co-evolutionary KG)",
+      "paper": {"title": "Agentic-KGR: Co-evolutionary Knowledge Graph Construction through Multi-Agent Reinforcement Learning", "arxiv": "2510.09156", "venue": "arXiv 2025", "code_url": null},
+      "est_difficulty": {"score": 9, "rationale": "core is multi-agent reinforcement learning + learnable prompt compression; not faithfully reproducible as a deterministic MOCK without RL/GPU"},
+      "llm_dependency": "hf-local",
+      "verified": true,
+      "status": "deferred",
+      "approved_by_user": false,
+      "reason_deferred": "RL/GPU core (like sac-kg) — needs dedicated effort, not auto-implementable",
+      "source": "exa-search",
+      "discovered": "2026-06-19"
+    },
+    {
+      "id": "agrag",
+      "name": "AGRAG (graph-based RAG; min-cost-max-influence subgraph)",
+      "paper": {"title": "AGRAG: Advanced Graph-based Retrieval-Augmented Generation for LLMs", "arxiv": "2511.05549", "venue": "arXiv 2025", "code_url": null},
+      "est_difficulty": {"score": 5, "rationale": "primarily a RAG RETRIEVAL method (subgraph optimization for answering), not ontology construction"},
+      "llm_dependency": "api",
+      "verified": true,
+      "status": "deferred",
+      "approved_by_user": false,
+      "reason_deferred": "off-core: retrieval/QA over a graph rather than constructing an ontology",
+      "source": "exa-search",
+      "discovered": "2026-06-19"
+    }
+  ]
 }

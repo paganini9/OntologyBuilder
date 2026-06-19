@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-06-19",
+  "updated": "2026-06-20",
   "difficulty_formula": "score = 1*pipeline_stages + 3*needs_finetuning + 3*needs_gpu + 2*needs_large_data + 1*(llm_dependency!='mock') - 1*code_public",
   "selection_rule": "pick lowest (difficulty.score, mock-before-api/hf, fewer inputs_needed) among status in {discovered,analyzed,queued} AND approved_by_user AND blockers==[]",
   "methods": [
@@ -747,6 +747,123 @@
         "dir": "methods/ollm"
       },
       "updated": "2026-06-19"
+    },
+    {
+      "id": "ontoekg",
+      "name": "OntoEKG (extraction + entailment-hierarchy enterprise ontology)",
+      "paper": {
+        "key": "Oyewale_OntoEKG",
+        "arxiv": "2602.01276",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 3,
+        "rank": 3,
+        "factors": {
+          "pipeline_stages": 2,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "2-phase: class+property extraction then entailment-based subClassOf hierarchy; enterprise"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/ontoekg"
+      },
+      "updated": "2026-06-20"
+    },
+    {
+      "id": "raga",
+      "name": "RAGA (Read-Search-Verify-Construct agent)",
+      "paper": {
+        "key": "Han_RAGA",
+        "arxiv": "2605.17072",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 5,
+        "rank": 5,
+        "factors": {
+          "pipeline_stages": 4,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "single-agent ReAct loop Read->Search->Verify->Construct with evidence-anchored verification"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/raga"
+      },
+      "updated": "2026-06-20"
+    },
+    {
+      "id": "dial-kg",
+      "name": "DIAL-KG (schema-free incremental + governance + schema evolution)",
+      "paper": {
+        "key": "Bao_DIALKG",
+        "arxiv": "2603.20059",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 6,
+        "rank": 6,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "incremental dual-track extraction + governance adjudication + dynamic schema evolution (Meta-KB)"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/dial-kg"
+      },
+      "updated": "2026-06-20"
     }
   ]
 }

@@ -609,5 +609,101 @@
       "ontology.json",
       "steps.json"
     ]
+  },
+  {
+    "id": "ontoekg",
+    "name": "OntoEKG (extraction + entailment-hierarchy enterprise ontology)",
+    "status": "published",
+    "difficulty": {
+      "score": 3,
+      "rank": 3,
+      "factors": {
+        "pipeline_stages": 2,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "2-phase: class+property extraction then entailment-based subClassOf hierarchy; enterprise"
+    },
+    "llm_dependency": "api",
+    "paper": {
+      "key": "Oyewale_OntoEKG",
+      "arxiv": "2602.01276",
+      "venue": "arXiv 2026",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "text.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "raga",
+    "name": "RAGA (Read-Search-Verify-Construct agent)",
+    "status": "published",
+    "difficulty": {
+      "score": 5,
+      "rank": 5,
+      "factors": {
+        "pipeline_stages": 4,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "single-agent ReAct loop Read->Search->Verify->Construct with evidence-anchored verification"
+    },
+    "llm_dependency": "api",
+    "paper": {
+      "key": "Han_RAGA",
+      "arxiv": "2605.17072",
+      "venue": "arXiv 2026",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "text.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "dial-kg",
+    "name": "DIAL-KG (schema-free incremental + governance + schema evolution)",
+    "status": "published",
+    "difficulty": {
+      "score": 6,
+      "rank": 6,
+      "factors": {
+        "pipeline_stages": 3,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "incremental dual-track extraction + governance adjudication + dynamic schema evolution (Meta-KB)"
+    },
+    "llm_dependency": "api",
+    "paper": {
+      "key": "Bao_DIALKG",
+      "arxiv": "2603.20059",
+      "venue": "arXiv 2026",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "text.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
   }
 ]

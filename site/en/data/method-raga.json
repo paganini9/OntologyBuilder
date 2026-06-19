@@ -1,0 +1,38 @@
+{
+  "id": "raga",
+  "name": "RAGA (Read-Search-Verify-Construct agent)",
+  "status": "published",
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "single-agent ReAct loop Read->Search->Verify->Construct with evidence-anchored verification"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Han_RAGA",
+    "arxiv": "2605.17072",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# RAGA — Read-Search-Verify-Construct 에이전트\n\n> 출처: Han & Cheng, *RAGA: Reading-And-Graph-building-Agent for Autonomous Knowledge Graph Construction and Retrieval-Augmented Generation*, 2026 (arXiv:2605.17072).\n\n## 1. 한 줄 요약\n**단일 자율 에이전트**가 문서를 한 단위(문장)씩 읽으며 **ReAct 인지 루프**를 돌린다. 이 루프는 **Read → Search → Verify → Construct** 네 단계로 제약되며, 읽으면서 지식 그래프를 만들고 동시에 **근거 기반 검증(evidence-anchored)**으로 스스로 감사한다.\n\n## 2. 핵심 아이디어\n- **단위별 단일-에이전트 ReAct 인지 루프**: 고정된 다중 컴포넌트 파이프라인이 아니라, *하나의* 에이전트가 읽기 단위를 순회하며 단위마다 동일한 think→act 루프를 반복한다.\n- **Read–Search–Verify–Construct 인지 제약**: 매 반복마다 네 하위 단계를 강제로 거치므로, 생성(Read) 뒤에 항상 맥락 연결(Search)과 자기 검증(Verify)이 이어지고, 그다음에야 그래프에 반영(Construct)된다.\n- **근거 기반 검증**: 후보 트리플의 주어와 목적어가 *둘 다* 해당 문장 텍스트로 문자 그대로 뒷받침될 때만 반영한다. 표면 근거가 없는 함축/대명사 목적어는 폐기 — 두 번째 모델 없이도 정밀도를 높인다.\n- **점진적 맥락 연결**: Search 단계에서 제안된 개체를 지금까지 만든 그래프와 연결해, 노드를 중복 생성하지 않고 기존 노드를 재사용한다.\n\n## 3. 구축 과정 (단계별)\n1. **입력 수집** — `text.txt`(자유 텍스트). 한 문장 = 한 에이전트 단위.\n2. 각 문장마다 에이전트가 ReAct 루프를 수행:\n   - **READ** — 문장에서 후보 (주어, 관계, 목적어) 트리플을 제안.\n   - **SEARCH** — 제안된 개체를 지금까지의 그래프와 연결(이미 존재하는가?).\n   - **VERIFY** — 근거 기반 검사: 주어와 목적어 토큰이 둘 다 문장에 등장할 때만 유지, 함축/대명사 목적어는 폐기.\n   - **CONSTRUCT** — 검증된 트리플을 성장하는 그래프에 반영.\n3. **산출** — 문장마다 `steps.json` 스냅샷(read/search/verify 추적 포함)과 `ontology.ttl`, `ontology.json`. 최종 그래프에는 근거 기반으로 검증된 트리플만 남는다.\n\n## 4. 입력 / 출력\n| 종류 | 파일 | 비고 |\n|------|------|------|\n| 입력 | `text.txt` | 원문 텍스트; 한 문장이 한 에이전트 단위 |\n| 출력 | `ontology.ttl` | 검증된 트리플의 OWL(Turtle) |\n| 출력 | `ontology.json` | Cytoscape 노드/엣지(검증된 것만) |\n| 출력 | `steps.json` | 문장별 ReAct 스냅샷(read / search / verify / constructed) |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적. READ 단계는 문장을 휴리스틱으로 파싱하고 SEARCH/VERIFY/CONSTRUCT는 결정론 규칙을 적용. VERIFY는 주어·목적어가 둘 다 문장에 anchored 될 때만 후보를 유지.\n- `gemini`/`anthropic` (api): 키가 있으면 READ 단계가 실제 LLM(`backend.llm.extract.extract_triples`)으로 후보를 제안하고, SEARCH/VERIFY/CONSTRUCT는 동일하게 적용되어 같은 방식으로 검증된다. 키가 없으면 자동으로 MOCK로 폴백.\n\n## 6. 사용해 보기\n1. `samples/text.txt`를 자신의 문장으로 교체.\n2. 실행(또는 `python pipeline.py samples runs/out`).\n3. 단계 슬라이더로 문장별 Read→Search→Verify→Construct 루프를 따라가며 VERIFY가 어떤 후보를 폐기하는지 확인(예: \"The Housing protects them …\"의 함축 대명사 목적어).\n",
+    "en": "# RAGA — Read-Search-Verify-Construct Agent\n\n> Source: Han & Cheng, *RAGA: Reading-And-Graph-building-Agent for Autonomous Knowledge Graph Construction and Retrieval-Augmented Generation*, 2026 (arXiv:2605.17072).\n\n## 1. One-line summary\nA **single autonomous agent** reads a document one unit (sentence) at a time and runs a **ReAct-style cognitive loop** constrained to four explicit stages — **Read → Search → Verify → Construct** — building and self-auditing a knowledge graph as it reads, with **evidence-anchored verification**.\n\n## 2. Key ideas\n- **Single-agent ReAct cognitive loop per unit**: rather than a fixed multi-component pipeline, *one* agent iterates over reading units and, for each unit, runs the same think→act loop.\n- **Read–Search–Verify–Construct cognitive constraint**: the loop is forced through four sub-stages every iteration, so generation (Read) is always followed by context linking (Search) and self-audit (Verify) before anything is committed (Construct).\n- **Evidence-anchored verification**: a candidate triple is committed only if BOTH its subject and object are literally supported by the unit's text. Implied / pronoun objects (no surface evidence) are dropped — this keeps precision high without a second model.\n- **Incremental context linking**: the Search stage links proposed entities against the graph built so far, so the agent reuses existing nodes instead of duplicating them.\n\n## 3. Construction process (step by step)\n1. **Collect input** — `text.txt` (free source text). One sentence = one agent unit.\n2. For each sentence the agent runs its ReAct loop:\n   - **READ** — propose candidate (subject, relation, object) triples from the sentence.\n   - **SEARCH** — link the proposed entities against the graph built so far (which already exist?).\n   - **VERIFY** — evidence-anchored check: keep a candidate only if BOTH subject and object tokens appear in the sentence; drop implied/pronoun objects.\n   - **CONSTRUCT** — commit the verified triples into the growing graph.\n3. **Emit** — one `steps.json` snapshot per sentence (with the read/search/verify trace) plus `ontology.ttl` and `ontology.json`. The final graph contains only evidence-anchored triples.\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `text.txt` | Source text; one sentence per agent unit |\n| Output | `ontology.ttl` | OWL of verified triples (Turtle) |\n| Output | `ontology.json` | Cytoscape nodes/edges (verified only) |\n| Output | `steps.json` | One per-sentence ReAct snapshot (read / search / verify / constructed) |\n\n## 5. LLM backend\n- Default `mock`: deterministic, no key. The READ stage parses the sentence heuristically; SEARCH/VERIFY/CONSTRUCT apply deterministic rules. VERIFY keeps a candidate only if its subject and object are both anchored in the sentence text.\n- `gemini`/`anthropic` (api): with a key the READ stage uses the real LLM (`backend.llm.extract.extract_triples`) to propose candidates; SEARCH/VERIFY/CONSTRUCT are unchanged, so the graph is verified the same way. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. Replace `samples/text.txt` with your own sentences.\n2. Run (or `python pipeline.py samples runs/out`).\n3. Use the step slider to follow each sentence's Read→Search→Verify→Construct loop and see which candidates VERIFY drops (e.g. the implied-pronoun object in \"The Housing protects them …\").\n"
+  },
+  "sample_input": "The Chassis supports the Battery and the Motor.\nThe Battery powers the Motor through a Controller.\nThe Controller controls the Motor speed.\nThe Housing protects them from dust and water.\nThe Frame connects the Wheel to the Chassis.\nThe Sensor uses the Controller for feedback.\n",
+  "implemented": true
+}
