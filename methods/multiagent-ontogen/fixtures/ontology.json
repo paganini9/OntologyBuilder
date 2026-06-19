@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Part",
+        "label": "Part",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Material",
+        "label": "Material",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier",
+        "label": "Supplier",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Factory",
+        "label": "Factory",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Component",
+        "label": "Component",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Function",
+        "label": "Function",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Requirement",
+        "label": "Requirement",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Product-consistsOf-Part",
+        "source": "Product",
+        "target": "Part",
+        "label": "consistsOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Part-madeOf-Material",
+        "source": "Part",
+        "target": "Material",
+        "label": "madeOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Part",
+        "source": "Supplier",
+        "target": "Part",
+        "label": "supplies"
+      }
+    },
+    {
+      "data": {
+        "id": "Supplier-supplies-Factory",
+        "source": "Supplier",
+        "target": "Factory",
+        "label": "supplies"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-performs-Function",
+        "source": "Component",
+        "target": "Function",
+        "label": "performs"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-performs-Assembly",
+        "source": "Component",
+        "target": "Assembly",
+        "label": "performs"
+      }
+    },
+    {
+      "data": {
+        "id": "Product-satisfies-Requirement",
+        "source": "Product",
+        "target": "Requirement",
+        "label": "satisfies"
+      }
+    }
+  ]
+}

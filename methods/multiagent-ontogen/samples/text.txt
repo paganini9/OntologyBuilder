@@ -1,0 +1,11 @@
+# Unstructured product-design text. Sentences are split on . ! ?
+# Capitalised words become candidate concepts; relational verbs become object
+# properties. The Domain Expert reads each sentence; Manager plans; Coder emits;
+# the Quality Assurer prunes self-loops, duplicates and dangling edges.
+A Product consists of several Parts.
+Each Part is made of a Material.
+A Supplier supplies a Part to the Factory.
+A Component performs a Function in the Assembly.
+A Product satisfies a Requirement.
+A Product consists of several Parts.
+A Part connects to a Part during assembly.

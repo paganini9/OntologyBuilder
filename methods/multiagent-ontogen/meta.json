@@ -1,0 +1,34 @@
+{
+  "id": "multiagent-ontogen",
+  "name": "Multi-Agent Ontology Generation (Domain Expert/Manager/Coder/QA)",
+  "paper": {
+    "key": "Talukder_MultiAgentOnto",
+    "title": "Towards Automated Ontology Generation from Unstructured Text: A Multi-Agent LLM Approach",
+    "arxiv": "2604.23090",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "four artifact-driven roles (Domain Expert/Manager/Coder/QA) over a planning-first pipeline; deterministic mock possible; no data/GPU/finetuning, but multi-role orchestration and a QA validation pass raise it above a single-stage method"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-19"
+}

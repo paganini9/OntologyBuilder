@@ -1,0 +1,678 @@
+[
+  {
+    "step": 1,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Product consists of several Parts.",
+    "added": {
+      "classes": [
+        "Product",
+        "Part"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) Each Part is made of a Material.",
+    "added": {
+      "classes": [
+        "Part",
+        "Material"
+      ],
+      "object_properties": [
+        {
+          "name": "madeOf",
+          "domain": "Part",
+          "range": "Material"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 3,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Supplier supplies a Part to the Factory.",
+    "added": {
+      "classes": [
+        "Supplier",
+        "Part",
+        "Factory"
+      ],
+      "object_properties": [
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Factory"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 4,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Component performs a Function in the Assembly.",
+    "added": {
+      "classes": [
+        "Component",
+        "Function",
+        "Assembly"
+      ],
+      "object_properties": [
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Function"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Assembly"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 5,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Product satisfies a Requirement.",
+    "added": {
+      "classes": [
+        "Product",
+        "Requirement"
+      ],
+      "object_properties": [
+        {
+          "name": "satisfies",
+          "domain": "Product",
+          "range": "Requirement"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 6,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Product consists of several Parts.",
+    "added": {
+      "classes": [
+        "Product",
+        "Part"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 7,
+    "role": "DomainExpert",
+    "cq": "(DomainExpert) A Part connects to a Part during assembly.",
+    "added": {
+      "classes": [
+        "Part"
+      ],
+      "object_properties": [
+        {
+          "name": "connectsTo",
+          "domain": "Part",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  },
+  {
+    "step": 8,
+    "role": "Manager",
+    "cq": "(Manager) plan",
+    "added": {
+      "classes": [
+        "Product",
+        "Part",
+        "Material",
+        "Supplier",
+        "Factory",
+        "Component",
+        "Function",
+        "Assembly",
+        "Requirement"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "madeOf",
+          "domain": "Part",
+          "range": "Material"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Factory"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Function"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Assembly"
+        },
+        {
+          "name": "satisfies",
+          "domain": "Product",
+          "range": "Requirement"
+        },
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "connectsTo",
+          "domain": "Part",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [],
+      "edges": []
+    },
+    "plan": {
+      "concepts": [
+        "Product",
+        "Part",
+        "Material",
+        "Supplier",
+        "Factory",
+        "Component",
+        "Function",
+        "Assembly",
+        "Requirement"
+      ],
+      "relations": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "madeOf",
+          "domain": "Part",
+          "range": "Material"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Factory"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Function"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Assembly"
+        },
+        {
+          "name": "satisfies",
+          "domain": "Product",
+          "range": "Requirement"
+        },
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "connectsTo",
+          "domain": "Part",
+          "range": "Part"
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "role": "Coder",
+    "cq": "(Coder) emit",
+    "added": {
+      "classes": [
+        "Product",
+        "Part",
+        "Material",
+        "Supplier",
+        "Factory",
+        "Component",
+        "Function",
+        "Assembly",
+        "Requirement"
+      ],
+      "object_properties": [
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "madeOf",
+          "domain": "Part",
+          "range": "Material"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Part"
+        },
+        {
+          "name": "supplies",
+          "domain": "Supplier",
+          "range": "Factory"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Function"
+        },
+        {
+          "name": "performs",
+          "domain": "Component",
+          "range": "Assembly"
+        },
+        {
+          "name": "satisfies",
+          "domain": "Product",
+          "range": "Requirement"
+        },
+        {
+          "name": "consistsOf",
+          "domain": "Product",
+          "range": "Part"
+        },
+        {
+          "name": "connectsTo",
+          "domain": "Part",
+          "range": "Part"
+        }
+      ],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Factory",
+            "label": "Factory",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-madeOf-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Factory",
+            "source": "Supplier",
+            "target": "Factory",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-performs-Function",
+            "source": "Component",
+            "target": "Function",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-performs-Assembly",
+            "source": "Component",
+            "target": "Assembly",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-satisfies-Requirement",
+            "source": "Product",
+            "target": "Requirement",
+            "label": "satisfies"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-connectsTo-Part",
+            "source": "Part",
+            "target": "Part",
+            "label": "connectsTo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "role": "QA",
+    "cq": "(QA) validate",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "removed": [
+      {
+        "name": "consistsOf",
+        "domain": "Product",
+        "range": "Part",
+        "reason": "duplicate"
+      },
+      {
+        "name": "connectsTo",
+        "domain": "Part",
+        "range": "Part",
+        "reason": "self-loop"
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Part",
+            "label": "Part",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier",
+            "label": "Supplier",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Factory",
+            "label": "Factory",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Function",
+            "label": "Function",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Requirement",
+            "label": "Requirement",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Product-consistsOf-Part",
+            "source": "Product",
+            "target": "Part",
+            "label": "consistsOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Part-madeOf-Material",
+            "source": "Part",
+            "target": "Material",
+            "label": "madeOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Part",
+            "source": "Supplier",
+            "target": "Part",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Supplier-supplies-Factory",
+            "source": "Supplier",
+            "target": "Factory",
+            "label": "supplies"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-performs-Function",
+            "source": "Component",
+            "target": "Function",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-performs-Assembly",
+            "source": "Component",
+            "target": "Assembly",
+            "label": "performs"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-satisfies-Requirement",
+            "source": "Product",
+            "target": "Requirement",
+            "label": "satisfies"
+          }
+        }
+      ]
+    }
+  }
+]
