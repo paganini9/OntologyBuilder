@@ -1,23 +1,23 @@
-# 신규 방법 후보 — 2026-06-15 (exa 탐색)
+# 신규 방법 catch-up — 2026-06-19 (수동 일일 업데이트)
 
-라이브러리 9개 방법을 모두 구현한 뒤, exa 딥서치로 2025–2026 신규 LLM 온톨로지/KG 구축 방법을 탐색했다. registry의 9개와 중복되지 않는 후보만 추렸다.
+일일 자동 작업이 6/15~6/19 동안 작업 디렉터리 버그로 실패해(이후 수정), 오늘 수동으로 catch-up 업데이트를 실행했다. exa 탐색 → WebFetch 실재 검증 → MOCK+실모델 경로 구현 → 테스트·UI 검증 → push.
 
-> ⚠️ 신뢰도 메모: 3개 탐색 에이전트 중 1개는 exa 접근 실패(결과 없음), 일부 후보의 arXiv id(특히 2026년 후반 날짜)는 자동탐색 환각 가능성이 있어 **구현 전 method-analyst가 원문 재검증** 필요. `verified=true`는 이번 세션에서 WebFetch로 실재 확인한 것.
+## 이번에 자동 구현·게시한 방법 (3)
+| id | 방법 | arXiv | 차별점 | 실모델(GPU) |
+|----|------|-------|--------|:---:|
+| multiagent-ontogen | 4역할 멀티에이전트(Domain Expert/Manager/Coder/QA) 온톨로지 생성 | 2604.23090 (2026) | 아티팩트 기반 4역할 계획기반 + QA 가지치기 | ✅ 10n/10e |
+| onto-kg-completion | 온톨로지 제약 기반 KG 완성 | 2507.20643 (2025) | 부분 KG 입력→누락 링크 예측(완성 패러다임) | ✅ 5n/9e |
+| ollm | OLLM 분류체계(subClassOf) backbone end-to-end | 2410.23584 (2024, 코드공개) | 관계 아닌 is-a 계층 학습 | ✅ 18n/17e |
 
-## 추천 후보 (구현 용이순)
+총 방법 수: 16 → **19** (전부 published, MOCK 기본 + hf_local 실모델 경로).
 
-| id | 방법 | arXiv | 코드 | 난이도 | 검증 | 차별점 |
-|----|------|-------|:---:|:---:|:---:|--------|
-| **itext2kg** | iText2KG — 증분 zero-shot KG 구축 | 2409.03284 (WISE 2024) | ✅ AuvaLab/itext2kg | 3 | ✅ | Document Distiller + 문서 증분 + 엔티티/관계 **의미 중복 제거** |
-| **autoschemakg** | AutoSchemaKG — 동적 스키마 유도 | 2505.23628 (2025) | ✅ HKUST-KnowComp | 5 | ✅ | 스키마를 **데이터에서 bottom-up 유도**(사전 스키마 0) |
-| gptkb | GPTKB — LLM 내부지식 KB화 | 2411.04920 (ACL 2025) | ✅ Knowledge-aware-AI | 4 | ⏳ | 입력 코퍼스 없이 **모델 자체**에서 시드 재귀 확장 |
-| se-standards-zeroshot | 엔지니어링 표준 zero-shot 트리플 추출 | 2509.00140 (2025) | ❓ | 2 | ⏳ | **표준 문서(SPMM/STEP) 직접 대상** — 본 프로젝트 도메인 적합 |
-| elenchus | Elenchus — prover-skeptic 대화 | 2603.06974(미검증) | ✅(추정) | 6 | ⏳ | 적대적 **2역할 대화**로 KB 수렴(Ontogenia 단일 자기비평과 구분) |
+## 검증
+- 전체 pytest **152 passed**.
+- 3개 모두 RTX 3080 Ti(Qwen2.5-1.5B) 실모델에서 비어있지 않은 온톨로지 생성.
+- 사이트 19개 빌드(KO/EN), Overview 19행, 그래프 렌더 확인(Playwright).
 
-## 다음 동작
-- **권장 1순위: iText2KG** — 검증됨, 코드 공개, 증분/의미중복제거로 기존 9개와 뚜렷이 구분, MOCK 결정론 구현 용이.
-- 사용자가 `/impl-approve <id>` 로 승격하거나, 본 세션에서 바로 구현 진행.
-- 나머지 후보는 재검증 후 순차 구현 가능.
+## 제외/대기 후보 (탐색됐으나 미구현)
+- 고난도/중복 또는 미검증: OntoEKG(2602.01276), RAGA(2605.17072), Agentic-KGR(2510.09156), DIAL-KG(2603.20059), GraphAgents(2602.07491), AGRAG(2511.05549), Ontology-Constrained Neural Reasoning(2604.00555), CAR(2604.09608), CQ-generation(2604.16258) 등. 다음 일일 실행에서 재검증 후 순차 구현 가능.
 
-## 자동탐색 시 제외(이미 구현)
-SAC-KG, CoDe-KG, Ontogenia/CQbyCQ, Peshevski 제품KG, AGENTiGraph, Are-LLMs-Effective, Ontology-Grounded(Wikidata), KARMA, ODKE+.
+## 자동탐색 시 제외(이미 구현, 19개)
+cqbycq, code-de-kg, ontogenia, peshevski-product-kg, agentigraph, are-llms-effective-kgc, ontology-grounded-wikidata, karma, odke-plus, itext2kg, se-standards-zeroshot, gptkb, autoschemakg, elenchus, hf-local-demo, sac-kg, multiagent-ontogen, onto-kg-completion, ollm.

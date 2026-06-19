@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-06-14",
+  "updated": "2026-06-19",
   "difficulty_formula": "score = 1*pipeline_stages + 3*needs_finetuning + 3*needs_gpu + 2*needs_large_data + 1*(llm_dependency!='mock') - 1*code_public",
   "selection_rule": "pick lowest (difficulty.score, mock-before-api/hf, fewer inputs_needed) among status in {discovered,analyzed,queued} AND approved_by_user AND blockers==[]",
   "methods": [
@@ -630,6 +630,123 @@
         "dir": "methods/sac-kg"
       },
       "updated": "2026-06-15"
+    },
+    {
+      "id": "multiagent-ontogen",
+      "name": "Multi-Agent Ontology Generation (Domain Expert/Manager/Coder/QA)",
+      "paper": {
+        "key": "Talukder_MultiAgentOnto",
+        "arxiv": "2604.23090",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 4,
+        "rank": 4,
+        "factors": {
+          "pipeline_stages": 4,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "4 artifact-driven roles (domain-expert/manager/coder/QA); planning-first from text; deterministic mock"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/multiagent-ontogen"
+      },
+      "updated": "2026-06-19"
+    },
+    {
+      "id": "onto-kg-completion",
+      "name": "Ontology-Enhanced KG Completion (LLM)",
+      "paper": {
+        "key": "Guo_OntoKGC",
+        "arxiv": "2507.20643",
+        "venue": "arXiv 2025",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 5,
+        "rank": 5,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "completes a partial KG via ontology rules (transitivity/inverse) — distinct completion paradigm"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "seed_kg.ttl"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/onto-kg-completion"
+      },
+      "updated": "2026-06-19"
+    },
+    {
+      "id": "ollm",
+      "name": "OLLM (end-to-end taxonomy/ontology learning)",
+      "paper": {
+        "key": "Lo_OLLM",
+        "arxiv": "2410.23584",
+        "venue": "arXiv 2024",
+        "code_url": "https://github.com/andylolu2/ollm"
+      },
+      "difficulty": {
+        "score": 3,
+        "rank": 3,
+        "factors": {
+          "pipeline_stages": 2,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": true
+        },
+        "rationale": "builds the subClassOf taxonomy backbone end-to-end; deterministic mock + real concept extraction"
+      },
+      "llm_dependency": "api",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/ollm"
+      },
+      "updated": "2026-06-19"
     }
   ]
 }

@@ -15,7 +15,7 @@ python -m backend.app        # http://127.0.0.1:8000  ->  /ko/  /en/
 ## Status
 방법 현황은 [`registry/methods.json`](registry/methods.json) 참조. 첫 구현: **CQbyCQ** (CQ→OWL). 운영 매뉴얼은 [`CLAUDE.md`](CLAUDE.md).
 
-## Methods (현재 — 15개 모두 구현·게시)
+## Methods (현재 — 19개 모두 구현·게시)
 사이트의 **개요·비교표(Overview)** 페이지에서 전체를 한눈에 비교할 수 있다(방법 추가 시 자동 반영).
 
 | id | 방법 | 입력 | 패러다임 |

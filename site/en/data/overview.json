@@ -198,6 +198,42 @@
       "output_unit": "Domain KG",
       "paradigm": "Triple-first + verify & prune",
       "distinct": "Recursive multi-level (real run needs GPU/finetune)"
+    },
+    {
+      "id": "multiagent-ontogen",
+      "name": "Multi-Agent Ontology Generation (Domain Expert/Manager/Coder/QA)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "4 roles (expert/manager/coder/QA), planning-first",
+      "output_unit": "Classes & properties",
+      "paradigm": "Role-based multi-agent",
+      "distinct": "Artifact-driven 4 roles + QA prune"
+    },
+    {
+      "id": "onto-kg-completion",
+      "name": "Ontology-Enhanced KG Completion (LLM)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "Partial KG (seed)",
+      "mechanism": "Complete missing edges via ontology rules (transitivity/inverse)",
+      "output_unit": "Completed KG",
+      "paradigm": "Completion (not construction)",
+      "distinct": "Predicts missing links over an existing KG"
+    },
+    {
+      "id": "ollm",
+      "name": "OLLM (end-to-end taxonomy/ontology learning)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "Free text",
+      "mechanism": "Concepts→subClassOf taxonomy induction",
+      "output_unit": "Taxonomy (hierarchy)",
+      "paradigm": "Taxonomic backbone",
+      "distinct": "End-to-end is-a hierarchy (public code)"
     }
   ]
 }

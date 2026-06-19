@@ -1,0 +1,38 @@
+{
+  "id": "multiagent-ontogen",
+  "name": "Multi-Agent Ontology Generation (Domain Expert/Manager/Coder/QA)",
+  "status": "published",
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "4 artifact-driven roles (domain-expert/manager/coder/QA); planning-first from text; deterministic mock"
+  },
+  "llm_dependency": "api",
+  "paper": {
+    "key": "Talukder_MultiAgentOnto",
+    "arxiv": "2604.23090",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# 다중 에이전트 온톨로지 생성 — 도메인 전문가 / 매니저 / 코더 / 품질검증가\n\n> 출처: Talukder, Mridul, Seneviratne, *Towards Automated Ontology Generation from Unstructured Text: A Multi-Agent LLM Approach*, arXiv:2604.23090 (2026).\n\n## 1. 한 줄 요약\n네 개의 전문화된 LLM **역할이 협업**한다 — 도메인 전문가가 텍스트를 읽고, 매니저가 계획하고, 코더가 OWL을 작성하고, 품질검증가가 정리 — **비정형 텍스트**를 계획 우선(planning-first) 파이프라인으로 OWL 온톨로지로 바꾼다.\n\n## 2. 핵심 개념\n- **산출물 기반(artifact-driven) 역할**: 각 역할은 앞 역할의 산출물을 받아 다음 산출물을 만든다. 하나의 거대한 프롬프트 대신 책임이 명확히 분리된다.\n- **계획 우선**: 매니저가 발견된 내용을 명시적 계획으로 정리하기 전에는 아무것도 OWL로 \"코딩\"되지 않는다. 덕분에 온톨로지가 일관성을 유지한다.\n- **품질 검증 단계**: 전용 마지막 역할이 결과를 검증하고 정리한다(자기참조 루프, 중복 엣지, 끊어진 끝점 제거). 추출 단계의 잡음이 최종 온톨로지로 새어 들어가지 않는다.\n\n## 3. 네 가지 역할 (단계별)\n1. **도메인 전문가(Domain Expert)** — 텍스트를 **문장 단위**로 읽어 후보 개념(대문자 명사)과 (주어, 관계, 목적어) 지식 트리플을 끌어낸다. 문장마다 한 단계: `(DomainExpert) <문장>`.\n2. **매니저(Manager)** — 모든 발견 내용을 중복 제거·정리해 하나의 **계획**(깨끗한 개념 집합 + 관계 목록)으로 만든다. 한 단계: `(Manager) plan`.\n3. **코더(Coder)** — 계획을 **OWL 조각**(클래스 + domain/range 가진 객체 속성)으로 변환해 모델에 반영한다. 한 단계: `(Coder) emit`.\n4. **품질검증가(Quality Assurer)** — **검증/정리**: 자기참조 루프, 중복 엣지, 끝점이 없는 엣지를 제거한다. 한 단계: `(QA) validate`, 제거한 항목을 함께 기록.\n\nLLM을 호출하는 것은 도메인 전문가뿐이다. 매니저·코더·QA는 mock·실제 백엔드 모두에서 결정론적이다.\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 설명 |\n|------|------|------|\n| 입력 | `text.txt` | 비정형 도메인 텍스트(문장 단위로 분할, `#` 주석·빈 줄 무시) |\n| 출력 | `ontology.ttl` | OWL 온톨로지 (Turtle) |\n| 출력 | `ontology.json` | Cytoscape nodes/edges (그래프 시각화용) |\n| 출력 | `steps.json` | 역할별 스냅샷 — 계획→생성→정리 과정 재생용 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적으로 동작(테스트 golden 고정). 도메인 전문가가 대문자 명사를 개념으로, 관계 동사(consist/made/supply/perform/satisfy/connect …)를 객체 속성으로 추출하되, 중복과 자기참조 루프를 **남겨 두어** QA 역할이 눈에 보이게 정리하도록 한다.\n- `gemini`/`anthropic` (`api`): env에 키가 있으면 도메인 전문가가 공용 `extract_triples` 헬퍼로 실제 모델을 사용한다. 매니저·코더·QA 로직은 동일. 키 없으면 자동 MOCK 폴백.\n\n## 6. 직접 해보기\n1. `samples/text.txt` 를 수정(대문자 엔티티 + 관계 동사를 가진 문장 추가).\n2. 사이트의 **Run** 버튼(또는 `python pipeline.py samples runs/out --backend mock`) 실행.\n3. 단계 슬라이더로 각 역할의 동작을 확인: 도메인 전문가 발견 → 매니저 계획 → 코더 생성 → QA 정리.\n",
+    "en": "# Multi-Agent Ontology Generation — Domain Expert / Manager / Coder / QA\n\n> Source: Talukder, Mridul, Seneviratne, *Towards Automated Ontology Generation from Unstructured Text: A Multi-Agent LLM Approach*, arXiv:2604.23090 (2026).\n\n## 1. One-line summary\nFour specialised LLM **roles collaborate** — a Domain Expert reads the text, a Manager plans, a Coder writes OWL, and a Quality Assurer prunes — turning **unstructured text** into an OWL ontology in a planning-first pipeline.\n\n## 2. Key ideas\n- **Artifact-driven roles**: each role consumes the previous role's artifact and produces the next, instead of one monolithic prompt. Responsibilities are clearly separated.\n- **Planning-first**: nothing is \"coded\" into OWL until the Manager has organised the findings into an explicit plan, which keeps the ontology coherent.\n- **Quality assurance pass**: a dedicated final role validates and prunes the result (self-loops, duplicate edges, dangling endpoints), so noise from extraction does not leak into the final ontology.\n\n## 3. The four roles (step by step)\n1. **Domain Expert** — reads the text **sentence by sentence** and surfaces candidate concepts (capitalised nouns) and (subject, relation, object) knowledge triples. One step per sentence: `(DomainExpert) <sentence>`.\n2. **Manager** — deduplicates and organises all the findings into one **plan** (a clean concept set + the relation list). One step: `(Manager) plan`.\n3. **Coder** — turns the plan into **OWL fragments** (classes + object properties with domain/range) and emits them into the model. One step: `(Coder) emit`.\n4. **Quality Assurer** — **validates / prunes**: drops self-loops, duplicate edges, and edges whose endpoints are missing. One step: `(QA) validate`, listing what was removed.\n\nOnly the Domain Expert consults the LLM. The Manager, Coder, and QA are deterministic for both the mock and real backends.\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `text.txt` | unstructured domain text (split into sentences; `#` comments / blanks ignored) |\n| Output | `ontology.ttl` | OWL ontology (Turtle) |\n| Output | `ontology.json` | Cytoscape nodes/edges (for visualization) |\n| Output | `steps.json` | per-role snapshots — watch it get planned, built, then pruned |\n\n## 5. LLM backend\n- Default `mock`: runs deterministically with no key (stable golden files). The Domain Expert extracts capitalised nouns as concepts and relational verbs (consist/made/supply/perform/satisfy/connect …) as object properties, **keeping** duplicates and self-loops so the QA role visibly prunes them.\n- `gemini`/`anthropic` (`api`): if a key is in the env, the Domain Expert uses the real model via the shared `extract_triples` helper; the Manager/Coder/QA logic is unchanged. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. Edit `samples/text.txt` (add sentences with capitalised entities and relation verbs).\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out --backend mock`).\n3. Use the step slider to watch each role act: Domain Expert findings → Manager plan → Coder emit → QA prune.\n"
+  },
+  "sample_input": "# Unstructured product-design text. Sentences are split on . ! ?\n# Capitalised words become candidate concepts; relational verbs become object\n# properties. The Domain Expert reads each sentence; Manager plans; Coder emits;\n# the Quality Assurer prunes self-loops, duplicates and dangling edges.\nA Product consists of several Parts.\nEach Part is made of a Material.\nA Supplier supplies a Part to the Factory.\nA Component performs a Function in the Assembly.\nA Product satisfies a Requirement.\nA Product consists of several Parts.\nA Part connects to a Part during assembly.\n",
+  "implemented": true
+}

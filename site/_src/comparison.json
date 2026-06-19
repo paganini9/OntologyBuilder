@@ -103,6 +103,27 @@
       "paradigm": {"ko": "대화형 변증법", "en": "Dialectical dialogue"},
       "distinct": {"ko": "적대적 2역할 대화(단일 자기비평과 구분)", "en": "Adversarial 2-role dialogue"}
     },
+    "multiagent-ontogen": {
+      "input": {"ko": "자유 텍스트", "en": "Free text"},
+      "mechanism": {"ko": "4역할(전문가/매니저/코더/QA) 계획기반 생성", "en": "4 roles (expert/manager/coder/QA), planning-first"},
+      "output_unit": {"ko": "클래스·속성", "en": "Classes & properties"},
+      "paradigm": {"ko": "역할분담 멀티에이전트", "en": "Role-based multi-agent"},
+      "distinct": {"ko": "아티팩트 기반 4역할 + QA 검증·가지치기", "en": "Artifact-driven 4 roles + QA prune"}
+    },
+    "onto-kg-completion": {
+      "input": {"ko": "부분 KG (seed)", "en": "Partial KG (seed)"},
+      "mechanism": {"ko": "온톨로지 규칙(이행성/역관계)로 누락 보완", "en": "Complete missing edges via ontology rules (transitivity/inverse)"},
+      "output_unit": {"ko": "보완된 KG", "en": "Completed KG"},
+      "paradigm": {"ko": "KG 완성(construction 아님)", "en": "Completion (not construction)"},
+      "distinct": {"ko": "기존 KG를 입력받아 누락 링크 예측", "en": "Predicts missing links over an existing KG"}
+    },
+    "ollm": {
+      "input": {"ko": "자유 텍스트", "en": "Free text"},
+      "mechanism": {"ko": "개념 추출→subClassOf 분류체계 유도", "en": "Concepts→subClassOf taxonomy induction"},
+      "output_unit": {"ko": "분류체계(계층)", "en": "Taxonomy (hierarchy)"},
+      "paradigm": {"ko": "분류체계 backbone", "en": "Taxonomic backbone"},
+      "distinct": {"ko": "관계 아닌 is-a 계층 end-to-end (코드 공개)", "en": "End-to-end is-a hierarchy (public code)"}
+    },
     "hf-local-demo": {
       "input": {"ko": "자유 텍스트", "en": "Free text"},
       "mechanism": {"ko": "문장→로컬 LLM JSON 트리플→그래프", "en": "Sentence→local-LLM JSON triples→graph"},

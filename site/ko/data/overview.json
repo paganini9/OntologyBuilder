@@ -198,6 +198,42 @@
       "output_unit": "도메인 KG",
       "paradigm": "트리플-우선 + 검증·가지치기",
       "distinct": "재귀적 다단계 확장(실구동은 GPU/파인튜닝)"
+    },
+    {
+      "id": "multiagent-ontogen",
+      "name": "Multi-Agent Ontology Generation (Domain Expert/Manager/Coder/QA)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "4역할(전문가/매니저/코더/QA) 계획기반 생성",
+      "output_unit": "클래스·속성",
+      "paradigm": "역할분담 멀티에이전트",
+      "distinct": "아티팩트 기반 4역할 + QA 검증·가지치기"
+    },
+    {
+      "id": "onto-kg-completion",
+      "name": "Ontology-Enhanced KG Completion (LLM)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "api",
+      "input": "부분 KG (seed)",
+      "mechanism": "온톨로지 규칙(이행성/역관계)로 누락 보완",
+      "output_unit": "보완된 KG",
+      "paradigm": "KG 완성(construction 아님)",
+      "distinct": "기존 KG를 입력받아 누락 링크 예측"
+    },
+    {
+      "id": "ollm",
+      "name": "OLLM (end-to-end taxonomy/ontology learning)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "api",
+      "input": "자유 텍스트",
+      "mechanism": "개념 추출→subClassOf 분류체계 유도",
+      "output_unit": "분류체계(계층)",
+      "paradigm": "분류체계 backbone",
+      "distinct": "관계 아닌 is-a 계층 end-to-end (코드 공개)"
     }
   ]
 }
