@@ -1,0 +1,11 @@
+The Pump uses Steel for its housing.
+The Pump requires Coolant during operation.
+
+Pumps belong to the Drivetrain assembly.
+The Controller monitors the Pump.
+
+The Motor drives the Drivetrain.
+The Motor uses Copper windings.
+
+Welding joins the Steel components.
+The Sensor monitors the Motor temperature.

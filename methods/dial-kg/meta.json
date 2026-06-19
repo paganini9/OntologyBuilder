@@ -1,0 +1,34 @@
+{
+  "id": "dial-kg",
+  "name": "DIAL-KG (schema-free incremental + governance + schema evolution)",
+  "paper": {
+    "key": "Bao_DIALKG",
+    "title": "DIAL-KG: Schema-Free Incremental Knowledge Graph Construction via Dynamic Schema Induction and Evolution-Intent Assessment",
+    "arxiv": "2603.20059",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 6,
+    "rank": 6,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "closed-loop incremental construction with three coupled stages (dual-track extraction, governance adjudication, schema evolution) orchestrated by a Meta-KB; deterministic mock possible but the coupling (cross-doc dedup + evolving induced types) makes it more involved than plain incremental dedup or one-shot schema induction; no GPU/finetuning/large data"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-20"
+}

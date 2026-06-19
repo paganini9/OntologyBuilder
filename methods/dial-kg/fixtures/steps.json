@@ -1,0 +1,1061 @@
+[
+  {
+    "step": 1,
+    "cq": "The Pump uses Steel for its housing.",
+    "document": 1,
+    "added": {
+      "classes": [
+        "Pump",
+        "Steel",
+        "Coolant"
+      ],
+      "object_properties": [
+        {
+          "name": "uses",
+          "domain": "Pump",
+          "range": "Steel"
+        },
+        {
+          "name": "requires",
+          "domain": "Pump",
+          "range": "Coolant"
+        }
+      ],
+      "data_properties": []
+    },
+    "governance": {
+      "merged_entities": [],
+      "dropped_edges": []
+    },
+    "schema_types": [
+      "Device",
+      "Material"
+    ],
+    "evolved_types": [
+      "Device",
+      "Material"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-uses-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "cq": "Pumps belong to the Drivetrain assembly.",
+    "document": 2,
+    "added": {
+      "classes": [
+        "Drivetrain",
+        "Controller"
+      ],
+      "object_properties": [
+        {
+          "name": "belongsTo",
+          "domain": "Pump",
+          "range": "Drivetrain"
+        },
+        {
+          "name": "monitors",
+          "domain": "Controller",
+          "range": "Pump"
+        }
+      ],
+      "data_properties": []
+    },
+    "governance": {
+      "merged_entities": [
+        {
+          "variant": "Pumps",
+          "canonical": "Pump"
+        }
+      ],
+      "dropped_edges": []
+    },
+    "schema_types": [
+      "Device",
+      "Material",
+      "System"
+    ],
+    "evolved_types": [
+      "System"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain",
+            "label": "Drivetrain",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-uses-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-belongsTo-Drivetrain",
+            "source": "Pump",
+            "target": "Drivetrain",
+            "label": "belongsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Pump",
+            "source": "Controller",
+            "target": "Pump",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain-instanceOf-System",
+            "source": "Drivetrain",
+            "target": "System",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-instanceOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "cq": "The Motor drives the Drivetrain.",
+    "document": 3,
+    "added": {
+      "classes": [
+        "Motor",
+        "Copper"
+      ],
+      "object_properties": [
+        {
+          "name": "drives",
+          "domain": "Motor",
+          "range": "Drivetrain"
+        },
+        {
+          "name": "uses",
+          "domain": "Motor",
+          "range": "Copper"
+        }
+      ],
+      "data_properties": []
+    },
+    "governance": {
+      "merged_entities": [],
+      "dropped_edges": []
+    },
+    "schema_types": [
+      "Device",
+      "Material",
+      "System"
+    ],
+    "evolved_types": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain",
+            "label": "Drivetrain",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-uses-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-belongsTo-Drivetrain",
+            "source": "Pump",
+            "target": "Drivetrain",
+            "label": "belongsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Pump",
+            "source": "Controller",
+            "target": "Pump",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Drivetrain",
+            "source": "Motor",
+            "target": "Drivetrain",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-uses-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain-instanceOf-System",
+            "source": "Drivetrain",
+            "target": "System",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-instanceOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-instanceOf-Device",
+            "source": "Motor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Copper-instanceOf-Material",
+            "source": "Copper",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "cq": "Welding joins the Steel components.",
+    "document": 4,
+    "added": {
+      "classes": [
+        "Welding",
+        "Sensor"
+      ],
+      "object_properties": [
+        {
+          "name": "monitors",
+          "domain": "Sensor",
+          "range": "Motor"
+        }
+      ],
+      "data_properties": []
+    },
+    "governance": {
+      "merged_entities": [],
+      "dropped_edges": []
+    },
+    "schema_types": [
+      "Device",
+      "Material",
+      "System",
+      "Process"
+    ],
+    "evolved_types": [
+      "Process"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain",
+            "label": "Drivetrain",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Welding",
+            "label": "Welding",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-uses-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-belongsTo-Drivetrain",
+            "source": "Pump",
+            "target": "Drivetrain",
+            "label": "belongsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Pump",
+            "source": "Controller",
+            "target": "Pump",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Drivetrain",
+            "source": "Motor",
+            "target": "Drivetrain",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-uses-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-monitors-Motor",
+            "source": "Sensor",
+            "target": "Motor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain-instanceOf-System",
+            "source": "Drivetrain",
+            "target": "System",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-instanceOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-instanceOf-Device",
+            "source": "Motor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Copper-instanceOf-Material",
+            "source": "Copper",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Welding-instanceOf-Process",
+            "source": "Welding",
+            "target": "Process",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-instanceOf-Device",
+            "source": "Sensor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "cq": "(schema) Meta-KB",
+    "stage": "schema_evolution",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "data_properties": []
+    },
+    "governance": {
+      "merged_entities": [],
+      "dropped_edges": []
+    },
+    "schema_types": [
+      "Device",
+      "Material",
+      "System",
+      "Process"
+    ],
+    "evolved_types": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Material",
+            "label": "Material",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "System",
+            "label": "System",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Process",
+            "label": "Process",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Steel",
+            "label": "Steel",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant",
+            "label": "Coolant",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain",
+            "label": "Drivetrain",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Copper",
+            "label": "Copper",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Welding",
+            "label": "Welding",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-uses-Steel",
+            "source": "Pump",
+            "target": "Steel",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-requires-Coolant",
+            "source": "Pump",
+            "target": "Coolant",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-belongsTo-Drivetrain",
+            "source": "Pump",
+            "target": "Drivetrain",
+            "label": "belongsTo"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-monitors-Pump",
+            "source": "Controller",
+            "target": "Pump",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Drivetrain",
+            "source": "Motor",
+            "target": "Drivetrain",
+            "label": "drives"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-uses-Copper",
+            "source": "Motor",
+            "target": "Copper",
+            "label": "uses"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-monitors-Motor",
+            "source": "Sensor",
+            "target": "Motor",
+            "label": "monitors"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-instanceOf-Device",
+            "source": "Pump",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Steel-instanceOf-Material",
+            "source": "Steel",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Coolant-instanceOf-Material",
+            "source": "Coolant",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drivetrain-instanceOf-System",
+            "source": "Drivetrain",
+            "target": "System",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-instanceOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-instanceOf-Device",
+            "source": "Motor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Copper-instanceOf-Material",
+            "source": "Copper",
+            "target": "Material",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Welding-instanceOf-Process",
+            "source": "Welding",
+            "target": "Process",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-instanceOf-Device",
+            "source": "Sensor",
+            "target": "Device",
+            "label": "instanceOf"
+          }
+        }
+      ]
+    }
+  }
+]
