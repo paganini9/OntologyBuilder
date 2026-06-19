@@ -1,0 +1,6 @@
+The Pump moves coolant through the cooling loop of the assembly line.
+An ElectricMotor drives the Pump that circulates the fluid.
+The CoolantPump supplies coolant to the ElectricMotor during operation.
+A TemperatureSensor monitors the ElectricMotor and reports overheating.
+The ControlUnit manages the TemperatureSensor and the Pump together.
+Each Motor powers a Component on the production line.
