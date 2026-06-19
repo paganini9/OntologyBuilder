@@ -1,0 +1,714 @@
+[
+  {
+    "step": 1,
+    "stage": "concepts",
+    "cq": "(concepts) An ElectricMotor is a type of Motor that converts electrical energy into rotation",
+    "added": {
+      "classes": [
+        "ElectricMotor",
+        "Motor"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 2,
+    "stage": "concepts",
+    "cq": "(concepts) The CoolantPump is a Pump that circulates fluid to keep the engine cool",
+    "added": {
+      "classes": [
+        "CoolantPump",
+        "Pump"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 3,
+    "stage": "concepts",
+    "cq": "(concepts) Every Motor and every Pump is a mechanical Component of the Product",
+    "added": {
+      "classes": [
+        "Component",
+        "Product"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 4,
+    "stage": "concepts",
+    "cq": "(concepts) A TemperatureSensor is a Sensor that reports the operating Temperature",
+    "added": {
+      "classes": [
+        "TemperatureSensor",
+        "Sensor",
+        "Temperature"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "TemperatureSensor",
+            "label": "TemperatureSensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Temperature",
+            "label": "Temperature",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 5,
+    "stage": "concepts",
+    "cq": "(concepts) The ControlUnit reads each Sensor and drives the ElectricMotor",
+    "added": {
+      "classes": [
+        "ControlUnit"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "TemperatureSensor",
+            "label": "TemperatureSensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Temperature",
+            "label": "Temperature",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ControlUnit",
+            "label": "ControlUnit",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 6,
+    "stage": "concepts",
+    "cq": "(concepts) A HydraulicPump and an ElectricMotor are mounted on the same Assembly",
+    "added": {
+      "classes": [
+        "HydraulicPump",
+        "Assembly"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "TemperatureSensor",
+            "label": "TemperatureSensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Temperature",
+            "label": "Temperature",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ControlUnit",
+            "label": "ControlUnit",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "HydraulicPump",
+            "label": "HydraulicPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": []
+    }
+  },
+  {
+    "step": 7,
+    "stage": "taxonomy",
+    "cq": "(taxonomy) induce hierarchy",
+    "added": {
+      "classes": [
+        "Entity"
+      ],
+      "subclass_of": [
+        {
+          "child": "ElectricMotor",
+          "parent": "Motor"
+        },
+        {
+          "child": "CoolantPump",
+          "parent": "Pump"
+        },
+        {
+          "child": "TemperatureSensor",
+          "parent": "Sensor"
+        },
+        {
+          "child": "HydraulicPump",
+          "parent": "Pump"
+        },
+        {
+          "child": "Motor",
+          "parent": "Entity"
+        },
+        {
+          "child": "Pump",
+          "parent": "Entity"
+        },
+        {
+          "child": "Component",
+          "parent": "Entity"
+        },
+        {
+          "child": "Product",
+          "parent": "Entity"
+        },
+        {
+          "child": "Sensor",
+          "parent": "Entity"
+        },
+        {
+          "child": "Temperature",
+          "parent": "Entity"
+        },
+        {
+          "child": "ControlUnit",
+          "parent": "Entity"
+        },
+        {
+          "child": "Assembly",
+          "parent": "Entity"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "ElectricMotor",
+            "label": "ElectricMotor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump",
+            "label": "CoolantPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Product",
+            "label": "Product",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "TemperatureSensor",
+            "label": "TemperatureSensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Temperature",
+            "label": "Temperature",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ControlUnit",
+            "label": "ControlUnit",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "HydraulicPump",
+            "label": "HydraulicPump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly",
+            "label": "Assembly",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Entity",
+            "label": "Entity",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "ElectricMotor-subClassOf-Motor",
+            "source": "ElectricMotor",
+            "target": "Motor",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "CoolantPump-subClassOf-Pump",
+            "source": "CoolantPump",
+            "target": "Pump",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "TemperatureSensor-subClassOf-Sensor",
+            "source": "TemperatureSensor",
+            "target": "Sensor",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "HydraulicPump-subClassOf-Pump",
+            "source": "HydraulicPump",
+            "target": "Pump",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Entity",
+            "source": "Motor",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Entity",
+            "source": "Pump",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Component-subClassOf-Entity",
+            "source": "Component",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Product-subClassOf-Entity",
+            "source": "Product",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor-subClassOf-Entity",
+            "source": "Sensor",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Temperature-subClassOf-Entity",
+            "source": "Temperature",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "ControlUnit-subClassOf-Entity",
+            "source": "ControlUnit",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Assembly-subClassOf-Entity",
+            "source": "Assembly",
+            "target": "Entity",
+            "label": "subClassOf"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,206 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "ElectricMotor",
+        "label": "ElectricMotor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CoolantPump",
+        "label": "CoolantPump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Component",
+        "label": "Component",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "TemperatureSensor",
+        "label": "TemperatureSensor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor",
+        "label": "Sensor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Temperature",
+        "label": "Temperature",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ControlUnit",
+        "label": "ControlUnit",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "HydraulicPump",
+        "label": "HydraulicPump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Entity",
+        "label": "Entity",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "ElectricMotor-subClassOf-Motor",
+        "source": "ElectricMotor",
+        "target": "Motor",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "CoolantPump-subClassOf-Pump",
+        "source": "CoolantPump",
+        "target": "Pump",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "TemperatureSensor-subClassOf-Sensor",
+        "source": "TemperatureSensor",
+        "target": "Sensor",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "HydraulicPump-subClassOf-Pump",
+        "source": "HydraulicPump",
+        "target": "Pump",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-subClassOf-Entity",
+        "source": "Motor",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-subClassOf-Entity",
+        "source": "Pump",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Component-subClassOf-Entity",
+        "source": "Component",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Product-subClassOf-Entity",
+        "source": "Product",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Sensor-subClassOf-Entity",
+        "source": "Sensor",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Temperature-subClassOf-Entity",
+        "source": "Temperature",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "ControlUnit-subClassOf-Entity",
+        "source": "ControlUnit",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-subClassOf-Entity",
+        "source": "Assembly",
+        "target": "Entity",
+        "label": "subClassOf"
+      }
+    }
+  ]
+}

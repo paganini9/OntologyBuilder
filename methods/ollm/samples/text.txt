@@ -1,0 +1,6 @@
+An ElectricMotor is a type of Motor that converts electrical energy into rotation.
+The CoolantPump is a Pump that circulates fluid to keep the engine cool.
+Every Motor and every Pump is a mechanical Component of the Product.
+A TemperatureSensor is a Sensor that reports the operating Temperature.
+The ControlUnit reads each Sensor and drives the ElectricMotor.
+A HydraulicPump and an ElectricMotor are mounted on the same Assembly.

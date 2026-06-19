@@ -1,0 +1,34 @@
+{
+  "id": "ollm",
+  "name": "OLLM (end-to-end taxonomy/ontology learning)",
+  "paper": {
+    "key": "Lo_OLLM",
+    "title": "End-to-End Ontology Learning with Large Language Models",
+    "arxiv": "2410.23584",
+    "venue": "arXiv 2024",
+    "code_url": "https://github.com/andylolu2/ollm"
+  },
+  "difficulty": {
+    "score": 3,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "taxonomy backbone; real paper finetunes but our impl is deterministic mock + real-extract concepts; public code"
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-19"
+}
