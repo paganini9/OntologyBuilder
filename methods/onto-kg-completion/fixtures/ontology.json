@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Bolt",
+        "label": "Bolt",
+        "type": "class",
+        "attributes": [],
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Bracket",
+        "label": "Bracket",
+        "type": "class",
+        "attributes": [],
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly",
+        "label": "Assembly",
+        "type": "class",
+        "attributes": [],
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Product",
+        "label": "Product",
+        "type": "class",
+        "attributes": [],
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Steel",
+        "label": "Steel",
+        "type": "class",
+        "attributes": [],
+        "origin": "seed"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Bolt-partOf-Bracket",
+        "source": "Bolt",
+        "target": "Bracket",
+        "label": "partOf",
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Bracket-partOf-Assembly",
+        "source": "Bracket",
+        "target": "Assembly",
+        "label": "partOf",
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-partOf-Product",
+        "source": "Assembly",
+        "target": "Product",
+        "label": "partOf",
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Bolt-madeOf-Steel",
+        "source": "Bolt",
+        "target": "Steel",
+        "label": "madeOf",
+        "origin": "seed"
+      }
+    },
+    {
+      "data": {
+        "id": "Bolt-partOf-Assembly",
+        "source": "Bolt",
+        "target": "Assembly",
+        "label": "partOf",
+        "origin": "inferred"
+      }
+    },
+    {
+      "data": {
+        "id": "Bracket-partOf-Product",
+        "source": "Bracket",
+        "target": "Product",
+        "label": "partOf",
+        "origin": "inferred"
+      }
+    },
+    {
+      "data": {
+        "id": "Bolt-partOf-Product",
+        "source": "Bolt",
+        "target": "Product",
+        "label": "partOf",
+        "origin": "inferred"
+      }
+    },
+    {
+      "data": {
+        "id": "Bracket-hasPart-Bolt",
+        "source": "Bracket",
+        "target": "Bolt",
+        "label": "hasPart",
+        "origin": "inferred"
+      }
+    },
+    {
+      "data": {
+        "id": "Assembly-hasPart-Bracket",
+        "source": "Assembly",
+        "target": "Bracket",
+        "label": "hasPart",
+        "origin": "inferred"
+      }
+    },
+    {
+      "data": {
+        "id": "Product-hasPart-Assembly",
+        "source": "Product",
+        "target": "Assembly",
+        "label": "hasPart",
+        "origin": "inferred"
+      }
+    }
+  ]
+}

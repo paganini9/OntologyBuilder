@@ -1,0 +1,34 @@
+{
+  "id": "onto-kg-completion",
+  "name": "Ontology-Enhanced KG Completion (LLM)",
+  "paper": {
+    "key": "Guo_OntoKGC",
+    "title": "Ontology-Enhanced Knowledge Graph Completion using Large Language Models",
+    "arxiv": "2507.20643",
+    "venue": "arXiv 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "Completes a partial KG (link prediction) rather than building from text: load seed -> ontology-constrained inference -> emit. Deterministic rule-based mock (transitivity/inverse/symmetry); no GPU/finetuning/data."
+  },
+  "llm_dependency": "api",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["seed_kg.ttl"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/seed_kg.ttl"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-19"
+}

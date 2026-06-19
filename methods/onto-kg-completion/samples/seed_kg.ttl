@@ -1,0 +1,32 @@
+@prefix ex: <http://example.org/product#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/product> a owl:Ontology .
+
+# --- Existing classes (the partial product KG) ---
+ex:Bolt a owl:Class .
+ex:Bracket a owl:Class .
+ex:Assembly a owl:Class .
+ex:Product a owl:Class .
+ex:Steel a owl:Class .
+
+# --- Existing edges (object properties with domain/range) ---
+# A chain of partOf links that completion can extend by transitivity:
+#   Bolt partOf Bracket , Bracket partOf Assembly  => (missing) Bolt partOf Assembly
+#   Assembly partOf Product                        => (missing) Bracket/Bolt partOf Product
+ex:partOf a owl:ObjectProperty ;
+    rdfs:domain ex:Bolt ;
+    rdfs:range ex:Bracket .
+
+ex:partOf_1 a owl:ObjectProperty ;
+    rdfs:domain ex:Bracket ;
+    rdfs:range ex:Assembly .
+
+ex:partOf_2 a owl:ObjectProperty ;
+    rdfs:domain ex:Assembly ;
+    rdfs:range ex:Product .
+
+ex:madeOf a owl:ObjectProperty ;
+    rdfs:domain ex:Bolt ;
+    rdfs:range ex:Steel .
