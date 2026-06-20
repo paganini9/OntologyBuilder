@@ -1,0 +1,39 @@
+{
+  "id": "ontokb-iterative",
+  "name": "Iterative LLM Ontological KB (draft → refine)",
+  "status": "published",
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "iterative knowledge acquisition (draft skeleton -> refinement cycle adds hierarchy + data attributes); deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "paper": {
+    "key": "OntoKB_Iterative_2026",
+    "title": "Development of Ontological Knowledge Bases by Leveraging Large Language Models",
+    "arxiv": "2601.10436",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# 반복형 LLM 온톨로지 지식베이스 — 초안 → 정제\n\n> 출처: *Development of Ontological Knowledge Bases by Leveraging Large Language Models*, arXiv:2601.10436 (차량 판매 도메인 사례).\n\n## 1. 한 줄 요약\n온톨로지 지식베이스를 **반복(iterative)** 사이클로 구축한다: 1차 패스가 뼈대(클래스+관계)를 **초안(draft)**으로 뽑고, **정제(refine)** 패스가 is-a 계층을 유도하고 데이터 속성을 붙여 풍부하게 만든다.\n\n## 2. 핵심 아이디어\n- **반복적 지식 획득**: 일회성 추출이 아니라 패스를 나눠 — 생성 후 검토·정제 — KB를 발전시킨다. 초안이 무엇을 잡았고 정제가 무엇을 더했는지 보이므로 구축 과정이 *감사 가능*하다.\n- **뼈대 먼저, 보강은 나중**: 초안은 의도적으로 클래스와 그 사이 객체 속성만 담는다. 계층·속성은 1차에서 만들지 않고, 초안 전체를 보는 정제 단계에서 도출한다.\n- **아티팩트 생성**: 각 패스가 구체적 산출물(성장하는 온톨로지 그래프 + TTL)을 만들고, 단계 스냅샷이 사이클의 감사 기록이 된다.\n\n## 3. 구축 과정 (단계별)\n1. **텍스트 읽기** — `text.txt`의 자유 도메인 텍스트를 문장 단위로 분리(`#` 주석 줄 무시).\n2. **반복 1 — DRAFT(문장별)**: LLM(또는 MOCK 휴리스틱)이 클래스와 객체 속성 `{name, domain, range}` 하나를 추출. 문장마다 스냅샷(`stage = \"draft\"`).\n3. **반복 2 — REFINE(초안 전체 대상)**:\n   - **계층**: compound-tail 규칙으로 `rdfs:subClassOf` 유도(예: `ElectricVehicle ⊑ Vehicle`, `SportsCar ⊑ Car`).\n   - **속성**: 클래스와 함께 언급된 데이터 단어(`price`, `model`, `brand`, `year`, `color` 등)를 데이터타입 속성으로 부착.\n   스냅샷 1개(`stage = \"refine\"`).\n4. **출력** — `ontology.ttl`(클래스, 객체/데이터타입 속성, `rdfs:subClassOf`), `ontology.json`(그래프; 노드에 데이터 속성 표시), `steps.json`(초안 스냅샷 + 정제 스냅샷).\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 비고 |\n|------|------|------|\n| 입력 | `text.txt` | 자유 도메인 텍스트(`.` `!` `?`로 문장 분리) |\n| 출력 | `ontology.ttl` | OWL: 클래스, 객체/데이터타입 속성, `rdfs:subClassOf` |\n| 출력 | `ontology.json` | 그래프; 노드에 데이터 속성 포함 |\n| 출력 | `steps.json` | 문장별 초안 스냅샷 + 정제 스냅샷 1개 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적(골든 파일 안정). 초안 = 대문자 명사 + 관계 동사; 정제 = compound-tail subClassOf + 데이터 단어 속성.\n- `gemini`/`anthropic`/`hf_local`: 키/모델이 있으면 초안은 실제 추출기 사용, 정제는 동일(결정론)해 계층·속성이 안정적. 키 없으면 자동 MOCK 폴백.\n\n## 6. 직접 해보기\n1. `samples/text.txt`를 편집 — 기본 클래스와 합성어(예: `Vehicle` + `ElectricVehicle`), 속성 단어(`price`, `year`)를 포함.\n2. 사이트 **Run** 버튼(또는 `python pipeline.py samples runs/out --backend mock`).\n3. 단계 슬라이더로 초안 뼈대가 만들어진 뒤 정제 단계에서 계층·속성이 들어오는 과정을 확인.\n",
+    "en": "# Iterative LLM Ontological KB — draft → refine\n\n> Source: *Development of Ontological Knowledge Bases by Leveraging Large Language Models*, arXiv:2601.10436 (vehicle-sales case study).\n\n## 1. One-line summary\nBuild an ontological knowledge base through an **iterative** cycle: a first pass **drafts** the skeleton (classes + relations), then a **refinement** pass enriches it (induces the is-a hierarchy and attaches data attributes).\n\n## 2. Key ideas\n- **Iterative knowledge acquisition**: rather than one-shot extraction, the KB is developed in passes — generate, then review-and-refine. This makes the construction *auditable*: you can see what the draft captured and what refinement added.\n- **Skeleton first, enrichment later**: the draft deliberately keeps only classes and the object properties between them. Hierarchy and attributes are *not* invented in the first pass; they are derived in refinement, where the whole draft is in view.\n- **Artifact generation**: each pass produces a concrete artifact (the growing ontology graph + TTL), and the step snapshots are the audit trail of the cycle.\n\n## 3. Construction process (step by step)\n1. **Read text** — free domain text in `text.txt`, split into sentences (`#` comment lines ignored).\n2. **Iteration 1 — DRAFT (per sentence)**: the LLM (or MOCK heuristic) extracts classes and one object property `{name, domain, range}`. One snapshot per sentence (`stage = \"draft\"`).\n3. **Iteration 2 — REFINE (over the whole draft)**:\n   - **Hierarchy**: compound-tail rule induces `rdfs:subClassOf` (e.g. `ElectricVehicle ⊑ Vehicle`, `SportsCar ⊑ Car`).\n   - **Attributes**: data words (`price`, `model`, `brand`, `year`, `color`, …) mentioned for a class are attached as datatype properties.\n   One snapshot (`stage = \"refine\"`).\n4. **Emit** — `ontology.ttl` (classes, object properties, `rdfs:subClassOf`, datatype properties), `ontology.json` (graph; data attributes shown on nodes), `steps.json` (draft snapshots + the refine snapshot).\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `text.txt` | free domain text (split into sentences by `.` `!` `?`) |\n| Output | `ontology.ttl` | OWL: classes, object/datatype properties, `rdfs:subClassOf` |\n| Output | `ontology.json` | graph; nodes carry their data attributes |\n| Output | `steps.json` | per-sentence draft snapshots + one refine snapshot |\n\n## 5. LLM backend\n- Default `mock`: deterministic, no key (stable golden files). Draft = capitalized nouns + a relational verb; refine = compound-tail subClassOf + data-word attributes.\n- `gemini`/`anthropic`/`hf_local`: with a key/model the draft uses a real extractor; refinement is identical (deterministic) so the hierarchy/attributes stay stable. No key → auto MOCK fallback.\n\n## 6. Try it\n1. Edit `samples/text.txt` — include a base class and a compound (e.g. `Vehicle` + `ElectricVehicle`) and some attribute words (`price`, `year`).\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out --backend mock`).\n3. Use the step slider to watch the draft skeleton form, then the refine step snap in the hierarchy and attributes.\n"
+  },
+  "sample_input": "# Vehicle-sales domain (free text). Draft extracts classes + relations;\n# refine induces the is-a hierarchy and attaches data attributes.\nA Dealer sells a Vehicle.\nA Vehicle has a Price and a Model.\nAn ElectricVehicle is offered by a Dealer.\nA Customer requires a Vehicle.\nA Vehicle has a Brand and a Year.\nA SportsCar has a Color.\n",
+  "implemented": true
+}

@@ -270,6 +270,30 @@
       "output_unit": "Incremental KG + evolving schema",
       "paradigm": "Schema-free incremental (Meta-KB)",
       "distinct": "Governance adjudication + dynamic schema evolution"
+    },
+    {
+      "id": "trace-kg",
+      "name": "TRACE-KG (text-driven schema, context-enriched KG)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "mock",
+      "input": "Free text",
+      "mechanism": "Text-driven schema induction + relation qualifiers + traceability",
+      "output_unit": "Classes, qualified relations, subClassOf",
+      "paradigm": "Between schema-free & schema-first",
+      "distinct": "No predefined ontology; conditional qualifiers + provenance"
+    },
+    {
+      "id": "ontokb-iterative",
+      "name": "Iterative LLM Ontological KB (draft → refine)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "Free domain text",
+      "mechanism": "Draft (skeleton) → refine (hierarchy + attributes)",
+      "output_unit": "Classes, properties, hierarchy",
+      "paradigm": "Iterative knowledge acquisition",
+      "distinct": "Generate→review→refine cycle (auditable)"
     }
   ]
 }

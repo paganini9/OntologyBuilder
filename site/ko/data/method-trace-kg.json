@@ -1,0 +1,39 @@
+{
+  "id": "trace-kg",
+  "name": "TRACE-KG (text-driven schema, context-enriched KG)",
+  "status": "published",
+  "difficulty": {
+    "score": 3,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "joint text-driven schema induction + conditional qualifiers on relations + full source traceability; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "paper": {
+    "key": "ASU_TRACE_KG",
+    "title": "Beyond Predefined Schemas: TRACE-KG for Context-Enriched Knowledge Graphs from Complex Documents",
+    "arxiv": "2604.03496",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "text.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# TRACE-KG — 텍스트 기반 스키마, 맥락 강화 지식그래프\n\n> 출처: *Beyond Predefined Schemas: TRACE-KG for Context-Enriched Knowledge Graphs from Complex Documents* (**TRACE-KG**, Text-dRiven schemA), arXiv:2604.03496 (Arizona State University).\n\n## 1. 한 줄 요약\n**미리 정의된 온톨로지 없이** 지식그래프를 만든다: 텍스트에서 곧바로 **데이터 기반 스키마**를 유도하고, 관계에 **조건 한정자(qualifier)**를 붙이며, 모든 엣지를 **원문 문장까지 추적(traceability)**한다.\n\n## 2. 핵심 아이디어\n- **스키마 사전정의를 넘어서**: 온톨로지 기반 파이프라인은 수작업 스키마가 필요하고, 스키마-프리 추출은 파편화된 그래프를 낳는다. TRACE-KG는 그 중간 — 스키마 뼈대를 *텍스트 자체에서 유도*(여기서는 명시적 is-a 단서로)하여, 사전 설계 없이도 재사용 가능한 의미 backbone을 유지한다.\n- **맥락 강화 관계**: 실제 문서의 사실은 *특정 조건 아래에서만* 성립하는 경우가 많다. TRACE-KG는 그 조건을 관계의 **한정자**로 포착한다(예: `Pump consistsOf Impeller [Pressure]`). 평면 트리플이 버리는 맥락을 보존한다.\n- **추적성**: 모든 노드·엣지가 **원문 문장 인덱스(`provenance`)**를 기록하여, 그래프를 항상 근거 문장으로 되짚을 수 있다.\n\n## 3. 구축 과정 (단계별)\n1. **텍스트 읽기** — `text.txt`의 자유 본문을 문장 단위로 분리(`#` 주석 줄 무시).\n2. **문장별 분류** — LLM(또는 MOCK 휴리스틱)이 각 문장을 둘 중 하나로 태깅:\n   - **is-a 사실** → `subClassOf(child, parent)`, 유도된 스키마 뼈대를 키움; 또는\n   - **관계** `(주어, 관계, 목적어)` + `when / if / during / under / while` 절에서 추출한 선택적 **한정자**.\n   UI 재생을 위해 문장마다 스냅샷을 남긴다.\n3. **누적** — 클래스, 한정 관계, subClassOf 엣지를 삽입 순서대로(결정론) 병합. 각 엣지는 `qualifier`(없을 수 있음)와 `provenance`(원문 문장)를 지닌다.\n4. **출력** — `ontology.ttl`(클래스 `owl:Class`, 관계 `owl:ObjectProperty`+domain/range, 계층 `rdfs:subClassOf`), `ontology.json`(그래프; 엣지 라벨은 `관계 [한정자]`), `steps.json`(단계 스냅샷).\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 비고 |\n|------|------|------|\n| 입력 | `text.txt` | 자유 텍스트(`.` `!` `?`로 문장 분리) |\n| 출력 | `ontology.ttl` | OWL: `owl:Class`, `owl:ObjectProperty`(domain/range), `rdfs:subClassOf` |\n| 출력 | `ontology.json` | 그래프; 관계 엣지에 `qualifier`+`provenance` 포함 |\n| 출력 | `steps.json` | 단계별 스냅샷 — 단계 재생용 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 키 없이 결정론적으로 동작(골든 파일 안정). is-a 단서가 스키마 뼈대를, `when/if/during/...` 절이 한정자를 만든다.\n- `gemini`/`anthropic`/`hf_local`: 키/모델이 있으면 실제 LLM이 관계를 추출(실모델 경로에서는 한정자 비움). 병합·출력 로직은 동일해 그래프 형태가 안정적. 키 없으면 자동 MOCK 폴백.\n- 참고: 발표된 TRACE-KG는 멀티모달로 제시되지만, 본 구현은 **텍스트 기반 스키마 + 한정자 + 추적성** 핵심만 살려 키 없이 재현 가능하게 동작한다.\n\n## 6. 직접 해보기\n1. `samples/text.txt`를 편집 — is-a 문장(`A Pump is a kind of Machine.`)과 조건 관계(`The Pump consists of an Impeller when the Pressure is high.`)를 섞는다.\n2. 사이트 **Run** 버튼(또는 `python pipeline.py samples runs/out --backend mock`).\n3. 단계 슬라이더로 스키마 뼈대와 한정 관계가 쌓이는 과정을 확인하고, 엣지에 마우스를 올려 한정자·출처를 본다.\n",
+    "en": "# TRACE-KG — Text-driven schema, context-enriched KG\n\n> Source: *Beyond Predefined Schemas: TRACE-KG for Context-Enriched Knowledge Graphs from Complex Documents* (**TRACE-KG**, Text-dRiven schemA), arXiv:2604.03496 (Arizona State University).\n\n## 1. One-line summary\nBuild a knowledge graph **without a predefined ontology**: jointly induce a **data-driven schema** straight from the text, attach **conditional qualifiers** to relations, and keep **full traceability** of every edge back to its source sentence.\n\n## 2. Key ideas\n- **Beyond predefined schemas**: ontology-driven pipelines need a hand-built schema; schema-free extraction yields fragmented graphs. TRACE-KG sits in between — the schema scaffold is *induced from the text itself* (here, surfaced from explicit is-a cues), so it stays a reusable semantic backbone without up-front ontology design.\n- **Context-enriched relations**: real documents state facts that only hold *under a condition*. TRACE-KG captures those conditions as **qualifiers** on the relation (e.g. `Pump consistsOf Impeller [Pressure]`), preserving context that flat triples drop.\n- **Traceability**: every node and edge records the **source sentence index** (`provenance`), so the graph can always be traced back to the evidence.\n\n## 3. Construction process (step by step)\n1. **Read text** — free body text in `text.txt`, split into sentences (`#` comment lines ignored).\n2. **Per-sentence classification** — the LLM (or the MOCK heuristic) tags each sentence as either:\n   - an **is-a fact** → `subClassOf(child, parent)`, growing the induced schema scaffold; or\n   - a **relation** `(subject, relation, object)` with an optional **qualifier** lifted from a `when / if / during / under / while` clause.\n   A snapshot is emitted per sentence so the UI can replay the build.\n3. **Accumulate** — classes, qualified relations, and subClassOf edges are merged in insertion order (deterministic). Every edge carries its `qualifier` (possibly empty) and `provenance` (source sentence).\n4. **Emit** — `ontology.ttl` (classes as `owl:Class`, relations as `owl:ObjectProperty` with domain/range, hierarchy as `rdfs:subClassOf`), `ontology.json` (graph; edge labels show `relation [qualifier]`), `steps.json` (per-step snapshots).\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `text.txt` | free text (split into sentences by `.` `!` `?`) |\n| Output | `ontology.ttl` | OWL: `owl:Class`, `owl:ObjectProperty` (domain/range), `rdfs:subClassOf` |\n| Output | `ontology.json` | graph; relation edges carry `qualifier` + `provenance` in edge data |\n| Output | `steps.json` | per-step snapshots — for step replay |\n\n## 5. LLM backend\n- Default `mock`: runs deterministically with no key (stable golden files). is-a cues build the schema scaffold; `when/if/during/...` clauses become qualifiers.\n- `gemini`/`anthropic`/`hf_local`: with a key/model a real LLM extracts the relations (qualifier left empty on the real path); the merge/emit logic is identical so the graph shape stays stable. With no key it auto-falls back to MOCK.\n- Note: the published TRACE-KG is framed as multimodal; this implementation keeps the **text-driven schema + qualifiers + traceability** core and runs key-free and reproducibly.\n\n## 6. Try it\n1. Edit `samples/text.txt` — mix is-a sentences (`A Pump is a kind of Machine.`) with conditional relations (`The Pump consists of an Impeller when the Pressure is high.`).\n2. Hit the site's **Run** button (or `python pipeline.py samples runs/out --backend mock`).\n3. Use the step slider to watch the schema scaffold and qualified relations appear; hover an edge to see its qualifier and source.\n"
+  },
+  "sample_input": "# Pump-system notes (free text). is-a cues induce the schema scaffold;\n# when/if/during clauses become conditional qualifiers on relations.\nA Pump is a kind of Machine.\nA Motor is a Machine.\nThe Pump consists of an Impeller when the Pressure is high.\nThe Motor drives the Impeller during Startup.\nA Controller monitors the Pump if the Temperature rises.\nThe Impeller produces Flow.\nA Sensor measures Pressure.\nThe Controller is a Device.\n",
+  "implemented": true
+}

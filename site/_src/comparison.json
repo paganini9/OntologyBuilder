@@ -1,163 +1,549 @@
 {
   "_note": "Qualitative comparison columns per method id, bilingual. build_site.py joins this with registry (name/difficulty/llm/status). A method missing here still shows basic columns. KEEP IN SYNC when adding methods.",
   "columns": {
-    "ko": {"input": "입력", "mechanism": "핵심 메커니즘", "output_unit": "산출 단위", "paradigm": "패러다임", "distinct": "차별점"},
-    "en": {"input": "Input", "mechanism": "Core mechanism", "output_unit": "Output unit", "paradigm": "Paradigm", "distinct": "Distinctive"}
+    "ko": {
+      "input": "입력",
+      "mechanism": "핵심 메커니즘",
+      "output_unit": "산출 단위",
+      "paradigm": "패러다임",
+      "distinct": "차별점"
+    },
+    "en": {
+      "input": "Input",
+      "mechanism": "Core mechanism",
+      "output_unit": "Output unit",
+      "paradigm": "Paradigm",
+      "distinct": "Distinctive"
+    }
   },
   "rows": {
     "cqbycq": {
-      "input": {"ko": "CQ 목록", "en": "CQ list"},
-      "mechanism": {"ko": "CQ별 독립(memoryless) 조각→병합", "en": "Per-CQ independent (memoryless) fragment→merge"},
-      "output_unit": {"ko": "클래스·속성", "en": "Classes & properties"},
-      "paradigm": {"ko": "스키마-우선", "en": "Schema-first"},
-      "distinct": {"ko": "가장 단순, 맥락 없이 직진", "en": "Simplest, no context"}
+      "input": {
+        "ko": "CQ 목록",
+        "en": "CQ list"
+      },
+      "mechanism": {
+        "ko": "CQ별 독립(memoryless) 조각→병합",
+        "en": "Per-CQ independent (memoryless) fragment→merge"
+      },
+      "output_unit": {
+        "ko": "클래스·속성",
+        "en": "Classes & properties"
+      },
+      "paradigm": {
+        "ko": "스키마-우선",
+        "en": "Schema-first"
+      },
+      "distinct": {
+        "ko": "가장 단순, 맥락 없이 직진",
+        "en": "Simplest, no context"
+      }
     },
     "code-de-kg": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "상호참조→문장분해→복잡도별 프롬프트→트리플", "en": "Coref→decompose→complexity prompt→triples"},
-      "output_unit": {"ko": "트리플", "en": "Triples"},
-      "paradigm": {"ko": "트리플-우선", "en": "Triple-first"},
-      "distinct": {"ko": "긴 문장·대명사 강건, 코드 공개", "en": "Robust to long/pronoun text, public code"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "상호참조→문장분해→복잡도별 프롬프트→트리플",
+        "en": "Coref→decompose→complexity prompt→triples"
+      },
+      "output_unit": {
+        "ko": "트리플",
+        "en": "Triples"
+      },
+      "paradigm": {
+        "ko": "트리플-우선",
+        "en": "Triple-first"
+      },
+      "distinct": {
+        "ko": "긴 문장·대명사 강건, 코드 공개",
+        "en": "Robust to long/pronoun text, public code"
+      }
     },
     "ontogenia": {
-      "input": {"ko": "CQ 목록", "en": "CQ list"},
-      "mechanism": {"ko": "초안→자기비평(메타인지)→정련 (memoryful)", "en": "Draft→self-critique (metacognitive)→refine (memoryful)"},
-      "output_unit": {"ko": "클래스·속성", "en": "Classes & properties"},
-      "paradigm": {"ko": "스키마-우선", "en": "Schema-first"},
-      "distinct": {"ko": "자기비평 루프 + 전체 정련", "en": "Self-critique loop + global refinement"}
+      "input": {
+        "ko": "CQ 목록",
+        "en": "CQ list"
+      },
+      "mechanism": {
+        "ko": "초안→자기비평(메타인지)→정련 (memoryful)",
+        "en": "Draft→self-critique (metacognitive)→refine (memoryful)"
+      },
+      "output_unit": {
+        "ko": "클래스·속성",
+        "en": "Classes & properties"
+      },
+      "paradigm": {
+        "ko": "스키마-우선",
+        "en": "Schema-first"
+      },
+      "distinct": {
+        "ko": "자기비평 루프 + 전체 정련",
+        "en": "Self-critique loop + global refinement"
+      }
     },
     "peshevski-product-kg": {
-      "input": {"ko": "제품 설명", "en": "Product descriptions"},
-      "mechanism": {"ko": "3-agent: 생성→정제→개체 채우기", "en": "3 agents: create→refine→populate"},
-      "output_unit": {"ko": "스키마 + 개체", "en": "Schema + individuals"},
-      "paradigm": {"ko": "스키마-우선(ontology-first)", "en": "Ontology-first"},
-      "distinct": {"ko": "개체 인스턴스화, 제품 도메인", "en": "Individual population, product domain"}
+      "input": {
+        "ko": "제품 설명",
+        "en": "Product descriptions"
+      },
+      "mechanism": {
+        "ko": "3-agent: 생성→정제→개체 채우기",
+        "en": "3 agents: create→refine→populate"
+      },
+      "output_unit": {
+        "ko": "스키마 + 개체",
+        "en": "Schema + individuals"
+      },
+      "paradigm": {
+        "ko": "스키마-우선(ontology-first)",
+        "en": "Ontology-first"
+      },
+      "distinct": {
+        "ko": "개체 인스턴스화, 제품 도메인",
+        "en": "Individual population, product domain"
+      }
     },
     "agentigraph": {
-      "input": {"ko": "사용자 발화", "en": "User utterances"},
-      "mechanism": {"ko": "의도분류→작업계획→지식통합", "en": "Intent→planning→integration"},
-      "output_unit": {"ko": "클래스·관계", "en": "Classes & relations"},
-      "paradigm": {"ko": "대화형 점진", "en": "Conversational incremental"},
-      "distinct": {"ko": "사용자 in-the-loop, 발화 단위", "en": "User in-the-loop, per-turn"}
+      "input": {
+        "ko": "사용자 발화",
+        "en": "User utterances"
+      },
+      "mechanism": {
+        "ko": "의도분류→작업계획→지식통합",
+        "en": "Intent→planning→integration"
+      },
+      "output_unit": {
+        "ko": "클래스·관계",
+        "en": "Classes & relations"
+      },
+      "paradigm": {
+        "ko": "대화형 점진",
+        "en": "Conversational incremental"
+      },
+      "distinct": {
+        "ko": "사용자 in-the-loop, 발화 단위",
+        "en": "User in-the-loop, per-turn"
+      }
     },
     "are-llms-effective-kgc": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "계층적 L1 엔티티→L2 관계→L3 is-a", "en": "Hierarchical L1 entities→L2 relations→L3 is-a"},
-      "output_unit": {"ko": "클래스 + 계층(subClassOf)", "en": "Classes + hierarchy (subClassOf)"},
-      "paradigm": {"ko": "트리플+계층", "en": "Triple + hierarchy"},
-      "distinct": {"ko": "명시적 클래스 계층 추론", "en": "Explicit class-hierarchy inference"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "계층적 L1 엔티티→L2 관계→L3 is-a",
+        "en": "Hierarchical L1 entities→L2 relations→L3 is-a"
+      },
+      "output_unit": {
+        "ko": "클래스 + 계층(subClassOf)",
+        "en": "Classes + hierarchy (subClassOf)"
+      },
+      "paradigm": {
+        "ko": "트리플+계층",
+        "en": "Triple + hierarchy"
+      },
+      "distinct": {
+        "ko": "명시적 클래스 계층 추론",
+        "en": "Explicit class-hierarchy inference"
+      }
     },
     "ontology-grounded-wikidata": {
-      "input": {"ko": "CQ 목록", "en": "CQ list"},
-      "mechanism": {"ko": "저작→Wikidata 속성(P-id) grounding", "en": "Author→Wikidata property (P-id) grounding"},
-      "output_unit": {"ko": "클래스·속성 + 외부 id", "en": "Classes & properties + external ids"},
-      "paradigm": {"ko": "스키마-우선 + 표준정렬", "en": "Schema-first + standard alignment"},
-      "distinct": {"ko": "외부 표준 상호운용성", "en": "External-standard interoperability"}
+      "input": {
+        "ko": "CQ 목록",
+        "en": "CQ list"
+      },
+      "mechanism": {
+        "ko": "저작→Wikidata 속성(P-id) grounding",
+        "en": "Author→Wikidata property (P-id) grounding"
+      },
+      "output_unit": {
+        "ko": "클래스·속성 + 외부 id",
+        "en": "Classes & properties + external ids"
+      },
+      "paradigm": {
+        "ko": "스키마-우선 + 표준정렬",
+        "en": "Schema-first + standard alignment"
+      },
+      "distinct": {
+        "ko": "외부 표준 상호운용성",
+        "en": "External-standard interoperability"
+      }
     },
     "karma": {
-      "input": {"ko": "텍스트 (+seed KG)", "en": "Text (+seed KG)"},
-      "mechanism": {"ko": "발견→추출→스키마정렬→충돌해소", "en": "Discover→extract→align→resolve conflicts"},
-      "output_unit": {"ko": "증축된 KG", "en": "Enriched KG"},
-      "paradigm": {"ko": "기존 KG 증축(enrichment)", "en": "Enrichment of existing KG"},
-      "distinct": {"ko": "seed 위에 증축·충돌 정리", "en": "Enrich over seed, resolve conflicts"}
+      "input": {
+        "ko": "텍스트 (+seed KG)",
+        "en": "Text (+seed KG)"
+      },
+      "mechanism": {
+        "ko": "발견→추출→스키마정렬→충돌해소",
+        "en": "Discover→extract→align→resolve conflicts"
+      },
+      "output_unit": {
+        "ko": "증축된 KG",
+        "en": "Enriched KG"
+      },
+      "paradigm": {
+        "ko": "기존 KG 증축(enrichment)",
+        "en": "Enrichment of existing KG"
+      },
+      "distinct": {
+        "ko": "seed 위에 증축·충돌 정리",
+        "en": "Enrich over seed, resolve conflicts"
+      }
     },
     "odke-plus": {
-      "input": {"ko": "엔티티 + 근거", "en": "Entities + evidence"},
-      "mechanism": {"ko": "개시→근거수집→추출→검증(2차 LLM)→보강", "en": "Initiate→retrieve→extract→verify (2nd LLM)→corroborate"},
-      "output_unit": {"ko": "검증된 사실", "en": "Verified facts"},
-      "paradigm": {"ko": "트리플-우선 + 검증", "en": "Triple-first + verification"},
-      "distinct": {"ko": "생성/검증 분리, 근거 없으면 탈락", "en": "Gen/verify split, drop unsupported"}
+      "input": {
+        "ko": "엔티티 + 근거",
+        "en": "Entities + evidence"
+      },
+      "mechanism": {
+        "ko": "개시→근거수집→추출→검증(2차 LLM)→보강",
+        "en": "Initiate→retrieve→extract→verify (2nd LLM)→corroborate"
+      },
+      "output_unit": {
+        "ko": "검증된 사실",
+        "en": "Verified facts"
+      },
+      "paradigm": {
+        "ko": "트리플-우선 + 검증",
+        "en": "Triple-first + verification"
+      },
+      "distinct": {
+        "ko": "생성/검증 분리, 근거 없으면 탈락",
+        "en": "Gen/verify split, drop unsupported"
+      }
     },
     "itext2kg": {
-      "input": {"ko": "여러 문서", "en": "Multiple documents"},
-      "mechanism": {"ko": "정제→증분 엔티티→증분 관계→통합", "en": "Distill→incr. entities→incr. relations→integrate"},
-      "output_unit": {"ko": "증분 KG", "en": "Incremental KG"},
-      "paradigm": {"ko": "증분(문서 단위)", "en": "Incremental (per document)"},
-      "distinct": {"ko": "문서 간 의미 중복 제거", "en": "Cross-document semantic de-dup"}
+      "input": {
+        "ko": "여러 문서",
+        "en": "Multiple documents"
+      },
+      "mechanism": {
+        "ko": "정제→증분 엔티티→증분 관계→통합",
+        "en": "Distill→incr. entities→incr. relations→integrate"
+      },
+      "output_unit": {
+        "ko": "증분 KG",
+        "en": "Incremental KG"
+      },
+      "paradigm": {
+        "ko": "증분(문서 단위)",
+        "en": "Incremental (per document)"
+      },
+      "distinct": {
+        "ko": "문서 간 의미 중복 제거",
+        "en": "Cross-document semantic de-dup"
+      }
     },
     "autoschemakg": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "트리플 추출과 동시에 스키마 유도", "en": "Induce schema while extracting triples"},
-      "output_unit": {"ko": "스키마 + 트리플", "en": "Schema + triples"},
-      "paradigm": {"ko": "스키마 bottom-up 유도", "en": "Schema bottom-up induction"},
-      "distinct": {"ko": "사전 스키마 0 — 데이터에서 스키마 자동 생성", "en": "Zero predefined schema — induced from data"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "트리플 추출과 동시에 스키마 유도",
+        "en": "Induce schema while extracting triples"
+      },
+      "output_unit": {
+        "ko": "스키마 + 트리플",
+        "en": "Schema + triples"
+      },
+      "paradigm": {
+        "ko": "스키마 bottom-up 유도",
+        "en": "Schema bottom-up induction"
+      },
+      "distinct": {
+        "ko": "사전 스키마 0 — 데이터에서 스키마 자동 생성",
+        "en": "Zero predefined schema — induced from data"
+      }
     },
     "gptkb": {
-      "input": {"ko": "시드 엔티티", "en": "Seed entities"},
-      "mechanism": {"ko": "LLM 내부지식 재귀 질의→통합", "en": "Recursive query of LLM parametric knowledge→consolidate"},
-      "output_unit": {"ko": "트리플(KB)", "en": "Triples (KB)"},
-      "paradigm": {"ko": "모델 자체에서 KB 추출", "en": "KB from the model itself"},
-      "distinct": {"ko": "입력 코퍼스 없음 — 시드 재귀 확장", "en": "No input corpus — recursive seed expansion"}
+      "input": {
+        "ko": "시드 엔티티",
+        "en": "Seed entities"
+      },
+      "mechanism": {
+        "ko": "LLM 내부지식 재귀 질의→통합",
+        "en": "Recursive query of LLM parametric knowledge→consolidate"
+      },
+      "output_unit": {
+        "ko": "트리플(KB)",
+        "en": "Triples (KB)"
+      },
+      "paradigm": {
+        "ko": "모델 자체에서 KB 추출",
+        "en": "KB from the model itself"
+      },
+      "distinct": {
+        "ko": "입력 코퍼스 없음 — 시드 재귀 확장",
+        "en": "No input corpus — recursive seed expansion"
+      }
     },
     "se-standards-zeroshot": {
-      "input": {"ko": "표준 문서 텍스트", "en": "Standard document text"},
-      "mechanism": {"ko": "분할→용어채굴→관계추론→정규화→교차정렬", "en": "Segment→term mining→relation infer→normalize→cross-align"},
-      "output_unit": {"ko": "트리플", "en": "Triples"},
-      "paradigm": {"ko": "트리플-우선 (zero-shot)", "en": "Triple-first (zero-shot)"},
-      "distinct": {"ko": "엔지니어링 표준 직접 대상 (도메인 적합)", "en": "Targets engineering standards directly"}
+      "input": {
+        "ko": "표준 문서 텍스트",
+        "en": "Standard document text"
+      },
+      "mechanism": {
+        "ko": "분할→용어채굴→관계추론→정규화→교차정렬",
+        "en": "Segment→term mining→relation infer→normalize→cross-align"
+      },
+      "output_unit": {
+        "ko": "트리플",
+        "en": "Triples"
+      },
+      "paradigm": {
+        "ko": "트리플-우선 (zero-shot)",
+        "en": "Triple-first (zero-shot)"
+      },
+      "distinct": {
+        "ko": "엔지니어링 표준 직접 대상 (도메인 적합)",
+        "en": "Targets engineering standards directly"
+      }
     },
     "elenchus": {
-      "input": {"ko": "주장(claim) 목록", "en": "Claim list"},
-      "mechanism": {"ko": "prover↔skeptic 대화로 입장 수렴→KB", "en": "Prover↔skeptic dialogue converges→KB"},
-      "output_unit": {"ko": "검증된 KB(입장)", "en": "Verified KB (positions)"},
-      "paradigm": {"ko": "대화형 변증법", "en": "Dialectical dialogue"},
-      "distinct": {"ko": "적대적 2역할 대화(단일 자기비평과 구분)", "en": "Adversarial 2-role dialogue"}
+      "input": {
+        "ko": "주장(claim) 목록",
+        "en": "Claim list"
+      },
+      "mechanism": {
+        "ko": "prover↔skeptic 대화로 입장 수렴→KB",
+        "en": "Prover↔skeptic dialogue converges→KB"
+      },
+      "output_unit": {
+        "ko": "검증된 KB(입장)",
+        "en": "Verified KB (positions)"
+      },
+      "paradigm": {
+        "ko": "대화형 변증법",
+        "en": "Dialectical dialogue"
+      },
+      "distinct": {
+        "ko": "적대적 2역할 대화(단일 자기비평과 구분)",
+        "en": "Adversarial 2-role dialogue"
+      }
     },
     "multiagent-ontogen": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "4역할(전문가/매니저/코더/QA) 계획기반 생성", "en": "4 roles (expert/manager/coder/QA), planning-first"},
-      "output_unit": {"ko": "클래스·속성", "en": "Classes & properties"},
-      "paradigm": {"ko": "역할분담 멀티에이전트", "en": "Role-based multi-agent"},
-      "distinct": {"ko": "아티팩트 기반 4역할 + QA 검증·가지치기", "en": "Artifact-driven 4 roles + QA prune"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "4역할(전문가/매니저/코더/QA) 계획기반 생성",
+        "en": "4 roles (expert/manager/coder/QA), planning-first"
+      },
+      "output_unit": {
+        "ko": "클래스·속성",
+        "en": "Classes & properties"
+      },
+      "paradigm": {
+        "ko": "역할분담 멀티에이전트",
+        "en": "Role-based multi-agent"
+      },
+      "distinct": {
+        "ko": "아티팩트 기반 4역할 + QA 검증·가지치기",
+        "en": "Artifact-driven 4 roles + QA prune"
+      }
     },
     "onto-kg-completion": {
-      "input": {"ko": "부분 KG (seed)", "en": "Partial KG (seed)"},
-      "mechanism": {"ko": "온톨로지 규칙(이행성/역관계)로 누락 보완", "en": "Complete missing edges via ontology rules (transitivity/inverse)"},
-      "output_unit": {"ko": "보완된 KG", "en": "Completed KG"},
-      "paradigm": {"ko": "KG 완성(construction 아님)", "en": "Completion (not construction)"},
-      "distinct": {"ko": "기존 KG를 입력받아 누락 링크 예측", "en": "Predicts missing links over an existing KG"}
+      "input": {
+        "ko": "부분 KG (seed)",
+        "en": "Partial KG (seed)"
+      },
+      "mechanism": {
+        "ko": "온톨로지 규칙(이행성/역관계)로 누락 보완",
+        "en": "Complete missing edges via ontology rules (transitivity/inverse)"
+      },
+      "output_unit": {
+        "ko": "보완된 KG",
+        "en": "Completed KG"
+      },
+      "paradigm": {
+        "ko": "KG 완성(construction 아님)",
+        "en": "Completion (not construction)"
+      },
+      "distinct": {
+        "ko": "기존 KG를 입력받아 누락 링크 예측",
+        "en": "Predicts missing links over an existing KG"
+      }
     },
     "ollm": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "개념 추출→subClassOf 분류체계 유도", "en": "Concepts→subClassOf taxonomy induction"},
-      "output_unit": {"ko": "분류체계(계층)", "en": "Taxonomy (hierarchy)"},
-      "paradigm": {"ko": "분류체계 backbone", "en": "Taxonomic backbone"},
-      "distinct": {"ko": "관계 아닌 is-a 계층 end-to-end (코드 공개)", "en": "End-to-end is-a hierarchy (public code)"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "개념 추출→subClassOf 분류체계 유도",
+        "en": "Concepts→subClassOf taxonomy induction"
+      },
+      "output_unit": {
+        "ko": "분류체계(계층)",
+        "en": "Taxonomy (hierarchy)"
+      },
+      "paradigm": {
+        "ko": "분류체계 backbone",
+        "en": "Taxonomic backbone"
+      },
+      "distinct": {
+        "ko": "관계 아닌 is-a 계층 end-to-end (코드 공개)",
+        "en": "End-to-end is-a hierarchy (public code)"
+      }
     },
     "ontoekg": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "추출(클래스·속성)→entailment 계층화", "en": "Extract (classes+props)→entailment hierarchy"},
-      "output_unit": {"ko": "클래스·속성 + 계층", "en": "Classes/props + hierarchy"},
-      "paradigm": {"ko": "2단계 엔터프라이즈 온톨로지", "en": "Two-phase enterprise ontology"},
-      "distinct": {"ko": "추출 + 함의 기반 subClassOf 동시", "en": "Extraction + entailment subClassOf together"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "추출(클래스·속성)→entailment 계층화",
+        "en": "Extract (classes+props)→entailment hierarchy"
+      },
+      "output_unit": {
+        "ko": "클래스·속성 + 계층",
+        "en": "Classes/props + hierarchy"
+      },
+      "paradigm": {
+        "ko": "2단계 엔터프라이즈 온톨로지",
+        "en": "Two-phase enterprise ontology"
+      },
+      "distinct": {
+        "ko": "추출 + 함의 기반 subClassOf 동시",
+        "en": "Extraction + entailment subClassOf together"
+      }
     },
     "raga": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "ReAct 루프 Read→Search→Verify→Construct", "en": "ReAct loop Read→Search→Verify→Construct"},
-      "output_unit": {"ko": "검증된 트리플", "en": "Verified triples"},
-      "paradigm": {"ko": "단일 에이전트 ReAct", "en": "Single-agent ReAct"},
-      "distinct": {"ko": "근거 기반 검증으로 비근거 후보 탈락", "en": "Evidence-anchored verify drops unsupported"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "ReAct 루프 Read→Search→Verify→Construct",
+        "en": "ReAct loop Read→Search→Verify→Construct"
+      },
+      "output_unit": {
+        "ko": "검증된 트리플",
+        "en": "Verified triples"
+      },
+      "paradigm": {
+        "ko": "단일 에이전트 ReAct",
+        "en": "Single-agent ReAct"
+      },
+      "distinct": {
+        "ko": "근거 기반 검증으로 비근거 후보 탈락",
+        "en": "Evidence-anchored verify drops unsupported"
+      }
     },
     "dial-kg": {
-      "input": {"ko": "여러 문서", "en": "Multiple documents"},
-      "mechanism": {"ko": "증분 추출+거버넌스 판정+스키마 진화", "en": "Incremental extract + governance + schema evolution"},
-      "output_unit": {"ko": "증분 KG + 진화 스키마", "en": "Incremental KG + evolving schema"},
-      "paradigm": {"ko": "스키마-free 증분(Meta-KB)", "en": "Schema-free incremental (Meta-KB)"},
-      "distinct": {"ko": "거버넌스 판정 + 동적 스키마 진화", "en": "Governance adjudication + dynamic schema evolution"}
+      "input": {
+        "ko": "여러 문서",
+        "en": "Multiple documents"
+      },
+      "mechanism": {
+        "ko": "증분 추출+거버넌스 판정+스키마 진화",
+        "en": "Incremental extract + governance + schema evolution"
+      },
+      "output_unit": {
+        "ko": "증분 KG + 진화 스키마",
+        "en": "Incremental KG + evolving schema"
+      },
+      "paradigm": {
+        "ko": "스키마-free 증분(Meta-KB)",
+        "en": "Schema-free incremental (Meta-KB)"
+      },
+      "distinct": {
+        "ko": "거버넌스 판정 + 동적 스키마 진화",
+        "en": "Governance adjudication + dynamic schema evolution"
+      }
     },
     "hf-local-demo": {
-      "input": {"ko": "자유 텍스트", "en": "Free text"},
-      "mechanism": {"ko": "문장→로컬 LLM JSON 트리플→그래프", "en": "Sentence→local-LLM JSON triples→graph"},
-      "output_unit": {"ko": "트리플", "en": "Triples"},
-      "paradigm": {"ko": "온디바이스 추출", "en": "On-device extraction"},
-      "distinct": {"ko": "실제 로컬 HF 모델 GPU 구동(키 없음)", "en": "Runs a real local HF model on GPU (no key)"}
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "문장→로컬 LLM JSON 트리플→그래프",
+        "en": "Sentence→local-LLM JSON triples→graph"
+      },
+      "output_unit": {
+        "ko": "트리플",
+        "en": "Triples"
+      },
+      "paradigm": {
+        "ko": "온디바이스 추출",
+        "en": "On-device extraction"
+      },
+      "distinct": {
+        "ko": "실제 로컬 HF 모델 GPU 구동(키 없음)",
+        "en": "Runs a real local HF model on GPU (no key)"
+      }
     },
     "sac-kg": {
-      "input": {"ko": "시드 엔티티 + 도메인 코퍼스", "en": "Seed entities + domain corpus"},
-      "mechanism": {"ko": "Generator→Verifier→Pruner, multi-level 반복", "en": "Generator→Verifier→Pruner, multi-level loop"},
-      "output_unit": {"ko": "도메인 KG", "en": "Domain KG"},
-      "paradigm": {"ko": "트리플-우선 + 검증·가지치기", "en": "Triple-first + verify & prune"},
-      "distinct": {"ko": "재귀적 다단계 확장(실구동은 GPU/파인튜닝)", "en": "Recursive multi-level (real run needs GPU/finetune)"}
+      "input": {
+        "ko": "시드 엔티티 + 도메인 코퍼스",
+        "en": "Seed entities + domain corpus"
+      },
+      "mechanism": {
+        "ko": "Generator→Verifier→Pruner, multi-level 반복",
+        "en": "Generator→Verifier→Pruner, multi-level loop"
+      },
+      "output_unit": {
+        "ko": "도메인 KG",
+        "en": "Domain KG"
+      },
+      "paradigm": {
+        "ko": "트리플-우선 + 검증·가지치기",
+        "en": "Triple-first + verify & prune"
+      },
+      "distinct": {
+        "ko": "재귀적 다단계 확장(실구동은 GPU/파인튜닝)",
+        "en": "Recursive multi-level (real run needs GPU/finetune)"
+      }
+    },
+    "trace-kg": {
+      "input": {
+        "ko": "자유 텍스트",
+        "en": "Free text"
+      },
+      "mechanism": {
+        "ko": "텍스트 기반 스키마 유도 + 관계 한정자 + 출처 추적",
+        "en": "Text-driven schema induction + relation qualifiers + traceability"
+      },
+      "output_unit": {
+        "ko": "클래스·한정관계·subClassOf",
+        "en": "Classes, qualified relations, subClassOf"
+      },
+      "paradigm": {
+        "ko": "스키마-프리/스키마-우선 절충",
+        "en": "Between schema-free & schema-first"
+      },
+      "distinct": {
+        "ko": "사전 온톨로지 없이 조건 한정자+근거 추적",
+        "en": "No predefined ontology; conditional qualifiers + provenance"
+      }
+    },
+    "ontokb-iterative": {
+      "input": {
+        "ko": "자유 도메인 텍스트",
+        "en": "Free domain text"
+      },
+      "mechanism": {
+        "ko": "초안(뼈대)→정제(계층+속성) 반복",
+        "en": "Draft (skeleton) → refine (hierarchy + attributes)"
+      },
+      "output_unit": {
+        "ko": "클래스·속성·계층",
+        "en": "Classes, properties, hierarchy"
+      },
+      "paradigm": {
+        "ko": "반복적 지식 획득",
+        "en": "Iterative knowledge acquisition"
+      },
+      "distinct": {
+        "ko": "생성→검토→정제 사이클(감사 가능)",
+        "en": "Generate→review→refine cycle (auditable)"
+      }
     }
   }
 }

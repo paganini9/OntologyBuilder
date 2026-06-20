@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Dealer",
+        "label": "Dealer",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Vehicle",
+        "label": "Vehicle",
+        "type": "class",
+        "attributes": [
+          "price",
+          "model",
+          "brand",
+          "year"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Price",
+        "label": "Price",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Model",
+        "label": "Model",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricVehicle",
+        "label": "ElectricVehicle",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Customer",
+        "label": "Customer",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Brand",
+        "label": "Brand",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Year",
+        "label": "Year",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "SportsCar",
+        "label": "SportsCar",
+        "type": "class",
+        "attributes": [
+          "color"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Color",
+        "label": "Color",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Dealer-sells-Vehicle",
+        "source": "Dealer",
+        "target": "Vehicle",
+        "label": "sells"
+      }
+    },
+    {
+      "data": {
+        "id": "Vehicle-has-Price",
+        "source": "Vehicle",
+        "target": "Price",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "Customer-requires-Vehicle",
+        "source": "Customer",
+        "target": "Vehicle",
+        "label": "requires"
+      }
+    },
+    {
+      "data": {
+        "id": "Vehicle-has-Brand",
+        "source": "Vehicle",
+        "target": "Brand",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "SportsCar-has-Color",
+        "source": "SportsCar",
+        "target": "Color",
+        "label": "has"
+      }
+    },
+    {
+      "data": {
+        "id": "ElectricVehicle-subClassOf-Vehicle",
+        "source": "ElectricVehicle",
+        "target": "Vehicle",
+        "label": "subClassOf"
+      }
+    }
+  ]
+}

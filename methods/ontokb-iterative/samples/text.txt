@@ -1,0 +1,8 @@
+# Vehicle-sales domain (free text). Draft extracts classes + relations;
+# refine induces the is-a hierarchy and attaches data attributes.
+A Dealer sells a Vehicle.
+A Vehicle has a Price and a Model.
+An ElectricVehicle is offered by a Dealer.
+A Customer requires a Vehicle.
+A Vehicle has a Brand and a Year.
+A SportsCar has a Color.

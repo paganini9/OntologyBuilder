@@ -1,0 +1,34 @@
+{
+  "id": "ontokb-iterative",
+  "name": "Iterative LLM Ontological KB (draft → refine)",
+  "paper": {
+    "key": "OntoKB_Iterative_2026",
+    "title": "Development of Ontological Knowledge Bases by Leveraging Large Language Models",
+    "arxiv": "2601.10436",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "iterative knowledge acquisition (draft skeleton -> refinement cycle adds hierarchy + data attributes); deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-20"
+}

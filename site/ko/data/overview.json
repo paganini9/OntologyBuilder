@@ -270,6 +270,30 @@
       "output_unit": "증분 KG + 진화 스키마",
       "paradigm": "스키마-free 증분(Meta-KB)",
       "distinct": "거버넌스 판정 + 동적 스키마 진화"
+    },
+    {
+      "id": "trace-kg",
+      "name": "TRACE-KG (text-driven schema, context-enriched KG)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "mock",
+      "input": "자유 텍스트",
+      "mechanism": "텍스트 기반 스키마 유도 + 관계 한정자 + 출처 추적",
+      "output_unit": "클래스·한정관계·subClassOf",
+      "paradigm": "스키마-프리/스키마-우선 절충",
+      "distinct": "사전 온톨로지 없이 조건 한정자+근거 추적"
+    },
+    {
+      "id": "ontokb-iterative",
+      "name": "Iterative LLM Ontological KB (draft → refine)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "자유 도메인 텍스트",
+      "mechanism": "초안(뼈대)→정제(계층+속성) 반복",
+      "output_unit": "클래스·속성·계층",
+      "paradigm": "반복적 지식 획득",
+      "distinct": "생성→검토→정제 사이클(감사 가능)"
     }
   ]
 }

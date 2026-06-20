@@ -1,0 +1,34 @@
+{
+  "id": "trace-kg",
+  "name": "TRACE-KG (text-driven schema, context-enriched KG)",
+  "paper": {
+    "key": "ASU_TRACE_KG",
+    "title": "Beyond Predefined Schemas: TRACE-KG for Context-Enriched Knowledge Graphs from Complex Documents",
+    "arxiv": "2604.03496",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 3,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 2,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "joint text-driven schema induction + conditional qualifiers on relations + full source traceability; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["text.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/text.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-20"
+}

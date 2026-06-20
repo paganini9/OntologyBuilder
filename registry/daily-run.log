@@ -13,3 +13,13 @@ Unknown command: /impl-daily-check
 [2026-06-19 07:00:02] daily-check start
 Unknown command: /impl-daily-check
 [2026-06-19 07:00:02] daily-check done
+[2026-06-20 07:00:02] daily-check start (cwd=C:\Users\jaehyunlee\ClaudeWork\Working\OntologyResearch)
+Credit balance is too low
+[2026-06-20 07:00:02] daily-check done
+[2026-06-20 07:31:04] daily-check (cowork)
+  큐(next_easiest): 없음. 신규 탐색 후 MOCK 자동구현 2건 게시.
+  자동구현·게시: trace-kg (2604.03496), ontokb-iterative (2601.10436). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요.
+  검증: 전체 pytest 통과(신규 각 6 테스트), 사이트 KO/EN 24개 빌드(overview 24행). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(실서버 /ko·/en 200, 신규 2개 그래프·steps·TTL·문서·샘플 렌더 PASS).
+  승인 대기 후보(미구현): wikontic, autopkg, llm-external-onto-memory(SHACL로 무거움) / GPU·RL 보류: agentic-kgr, agrag, ontokg-routing, lec-kg, compcq, ark-sail, hgnet.
+  실패/블로커: 없음.
+  로컬 커밋 1건 완료 (push 대기 — 사용자가 Windows에서 수동 push). 참고: 미수정 기존 fixture 다수가 작업트리 CRLF vs repo LF로 표시되나 본 작업과 무관하여 스테이징 제외.

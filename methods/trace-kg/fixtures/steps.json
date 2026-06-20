@@ -1,0 +1,756 @@
+[
+  {
+    "step": 1,
+    "stage": "extract",
+    "cq": "A Pump is a kind of Machine",
+    "added": {
+      "classes": [
+        "Pump",
+        "Machine"
+      ],
+      "relations": [],
+      "subclass_of": [
+        {
+          "child": "Pump",
+          "parent": "Machine",
+          "source": 1
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "extract",
+    "cq": "A Motor is a Machine",
+    "added": {
+      "classes": [
+        "Motor"
+      ],
+      "relations": [],
+      "subclass_of": [
+        {
+          "child": "Motor",
+          "parent": "Machine",
+          "source": 2
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "extract",
+    "cq": "The Pump consists of an Impeller when the Pressure is high",
+    "added": {
+      "classes": [
+        "Impeller"
+      ],
+      "relations": [
+        {
+          "subject": "Pump",
+          "relation": "consistsOf",
+          "object": "Impeller",
+          "qualifier": "Pressure",
+          "source": 3
+        }
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "extract",
+    "cq": "The Motor drives the Impeller during Startup",
+    "added": {
+      "classes": [],
+      "relations": [
+        {
+          "subject": "Motor",
+          "relation": "drives",
+          "object": "Impeller",
+          "qualifier": "Startup",
+          "source": 4
+        }
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Impeller",
+            "source": "Motor",
+            "target": "Impeller",
+            "label": "drives [Startup]",
+            "qualifier": "Startup",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "extract",
+    "cq": "A Controller monitors the Pump if the Temperature rises",
+    "added": {
+      "classes": [],
+      "relations": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Impeller",
+            "source": "Motor",
+            "target": "Impeller",
+            "label": "drives [Startup]",
+            "qualifier": "Startup",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "stage": "extract",
+    "cq": "The Impeller produces Flow",
+    "added": {
+      "classes": [
+        "Flow"
+      ],
+      "relations": [
+        {
+          "subject": "Impeller",
+          "relation": "produces",
+          "object": "Flow",
+          "qualifier": "",
+          "source": 6
+        }
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Flow",
+            "label": "Flow",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Impeller",
+            "source": "Motor",
+            "target": "Impeller",
+            "label": "drives [Startup]",
+            "qualifier": "Startup",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller-produces-Flow",
+            "source": "Impeller",
+            "target": "Flow",
+            "label": "produces",
+            "qualifier": "",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "stage": "extract",
+    "cq": "A Sensor measures Pressure",
+    "added": {
+      "classes": [],
+      "relations": [],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Flow",
+            "label": "Flow",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Impeller",
+            "source": "Motor",
+            "target": "Impeller",
+            "label": "drives [Startup]",
+            "qualifier": "Startup",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller-produces-Flow",
+            "source": "Impeller",
+            "target": "Flow",
+            "label": "produces",
+            "qualifier": "",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "stage": "extract",
+    "cq": "The Controller is a Device",
+    "added": {
+      "classes": [
+        "Controller",
+        "Device"
+      ],
+      "relations": [],
+      "subclass_of": [
+        {
+          "child": "Controller",
+          "parent": "Device",
+          "source": 8
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller",
+            "label": "Impeller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Flow",
+            "label": "Flow",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Device",
+            "label": "Device",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-consistsOf-Impeller",
+            "source": "Pump",
+            "target": "Impeller",
+            "label": "consistsOf [Pressure]",
+            "qualifier": "Pressure",
+            "provenance": 3
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-drives-Impeller",
+            "source": "Motor",
+            "target": "Impeller",
+            "label": "drives [Startup]",
+            "qualifier": "Startup",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "Impeller-produces-Flow",
+            "source": "Impeller",
+            "target": "Flow",
+            "label": "produces",
+            "qualifier": "",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 2
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-subClassOf-Device",
+            "source": "Controller",
+            "target": "Device",
+            "label": "subClassOf",
+            "qualifier": "",
+            "provenance": 8
+          }
+        }
+      ]
+    }
+  }
+]

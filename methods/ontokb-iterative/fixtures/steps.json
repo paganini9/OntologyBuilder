@@ -1,0 +1,744 @@
+[
+  {
+    "step": 1,
+    "stage": "draft",
+    "cq": "(draft) A Dealer sells a Vehicle",
+    "added": {
+      "classes": [
+        "Dealer",
+        "Vehicle"
+      ],
+      "object_properties": [
+        {
+          "name": "sells",
+          "domain": "Dealer",
+          "range": "Vehicle"
+        }
+      ],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "draft",
+    "cq": "(draft) A Vehicle has a Price and a Model",
+    "added": {
+      "classes": [
+        "Price",
+        "Model"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "Vehicle",
+          "range": "Price"
+        }
+      ],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "draft",
+    "cq": "(draft) An ElectricVehicle is offered by a Dealer",
+    "added": {
+      "classes": [
+        "ElectricVehicle"
+      ],
+      "object_properties": [],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle",
+            "label": "ElectricVehicle",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "draft",
+    "cq": "(draft) A Customer requires a Vehicle",
+    "added": {
+      "classes": [
+        "Customer"
+      ],
+      "object_properties": [
+        {
+          "name": "requires",
+          "domain": "Customer",
+          "range": "Vehicle"
+        }
+      ],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle",
+            "label": "ElectricVehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Customer",
+            "label": "Customer",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Customer-requires-Vehicle",
+            "source": "Customer",
+            "target": "Vehicle",
+            "label": "requires"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "draft",
+    "cq": "(draft) A Vehicle has a Brand and a Year",
+    "added": {
+      "classes": [
+        "Brand",
+        "Year"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "Vehicle",
+          "range": "Brand"
+        }
+      ],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle",
+            "label": "ElectricVehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Customer",
+            "label": "Customer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Brand",
+            "label": "Brand",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Year",
+            "label": "Year",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Customer-requires-Vehicle",
+            "source": "Customer",
+            "target": "Vehicle",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Brand",
+            "source": "Vehicle",
+            "target": "Brand",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "stage": "draft",
+    "cq": "(draft) A SportsCar has a Color",
+    "added": {
+      "classes": [
+        "SportsCar",
+        "Color"
+      ],
+      "object_properties": [
+        {
+          "name": "has",
+          "domain": "SportsCar",
+          "range": "Color"
+        }
+      ],
+      "subclass_of": [],
+      "data_properties": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle",
+            "label": "ElectricVehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Customer",
+            "label": "Customer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Brand",
+            "label": "Brand",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Year",
+            "label": "Year",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "SportsCar",
+            "label": "SportsCar",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Color",
+            "label": "Color",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Customer-requires-Vehicle",
+            "source": "Customer",
+            "target": "Vehicle",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Brand",
+            "source": "Vehicle",
+            "target": "Brand",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "SportsCar-has-Color",
+            "source": "SportsCar",
+            "target": "Color",
+            "label": "has"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "stage": "refine",
+    "cq": "(refine) induce hierarchy + attach attributes",
+    "added": {
+      "classes": [],
+      "object_properties": [],
+      "subclass_of": [
+        {
+          "child": "ElectricVehicle",
+          "parent": "Vehicle"
+        }
+      ],
+      "data_properties": [
+        {
+          "name": "price",
+          "domain": "Vehicle"
+        },
+        {
+          "name": "model",
+          "domain": "Vehicle"
+        },
+        {
+          "name": "brand",
+          "domain": "Vehicle"
+        },
+        {
+          "name": "year",
+          "domain": "Vehicle"
+        },
+        {
+          "name": "color",
+          "domain": "SportsCar"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Dealer",
+            "label": "Dealer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle",
+            "label": "Vehicle",
+            "type": "class",
+            "attributes": [
+              "price",
+              "model",
+              "brand",
+              "year"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Price",
+            "label": "Price",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Model",
+            "label": "Model",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle",
+            "label": "ElectricVehicle",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Customer",
+            "label": "Customer",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Brand",
+            "label": "Brand",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Year",
+            "label": "Year",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "SportsCar",
+            "label": "SportsCar",
+            "type": "class",
+            "attributes": [
+              "color"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Color",
+            "label": "Color",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Dealer-sells-Vehicle",
+            "source": "Dealer",
+            "target": "Vehicle",
+            "label": "sells"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Price",
+            "source": "Vehicle",
+            "target": "Price",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "Customer-requires-Vehicle",
+            "source": "Customer",
+            "target": "Vehicle",
+            "label": "requires"
+          }
+        },
+        {
+          "data": {
+            "id": "Vehicle-has-Brand",
+            "source": "Vehicle",
+            "target": "Brand",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "SportsCar-has-Color",
+            "source": "SportsCar",
+            "target": "Color",
+            "label": "has"
+          }
+        },
+        {
+          "data": {
+            "id": "ElectricVehicle-subClassOf-Vehicle",
+            "source": "ElectricVehicle",
+            "target": "Vehicle",
+            "label": "subClassOf"
+          }
+        }
+      ]
+    }
+  }
+]

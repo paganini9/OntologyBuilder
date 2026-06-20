@@ -1,0 +1,122 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Pump",
+        "label": "Pump",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Machine",
+        "label": "Machine",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Motor",
+        "label": "Motor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller",
+        "label": "Impeller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Flow",
+        "label": "Flow",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Controller",
+        "label": "Controller",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Device",
+        "label": "Device",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Pump-consistsOf-Impeller",
+        "source": "Pump",
+        "target": "Impeller",
+        "label": "consistsOf [Pressure]",
+        "qualifier": "Pressure",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-drives-Impeller",
+        "source": "Motor",
+        "target": "Impeller",
+        "label": "drives [Startup]",
+        "qualifier": "Startup",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "Impeller-produces-Flow",
+        "source": "Impeller",
+        "target": "Flow",
+        "label": "produces",
+        "qualifier": "",
+        "provenance": 6
+      }
+    },
+    {
+      "data": {
+        "id": "Pump-subClassOf-Machine",
+        "source": "Pump",
+        "target": "Machine",
+        "label": "subClassOf",
+        "qualifier": "",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Motor-subClassOf-Machine",
+        "source": "Motor",
+        "target": "Machine",
+        "label": "subClassOf",
+        "qualifier": "",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Controller-subClassOf-Device",
+        "source": "Controller",
+        "target": "Device",
+        "label": "subClassOf",
+        "qualifier": "",
+        "provenance": 8
+      }
+    }
+  ]
+}

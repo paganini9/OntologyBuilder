@@ -864,6 +864,86 @@
         "dir": "methods/dial-kg"
       },
       "updated": "2026-06-20"
+    },
+    {
+      "id": "trace-kg",
+      "name": "TRACE-KG (text-driven schema, context-enriched KG)",
+      "paper": {
+        "key": "ASU_TRACE_KG",
+        "title": "Beyond Predefined Schemas: TRACE-KG for Context-Enriched Knowledge Graphs from Complex Documents",
+        "arxiv": "2604.03496",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 3,
+        "rank": 3,
+        "factors": {
+          "pipeline_stages": 2,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "joint text-driven schema induction + conditional qualifiers on relations + full source traceability; deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/trace-kg"
+      },
+      "updated": "2026-06-20"
+    },
+    {
+      "id": "ontokb-iterative",
+      "name": "Iterative LLM Ontological KB (draft → refine)",
+      "paper": {
+        "key": "OntoKB_Iterative_2026",
+        "title": "Development of Ontological Knowledge Bases by Leveraging Large Language Models",
+        "arxiv": "2601.10436",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 4,
+        "rank": 4,
+        "factors": {
+          "pipeline_stages": 2,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "iterative knowledge acquisition (draft skeleton -> refinement cycle adds hierarchy + data attributes); deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/ontokb-iterative"
+      },
+      "updated": "2026-06-20"
     }
   ]
 }

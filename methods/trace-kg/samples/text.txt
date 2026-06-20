@@ -1,0 +1,10 @@
+# Pump-system notes (free text). is-a cues induce the schema scaffold;
+# when/if/during clauses become conditional qualifiers on relations.
+A Pump is a kind of Machine.
+A Motor is a Machine.
+The Pump consists of an Impeller when the Pressure is high.
+The Motor drives the Impeller during Startup.
+A Controller monitors the Pump if the Temperature rises.
+The Impeller produces Flow.
+A Sensor measures Pressure.
+The Controller is a Device.
