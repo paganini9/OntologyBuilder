@@ -1,0 +1,675 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Refrigerator",
+        "label": "Refrigerator",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Appliance",
+        "label": "Appliance",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "DesignedFurniture",
+        "label": "DesignedFurniture",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "DesignedContainer",
+        "label": "DesignedContainer",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "PhysicalObject",
+        "label": "PhysicalObject",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Thing",
+        "label": "Thing",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Stove",
+        "label": "Stove",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Microwave",
+        "label": "Microwave",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sink",
+        "label": "Sink",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Cup",
+        "label": "Cup",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Crockery",
+        "label": "Crockery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Bowl",
+        "label": "Bowl",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Plate",
+        "label": "Plate",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Spoon",
+        "label": "Spoon",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Cutlery",
+        "label": "Cutlery",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Table",
+        "label": "Table",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Chair",
+        "label": "Chair",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "FlowerPot",
+        "label": "FlowerPot",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator_main",
+        "label": "Refrigerator_main",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.9,
+          1.9,
+          0.8
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Stove_gas",
+        "label": "Stove_gas",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.8,
+          0.95,
+          0.7
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Microwave_top",
+        "label": "Microwave_top",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.5,
+          0.3,
+          0.4
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Sink_double",
+        "label": "Sink_double",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.9,
+          0.2,
+          0.6
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CupCBlue_1",
+        "label": "CupCBlue_1",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.08,
+          0.1,
+          0.08
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "BowlSoup_red",
+        "label": "BowlSoup_red",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.18,
+          0.07,
+          0.18
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "PlateDinner_white",
+        "label": "PlateDinner_white",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.25,
+          0.03,
+          0.25
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Spoon_metal",
+        "label": "Spoon_metal",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.02,
+          0.01,
+          0.16
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "TableDining_oak",
+        "label": "TableDining_oak",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          1.6,
+          0.75,
+          0.9
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ChairWooden_1",
+        "label": "ChairWooden_1",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.45,
+          0.9,
+          0.5
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "FlowerPot_terracotta",
+        "label": "FlowerPot_terracotta",
+        "type": "instance",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "bbox": [
+          0.2,
+          0.18,
+          0.2
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "obj_042",
+        "label": "obj_042",
+        "type": "instance",
+        "strategy": "B_context",
+        "feature": "hierarchy",
+        "bbox": [
+          0.09,
+          0.11,
+          0.09
+        ],
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "unknown_blob_X",
+        "label": "unknown_blob_X",
+        "type": "instance",
+        "strategy": "C_cot",
+        "feature": "geometry",
+        "bbox": [
+          0.6,
+          0.9,
+          0.6
+        ],
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Refrigerator_main-type-Refrigerator",
+        "source": "Refrigerator_main",
+        "target": "Refrigerator",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Stove_gas-type-Stove",
+        "source": "Stove_gas",
+        "target": "Stove",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Microwave_top-type-Microwave",
+        "source": "Microwave_top",
+        "target": "Microwave",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Sink_double-type-Sink",
+        "source": "Sink_double",
+        "target": "Sink",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "CupCBlue_1-type-Cup",
+        "source": "CupCBlue_1",
+        "target": "Cup",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "BowlSoup_red-type-Bowl",
+        "source": "BowlSoup_red",
+        "target": "Bowl",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 6
+      }
+    },
+    {
+      "data": {
+        "id": "PlateDinner_white-type-Plate",
+        "source": "PlateDinner_white",
+        "target": "Plate",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 7
+      }
+    },
+    {
+      "data": {
+        "id": "Spoon_metal-type-Spoon",
+        "source": "Spoon_metal",
+        "target": "Spoon",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 8
+      }
+    },
+    {
+      "data": {
+        "id": "TableDining_oak-type-Table",
+        "source": "TableDining_oak",
+        "target": "Table",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 9
+      }
+    },
+    {
+      "data": {
+        "id": "ChairWooden_1-type-Chair",
+        "source": "ChairWooden_1",
+        "target": "Chair",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 10
+      }
+    },
+    {
+      "data": {
+        "id": "FlowerPot_terracotta-type-FlowerPot",
+        "source": "FlowerPot_terracotta",
+        "target": "FlowerPot",
+        "label": "type",
+        "strategy": "A_name_only",
+        "feature": "name",
+        "provenance": 11
+      }
+    },
+    {
+      "data": {
+        "id": "obj_042-type-Crockery",
+        "source": "obj_042",
+        "target": "Crockery",
+        "label": "type",
+        "strategy": "B_context",
+        "feature": "hierarchy",
+        "provenance": 12
+      }
+    },
+    {
+      "data": {
+        "id": "unknown_blob_X-type-Appliance",
+        "source": "unknown_blob_X",
+        "target": "Appliance",
+        "label": "type",
+        "strategy": "C_cot",
+        "feature": "geometry",
+        "provenance": 13
+      }
+    },
+    {
+      "data": {
+        "id": "Refrigerator-subClassOf-Appliance",
+        "source": "Refrigerator",
+        "target": "Appliance",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Appliance-subClassOf-DesignedFurniture",
+        "source": "Appliance",
+        "target": "DesignedFurniture",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "DesignedFurniture-subClassOf-DesignedContainer",
+        "source": "DesignedFurniture",
+        "target": "DesignedContainer",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "DesignedContainer-subClassOf-PhysicalObject",
+        "source": "DesignedContainer",
+        "target": "PhysicalObject",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "PhysicalObject-subClassOf-Thing",
+        "source": "PhysicalObject",
+        "target": "Thing",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Stove-subClassOf-Appliance",
+        "source": "Stove",
+        "target": "Appliance",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Microwave-subClassOf-Appliance",
+        "source": "Microwave",
+        "target": "Appliance",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Sink-subClassOf-Appliance",
+        "source": "Sink",
+        "target": "Appliance",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Cup-subClassOf-Crockery",
+        "source": "Cup",
+        "target": "Crockery",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Crockery-subClassOf-DesignedContainer",
+        "source": "Crockery",
+        "target": "DesignedContainer",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Bowl-subClassOf-Crockery",
+        "source": "Bowl",
+        "target": "Crockery",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Plate-subClassOf-Crockery",
+        "source": "Plate",
+        "target": "Crockery",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Spoon-subClassOf-Cutlery",
+        "source": "Spoon",
+        "target": "Cutlery",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Cutlery-subClassOf-PhysicalObject",
+        "source": "Cutlery",
+        "target": "PhysicalObject",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Table-subClassOf-DesignedFurniture",
+        "source": "Table",
+        "target": "DesignedFurniture",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Chair-subClassOf-DesignedFurniture",
+        "source": "Chair",
+        "target": "DesignedFurniture",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "FlowerPot-subClassOf-DesignedContainer",
+        "source": "FlowerPot",
+        "target": "DesignedContainer",
+        "label": "subClassOf",
+        "strategy": "tbox",
+        "feature": "hierarchy",
+        "provenance": 0
+      }
+    }
+  ]
+}

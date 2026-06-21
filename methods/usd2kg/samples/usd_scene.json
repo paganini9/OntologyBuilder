@@ -1,0 +1,137 @@
+{
+  "_comment": "Small USD-style scene graph. Each prim has a name (semantic by default), a parent_path, a bounding box (w, h, d, meters), and an optional mass (kg). The pipeline grounds each prim to a SOMA-HOME-style OWL class using a 3-strategy LLM (mock).",
+  "ontology": "SOMA-HOME-mini",
+  "naming_regime": "semantic",
+  "prims": [
+    {
+      "name": "Refrigerator_main",
+      "parent_path": "/Kitchen/ApplianceArea_grp",
+      "bbox": [
+        0.9,
+        1.9,
+        0.8
+      ],
+      "mass": 80.0
+    },
+    {
+      "name": "Stove_gas",
+      "parent_path": "/Kitchen/ApplianceArea_grp",
+      "bbox": [
+        0.8,
+        0.95,
+        0.7
+      ],
+      "mass": 50.0
+    },
+    {
+      "name": "Microwave_top",
+      "parent_path": "/Kitchen/ApplianceArea_grp",
+      "bbox": [
+        0.5,
+        0.3,
+        0.4
+      ],
+      "mass": 12.0
+    },
+    {
+      "name": "Sink_double",
+      "parent_path": "/Kitchen/SinkArea_grp",
+      "bbox": [
+        0.9,
+        0.2,
+        0.6
+      ],
+      "mass": 15.0
+    },
+    {
+      "name": "CupCBlue_1",
+      "parent_path": "/Kitchen/Counter_grp/Crockery_grp",
+      "bbox": [
+        0.08,
+        0.1,
+        0.08
+      ],
+      "mass": 0.2
+    },
+    {
+      "name": "BowlSoup_red",
+      "parent_path": "/Kitchen/Counter_grp/Crockery_grp",
+      "bbox": [
+        0.18,
+        0.07,
+        0.18
+      ],
+      "mass": 0.3
+    },
+    {
+      "name": "PlateDinner_white",
+      "parent_path": "/Kitchen/Counter_grp/Crockery_grp",
+      "bbox": [
+        0.25,
+        0.03,
+        0.25
+      ],
+      "mass": 0.4
+    },
+    {
+      "name": "Spoon_metal",
+      "parent_path": "/Kitchen/Counter_grp/Cutlery_grp",
+      "bbox": [
+        0.02,
+        0.01,
+        0.16
+      ],
+      "mass": 0.05
+    },
+    {
+      "name": "TableDining_oak",
+      "parent_path": "/Kitchen/Furniture_grp",
+      "bbox": [
+        1.6,
+        0.75,
+        0.9
+      ],
+      "mass": 35.0
+    },
+    {
+      "name": "ChairWooden_1",
+      "parent_path": "/Kitchen/Furniture_grp",
+      "bbox": [
+        0.45,
+        0.9,
+        0.5
+      ],
+      "mass": 6.0
+    },
+    {
+      "name": "FlowerPot_terracotta",
+      "parent_path": "/Kitchen/Counter_grp/Decorations",
+      "bbox": [
+        0.2,
+        0.18,
+        0.2
+      ],
+      "mass": 1.2
+    },
+    {
+      "name": "obj_042",
+      "parent_path": "/Kitchen/Counter_grp/Crockery_grp",
+      "bbox": [
+        0.09,
+        0.11,
+        0.09
+      ],
+      "mass": 0.22
+    },
+    {
+      "name": "unknown_blob_X",
+      "parent_path": "/Kitchen/Misc_grp",
+      "bbox": [
+        0.6,
+        0.9,
+        0.6
+      ],
+      "mass": 10.0
+    }
+  ]
+}

@@ -544,6 +544,50 @@
         "ko": "생성→검토→정제 사이클(감사 가능)",
         "en": "Generate→review→refine cycle (auditable)"
       }
+    },
+    "anchor-cti": {
+      "input": {
+        "ko": "CTI 본문 텍스트",
+        "en": "CTI body text"
+      },
+      "mechanism": {
+        "ko": "스키마 트리 검색-내비게이트 + SHACL 형식 검증",
+        "en": "Search-and-navigate over schema tree + SHACL-style validation"
+      },
+      "output_unit": {
+        "ko": "타입화된 개체·관계 + subClassOf",
+        "en": "Typed individuals + relations + subClassOf"
+      },
+      "paradigm": {
+        "ko": "스키마-무관 (UCO/STIX/MALOnt 동일 코드)",
+        "en": "Schema-agnostic (one code path for UCO/STIX/MALOnt)"
+      },
+      "distinct": {
+        "ko": "내비게이트 경로 기록 + SHACL 실패 시 상위로 강등(`shacl_demoted`)",
+        "en": "Records navigation path; SHACL failure demotes to validating ancestor"
+      }
+    },
+    "usd2kg": {
+      "input": {
+        "ko": "USD 장면 그래프(prim 이름·경로·bbox)",
+        "en": "USD scene graph (prim name + path + bbox)"
+      },
+      "mechanism": {
+        "ko": "3전략 그라운딩 — 이름→계층→기하 (CoT)",
+        "en": "Three-strategy grounding — name -> hierarchy -> geometry (CoT)"
+      },
+      "output_unit": {
+        "ko": "OWL 클래스 그라운딩(ABox 개체)",
+        "en": "OWL class grounding (ABox individuals)"
+      },
+      "paradigm": {
+        "ko": "제로샷 (학습 없음, TBox 선형화 프롬프트)",
+        "en": "Zero-shot (no training, linearised TBox prompt)"
+      },
+      "distinct": {
+        "ko": "명명 체제(semantic/abbreviated/opaque) 전환 시 전략 분포로 ablation 가시화",
+        "en": "Naming-regime switch surfaces strategy-mix ablation telemetry"
+      }
     }
   }
 }

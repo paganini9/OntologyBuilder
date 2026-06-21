@@ -1,0 +1,34 @@
+{
+  "id": "usd2kg",
+  "name": "USD2KG (zero-shot LLM ontology grounding for USD scenes)",
+  "paper": {
+    "key": "Shuai_USD2KG",
+    "title": "From USD Scenes to Knowledge Graphs: Zero-Shot Ontology Grounding with LLMs",
+    "arxiv": "2606.09134",
+    "venue": "IEEE ICRA 2026 (J-WOSMARS workshop)",
+    "code_url": "https://github.com/JTShuai/USD_2_KG"
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "three-strategy grounding (name-only / context / chain-of-thought) over a linearised TBox + naming-regime transforms; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["usd_scene.json"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/usd_scene.json"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-21"
+}

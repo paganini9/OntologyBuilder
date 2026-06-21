@@ -1,0 +1,9 @@
+# Mock cyber threat intelligence report (free text).
+# Hybrid ontology discovery walks a CTI schema tree (UCO/STIX/MALOnt) and
+# attaches an instance to the most-specific class that passes SHACL.
+APT41 deployed Ransomware against TargetOrg using the BlackCat strain.
+The Trojan exfiltrates Credentials to the IPAddress 198.51.100.7.
+A new Vulnerability CVE-2026-12345 affects the System ApacheServer.
+The Domain malicious-example.com hosts the Indicator payload.
+The FileHash 9f86d081884c7d659a2feaa0c55ad015 is associated with the Malware sample.
+The ThreatActor exploits the Vulnerability against the System ApacheServer.

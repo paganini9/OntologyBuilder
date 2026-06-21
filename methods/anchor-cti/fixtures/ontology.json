@@ -1,0 +1,692 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "ThreatActor",
+        "label": "ThreatActor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Actor",
+        "label": "Actor",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Entity",
+        "label": "Entity",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Ransomware",
+        "label": "Ransomware",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Malware",
+        "label": "Malware",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Trojan",
+        "label": "Trojan",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "IPAddress",
+        "label": "IPAddress",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Indicator",
+        "label": "Indicator",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Vulnerability",
+        "label": "Vulnerability",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "System",
+        "label": "System",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Domain",
+        "label": "Domain",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "FileHash",
+        "label": "FileHash",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "APT41",
+        "label": "APT41",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Ransomware",
+        "label": "Ransomware",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "TargetOrg",
+        "label": "TargetOrg",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "BlackCat",
+        "label": "BlackCat",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Trojan",
+        "label": "Trojan",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Credentials",
+        "label": "Credentials",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "IPAddress",
+        "label": "IPAddress",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "198.51.100.7",
+        "label": "198.51.100.7",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "198.51.100.7",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Vulnerability",
+        "label": "Vulnerability",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CVE",
+        "label": "CVE",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "System",
+        "label": "System",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ApacheServer",
+        "label": "ApacheServer",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CVE-2026-12345",
+        "label": "CVE-2026-12345",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "CVE-2026-12345",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Domain",
+        "label": "Domain",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Indicator",
+        "label": "Indicator",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "malicious-example.com",
+        "label": "malicious-example.com",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "malicious-example.com",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "FileHash",
+        "label": "FileHash",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Malware",
+        "label": "Malware",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "9f86d081884c7d659a2feaa0c55ad015",
+        "label": "9f86d081884c7d659a2feaa0c55ad015",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "9f86d081884c7d659a2feaa0c55ad015",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ThreatActor",
+        "label": "ThreatActor",
+        "type": "instance",
+        "schema": "UCO",
+        "value": "",
+        "shacl_demoted": false,
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "APT41-type-ThreatActor",
+        "source": "APT41",
+        "target": "ThreatActor",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Ransomware-type-Ransomware",
+        "source": "Ransomware",
+        "target": "Ransomware",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "TargetOrg-type-Entity",
+        "source": "TargetOrg",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "BlackCat-type-Entity",
+        "source": "BlackCat",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Trojan-type-Trojan",
+        "source": "Trojan",
+        "target": "Trojan",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Credentials-type-Entity",
+        "source": "Credentials",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "IPAddress-type-IPAddress",
+        "source": "IPAddress",
+        "target": "IPAddress",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "198.51.100.7-type-Entity",
+        "source": "198.51.100.7",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Vulnerability-type-Vulnerability",
+        "source": "Vulnerability",
+        "target": "Vulnerability",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "CVE-type-Vulnerability",
+        "source": "CVE",
+        "target": "Vulnerability",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "System-type-System",
+        "source": "System",
+        "target": "System",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "ApacheServer-type-System",
+        "source": "ApacheServer",
+        "target": "System",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "CVE-2026-12345-type-Vulnerability",
+        "source": "CVE-2026-12345",
+        "target": "Vulnerability",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Domain-type-Domain",
+        "source": "Domain",
+        "target": "Domain",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "Indicator-type-Indicator",
+        "source": "Indicator",
+        "target": "Indicator",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "malicious-example.com-type-Entity",
+        "source": "malicious-example.com",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "FileHash-type-FileHash",
+        "source": "FileHash",
+        "target": "FileHash",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "Malware-type-Malware",
+        "source": "Malware",
+        "target": "Malware",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "9f86d081884c7d659a2feaa0c55ad015-type-Entity",
+        "source": "9f86d081884c7d659a2feaa0c55ad015",
+        "target": "Entity",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "ThreatActor-type-ThreatActor",
+        "source": "ThreatActor",
+        "target": "ThreatActor",
+        "label": "type",
+        "schema": "UCO",
+        "provenance": 6
+      }
+    },
+    {
+      "data": {
+        "id": "ThreatActor-subClassOf-Actor",
+        "source": "ThreatActor",
+        "target": "Actor",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Actor-subClassOf-Entity",
+        "source": "Actor",
+        "target": "Entity",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Ransomware-subClassOf-Malware",
+        "source": "Ransomware",
+        "target": "Malware",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Malware-subClassOf-Entity",
+        "source": "Malware",
+        "target": "Entity",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Trojan-subClassOf-Malware",
+        "source": "Trojan",
+        "target": "Malware",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "IPAddress-subClassOf-Indicator",
+        "source": "IPAddress",
+        "target": "Indicator",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Indicator-subClassOf-Entity",
+        "source": "Indicator",
+        "target": "Entity",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Vulnerability-subClassOf-Entity",
+        "source": "Vulnerability",
+        "target": "Entity",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "System-subClassOf-Entity",
+        "source": "System",
+        "target": "Entity",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "Domain-subClassOf-Indicator",
+        "source": "Domain",
+        "target": "Indicator",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "FileHash-subClassOf-Indicator",
+        "source": "FileHash",
+        "target": "Indicator",
+        "label": "subClassOf",
+        "schema": "UCO",
+        "provenance": 0
+      }
+    },
+    {
+      "data": {
+        "id": "APT41-deploys-Ransomware",
+        "source": "APT41",
+        "target": "Ransomware",
+        "label": "deploys",
+        "schema": "UCO",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Trojan-exfiltrates-Credentials",
+        "source": "Trojan",
+        "target": "Credentials",
+        "label": "exfiltrates",
+        "schema": "UCO",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Vulnerability-affects-CVE",
+        "source": "Vulnerability",
+        "target": "CVE",
+        "label": "affects",
+        "schema": "UCO",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Domain-hosts-Indicator",
+        "source": "Domain",
+        "target": "Indicator",
+        "label": "hosts",
+        "schema": "UCO",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "FileHash-associatedWith-Malware",
+        "source": "FileHash",
+        "target": "Malware",
+        "label": "associatedWith",
+        "schema": "UCO",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "ThreatActor-exploits-Vulnerability",
+        "source": "ThreatActor",
+        "target": "Vulnerability",
+        "label": "exploits",
+        "schema": "UCO",
+        "provenance": 6
+      }
+    }
+  ]
+}

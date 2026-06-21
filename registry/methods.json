@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-06-20",
+  "updated": "2026-06-21",
   "difficulty_formula": "score = 1*pipeline_stages + 3*needs_finetuning + 3*needs_gpu + 2*needs_large_data + 1*(llm_dependency!='mock') - 1*code_public",
   "selection_rule": "pick lowest (difficulty.score, mock-before-api/hf, fewer inputs_needed) among status in {discovered,analyzed,queued} AND approved_by_user AND blockers==[]",
   "methods": [
@@ -944,6 +944,86 @@
         "dir": "methods/ontokb-iterative"
       },
       "updated": "2026-06-20"
+    },
+    {
+      "id": "anchor-cti",
+      "name": "ANCHOR (schema-agnostic CTI KG via hybrid ontology discovery)",
+      "paper": {
+        "key": "Kim_ANCHOR_CTI",
+        "title": "Schema-Agnostic Knowledge Graph Construction via Hybrid Ontology Discovery for Cyber Threat Intelligence",
+        "arxiv": "2606.01208",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 4,
+        "rank": 4,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "search-and-navigate over a schema tree + SHACL-style structural validation + multi-schema support (UCO/STIX/MALOnt); deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "text.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/anchor-cti"
+      },
+      "updated": "2026-06-21"
+    },
+    {
+      "id": "usd2kg",
+      "name": "USD2KG (zero-shot LLM ontology grounding for USD scenes)",
+      "paper": {
+        "key": "Shuai_USD2KG",
+        "title": "From USD Scenes to Knowledge Graphs: Zero-Shot Ontology Grounding with LLMs",
+        "arxiv": "2606.09134",
+        "venue": "IEEE ICRA 2026 (J-WOSMARS workshop)",
+        "code_url": "https://github.com/JTShuai/USD_2_KG"
+      },
+      "difficulty": {
+        "score": 4,
+        "rank": 4,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": true
+        },
+        "rationale": "three-strategy grounding (name-only / context / chain-of-thought) over a linearised TBox + naming-regime transforms; deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "usd_scene.json"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/usd2kg"
+      },
+      "updated": "2026-06-21"
     }
   ]
 }
