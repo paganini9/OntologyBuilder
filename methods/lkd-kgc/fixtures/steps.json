@@ -1,0 +1,1173 @@
+[
+  {
+    "step": 1,
+    "stage": "read+induce+extract",
+    "cq": "d1: Sensors",
+    "added": {
+      "doc": "d1",
+      "type_candidates": [
+        "Sensors",
+        "Sensor"
+      ],
+      "new_classes": [
+        "Sensor"
+      ],
+      "entities": 1,
+      "relations": 0
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "DomainEntity",
+            "label": "DomainEntity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor",
+            "label": "Sensor_sensor",
+            "type": "instance",
+            "cls": "Sensor",
+            "provenance": "d1",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Sensor-subClassOf-DomainEntity",
+            "source": "Sensor",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor-type-Sensor",
+            "source": "Sensor_sensor",
+            "target": "Sensor",
+            "label": "type",
+            "provenance": "d1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "read+induce+extract",
+    "cq": "d2: Controllers",
+    "added": {
+      "doc": "d2",
+      "type_candidates": [
+        "Controllers",
+        "Sensors",
+        "Controller",
+        "Pump"
+      ],
+      "new_classes": [
+        "Controller",
+        "Pump"
+      ],
+      "entities": 2,
+      "relations": 2
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "DomainEntity",
+            "label": "DomainEntity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor",
+            "label": "Sensor_sensor",
+            "type": "instance",
+            "cls": "Sensor",
+            "provenance": "d1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller",
+            "label": "Controller_controller",
+            "type": "instance",
+            "cls": "Controller",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump",
+            "label": "Pump_pump",
+            "type": "instance",
+            "cls": "Pump",
+            "provenance": "d2",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Sensor-subClassOf-DomainEntity",
+            "source": "Sensor",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-subClassOf-DomainEntity",
+            "source": "Controller",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-DomainEntity",
+            "source": "Pump",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor-type-Sensor",
+            "source": "Sensor_sensor",
+            "target": "Sensor",
+            "label": "type",
+            "provenance": "d1"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-type-Controller",
+            "source": "Controller_controller",
+            "target": "Controller",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-type-Pump",
+            "source": "Pump_pump",
+            "target": "Pump",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-reads-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "reads",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-controls-Pump_pump",
+            "source": "Controller_controller",
+            "target": "Pump_pump",
+            "label": "controls",
+            "provenance": "d2"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "read+induce+extract",
+    "cq": "d3: Pumps",
+    "added": {
+      "doc": "d3",
+      "type_candidates": [
+        "Pumps",
+        "Pipeline",
+        "Pump"
+      ],
+      "new_classes": [
+        "Pipeline"
+      ],
+      "entities": 1,
+      "relations": 1
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "DomainEntity",
+            "label": "DomainEntity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline",
+            "label": "Pipeline",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor",
+            "label": "Sensor_sensor",
+            "type": "instance",
+            "cls": "Sensor",
+            "provenance": "d1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller",
+            "label": "Controller_controller",
+            "type": "instance",
+            "cls": "Controller",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump",
+            "label": "Pump_pump",
+            "type": "instance",
+            "cls": "Pump",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline",
+            "label": "Pipeline_pipeline",
+            "type": "instance",
+            "cls": "Pipeline",
+            "provenance": "d3",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Sensor-subClassOf-DomainEntity",
+            "source": "Sensor",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-subClassOf-DomainEntity",
+            "source": "Controller",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-DomainEntity",
+            "source": "Pump",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline-subClassOf-DomainEntity",
+            "source": "Pipeline",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor-type-Sensor",
+            "source": "Sensor_sensor",
+            "target": "Sensor",
+            "label": "type",
+            "provenance": "d1"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-type-Controller",
+            "source": "Controller_controller",
+            "target": "Controller",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-type-Pump",
+            "source": "Pump_pump",
+            "target": "Pump",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline-type-Pipeline",
+            "source": "Pipeline_pipeline",
+            "target": "Pipeline",
+            "label": "type",
+            "provenance": "d3"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-reads-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "reads",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-controls-Pump_pump",
+            "source": "Controller_controller",
+            "target": "Pump_pump",
+            "label": "controls",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-regulates-Pipeline_pipeline",
+            "source": "Pump_pump",
+            "target": "Pipeline_pipeline",
+            "label": "regulates",
+            "provenance": "d3"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "read+induce+extract",
+    "cq": "d4: Operating Procedure",
+    "added": {
+      "doc": "d4",
+      "type_candidates": [
+        "Operator",
+        "Procedure",
+        "Controllers",
+        "Sensors",
+        "Valve"
+      ],
+      "new_classes": [
+        "Operator",
+        "Procedure",
+        "Valve"
+      ],
+      "entities": 3,
+      "relations": 2
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "DomainEntity",
+            "label": "DomainEntity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline",
+            "label": "Pipeline",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Operator",
+            "label": "Operator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure",
+            "label": "Procedure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Valve",
+            "label": "Valve",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor",
+            "label": "Sensor_sensor",
+            "type": "instance",
+            "cls": "Sensor",
+            "provenance": "d1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller",
+            "label": "Controller_controller",
+            "type": "instance",
+            "cls": "Controller",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump",
+            "label": "Pump_pump",
+            "type": "instance",
+            "cls": "Pump",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline",
+            "label": "Pipeline_pipeline",
+            "type": "instance",
+            "cls": "Pipeline",
+            "provenance": "d3",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator",
+            "label": "Operator_operator",
+            "type": "instance",
+            "cls": "Operator",
+            "provenance": "d4",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_procedure",
+            "label": "Procedure_procedure",
+            "type": "instance",
+            "cls": "Procedure",
+            "provenance": "d4",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Valve_valve",
+            "label": "Valve_valve",
+            "type": "instance",
+            "cls": "Valve",
+            "provenance": "d4",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Sensor-subClassOf-DomainEntity",
+            "source": "Sensor",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-subClassOf-DomainEntity",
+            "source": "Controller",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-DomainEntity",
+            "source": "Pump",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline-subClassOf-DomainEntity",
+            "source": "Pipeline",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator-subClassOf-DomainEntity",
+            "source": "Operator",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure-subClassOf-DomainEntity",
+            "source": "Procedure",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Valve-subClassOf-DomainEntity",
+            "source": "Valve",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor-type-Sensor",
+            "source": "Sensor_sensor",
+            "target": "Sensor",
+            "label": "type",
+            "provenance": "d1"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-type-Controller",
+            "source": "Controller_controller",
+            "target": "Controller",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-type-Pump",
+            "source": "Pump_pump",
+            "target": "Pump",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline-type-Pipeline",
+            "source": "Pipeline_pipeline",
+            "target": "Pipeline",
+            "label": "type",
+            "provenance": "d3"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator-type-Operator",
+            "source": "Operator_operator",
+            "target": "Operator",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_procedure-type-Procedure",
+            "source": "Procedure_procedure",
+            "target": "Procedure",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Valve_valve-type-Valve",
+            "source": "Valve_valve",
+            "target": "Valve",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-reads-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "reads",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-controls-Pump_pump",
+            "source": "Controller_controller",
+            "target": "Pump_pump",
+            "label": "controls",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-regulates-Pipeline_pipeline",
+            "source": "Pump_pump",
+            "target": "Pipeline_pipeline",
+            "label": "regulates",
+            "provenance": "d3"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator-follows-Procedure_procedure",
+            "source": "Operator_operator",
+            "target": "Procedure_procedure",
+            "label": "follows",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-monitors-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "monitors",
+            "provenance": "d4"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "read+induce+extract",
+    "cq": "d5: Safety Protocol",
+    "added": {
+      "doc": "d5",
+      "type_candidates": [
+        "Protocol",
+        "Alarm",
+        "Sensor",
+        "Threshold",
+        "Procedure"
+      ],
+      "new_classes": [
+        "Alarm",
+        "Threshold"
+      ],
+      "entities": 3,
+      "relations": 1
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "DomainEntity",
+            "label": "DomainEntity",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor",
+            "label": "Sensor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline",
+            "label": "Pipeline",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Operator",
+            "label": "Operator",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure",
+            "label": "Procedure",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Valve",
+            "label": "Valve",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alarm",
+            "label": "Alarm",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Threshold",
+            "label": "Threshold",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor",
+            "label": "Sensor_sensor",
+            "type": "instance",
+            "cls": "Sensor",
+            "provenance": "d1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller",
+            "label": "Controller_controller",
+            "type": "instance",
+            "cls": "Controller",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump",
+            "label": "Pump_pump",
+            "type": "instance",
+            "cls": "Pump",
+            "provenance": "d2",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline",
+            "label": "Pipeline_pipeline",
+            "type": "instance",
+            "cls": "Pipeline",
+            "provenance": "d3",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator",
+            "label": "Operator_operator",
+            "type": "instance",
+            "cls": "Operator",
+            "provenance": "d4",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_procedure",
+            "label": "Procedure_procedure",
+            "type": "instance",
+            "cls": "Procedure",
+            "provenance": "d4",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Valve_valve",
+            "label": "Valve_valve",
+            "type": "instance",
+            "cls": "Valve",
+            "provenance": "d4",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_protocol",
+            "label": "Procedure_protocol",
+            "type": "instance",
+            "cls": "Procedure",
+            "provenance": "d5",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alarm_alarm",
+            "label": "Alarm_alarm",
+            "type": "instance",
+            "cls": "Alarm",
+            "provenance": "d5",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Threshold_threshold",
+            "label": "Threshold_threshold",
+            "type": "instance",
+            "cls": "Threshold",
+            "provenance": "d5",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Sensor-subClassOf-DomainEntity",
+            "source": "Sensor",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller-subClassOf-DomainEntity",
+            "source": "Controller",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump-subClassOf-DomainEntity",
+            "source": "Pump",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline-subClassOf-DomainEntity",
+            "source": "Pipeline",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator-subClassOf-DomainEntity",
+            "source": "Operator",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure-subClassOf-DomainEntity",
+            "source": "Procedure",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Valve-subClassOf-DomainEntity",
+            "source": "Valve",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Alarm-subClassOf-DomainEntity",
+            "source": "Alarm",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Threshold-subClassOf-DomainEntity",
+            "source": "Threshold",
+            "target": "DomainEntity",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Sensor_sensor-type-Sensor",
+            "source": "Sensor_sensor",
+            "target": "Sensor",
+            "label": "type",
+            "provenance": "d1"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-type-Controller",
+            "source": "Controller_controller",
+            "target": "Controller",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-type-Pump",
+            "source": "Pump_pump",
+            "target": "Pump",
+            "label": "type",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pipeline_pipeline-type-Pipeline",
+            "source": "Pipeline_pipeline",
+            "target": "Pipeline",
+            "label": "type",
+            "provenance": "d3"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator-type-Operator",
+            "source": "Operator_operator",
+            "target": "Operator",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_procedure-type-Procedure",
+            "source": "Procedure_procedure",
+            "target": "Procedure",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Valve_valve-type-Valve",
+            "source": "Valve_valve",
+            "target": "Valve",
+            "label": "type",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Procedure_protocol-type-Procedure",
+            "source": "Procedure_protocol",
+            "target": "Procedure",
+            "label": "type",
+            "provenance": "d5"
+          }
+        },
+        {
+          "data": {
+            "id": "Alarm_alarm-type-Alarm",
+            "source": "Alarm_alarm",
+            "target": "Alarm",
+            "label": "type",
+            "provenance": "d5"
+          }
+        },
+        {
+          "data": {
+            "id": "Threshold_threshold-type-Threshold",
+            "source": "Threshold_threshold",
+            "target": "Threshold",
+            "label": "type",
+            "provenance": "d5"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-reads-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "reads",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-controls-Pump_pump",
+            "source": "Controller_controller",
+            "target": "Pump_pump",
+            "label": "controls",
+            "provenance": "d2"
+          }
+        },
+        {
+          "data": {
+            "id": "Pump_pump-regulates-Pipeline_pipeline",
+            "source": "Pump_pump",
+            "target": "Pipeline_pipeline",
+            "label": "regulates",
+            "provenance": "d3"
+          }
+        },
+        {
+          "data": {
+            "id": "Operator_operator-follows-Procedure_procedure",
+            "source": "Operator_operator",
+            "target": "Procedure_procedure",
+            "label": "follows",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Controller_controller-monitors-Sensor_sensor",
+            "source": "Controller_controller",
+            "target": "Sensor_sensor",
+            "label": "monitors",
+            "provenance": "d4"
+          }
+        },
+        {
+          "data": {
+            "id": "Alarm_alarm-triggers-Sensor_sensor",
+            "source": "Alarm_alarm",
+            "target": "Sensor_sensor",
+            "label": "triggers",
+            "provenance": "d5"
+          }
+        }
+      ]
+    }
+  }
+]

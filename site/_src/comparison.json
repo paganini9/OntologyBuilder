@@ -588,6 +588,94 @@
         "ko": "명명 체제(semantic/abbreviated/opaque) 전환 시 전략 분포로 ablation 가시화",
         "en": "Naming-regime switch surfaces strategy-mix ablation telemetry"
       }
+    },
+    "lkd-kgc": {
+      "input": {
+        "ko": "도메인 문서 코퍼스(제목+본문)",
+        "en": "Domain document corpus (title + text)"
+      },
+      "mechanism": {
+        "ko": "지식 의존성 파싱 → 위상 읽기순서 → 자기회귀 스키마(동의어 클러스터링) → 스키마 가이드 추출",
+        "en": "Dependency parsing -> topological read order -> autoregressive schema (synonym clustering) -> schema-guided extraction"
+      },
+      "output_unit": {
+        "ko": "유도 스키마 클래스 + 타입화 엔티티/관계",
+        "en": "Induced schema classes + typed entities/relations"
+      },
+      "paradigm": {
+        "ko": "비지도(사전 스키마·외부 KB 없음)",
+        "en": "Unsupervised (no predefined schema / external KB)"
+      },
+      "distinct": {
+        "ko": "문서 간 의존성으로 읽기순서를 정하고 동의어 타입을 클러스터링해 스키마를 유도",
+        "en": "Inter-document dependencies drive read order; synonym type labels cluster into the induced schema"
+      }
+    },
+    "ontometric": {
+      "input": {
+        "ko": "ESG 규제 문서 세그먼트(페이지+헤딩+본문)",
+        "en": "ESG regulatory document segments (page + heading + text)"
+      },
+      "mechanism": {
+        "ko": "구조 인지 분할 → 온톨로지 제약 추출(결정론적 id) → 2단계 검증(타입+스키마)",
+        "en": "Structure-aware segmentation -> ontology-constrained extraction (deterministic ids) -> two-phase validation (type + schema)"
+      },
+      "output_unit": {
+        "ko": "검증된 ESGMKG 개체 + 구성적 관계",
+        "en": "Validated ESGMKG individuals + compositional relations"
+      },
+      "paradigm": {
+        "ko": "온톨로지 가이드(ESGMKG를 일급 제약으로)",
+        "en": "Ontology-guided (ESGMKG as a first-class constraint)"
+      },
+      "distinct": {
+        "ko": "2단계 검증이 환각 타입(1단계)과 불법 간선(2단계)을 거르고 페이지 출처 보존",
+        "en": "Two-phase validation drops hallucinated types (phase 1) and illegal edges (phase 2); page provenance preserved"
+      }
+    },
+    "wikontic": {
+      "input": {
+        "ko": "열린 도메인 문장(한 줄당 하나)",
+        "en": "Open-domain sentences (one per line)"
+      },
+      "mechanism": {
+        "ko": "한정자 포함 후보 트리플 추출 → 엔티티 정규화(QID 병합) → Wikidata 타입/관계 제약 강제",
+        "en": "Candidate triplets with qualifiers -> entity normalization (merge to QIDs) -> Wikidata type/relation constraint enforcement"
+      },
+      "output_unit": {
+        "ko": "Wikidata 항목(QID) + 한정자 달린 진술",
+        "en": "Wikidata items (QIDs) + qualified statements"
+      },
+      "paradigm": {
+        "ko": "Wikidata 정렬·온톨로지 인지",
+        "en": "Wikidata-aligned, ontology-aware"
+      },
+      "distinct": {
+        "ko": "별칭 멘션을 한 QID로 병합(중복 제거)하고 속성 제약 위반 진술을 거절, 시점/시작시점 한정자 보존",
+        "en": "Merges alias mentions to one QID (dedup), rejects constraint-violating statements, keeps point-in-time / start-time qualifiers"
+      }
+    },
+    "llm-external-onto-memory": {
+      "input": {
+        "ko": "이기종 소스(문서·API·대화 로그)",
+        "en": "Heterogeneous sources (documents, APIs, dialogue logs)"
+      },
+      "mechanism": {
+        "ko": "타입별 수집 + NER/RE → 정규화 → SHACL/OWL 생성-검증-교정(채택/교정/거절) → 지속 갱신",
+        "en": "Type-aware ingestion + NER/RE -> normalization -> SHACL/OWL generation-verification-correction (accept/correct/reject) -> continuous updates"
+      },
+      "output_unit": {
+        "ko": "검증된 RDF/OWL 개체 + 데이터/객체 속성",
+        "en": "Validated RDF/OWL individuals + data/object properties"
+      },
+      "paradigm": {
+        "ko": "외부 온톨로지 메모리 계층",
+        "en": "External ontological memory layer"
+      },
+      "distinct": {
+        "ko": "거절만 하지 않고 고칠 수 있는 위반을 교정(비-ISO 날짜→xsd:date), 이기종 소스 통합·출처 보존",
+        "en": "Doesn't just reject — corrects fixable violations (non-ISO date -> xsd:date), unifies heterogeneous sources with provenance"
+      }
     }
   }
 }

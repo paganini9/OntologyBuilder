@@ -1,0 +1,31 @@
+{
+  "_comment": "Small domain corpus (industrial water-treatment control). Knowledge dependencies are NOT given: the pipeline infers them (doc A depends on doc B when A's text mentions B's title), derives a read order, then autoregressively induces an entity-type schema (collapsing plural/synonym labels) and does schema-guided extraction. Foundational notes (Sensors, Controllers) are mentioned by later notes, so they are read first.",
+  "domain": "industrial water-treatment control",
+  "documents": [
+    {
+      "id": "d1",
+      "title": "Sensors",
+      "text": "Sensors measure water level and pressure. A sensor reports readings to the plant."
+    },
+    {
+      "id": "d2",
+      "title": "Controllers",
+      "text": "Controllers read sensors and decide actions. A controller controls the pump based on readings."
+    },
+    {
+      "id": "d3",
+      "title": "Pumps",
+      "text": "Pumps move water through the pipeline. A pump regulates flow across the pipeline."
+    },
+    {
+      "id": "d4",
+      "title": "Operating Procedure",
+      "text": "The operator follows the procedure. Controllers monitor sensors and the operator opens the valve."
+    },
+    {
+      "id": "d5",
+      "title": "Safety Protocol",
+      "text": "The safety protocol defines alarm thresholds. An alarm triggers when a sensor exceeds a threshold. The safety protocol extends the Operating Procedure."
+    }
+  ]
+}

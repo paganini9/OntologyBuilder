@@ -771,5 +771,203 @@
       "ontology.json",
       "steps.json"
     ]
+  },
+  {
+    "id": "anchor-cti",
+    "name": "ANCHOR (schema-agnostic CTI KG via hybrid ontology discovery)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 3,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "search-and-navigate over a schema tree + SHACL-style structural validation + multi-schema support (UCO/STIX/MALOnt); deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Kim_ANCHOR_CTI",
+      "title": "Schema-Agnostic Knowledge Graph Construction via Hybrid Ontology Discovery for Cyber Threat Intelligence",
+      "arxiv": "2606.01208",
+      "venue": "arXiv 2026",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "text.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "usd2kg",
+    "name": "USD2KG (zero-shot LLM ontology grounding for USD scenes)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 3,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": true
+      },
+      "rationale": "three-strategy grounding (name-only / context / chain-of-thought) over a linearised TBox + naming-regime transforms; deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Shuai_USD2KG",
+      "title": "From USD Scenes to Knowledge Graphs: Zero-Shot Ontology Grounding with LLMs",
+      "arxiv": "2606.09134",
+      "venue": "IEEE ICRA 2026 (J-WOSMARS workshop)",
+      "code_url": "https://github.com/JTShuai/USD_2_KG"
+    },
+    "inputs_needed": [
+      "usd_scene.json"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "lkd-kgc",
+    "name": "LKD-KGC (domain KG via knowledge-dependency parsing)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 4,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "dependency parsing -> topological read order -> autoregressive schema induction with synonym clustering -> schema-guided extraction; deterministic mock, no GPU/finetuning/large-data"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Sun_LKD_KGC",
+      "title": "LKD-KGC: Domain-Specific KG Construction via LLM-driven Knowledge Dependency Parsing",
+      "arxiv": "2505.24163",
+      "venue": "arXiv 2025 (submitted to EDBT 2026)",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "corpus.json"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "ontometric",
+    "name": "OntoMetric (ontology-guided ESG metric KG + two-phase validation)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 4,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "structure-aware segmentation -> ontology-constrained extraction with deterministic ids -> two-phase validation (semantic type verification + rule-based schema check) with provenance; deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "OntoMetric_ESGMKG",
+      "title": "OntoMetric: An Ontology-Driven LLM-Assisted Framework for Automated ESG Metric Knowledge Graph Generation",
+      "arxiv": "2512.01289",
+      "venue": "arXiv 2025",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "esg_document.json"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "wikontic",
+    "name": "Wikontic (Wikidata-aligned, ontology-aware KG with entity normalization + qualifiers)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 4,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "candidate-triplet extraction with qualifiers -> entity normalization to canonical Wikidata items (dedup) -> Wikidata type/relation constraint enforcement; deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Wikontic_2025",
+      "title": "Wikontic: Constructing Wikidata-Aligned, Ontology-Aware Knowledge Graphs with Large Language Models",
+      "arxiv": "2512.00590",
+      "venue": "arXiv 2025",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "passages.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "llm-external-onto-memory",
+    "name": "LLM External Ontology Memory (heterogeneous ingestion + SHACL/OWL generation-verification-correction)",
+    "status": "published",
+    "difficulty": {
+      "score": 5,
+      "rank": 5,
+      "factors": {
+        "pipeline_stages": 5,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "heterogeneous ingestion (document/api/dialogue) -> NER/RE -> normalization -> triple generation -> SHACL/OWL validation in a generation-verification-correction loop (accept/correct/reject) with continuous updates; deterministic mock, no GPU/finetuning. Scope: the construction+validation layer (planning/inference-time use from the paper is out of scope for the demo)."
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "ExtOntoMemory_2026",
+      "title": "Automatic Ontology Construction Using LLMs as an External Layer of Memory, Verification, and Planning for Hybrid Intelligent Systems",
+      "arxiv": "2604.20795",
+      "venue": "arXiv 2026",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "sources.json"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
   }
 ]

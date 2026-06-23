@@ -1,0 +1,34 @@
+{
+  "id": "llm-external-onto-memory",
+  "name": "LLM External Ontology Memory (heterogeneous ingestion + SHACL/OWL generation-verification-correction)",
+  "paper": {
+    "key": "ExtOntoMemory_2026",
+    "title": "Automatic Ontology Construction Using LLMs as an External Layer of Memory, Verification, and Planning for Hybrid Intelligent Systems",
+    "arxiv": "2604.20795",
+    "venue": "arXiv 2026",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "heterogeneous ingestion (document/api/dialogue) -> NER/RE -> normalization -> triple generation -> SHACL/OWL validation in a generation-verification-correction loop (accept/correct/reject) with continuous updates; deterministic mock, no GPU/finetuning. Scope: the construction+validation layer (planning/inference-time use from the paper is out of scope for the demo)."
+  },
+  "llm_dependency": "mock",
+  "inputs_needed": ["sources.json"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "status": "published",
+  "blockers": [],
+  "source": "daily-search",
+  "approved_by_user": true,
+  "paths": {
+    "dir": "methods/llm-external-onto-memory"
+  },
+  "updated": "2026-06-23"
+}

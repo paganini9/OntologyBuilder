@@ -1,0 +1,34 @@
+{
+  "id": "wikontic",
+  "name": "Wikontic (Wikidata-aligned, ontology-aware KG with entity normalization + qualifiers)",
+  "paper": {
+    "key": "Wikontic_2025",
+    "title": "Wikontic: Constructing Wikidata-Aligned, Ontology-Aware Knowledge Graphs with Large Language Models",
+    "arxiv": "2512.00590",
+    "venue": "arXiv 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "candidate-triplet extraction with qualifiers -> entity normalization to canonical Wikidata items (dedup) -> Wikidata type/relation constraint enforcement; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "inputs_needed": ["passages.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "status": "published",
+  "blockers": [],
+  "source": "daily-search",
+  "approved_by_user": true,
+  "paths": {
+    "dir": "methods/wikontic"
+  },
+  "updated": "2026-06-23"
+}

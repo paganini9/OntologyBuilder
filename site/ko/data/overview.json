@@ -294,6 +294,78 @@
       "output_unit": "클래스·속성·계층",
       "paradigm": "반복적 지식 획득",
       "distinct": "생성→검토→정제 사이클(감사 가능)"
+    },
+    {
+      "id": "anchor-cti",
+      "name": "ANCHOR (schema-agnostic CTI KG via hybrid ontology discovery)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "CTI 본문 텍스트",
+      "mechanism": "스키마 트리 검색-내비게이트 + SHACL 형식 검증",
+      "output_unit": "타입화된 개체·관계 + subClassOf",
+      "paradigm": "스키마-무관 (UCO/STIX/MALOnt 동일 코드)",
+      "distinct": "내비게이트 경로 기록 + SHACL 실패 시 상위로 강등(`shacl_demoted`)"
+    },
+    {
+      "id": "usd2kg",
+      "name": "USD2KG (zero-shot LLM ontology grounding for USD scenes)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "USD 장면 그래프(prim 이름·경로·bbox)",
+      "mechanism": "3전략 그라운딩 — 이름→계층→기하 (CoT)",
+      "output_unit": "OWL 클래스 그라운딩(ABox 개체)",
+      "paradigm": "제로샷 (학습 없음, TBox 선형화 프롬프트)",
+      "distinct": "명명 체제(semantic/abbreviated/opaque) 전환 시 전략 분포로 ablation 가시화"
+    },
+    {
+      "id": "lkd-kgc",
+      "name": "LKD-KGC (domain KG via knowledge-dependency parsing)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "도메인 문서 코퍼스(제목+본문)",
+      "mechanism": "지식 의존성 파싱 → 위상 읽기순서 → 자기회귀 스키마(동의어 클러스터링) → 스키마 가이드 추출",
+      "output_unit": "유도 스키마 클래스 + 타입화 엔티티/관계",
+      "paradigm": "비지도(사전 스키마·외부 KB 없음)",
+      "distinct": "문서 간 의존성으로 읽기순서를 정하고 동의어 타입을 클러스터링해 스키마를 유도"
+    },
+    {
+      "id": "ontometric",
+      "name": "OntoMetric (ontology-guided ESG metric KG + two-phase validation)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "ESG 규제 문서 세그먼트(페이지+헤딩+본문)",
+      "mechanism": "구조 인지 분할 → 온톨로지 제약 추출(결정론적 id) → 2단계 검증(타입+스키마)",
+      "output_unit": "검증된 ESGMKG 개체 + 구성적 관계",
+      "paradigm": "온톨로지 가이드(ESGMKG를 일급 제약으로)",
+      "distinct": "2단계 검증이 환각 타입(1단계)과 불법 간선(2단계)을 거르고 페이지 출처 보존"
+    },
+    {
+      "id": "wikontic",
+      "name": "Wikontic (Wikidata-aligned, ontology-aware KG with entity normalization + qualifiers)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "열린 도메인 문장(한 줄당 하나)",
+      "mechanism": "한정자 포함 후보 트리플 추출 → 엔티티 정규화(QID 병합) → Wikidata 타입/관계 제약 강제",
+      "output_unit": "Wikidata 항목(QID) + 한정자 달린 진술",
+      "paradigm": "Wikidata 정렬·온톨로지 인지",
+      "distinct": "별칭 멘션을 한 QID로 병합(중복 제거)하고 속성 제약 위반 진술을 거절, 시점/시작시점 한정자 보존"
+    },
+    {
+      "id": "llm-external-onto-memory",
+      "name": "LLM External Ontology Memory (heterogeneous ingestion + SHACL/OWL generation-verification-correction)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "mock",
+      "input": "이기종 소스(문서·API·대화 로그)",
+      "mechanism": "타입별 수집 + NER/RE → 정규화 → SHACL/OWL 생성-검증-교정(채택/교정/거절) → 지속 갱신",
+      "output_unit": "검증된 RDF/OWL 개체 + 데이터/객체 속성",
+      "paradigm": "외부 온톨로지 메모리 계층",
+      "distinct": "거절만 하지 않고 고칠 수 있는 위반을 교정(비-ISO 날짜→xsd:date), 이기종 소스 통합·출처 보존"
     }
   ]
 }

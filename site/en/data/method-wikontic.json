@@ -1,0 +1,39 @@
+{
+  "id": "wikontic",
+  "name": "Wikontic (Wikidata-aligned, ontology-aware KG with entity normalization + qualifiers)",
+  "status": "published",
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "candidate-triplet extraction with qualifiers -> entity normalization to canonical Wikidata items (dedup) -> Wikidata type/relation constraint enforcement; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "paper": {
+    "key": "Wikontic_2025",
+    "title": "Wikontic: Constructing Wikidata-Aligned, Ontology-Aware Knowledge Graphs with Large Language Models",
+    "arxiv": "2512.00590",
+    "venue": "arXiv 2025",
+    "code_url": null
+  },
+  "inputs_needed": [
+    "passages.txt"
+  ],
+  "produces": [
+    "ontology.ttl",
+    "ontology.json",
+    "steps.json"
+  ],
+  "docs": {
+    "ko": "# Wikontic — Wikidata 정렬·온톨로지 인지 지식그래프 구축\n\n> 출처: *Wikontic: Constructing Wikidata-Aligned, Ontology-Aware Knowledge Graphs with Large Language Models*, arXiv:2512.00590.\n\n## 1. 한 줄 요약\n열린 도메인 텍스트에서, **한정자(qualifier)를 가진 후보 트리플을 추출**하고, 표면형 멘션을 **정규화하여 하나의 표준 Wikidata 항목(QID)으로 병합**하며, **Wikidata 타입·관계 제약**을 강제해 온톨로지에 부합하는 진술만 남기는 다단계 파이프라인이다. 결과 KG는 작고 일관되며 잘 연결된다.\n\n## 2. 핵심 아이디어\n- **Wikidata 정렬.** 모든 항목은 표준 Wikidata 항목(QID)으로, 모든 관계는 Wikidata 속성(PID)으로 표현된다 — 외부 지식과 즉시 정합.\n- **한정자가 있는 후보 트리플.** 관계 어휘집으로 각 문장에서 `(주어, 속성, 목적어)`를 뽑고, 끝의 `in <연도>` / `since <연도>` 절을 **Wikidata 한정자**(시점 P585 / 시작시점 P580)로 부착한다.\n- **엔티티 정규화(중복 제거).** 표면형 멘션(\"Apple\", \"Apple Inc.\")을 별칭 표를 통해 **하나의 표준 항목**(Q312, 타입 포함)으로 정규화한다 — 중복 멘션이 한 노드로 합쳐진다.\n- **Wikidata 타입·관계 제약.** 모든 속성은 주어 타입·값 타입 제약을 가진다(예: `foundedBy`/P112 는 주어가 Organization, 값이 Person). 정규화된 양 끝점이 제약을 어기는 진술은 거절된다 — Wikidata 속성 제약을 그대로 모사.\n\n## 3. 구축 과정 (단계별)\n1. **문장 읽기** — `passages.txt`(한 줄당 한 문장; 빈 줄·`#` 주석 무시).\n2. **후보 트리플 추출** — 관계 어휘집으로 `(주어, 속성, 목적어)` 추출, 끝의 시간 절은 한정자로 분리.\n3. **엔티티 정규화** — 표면형을 별칭 표로 표준 Wikidata 항목(QID + 타입)에 매핑; 같은 항목으로 풀리는 멘션은 한 노드로 병합.\n4. **제약 강제** — `(주어타입, 속성, 값타입)`이 허용될 때만 진술 채택; 위반은 거절(감사 로그).\n5. **출력** — `ontology.ttl`(타입화된 항목 + 객체 속성 + `rdfs:seeAlso`로 Wikidata 링크), `ontology.json`(Cytoscape; 항목 노드는 QID + 클래스, 관계 간선은 PID + 한정자), `steps.json`(문장당 스냅샷).\n\n## 4. 입력 / 출력\n| 구분 | 파일 | 비고 |\n|------|------|------|\n| 입력 | `passages.txt` | 한 줄당 한 문장 |\n| 출력 | `ontology.ttl` | OWL: `owl:Class`, `owl:ObjectProperty`, 타입화 항목(`rdfs:label` + Wikidata `rdfs:seeAlso`) |\n| 출력 | `ontology.json` | 그래프; 항목 노드에 `qid`·`cls`, 관계 간선에 `pid`·`qualifiers` |\n| 출력 | `steps.json` | 문장별 스냅샷 — 단계 재생용 |\n\n## 5. LLM 백엔드\n- 기본 `mock`: 결정론적 문장 파싱 → 후보 트리플 + 한정자; 정규화·제약은 규칙 기반 — 안정적 골든 파일, 키 불필요.\n- `gemini`/`anthropic`/`hf_local`: LLM이 문장별 트리플을 추출; 정규화·제약 강제는 결정론으로 유지. 키가 없으면 자동 MOCK 폴백.\n\n## 6. 사용해 보기\n1. `samples/passages.txt`에서 `Apple`과 `Apple Inc.`가 **하나의 노드(Q312)**로 합쳐지는 것을 확인한다(`merged` 카운트).\n2. 제약을 어기는 문장(예: 도시를 주어로 `was founded by`)을 추가해 진술이 **거절**되는지 본다(`manifest.rejected`).\n3. `in <연도>` / `since <연도>` 절을 붙여 간선에 **한정자**(P585/P580)가 실리는지 본다.\n4. 실행: `python pipeline.py samples runs/out --backend mock` (또는 사이트의 **Run** 버튼).\n",
+    "en": "# Wikontic — Wikidata-aligned, ontology-aware knowledge graph construction\n\n> Source: *Wikontic: Constructing Wikidata-Aligned, Ontology-Aware Knowledge Graphs with Large Language Models*, arXiv:2512.00590.\n\n## 1. One-line summary\nA multi-stage pipeline that builds a compact, ontology-consistent KG from open-domain text by **extracting candidate triplets with qualifiers**, **normalizing surface mentions to one canonical Wikidata item (QID)**, and **enforcing Wikidata type/relation constraints** so only ontology-valid statements survive.\n\n## 2. Key ideas\n- **Wikidata-aligned.** Every item is a canonical Wikidata entity (QID) and every relation a Wikidata property (PID), so the graph aligns with external knowledge out of the box.\n- **Candidate triplets with qualifiers.** A relation lexicon pulls `(subject, property, object)` from each sentence; a trailing `in <year>` / `since <year>` clause becomes a **Wikidata qualifier** (point-in-time P585 / start-time P580).\n- **Entity normalization (deduplication).** Surface mentions (\"Apple\", \"Apple Inc.\") map through an alias table to **one canonical item** (Q312, with its type), so duplicate mentions collapse into a single node.\n- **Wikidata type/relation constraints.** Each property carries subject-type and value-type constraints (e.g. `foundedBy`/P112 requires an Organization subject and a Person value); a statement whose normalized endpoints violate the constraint is rejected — mirroring Wikidata property constraints.\n\n## 3. Construction process (step by step)\n1. **Read sentences** — `passages.txt` (one sentence per line; blank lines / `#` comments ignored).\n2. **Candidate triplet extraction** — a relation lexicon yields `(subject, property, object)`; a trailing time clause is split off as a qualifier.\n3. **Entity normalization** — map surface forms through the alias table to a canonical Wikidata item (QID + type); mentions resolving to the same item merge into one node.\n4. **Constraint enforcement** — accept a statement only if `(subjType, property, valueType)` is allowed; violations are rejected (audit log).\n5. **Emit** — `ontology.ttl` (typed items + object properties + Wikidata `rdfs:seeAlso` links), `ontology.json` (Cytoscape; item nodes carry QID + class, relation edges carry PID + qualifiers), `steps.json` (one snapshot per sentence).\n\n## 4. Input / Output\n| Kind | File | Notes |\n|------|------|-------|\n| Input | `passages.txt` | one sentence per line |\n| Output | `ontology.ttl` | OWL: `owl:Class`, `owl:ObjectProperty`, typed items (`rdfs:label` + Wikidata `rdfs:seeAlso`) |\n| Output | `ontology.json` | graph; item nodes carry `qid` + `cls`, relation edges carry `pid` + `qualifiers` |\n| Output | `steps.json` | per-sentence snapshots — for step replay |\n\n## 5. LLM backend\n- Default `mock`: deterministic sentence parsing → candidate triplets + qualifiers; normalization and constraints are rule-based — stable golden files, key-free.\n- `gemini`/`anthropic`/`hf_local`: the LLM extracts triplets per sentence; normalization and constraint enforcement stay deterministic. With no key it auto-falls back to MOCK.\n\n## 6. Try it\n1. In `samples/passages.txt`, watch `Apple` and `Apple Inc.` collapse into a **single node (Q312)** (see the `merged` count).\n2. Add a constraint-violating sentence (e.g. a city as the subject of `was founded by`) to see the statement **rejected** (`manifest.rejected`).\n3. Append an `in <year>` / `since <year>` clause to see a **qualifier** (P585/P580) ride on the edge.\n4. Run it: `python pipeline.py samples runs/out --backend mock` (or hit the site's **Run** button).\n"
+  },
+  "sample_input": "# Open-domain sentences. Wikontic extracts a candidate triplet (with an optional\n# time qualifier) from each, normalizes mentions to a canonical Wikidata item,\n# and keeps only statements that satisfy the property's type constraints.\n# Note: \"Apple Inc.\" and \"Apple\" normalize to the SAME item (Q312) -> one node.\n# The last sentence violates a constraint (a City cannot be foundedBy) -> rejected.\nApple Inc. was founded by Steve Jobs in 1976.\nApple Inc. was founded by Steve Wozniak in 1976.\nApple is headquartered in Cupertino.\nCupertino is located in California.\nCalifornia is located in the United States.\nApple is led by Tim Cook since 2011.\nCupertino was founded by Steve Jobs.\n",
+  "implemented": true
+}

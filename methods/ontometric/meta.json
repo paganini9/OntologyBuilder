@@ -1,0 +1,34 @@
+{
+  "id": "ontometric",
+  "name": "OntoMetric (ontology-guided ESG metric KG + two-phase validation)",
+  "paper": {
+    "key": "OntoMetric_ESGMKG",
+    "title": "OntoMetric: An Ontology-Driven LLM-Assisted Framework for Automated ESG Metric Knowledge Graph Generation",
+    "arxiv": "2512.01289",
+    "venue": "arXiv 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "structure-aware segmentation -> ontology-constrained extraction with deterministic ids -> two-phase validation (semantic type verification + rule-based schema check) with provenance; deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["esg_document.json"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/esg_document.json"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-22"
+}

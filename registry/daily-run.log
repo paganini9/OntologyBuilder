@@ -23,3 +23,25 @@ Credit balance is too low
   승인 대기 후보(미구현): wikontic, autopkg, llm-external-onto-memory(SHACL로 무거움) / GPU·RL 보류: agentic-kgr, agrag, ontokg-routing, lec-kg, compcq, ark-sail, hgnet.
   실패/블로커: 없음.
   로컬 커밋 1건 완료 (push 대기 — 사용자가 Windows에서 수동 push). 참고: 미수정 기존 fixture 다수가 작업트리 CRLF vs repo LF로 표시되나 본 작업과 무관하여 스테이징 제외.
+[2026-06-21 02:56:34] daily-check (cowork)
+  큐(next_easiest): 없음. 신규 탐색 후 MOCK 자동구현 2건 게시.
+  자동구현·게시: anchor-cti (2606.01208), usd2kg (2606.09134). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요.
+  검증: 전체 pytest 204 통과(신규 각 7 테스트), 사이트 KO/EN 26개 빌드(overview 26행). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(실서버 /ko·/en 200, /api/methods/<id>/run 시 nodes·edges·steps·TTL·문서·샘플 모두 PASS).
+  탐색 중 중복: 2604.20795(llm-external-onto-memory 후보), 2604.23090(multiagent-ontogen), 2602.01276(ontoekg) 스킵.
+  승인 대기 후보(미구현, 이전과 동): wikontic, autopkg, llm-external-onto-memory / GPU·RL 보류: agentic-kgr, agrag, ontokg-routing, lec-kg, compcq, ark-sail, hgnet.
+  실패/블로커: 없음.
+  로컬 커밋 1건 완료 (push 대기 — 사용자가 Windows에서 수동 push). 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.
+[2026-06-21 22:21:50] daily-check (cowork)
+  큐(next_easiest): 없음. 직전 실행 이후 신규 '구축' 논문 없음 → 미등록·검증된 on-core MOCK 방법 2건 catch-up 자동구현·게시.
+  자동구현·게시: lkd-kgc (2505.24163), ontometric (2512.01289). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요.
+  검증: 전체 pytest 219 통과(신규 각 7 테스트), 사이트 KO/EN 28개 빌드(overview 28행). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(실서버 /ko·/en 200, /api/methods/<id>/run(mock): lkd-kgc nodes=20/edges=25/steps=5, ontometric nodes=14/edges=19/steps=6, TTL·문서·샘플 모두 PASS).
+  off-core로 후보만 기록(미구현): idea2-cq (2604.01344, CQ 도출), industrial-asset-kg (2605.26874, KG 질의/운영).
+  실패/블로커: 없음.
+[2026-06-23 11:15:28] daily-check (cowork)
+  큐(next_easiest): 없음. 직전 실행 이후 신규 '구축' 논문 없음 → 검증된 on-core MOCK 후보 2건 자동구현·게시.
+  자동구현·게시: wikontic (2512.00590), llm-external-onto-memory (2604.20795). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요.
+  검증: 전체 pytest 236 통과(신규 wikontic 8 + llm-external-onto-memory 9). 사이트 KO/EN 30개 빌드(overview 30행). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(실서버 :8077 → /ko·/en 200, overview 30행, /api/methods/<id>/run(mock): wikontic nodes=12/edges=13/steps=7/ttl, llm-external-onto-memory nodes=7/edges=8/steps=4/ttl 모두 비어있지 않음).
+  승인 대기 후보(미구현): autopkg(2604.16950, 멀티모달 이미지 추출로 MOCK 충실재현 곤란). GPU·RL 보류: agentic-kgr, agrag, ontokg-routing, lec-kg, compcq, ark-sail, hgnet. off-core: idea2-cq, industrial-asset-kg.
+  실패/블로커: 없음.
+  복구: 직전(2026-06-21 22:21) 실행이 남긴 미커밋 스테이징(lkd-kgc, ontometric)이 .git/index.lock과 함께 발견됨 → 락 제거 후 이번 커밋에 함께 포함(이전 작업 유실 방지).
+  로컬 커밋 1건 완료 (push 대기 — 사용자가 Windows에서 수동 push). 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.

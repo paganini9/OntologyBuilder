@@ -1,0 +1,568 @@
+[
+  {
+    "step": 1,
+    "stage": "ingest+extract+normalize+validate",
+    "cq": "[document] doc-1",
+    "added": {
+      "items": [
+        "Alice",
+        "Engineering"
+      ],
+      "asserted": [
+        [
+          "Alice",
+          "worksIn",
+          "Engineering"
+        ],
+        [
+          "Alice",
+          "joinedOn",
+          "2021-03-03"
+        ],
+        [
+          "Alice",
+          "email",
+          "alice@acme.com"
+        ]
+      ],
+      "corrected": [
+        {
+          "source": "doc-1",
+          "subj": "Alice",
+          "prop": "joinedOn",
+          "raw": "March 3, 2021",
+          "fixed": "2021-03-03"
+        }
+      ],
+      "rejected": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Person",
+            "label": "Person",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Department",
+            "label": "Department",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alice",
+            "label": "Alice",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "doc-1",
+            "attributes": [
+              "joinedOn=2021-03-03",
+              "email=alice@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering",
+            "label": "Engineering",
+            "type": "instance",
+            "cls": "Department",
+            "provenance": "doc-1",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Alice-instanceOf-Person",
+            "source": "Alice",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering-instanceOf-Department",
+            "source": "Engineering",
+            "target": "Department",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Alice-worksIn-Engineering",
+            "source": "Alice",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "doc-1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "ingest+extract+normalize+validate",
+    "cq": "[api] api-1",
+    "added": {
+      "items": [
+        "Bob",
+        "Engineering"
+      ],
+      "asserted": [
+        [
+          "Bob",
+          "worksIn",
+          "Engineering"
+        ],
+        [
+          "Bob",
+          "joinedOn",
+          "2020-07-15"
+        ],
+        [
+          "Bob",
+          "email",
+          "bob@acme.com"
+        ]
+      ],
+      "corrected": [
+        {
+          "source": "api-1",
+          "subj": "Bob",
+          "prop": "joinedOn",
+          "raw": "2020/07/15",
+          "fixed": "2020-07-15"
+        }
+      ],
+      "rejected": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Person",
+            "label": "Person",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Department",
+            "label": "Department",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alice",
+            "label": "Alice",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "doc-1",
+            "attributes": [
+              "joinedOn=2021-03-03",
+              "email=alice@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering",
+            "label": "Engineering",
+            "type": "instance",
+            "cls": "Department",
+            "provenance": "doc-1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bob",
+            "label": "Bob",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "api-1",
+            "attributes": [
+              "joinedOn=2020-07-15",
+              "email=bob@acme.com"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Alice-instanceOf-Person",
+            "source": "Alice",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering-instanceOf-Department",
+            "source": "Engineering",
+            "target": "Department",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-instanceOf-Person",
+            "source": "Bob",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Alice-worksIn-Engineering",
+            "source": "Alice",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "doc-1"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-worksIn-Engineering",
+            "source": "Bob",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "api-1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "ingest+extract+normalize+validate",
+    "cq": "[dialogue] chat-1",
+    "added": {
+      "items": [
+        "Carol",
+        "Bob"
+      ],
+      "asserted": [],
+      "corrected": [],
+      "rejected": [
+        {
+          "source": "chat-1",
+          "subj": "Carol",
+          "prop": "worksIn",
+          "value": "Bob",
+          "found_type": "Person",
+          "reason": "sh:class Department violated"
+        },
+        {
+          "source": "chat-1",
+          "subj": "Carol",
+          "prop": "email",
+          "value": "carol-at-acme",
+          "reason": "sh:pattern violated"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Person",
+            "label": "Person",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Department",
+            "label": "Department",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alice",
+            "label": "Alice",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "doc-1",
+            "attributes": [
+              "joinedOn=2021-03-03",
+              "email=alice@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering",
+            "label": "Engineering",
+            "type": "instance",
+            "cls": "Department",
+            "provenance": "doc-1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bob",
+            "label": "Bob",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "api-1",
+            "attributes": [
+              "joinedOn=2020-07-15",
+              "email=bob@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Carol",
+            "label": "Carol",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "chat-1",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Alice-instanceOf-Person",
+            "source": "Alice",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering-instanceOf-Department",
+            "source": "Engineering",
+            "target": "Department",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-instanceOf-Person",
+            "source": "Bob",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Carol-instanceOf-Person",
+            "source": "Carol",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Alice-worksIn-Engineering",
+            "source": "Alice",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "doc-1"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-worksIn-Engineering",
+            "source": "Bob",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "api-1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "ingest+extract+normalize+validate",
+    "cq": "[document] doc-2",
+    "added": {
+      "items": [
+        "Dave",
+        "Engineering"
+      ],
+      "asserted": [
+        [
+          "Dave",
+          "worksIn",
+          "Engineering"
+        ],
+        [
+          "Dave",
+          "joinedOn",
+          "2022-01-10"
+        ]
+      ],
+      "corrected": [],
+      "rejected": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Person",
+            "label": "Person",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Department",
+            "label": "Department",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Alice",
+            "label": "Alice",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "doc-1",
+            "attributes": [
+              "joinedOn=2021-03-03",
+              "email=alice@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering",
+            "label": "Engineering",
+            "type": "instance",
+            "cls": "Department",
+            "provenance": "doc-1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bob",
+            "label": "Bob",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "api-1",
+            "attributes": [
+              "joinedOn=2020-07-15",
+              "email=bob@acme.com"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Carol",
+            "label": "Carol",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "chat-1",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Dave",
+            "label": "Dave",
+            "type": "instance",
+            "cls": "Person",
+            "provenance": "doc-2",
+            "attributes": [
+              "joinedOn=2022-01-10"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Alice-instanceOf-Person",
+            "source": "Alice",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Engineering-instanceOf-Department",
+            "source": "Engineering",
+            "target": "Department",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-instanceOf-Person",
+            "source": "Bob",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Carol-instanceOf-Person",
+            "source": "Carol",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Dave-instanceOf-Person",
+            "source": "Dave",
+            "target": "Person",
+            "label": "instanceOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Alice-worksIn-Engineering",
+            "source": "Alice",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "doc-1"
+          }
+        },
+        {
+          "data": {
+            "id": "Bob-worksIn-Engineering",
+            "source": "Bob",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "api-1"
+          }
+        },
+        {
+          "data": {
+            "id": "Dave-worksIn-Engineering",
+            "source": "Dave",
+            "target": "Engineering",
+            "label": "worksIn",
+            "provenance": "doc-2"
+          }
+        }
+      ]
+    }
+  }
+]

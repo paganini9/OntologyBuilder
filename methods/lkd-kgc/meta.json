@@ -1,0 +1,34 @@
+{
+  "id": "lkd-kgc",
+  "name": "LKD-KGC (domain KG via knowledge-dependency parsing)",
+  "paper": {
+    "key": "Sun_LKD_KGC",
+    "title": "LKD-KGC: Domain-Specific KG Construction via LLM-driven Knowledge Dependency Parsing",
+    "arxiv": "2505.24163",
+    "venue": "arXiv 2025 (submitted to EDBT 2026)",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "dependency parsing -> topological read order -> autoregressive schema induction with synonym clustering -> schema-guided extraction; deterministic mock, no GPU/finetuning/large-data"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["corpus.json"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/corpus.json"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-22"
+}

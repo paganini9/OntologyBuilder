@@ -294,6 +294,78 @@
       "output_unit": "Classes, properties, hierarchy",
       "paradigm": "Iterative knowledge acquisition",
       "distinct": "Generate→review→refine cycle (auditable)"
+    },
+    {
+      "id": "anchor-cti",
+      "name": "ANCHOR (schema-agnostic CTI KG via hybrid ontology discovery)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "CTI body text",
+      "mechanism": "Search-and-navigate over schema tree + SHACL-style validation",
+      "output_unit": "Typed individuals + relations + subClassOf",
+      "paradigm": "Schema-agnostic (one code path for UCO/STIX/MALOnt)",
+      "distinct": "Records navigation path; SHACL failure demotes to validating ancestor"
+    },
+    {
+      "id": "usd2kg",
+      "name": "USD2KG (zero-shot LLM ontology grounding for USD scenes)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "USD scene graph (prim name + path + bbox)",
+      "mechanism": "Three-strategy grounding — name -> hierarchy -> geometry (CoT)",
+      "output_unit": "OWL class grounding (ABox individuals)",
+      "paradigm": "Zero-shot (no training, linearised TBox prompt)",
+      "distinct": "Naming-regime switch surfaces strategy-mix ablation telemetry"
+    },
+    {
+      "id": "lkd-kgc",
+      "name": "LKD-KGC (domain KG via knowledge-dependency parsing)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "Domain document corpus (title + text)",
+      "mechanism": "Dependency parsing -> topological read order -> autoregressive schema (synonym clustering) -> schema-guided extraction",
+      "output_unit": "Induced schema classes + typed entities/relations",
+      "paradigm": "Unsupervised (no predefined schema / external KB)",
+      "distinct": "Inter-document dependencies drive read order; synonym type labels cluster into the induced schema"
+    },
+    {
+      "id": "ontometric",
+      "name": "OntoMetric (ontology-guided ESG metric KG + two-phase validation)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "ESG regulatory document segments (page + heading + text)",
+      "mechanism": "Structure-aware segmentation -> ontology-constrained extraction (deterministic ids) -> two-phase validation (type + schema)",
+      "output_unit": "Validated ESGMKG individuals + compositional relations",
+      "paradigm": "Ontology-guided (ESGMKG as a first-class constraint)",
+      "distinct": "Two-phase validation drops hallucinated types (phase 1) and illegal edges (phase 2); page provenance preserved"
+    },
+    {
+      "id": "wikontic",
+      "name": "Wikontic (Wikidata-aligned, ontology-aware KG with entity normalization + qualifiers)",
+      "status": "published",
+      "difficulty": 4,
+      "llm": "mock",
+      "input": "Open-domain sentences (one per line)",
+      "mechanism": "Candidate triplets with qualifiers -> entity normalization (merge to QIDs) -> Wikidata type/relation constraint enforcement",
+      "output_unit": "Wikidata items (QIDs) + qualified statements",
+      "paradigm": "Wikidata-aligned, ontology-aware",
+      "distinct": "Merges alias mentions to one QID (dedup), rejects constraint-violating statements, keeps point-in-time / start-time qualifiers"
+    },
+    {
+      "id": "llm-external-onto-memory",
+      "name": "LLM External Ontology Memory (heterogeneous ingestion + SHACL/OWL generation-verification-correction)",
+      "status": "published",
+      "difficulty": 5,
+      "llm": "mock",
+      "input": "Heterogeneous sources (documents, APIs, dialogue logs)",
+      "mechanism": "Type-aware ingestion + NER/RE -> normalization -> SHACL/OWL generation-verification-correction (accept/correct/reject) -> continuous updates",
+      "output_unit": "Validated RDF/OWL individuals + data/object properties",
+      "paradigm": "External ontological memory layer",
+      "distinct": "Doesn't just reject — corrects fixable violations (non-ISO date -> xsd:date), unifies heterogeneous sources with provenance"
     }
   ]
 }

@@ -1,0 +1,244 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Organization",
+        "label": "Organization",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Person",
+        "label": "Person",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "City",
+        "label": "City",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Region",
+        "label": "Region",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Country",
+        "label": "Country",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q312",
+        "label": "Apple Inc.",
+        "type": "instance",
+        "cls": "Organization",
+        "qid": "Q312",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q19837",
+        "label": "Steve Jobs",
+        "type": "instance",
+        "cls": "Person",
+        "qid": "Q19837",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q483382",
+        "label": "Steve Wozniak",
+        "type": "instance",
+        "cls": "Person",
+        "qid": "Q483382",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q110739",
+        "label": "Cupertino",
+        "type": "instance",
+        "cls": "City",
+        "qid": "Q110739",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q99",
+        "label": "California",
+        "type": "instance",
+        "cls": "Region",
+        "qid": "Q99",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q30",
+        "label": "United States",
+        "type": "instance",
+        "cls": "Country",
+        "qid": "Q30",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Q265852",
+        "label": "Tim Cook",
+        "type": "instance",
+        "cls": "Person",
+        "qid": "Q265852",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Q312-instanceOf-Organization",
+        "source": "Q312",
+        "target": "Organization",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q19837-instanceOf-Person",
+        "source": "Q19837",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q483382-instanceOf-Person",
+        "source": "Q483382",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q110739-instanceOf-City",
+        "source": "Q110739",
+        "target": "City",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q99-instanceOf-Region",
+        "source": "Q99",
+        "target": "Region",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q30-instanceOf-Country",
+        "source": "Q30",
+        "target": "Country",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q265852-instanceOf-Person",
+        "source": "Q265852",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Q312-foundedBy-Q19837",
+        "source": "Q312",
+        "target": "Q19837",
+        "label": "foundedBy",
+        "pid": "P112",
+        "qualifiers": {
+          "property": "pointInTime",
+          "pid": "P585",
+          "value": "1976"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "Q312-foundedBy-Q483382",
+        "source": "Q312",
+        "target": "Q483382",
+        "label": "foundedBy",
+        "pid": "P112",
+        "qualifiers": {
+          "property": "pointInTime",
+          "pid": "P585",
+          "value": "1976"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "Q312-headquarters-Q110739",
+        "source": "Q312",
+        "target": "Q110739",
+        "label": "headquarters",
+        "pid": "P159",
+        "qualifiers": {}
+      }
+    },
+    {
+      "data": {
+        "id": "Q110739-locatedIn-Q99",
+        "source": "Q110739",
+        "target": "Q99",
+        "label": "locatedIn",
+        "pid": "P131",
+        "qualifiers": {}
+      }
+    },
+    {
+      "data": {
+        "id": "Q99-locatedIn-Q30",
+        "source": "Q99",
+        "target": "Q30",
+        "label": "locatedIn",
+        "pid": "P131",
+        "qualifiers": {}
+      }
+    },
+    {
+      "data": {
+        "id": "Q312-chiefExecutiveOfficer-Q265852",
+        "source": "Q312",
+        "target": "Q265852",
+        "label": "chiefExecutiveOfficer",
+        "pid": "P169",
+        "qualifiers": {
+          "property": "startTime",
+          "pid": "P580",
+          "value": "2011"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "ESGEntity",
+        "label": "ESGEntity",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Industry",
+        "label": "Industry",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "ReportingFramework",
+        "label": "ReportingFramework",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "MetricCategory",
+        "label": "MetricCategory",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Metric",
+        "label": "Metric",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CalculationModel",
+        "label": "CalculationModel",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "RF:sasb",
+        "label": "SASB",
+        "type": "instance",
+        "cls": "ReportingFramework",
+        "provenance": "p1",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CAT:sasb:greenhouse-gas-emissions",
+        "label": "Greenhouse Gas Emissions",
+        "type": "instance",
+        "cls": "MetricCategory",
+        "provenance": "p1",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "label": "Scope 1 Emissions",
+        "type": "instance",
+        "cls": "Metric",
+        "provenance": "p2",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CM:sasb:ghg-protocol",
+        "label": "Ghg Protocol",
+        "type": "instance",
+        "cls": "CalculationModel",
+        "provenance": "p2",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "IND:oil-and-gas",
+        "label": "Oil And Gas",
+        "type": "instance",
+        "cls": "Industry",
+        "provenance": "p2",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions",
+        "label": "Scope 2 Emissions",
+        "type": "instance",
+        "cls": "Metric",
+        "provenance": "p2",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "CM:sasb:location-based-method",
+        "label": "Location-Based Method",
+        "type": "instance",
+        "cls": "CalculationModel",
+        "provenance": "p3",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "IND:utilities",
+        "label": "Utilities",
+        "type": "instance",
+        "cls": "Industry",
+        "provenance": "p3",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Industry-subClassOf-ESGEntity",
+        "source": "Industry",
+        "target": "ESGEntity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "ReportingFramework-subClassOf-ESGEntity",
+        "source": "ReportingFramework",
+        "target": "ESGEntity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "MetricCategory-subClassOf-ESGEntity",
+        "source": "MetricCategory",
+        "target": "ESGEntity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Metric-subClassOf-ESGEntity",
+        "source": "Metric",
+        "target": "ESGEntity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "CalculationModel-subClassOf-ESGEntity",
+        "source": "CalculationModel",
+        "target": "ESGEntity",
+        "label": "subClassOf"
+      }
+    },
+    {
+      "data": {
+        "id": "RF:sasb-type-ReportingFramework",
+        "source": "RF:sasb",
+        "target": "ReportingFramework",
+        "label": "type",
+        "provenance": "p1"
+      }
+    },
+    {
+      "data": {
+        "id": "CAT:sasb:greenhouse-gas-emissions-type-MetricCategory",
+        "source": "CAT:sasb:greenhouse-gas-emissions",
+        "target": "MetricCategory",
+        "label": "type",
+        "provenance": "p1"
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions-type-Metric",
+        "source": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "target": "Metric",
+        "label": "type",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "CM:sasb:ghg-protocol-type-CalculationModel",
+        "source": "CM:sasb:ghg-protocol",
+        "target": "CalculationModel",
+        "label": "type",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "IND:oil-and-gas-type-Industry",
+        "source": "IND:oil-and-gas",
+        "target": "Industry",
+        "label": "type",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions-type-Metric",
+        "source": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions",
+        "target": "Metric",
+        "label": "type",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "CM:sasb:location-based-method-type-CalculationModel",
+        "source": "CM:sasb:location-based-method",
+        "target": "CalculationModel",
+        "label": "type",
+        "provenance": "p3"
+      }
+    },
+    {
+      "data": {
+        "id": "IND:utilities-type-Industry",
+        "source": "IND:utilities",
+        "target": "Industry",
+        "label": "type",
+        "provenance": "p3"
+      }
+    },
+    {
+      "data": {
+        "id": "RF:sasb-hasCategory-CAT:sasb:greenhouse-gas-emissions",
+        "source": "RF:sasb",
+        "target": "CAT:sasb:greenhouse-gas-emissions",
+        "label": "hasCategory",
+        "provenance": "p1"
+      }
+    },
+    {
+      "data": {
+        "id": "CAT:sasb:greenhouse-gas-emissions-hasMetric-MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "source": "CAT:sasb:greenhouse-gas-emissions",
+        "target": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "label": "hasMetric",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions-computedBy-CM:sasb:ghg-protocol",
+        "source": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "target": "CM:sasb:ghg-protocol",
+        "label": "computedBy",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions-appliesToIndustry-IND:oil-and-gas",
+        "source": "MET:sasb:greenhouse-gas-emissions:scope-1-emissions",
+        "target": "IND:oil-and-gas",
+        "label": "appliesToIndustry",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "CAT:sasb:greenhouse-gas-emissions-hasMetric-MET:sasb:greenhouse-gas-emissions:scope-2-emissions",
+        "source": "CAT:sasb:greenhouse-gas-emissions",
+        "target": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions",
+        "label": "hasMetric",
+        "provenance": "p2"
+      }
+    },
+    {
+      "data": {
+        "id": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions-computedBy-CM:sasb:ghg-protocol",
+        "source": "MET:sasb:greenhouse-gas-emissions:scope-2-emissions",
+        "target": "CM:sasb:ghg-protocol",
+        "label": "computedBy",
+        "provenance": "p2"
+      }
+    }
+  ]
+}

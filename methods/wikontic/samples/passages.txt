@@ -1,0 +1,12 @@
+# Open-domain sentences. Wikontic extracts a candidate triplet (with an optional
+# time qualifier) from each, normalizes mentions to a canonical Wikidata item,
+# and keeps only statements that satisfy the property's type constraints.
+# Note: "Apple Inc." and "Apple" normalize to the SAME item (Q312) -> one node.
+# The last sentence violates a constraint (a City cannot be foundedBy) -> rejected.
+Apple Inc. was founded by Steve Jobs in 1976.
+Apple Inc. was founded by Steve Wozniak in 1976.
+Apple is headquartered in Cupertino.
+Cupertino is located in California.
+California is located in the United States.
+Apple is led by Tim Cook since 2011.
+Cupertino was founded by Steve Jobs.

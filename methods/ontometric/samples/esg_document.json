@@ -1,0 +1,36 @@
+{
+  "_comment": "Structure-aware segments of an ESG regulatory standard (SASB-style). The pipeline reads segments in order, proposes an ESGMKG type from each heading prefix, mints a deterministic id, and runs two-phase validation. Two segments are deliberately invalid: a 'Tagline:' heading (hallucinated type -> phase-1 reject) and a 'Calculation Model:' segment that 'applies to ... industry' (CalculationModel cannot appliesToIndustry -> phase-2 reject).",
+  "framework": "SASB",
+  "segments": [
+    {
+      "page": 1,
+      "heading": "Framework: SASB",
+      "text": "The SASB framework defines industry-specific sustainability disclosure standards."
+    },
+    {
+      "page": 1,
+      "heading": "Category: Greenhouse Gas Emissions",
+      "text": "Greenhouse gas emissions metrics for the energy sector."
+    },
+    {
+      "page": 2,
+      "heading": "Metric: Scope 1 Emissions",
+      "text": "Gross global Scope 1 emissions in metric tons CO2-e. Computed by GHG Protocol model. Applies to the oil and gas industry."
+    },
+    {
+      "page": 2,
+      "heading": "Metric: Scope 2 Emissions",
+      "text": "Gross global Scope 2 emissions from purchased electricity. Computed by GHG Protocol model."
+    },
+    {
+      "page": 3,
+      "heading": "Calculation Model: Location-Based Method",
+      "text": "Location-based method for grid average emissions factors. Applies to the utilities industry."
+    },
+    {
+      "page": 3,
+      "heading": "Tagline: Net Zero Leader",
+      "text": "Our corporate brand commitment to a sustainable future."
+    }
+  ]
+}

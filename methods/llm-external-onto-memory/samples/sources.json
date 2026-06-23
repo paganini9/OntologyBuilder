@@ -1,0 +1,33 @@
+{
+  "_comment": "Heterogeneous sources (document / api / dialogue) feeding one ontological memory layer. Each fact is generated then validated against SHACL/OWL constraints with three outcomes: accept, correct (a non-ISO date is repaired to xsd:date), or reject (worksIn pointing to a non-Department, or an e-mail with no '@'). 'Eng' / 'Engineering' normalize to one Department node; Bob is recognized as a Person in the api source, so the later dialogue 'Carol works in Bob' is rejected by the sh:class constraint.",
+  "sources": [
+    {
+      "id": "doc-1",
+      "type": "document",
+      "content": "Alice works in Eng. Alice joined on March 3, 2021. Alice can be reached at alice@acme.com."
+    },
+    {
+      "id": "api-1",
+      "type": "api",
+      "content": {
+        "person": "Bob",
+        "worksIn": "Engineering",
+        "joinedOn": "2020/07/15",
+        "email": "bob@acme.com"
+      }
+    },
+    {
+      "id": "chat-1",
+      "type": "dialogue",
+      "content": [
+        {"speaker": "hr", "text": "Carol works in Bob."},
+        {"speaker": "hr", "text": "Carol can be reached at carol-at-acme."}
+      ]
+    },
+    {
+      "id": "doc-2",
+      "type": "document",
+      "content": "Dave works in Engineering. Dave joined on 2022-01-10."
+    }
+  ]
+}

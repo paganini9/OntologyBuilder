@@ -1,0 +1,147 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Person",
+        "label": "Person",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Department",
+        "label": "Department",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Alice",
+        "label": "Alice",
+        "type": "instance",
+        "cls": "Person",
+        "provenance": "doc-1",
+        "attributes": [
+          "joinedOn=2021-03-03",
+          "email=alice@acme.com"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Engineering",
+        "label": "Engineering",
+        "type": "instance",
+        "cls": "Department",
+        "provenance": "doc-1",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Bob",
+        "label": "Bob",
+        "type": "instance",
+        "cls": "Person",
+        "provenance": "api-1",
+        "attributes": [
+          "joinedOn=2020-07-15",
+          "email=bob@acme.com"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Carol",
+        "label": "Carol",
+        "type": "instance",
+        "cls": "Person",
+        "provenance": "chat-1",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Dave",
+        "label": "Dave",
+        "type": "instance",
+        "cls": "Person",
+        "provenance": "doc-2",
+        "attributes": [
+          "joinedOn=2022-01-10"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Alice-instanceOf-Person",
+        "source": "Alice",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Engineering-instanceOf-Department",
+        "source": "Engineering",
+        "target": "Department",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Bob-instanceOf-Person",
+        "source": "Bob",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Carol-instanceOf-Person",
+        "source": "Carol",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Dave-instanceOf-Person",
+        "source": "Dave",
+        "target": "Person",
+        "label": "instanceOf"
+      }
+    },
+    {
+      "data": {
+        "id": "Alice-worksIn-Engineering",
+        "source": "Alice",
+        "target": "Engineering",
+        "label": "worksIn",
+        "provenance": "doc-1"
+      }
+    },
+    {
+      "data": {
+        "id": "Bob-worksIn-Engineering",
+        "source": "Bob",
+        "target": "Engineering",
+        "label": "worksIn",
+        "provenance": "api-1"
+      }
+    },
+    {
+      "data": {
+        "id": "Dave-worksIn-Engineering",
+        "source": "Dave",
+        "target": "Engineering",
+        "label": "worksIn",
+        "provenance": "doc-2"
+      }
+    }
+  ]
+}
