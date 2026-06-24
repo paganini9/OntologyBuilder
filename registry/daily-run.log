@@ -55,3 +55,10 @@ Credit balance is too low
   GPU·RL 보류(기존): agentic-kgr, ark-sail, hgnet, lec-kg, ontokg-routing. off-core(기존): agrag, compcq, idea2-cq, industrial-asset-kg, autopkg(멀티모달).
   실패/블로커: 없음. 코드/방법 변경 없음 → 사이트(30개) 재빌드 생략, comparison.json 변경 없음.
   로컬 커밋: registry 파일만(candidates.json, new-candidates.md, daily-run.log). push 대기 — 사용자가 Windows에서 수동 push. 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.
+[2026-06-24 22:23:54] daily-check (cowork)
+  큐(next_easiest): 없음(실행 전 30개 published). 직전 실행(2026-06-24) 이후 신규 발표 '구축' 논문 없음 → 검증된 미등록 on-core MOCK 방법 2건 catch-up 자동구현·게시.
+  자동구현·게시: atom-tkg (2510.22590, 이중시간 시간KG), llms4ol-2025 (2508.19428, LLMs4OL 2025 OL 3서브태스크). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요, 난이도<8.
+  검증: 전체 pytest 248 통과(신규 atom-tkg 6 + llms4ol-2025 6). 사이트 KO/EN 32개 빌드(overview 32행, comparison.json 양언어 행 추가). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(실서버 uvicorn :8092 → /ko·/en 200, /api/methods/<id>/run(mock): atom-tkg nodes=5/edges=7/steps=5/ttl, llms4ol-2025 nodes=15/edges=12/steps=12/ttl 모두 비어있지 않음).
+  dedup 스킵: 2509.17289(CoDe-KG)=기존 code-de-kg 중복; trace-kg/usd2kg/anchor-cti/itext2kg/ollm/se-standards-zeroshot/ontology-grounded-wikidata/llm-external-onto-memory/multiagent-ontogen 등 이미 등록.
+  승인 대기 신규 없음(기존 백로그 유지: agents-k1·agentic-kgr·ark-sail·hgnet·lec-kg·ontokg-routing GPU/RL, agrag·compcq·idea2-cq·industrial-asset-kg·autopkg·llms-graphs-survey off-core).
+  실패/블로커: 없음. 상세는 new-candidates.md.

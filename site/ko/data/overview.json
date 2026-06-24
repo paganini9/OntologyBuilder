@@ -366,6 +366,30 @@
       "output_unit": "검증된 RDF/OWL 개체 + 데이터/객체 속성",
       "paradigm": "외부 온톨로지 메모리 계층",
       "distinct": "거절만 하지 않고 고칠 수 있는 위반을 교정(비-ISO 날짜→xsd:date), 이기종 소스 통합·출처 보존"
+    },
+    {
+      "id": "atom-tkg",
+      "name": "ATOM (dual-time temporal KG from atomic facts)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "mock",
+      "input": "날짜 달린 노트",
+      "mechanism": "원자적 사실 분해 + 이중시간(관측/유효) + 구간 확장 병합",
+      "output_unit": "엔티티·시간한정 관계(TKG)",
+      "paradigm": "동적·시간 지식그래프",
+      "distinct": "관측 vs 유효 이중시간 + 재관측 시 구간 확장"
+    },
+    {
+      "id": "llms4ol-2025",
+      "name": "LLMs4OL 2025 (term → type → taxonomy, retrieval-typed)",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "mock",
+      "input": "용어/타입/분류 단서",
+      "mechanism": "Text2Onto 추출 + 검색 기반 타이핑 + is-a 분류체계 유도",
+      "output_unit": "타입 클래스·타이핑된 용어·subClassOf",
+      "paradigm": "모듈형 온톨로지 학습(OL)",
+      "distinct": "미지 용어를 최근접 예시로 검색 타이핑(3 서브태스크)"
     }
   ]
 }

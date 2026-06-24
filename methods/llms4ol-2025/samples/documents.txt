@@ -1,0 +1,18 @@
+# LLMs4OL 2025 — modular ontology learning over three subtasks (arXiv:2508.19428).
+# Each non-comment line is one clue. Routing:
+#   "<a/an term> is a/an <Type>"   -> Task A (Text2Onto): typed example
+#   "<Type> is a kind of <Parent>" -> Task C (Taxonomy): subClassOf edge
+#   "? <term>"                     -> Task B (Term Typing): unseen term, typed by
+#                                     retrieval (nearest already-typed example)
+A centrifugal pump is a Pump.
+A submersible pump is a Pump.
+An induction motor is a Motor.
+A servo drive is a Drive.
+A ball bearing is a Bearing.
+Pump is a kind of Machine.
+Motor is a kind of Machine.
+Drive is a kind of Controller.
+Bearing is a kind of Component.
+? axial pump
+? linear motor
+? roller bearing

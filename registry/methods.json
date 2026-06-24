@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-06-23",
+  "updated": "2026-06-25",
   "difficulty_formula": "score = 1*pipeline_stages + 3*needs_finetuning + 3*needs_gpu + 2*needs_large_data + 1*(llm_dependency!='mock') - 1*code_public",
   "selection_rule": "pick lowest (difficulty.score, mock-before-api/hf, fewer inputs_needed) among status in {discovered,analyzed,queued} AND approved_by_user AND blockers==[]",
   "methods": [
@@ -1184,6 +1184,86 @@
         "dir": "methods/llm-external-onto-memory"
       },
       "updated": "2026-06-23"
+    },
+    {
+      "id": "atom-tkg",
+      "name": "ATOM (dual-time temporal KG from atomic facts)",
+      "paper": {
+        "key": "Lairgi_ATOM",
+        "title": "ATOM: AdapTive and OptiMized dynamic temporal knowledge graph construction using LLMs",
+        "arxiv": "2510.22590",
+        "venue": "arXiv 2025",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 3,
+        "rank": 3,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "atomic-fact decomposition + dual-time (observed vs valid) tagging + parallel merge widening validity intervals; deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "events.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/atom-tkg"
+      },
+      "updated": "2026-06-25"
+    },
+    {
+      "id": "llms4ol-2025",
+      "name": "LLMs4OL 2025 (term → type → taxonomy, retrieval-typed)",
+      "paper": {
+        "key": "Beliaeva_LLMs4OL2025",
+        "title": "Alexbek at LLMs4OL 2025 Tasks A, B, and C: Heterogeneous LLM Methods for Ontology Learning",
+        "arxiv": "2508.19428",
+        "venue": "LLMs4OL 2025 Challenge @ ISWC",
+        "code_url": "https://github.com/BelyaevaAlex/LLMs4OL-Challenge-Alexbek"
+      },
+      "difficulty": {
+        "score": 2,
+        "rank": 2,
+        "factors": {
+          "pipeline_stages": 3,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": true
+        },
+        "rationale": "modular OL pipeline (Text2Onto term+type, retrieval term typing, taxonomy discovery); deterministic token-retrieval stand-in for embeddings; no GPU/finetuning; public code"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "documents.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/llms4ol-2025"
+      },
+      "updated": "2026-06-25"
     }
   ]
 }

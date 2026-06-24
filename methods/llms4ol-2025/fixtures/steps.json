@@ -1,0 +1,1886 @@
+[
+  {
+    "step": 1,
+    "stage": "extract(A)",
+    "cq": "A centrifugal pump is a Pump.",
+    "added": {
+      "types": [
+        "Pump"
+      ],
+      "terms": [
+        "centrifugal pump"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "extract(A)",
+    "cq": "A submersible pump is a Pump.",
+    "added": {
+      "types": [],
+      "terms": [
+        "submersible pump"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "extract(A)",
+    "cq": "An induction motor is a Motor.",
+    "added": {
+      "types": [
+        "Motor"
+      ],
+      "terms": [
+        "induction motor"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "extract(A)",
+    "cq": "A servo drive is a Drive.",
+    "added": {
+      "types": [
+        "Drive"
+      ],
+      "terms": [
+        "servo drive"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "extract(A)",
+    "cq": "A ball bearing is a Bearing.",
+    "added": {
+      "types": [
+        "Bearing"
+      ],
+      "terms": [
+        "ball bearing"
+      ],
+      "subclass_of": []
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "stage": "taxonomy(C)",
+    "cq": "Pump is a kind of Machine.",
+    "added": {
+      "types": [
+        "Machine"
+      ],
+      "terms": [],
+      "subclass_of": [
+        {
+          "child": "Pump",
+          "parent": "Machine"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "stage": "taxonomy(C)",
+    "cq": "Motor is a kind of Machine.",
+    "added": {
+      "types": [],
+      "terms": [],
+      "subclass_of": [
+        {
+          "child": "Motor",
+          "parent": "Machine"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "stage": "taxonomy(C)",
+    "cq": "Drive is a kind of Controller.",
+    "added": {
+      "types": [
+        "Controller"
+      ],
+      "terms": [],
+      "subclass_of": [
+        {
+          "child": "Drive",
+          "parent": "Controller"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drive-subClassOf-Controller",
+            "source": "Drive",
+            "target": "Controller",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "stage": "taxonomy(C)",
+    "cq": "Bearing is a kind of Component.",
+    "added": {
+      "types": [
+        "Component"
+      ],
+      "terms": [],
+      "subclass_of": [
+        {
+          "child": "Bearing",
+          "parent": "Component"
+        }
+      ]
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drive-subClassOf-Controller",
+            "source": "Drive",
+            "target": "Controller",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing-subClassOf-Component",
+            "source": "Bearing",
+            "target": "Component",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "stage": "typing(B)",
+    "cq": "? axial pump",
+    "added": {
+      "types": [],
+      "terms": [
+        "axial pump"
+      ],
+      "subclass_of": []
+    },
+    "typed_by_retrieval": {
+      "term": "axial pump",
+      "type": "Pump",
+      "via": "centrifugal pump",
+      "match": "token"
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump",
+            "label": "axial pump",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drive-subClassOf-Controller",
+            "source": "Drive",
+            "target": "Controller",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing-subClassOf-Component",
+            "source": "Bearing",
+            "target": "Component",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump-instanceOf-Pump",
+            "source": "axial pump",
+            "target": "Pump",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "centrifugal pump"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 11,
+    "stage": "typing(B)",
+    "cq": "? linear motor",
+    "added": {
+      "types": [],
+      "terms": [
+        "linear motor"
+      ],
+      "subclass_of": []
+    },
+    "typed_by_retrieval": {
+      "term": "linear motor",
+      "type": "Motor",
+      "via": "induction motor",
+      "match": "token"
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump",
+            "label": "axial pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "linear motor",
+            "label": "linear motor",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drive-subClassOf-Controller",
+            "source": "Drive",
+            "target": "Controller",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing-subClassOf-Component",
+            "source": "Bearing",
+            "target": "Component",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump-instanceOf-Pump",
+            "source": "axial pump",
+            "target": "Pump",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "centrifugal pump"
+          }
+        },
+        {
+          "data": {
+            "id": "linear motor-instanceOf-Motor",
+            "source": "linear motor",
+            "target": "Motor",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "induction motor"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "stage": "typing(B)",
+    "cq": "? roller bearing",
+    "added": {
+      "types": [],
+      "terms": [
+        "roller bearing"
+      ],
+      "subclass_of": []
+    },
+    "typed_by_retrieval": {
+      "term": "roller bearing",
+      "type": "Bearing",
+      "via": "ball bearing",
+      "match": "token"
+    },
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Pump",
+            "label": "Pump",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Motor",
+            "label": "Motor",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Drive",
+            "label": "Drive",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing",
+            "label": "Bearing",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Machine",
+            "label": "Machine",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Controller",
+            "label": "Controller",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Component",
+            "label": "Component",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump",
+            "label": "centrifugal pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump",
+            "label": "submersible pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor",
+            "label": "induction motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive",
+            "label": "servo drive",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing",
+            "label": "ball bearing",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump",
+            "label": "axial pump",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "linear motor",
+            "label": "linear motor",
+            "type": "term",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "roller bearing",
+            "label": "roller bearing",
+            "type": "term",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Pump-subClassOf-Machine",
+            "source": "Pump",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Motor-subClassOf-Machine",
+            "source": "Motor",
+            "target": "Machine",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Drive-subClassOf-Controller",
+            "source": "Drive",
+            "target": "Controller",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "Bearing-subClassOf-Component",
+            "source": "Bearing",
+            "target": "Component",
+            "label": "subClassOf"
+          }
+        },
+        {
+          "data": {
+            "id": "centrifugal pump-instanceOf-Pump",
+            "source": "centrifugal pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "submersible pump-instanceOf-Pump",
+            "source": "submersible pump",
+            "target": "Pump",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "induction motor-instanceOf-Motor",
+            "source": "induction motor",
+            "target": "Motor",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "servo drive-instanceOf-Drive",
+            "source": "servo drive",
+            "target": "Drive",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "ball bearing-instanceOf-Bearing",
+            "source": "ball bearing",
+            "target": "Bearing",
+            "label": "instanceOf",
+            "inferred": false,
+            "via": ""
+          }
+        },
+        {
+          "data": {
+            "id": "axial pump-instanceOf-Pump",
+            "source": "axial pump",
+            "target": "Pump",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "centrifugal pump"
+          }
+        },
+        {
+          "data": {
+            "id": "linear motor-instanceOf-Motor",
+            "source": "linear motor",
+            "target": "Motor",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "induction motor"
+          }
+        },
+        {
+          "data": {
+            "id": "roller bearing-instanceOf-Bearing",
+            "source": "roller bearing",
+            "target": "Bearing",
+            "label": "instanceOf*",
+            "inferred": true,
+            "via": "ball bearing"
+          }
+        }
+      ]
+    }
+  }
+]

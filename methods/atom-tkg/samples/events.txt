@@ -1,0 +1,10 @@
+# ATOM — dual-time temporal KG. Each line is a dated note "[YYYY-MM] text".
+# The bracket date is the OBSERVED time; "since YYYY" sets valid_from and
+# "until YYYY" sets valid_until. ATOM splits each note into atomic facts and
+# merges them (a repeated fact widens its validity interval). Lines starting
+# with # are ignored.
+[2024-01] Acme acquired Beta. Beta is a subsidiary of Acme since 2024.
+[2024-03] Acme partners with Gamma until 2025.
+[2024-06] Gamma supplies Delta. Delta uses Gamma since 2024.
+[2025-02] Gamma supplies Delta until 2026.
+[2025-05] Delta acquired Epsilon. Epsilon merged Delta since 2025.

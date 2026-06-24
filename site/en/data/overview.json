@@ -366,6 +366,30 @@
       "output_unit": "Validated RDF/OWL individuals + data/object properties",
       "paradigm": "External ontological memory layer",
       "distinct": "Doesn't just reject — corrects fixable violations (non-ISO date -> xsd:date), unifies heterogeneous sources with provenance"
+    },
+    {
+      "id": "atom-tkg",
+      "name": "ATOM (dual-time temporal KG from atomic facts)",
+      "status": "published",
+      "difficulty": 3,
+      "llm": "mock",
+      "input": "Dated notes",
+      "mechanism": "Atomic-fact decomposition + dual-time (observed/valid) + interval-widening merge",
+      "output_unit": "Entities, time-scoped relations (TKG)",
+      "paradigm": "Dynamic / temporal KG",
+      "distinct": "Observed-vs-valid dual time; re-observation widens intervals"
+    },
+    {
+      "id": "llms4ol-2025",
+      "name": "LLMs4OL 2025 (term → type → taxonomy, retrieval-typed)",
+      "status": "published",
+      "difficulty": 2,
+      "llm": "mock",
+      "input": "Term/type/taxonomy clues",
+      "mechanism": "Text2Onto extraction + retrieval typing + is-a taxonomy induction",
+      "output_unit": "Type classes, typed terms, subClassOf",
+      "paradigm": "Modular ontology learning (OL)",
+      "distinct": "Unseen terms typed by nearest example (3 subtasks)"
     }
   ]
 }

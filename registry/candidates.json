@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "note": "Discovered-but-not-yet-implemented methods. The daily job auto-implements MOCK-feasible on-core ones (max 2/run); entries here need GPU/RL/finetuning/large-data, are off-core (RAG/QA/characterisation), overlap an existing method, or were left for a later run. They wait for /impl-approve or a dedicated effort.",
-  "last_scan": "2026-06-24",
+  "last_scan": "2026-06-25",
   "candidates": [
     {
       "id": "agentic-kgr",
@@ -422,6 +422,46 @@
       "reason_deferred": "off-core: survey/position paper, not an implementable ontology/KG construction method. Recorded for dedup so future scans skip it.",
       "source": "daily-search",
       "discovered": "2026-06-24"
+    },
+    {
+      "id": "atom-tkg",
+      "name": "ATOM (dual-time temporal KG from atomic facts)",
+      "paper": {
+        "title": "ATOM: AdapTive and OptiMized dynamic temporal knowledge graph construction using LLMs",
+        "arxiv": "2510.22590",
+        "venue": "arXiv 2025",
+        "code_url": null
+      },
+      "est_difficulty": {
+        "score": 3,
+        "rationale": "atomic-fact decomposition + dual-time tagging + interval-widening merge; deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "verified": true,
+      "status": "implemented",
+      "approved_by_user": true,
+      "source": "daily-search",
+      "discovered": "2026-06-25"
+    },
+    {
+      "id": "llms4ol-2025",
+      "name": "LLMs4OL 2025 — Heterogeneous LLM methods for Ontology Learning",
+      "paper": {
+        "title": "Alexbek at LLMs4OL 2025 Tasks A, B, and C: Heterogeneous LLM Methods for Ontology Learning",
+        "arxiv": "2508.19428",
+        "venue": "LLMs4OL 2025 Challenge @ ISWC",
+        "code_url": "https://github.com/BelyaevaAlex/LLMs4OL-Challenge-Alexbek"
+      },
+      "est_difficulty": {
+        "score": 2,
+        "rationale": "modular OL (term+type extraction, retrieval typing, taxonomy); deterministic token-retrieval stand-in; public code; no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "verified": true,
+      "status": "implemented",
+      "approved_by_user": true,
+      "source": "daily-search",
+      "discovered": "2026-06-25"
     }
   ]
 }

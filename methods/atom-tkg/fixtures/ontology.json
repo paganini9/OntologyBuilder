@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Acme",
+        "label": "Acme",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Beta",
+        "label": "Beta",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Gamma",
+        "label": "Gamma",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Delta",
+        "label": "Delta",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Epsilon",
+        "label": "Epsilon",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Acme-acquired-Beta",
+        "source": "Acme",
+        "target": "Beta",
+        "label": "acquired @[2024-01..]",
+        "observed": "2024-01",
+        "valid_from": "2024-01",
+        "valid_until": "",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Beta-subsidiaryOf-Acme",
+        "source": "Beta",
+        "target": "Acme",
+        "label": "subsidiaryOf @[2024..]",
+        "observed": "2024-01",
+        "valid_from": "2024",
+        "valid_until": "",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "Acme-partnersWith-Gamma",
+        "source": "Acme",
+        "target": "Gamma",
+        "label": "partnersWith @[2024-03..2025]",
+        "observed": "2024-03",
+        "valid_from": "2024-03",
+        "valid_until": "2025",
+        "provenance": 2
+      }
+    },
+    {
+      "data": {
+        "id": "Gamma-supplies-Delta",
+        "source": "Gamma",
+        "target": "Delta",
+        "label": "supplies @[2024-06..2026]",
+        "observed": "2024-06",
+        "valid_from": "2024-06",
+        "valid_until": "2026",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Delta-uses-Gamma",
+        "source": "Delta",
+        "target": "Gamma",
+        "label": "uses @[2024..]",
+        "observed": "2024-06",
+        "valid_from": "2024",
+        "valid_until": "",
+        "provenance": 3
+      }
+    },
+    {
+      "data": {
+        "id": "Delta-acquired-Epsilon",
+        "source": "Delta",
+        "target": "Epsilon",
+        "label": "acquired @[2025-05..]",
+        "observed": "2025-05",
+        "valid_from": "2025-05",
+        "valid_until": "",
+        "provenance": 5
+      }
+    },
+    {
+      "data": {
+        "id": "Epsilon-mergesWith-Delta",
+        "source": "Epsilon",
+        "target": "Delta",
+        "label": "mergesWith @[2025..]",
+        "observed": "2025-05",
+        "valid_from": "2025",
+        "valid_until": "",
+        "provenance": 5
+      }
+    }
+  ]
+}

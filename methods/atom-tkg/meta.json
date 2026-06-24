@@ -1,0 +1,34 @@
+{
+  "id": "atom-tkg",
+  "name": "ATOM (dual-time temporal KG from atomic facts)",
+  "paper": {
+    "key": "Lairgi_ATOM",
+    "title": "ATOM: AdapTive and OptiMized dynamic temporal knowledge graph construction using LLMs",
+    "arxiv": "2510.22590",
+    "venue": "arXiv 2025",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 3,
+    "rank": 3,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "atomic-fact decomposition + dual-time (observed vs valid) tagging + parallel merge that widens validity intervals; few-shot, deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["events.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/events.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-25"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "llms4ol-2025",
+  "name": "LLMs4OL 2025 (term → type → taxonomy, retrieval-typed)",
+  "paper": {
+    "key": "Beliaeva_LLMs4OL2025",
+    "title": "Alexbek at LLMs4OL 2025 Tasks A, B, and C: Heterogeneous LLM Methods for Ontology Learning",
+    "arxiv": "2508.19428",
+    "venue": "LLMs4OL 2025 Challenge @ ISWC",
+    "code_url": "https://github.com/BelyaevaAlex/LLMs4OL-Challenge-Alexbek"
+  },
+  "difficulty": {
+    "score": 2,
+    "rank": 2,
+    "factors": {
+      "pipeline_stages": 3,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": true
+    },
+    "rationale": "modular OL pipeline (Text2Onto term+type, retrieval term typing, taxonomy discovery); deterministic token-retrieval stand-in for embeddings; no GPU/finetuning; public code"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["documents.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/documents.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-25"
+}

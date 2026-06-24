@@ -676,6 +676,50 @@
         "ko": "거절만 하지 않고 고칠 수 있는 위반을 교정(비-ISO 날짜→xsd:date), 이기종 소스 통합·출처 보존",
         "en": "Doesn't just reject — corrects fixable violations (non-ISO date -> xsd:date), unifies heterogeneous sources with provenance"
       }
+    },
+    "atom-tkg": {
+      "input": {
+        "ko": "날짜 달린 노트",
+        "en": "Dated notes"
+      },
+      "mechanism": {
+        "ko": "원자적 사실 분해 + 이중시간(관측/유효) + 구간 확장 병합",
+        "en": "Atomic-fact decomposition + dual-time (observed/valid) + interval-widening merge"
+      },
+      "output_unit": {
+        "ko": "엔티티·시간한정 관계(TKG)",
+        "en": "Entities, time-scoped relations (TKG)"
+      },
+      "paradigm": {
+        "ko": "동적·시간 지식그래프",
+        "en": "Dynamic / temporal KG"
+      },
+      "distinct": {
+        "ko": "관측 vs 유효 이중시간 + 재관측 시 구간 확장",
+        "en": "Observed-vs-valid dual time; re-observation widens intervals"
+      }
+    },
+    "llms4ol-2025": {
+      "input": {
+        "ko": "용어/타입/분류 단서",
+        "en": "Term/type/taxonomy clues"
+      },
+      "mechanism": {
+        "ko": "Text2Onto 추출 + 검색 기반 타이핑 + is-a 분류체계 유도",
+        "en": "Text2Onto extraction + retrieval typing + is-a taxonomy induction"
+      },
+      "output_unit": {
+        "ko": "타입 클래스·타이핑된 용어·subClassOf",
+        "en": "Type classes, typed terms, subClassOf"
+      },
+      "paradigm": {
+        "ko": "모듈형 온톨로지 학습(OL)",
+        "en": "Modular ontology learning (OL)"
+      },
+      "distinct": {
+        "ko": "미지 용어를 최근접 예시로 검색 타이핑(3 서브태스크)",
+        "en": "Unseen terms typed by nearest example (3 subtasks)"
+      }
     }
   }
 }
