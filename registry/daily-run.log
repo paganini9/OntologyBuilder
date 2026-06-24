@@ -45,3 +45,13 @@ Credit balance is too low
   실패/블로커: 없음.
   복구: 직전(2026-06-21 22:21) 실행이 남긴 미커밋 스테이징(lkd-kgc, ontometric)이 .git/index.lock과 함께 발견됨 → 락 제거 후 이번 커밋에 함께 포함(이전 작업 유실 방지).
   로컬 커밋 1건 완료 (push 대기 — 사용자가 Windows에서 수동 push). 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.
+[2026-06-24 07:00:00] daily-check (cowork)
+  큐(next_easiest): 없음(30개 전부 published). 직전 실행(2026-06-23) 이후 새 후보 2건 발견 → 둘 다 자동 구현 제외. 이번 실행 자동 구현 0건.
+  신규 후보(승인 대기/off-core, 미구현):
+    - agents-k1 (2606.13669, 2026-06-11): 4B IE 백본 GRPO(RL) 학습 + 멀티모달 full-paper 파서 + 246만 논문 → GPU·파인튜닝·대용량·멀티모달 필수. 난이도 12. MOCK 충실 재현 불가 → 승인 대기/보류.
+    - llms-graphs-survey (2606.11560): LLM↔그래프 시너지 포지션/서베이 논문. 구축 파이프라인 아님 → off-core. dedup용 기록.
+  검증: agents-k1 arXiv abstract web_fetch로 실재 확인(GRPO/멀티모달/246만 논문 명시). llms-graphs-survey는 WebSearch 2건 일치(서베이). 환각 논문 자동구현 없음.
+  탐색 중 중복 스킵: 2604.02618(ontokg-routing 기존), 2412.20005(OneKE 데모/도커), 2602.01276·2604.20795·2604.23090·2503.05388(이미 등록).
+  GPU·RL 보류(기존): agentic-kgr, ark-sail, hgnet, lec-kg, ontokg-routing. off-core(기존): agrag, compcq, idea2-cq, industrial-asset-kg, autopkg(멀티모달).
+  실패/블로커: 없음. 코드/방법 변경 없음 → 사이트(30개) 재빌드 생략, comparison.json 변경 없음.
+  로컬 커밋: registry 파일만(candidates.json, new-candidates.md, daily-run.log). push 대기 — 사용자가 Windows에서 수동 push. 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.

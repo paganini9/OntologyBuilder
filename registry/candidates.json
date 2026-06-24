@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "note": "Discovered-but-not-yet-implemented methods. The daily job auto-implements MOCK-feasible on-core ones (max 2/run); entries here need GPU/RL/finetuning/large-data, are off-core (RAG/QA/characterisation), overlap an existing method, or were left for a later run. They wait for /impl-approve or a dedicated effort.",
-  "last_scan": "2026-06-22",
+  "last_scan": "2026-06-24",
   "candidates": [
     {
       "id": "agentic-kgr",
@@ -380,6 +380,48 @@
       "reason_deferred": "off-core: querying/operations over an existing KG rather than constructing an ontology/graph",
       "source": "daily-search",
       "discovered": "2026-06-22"
+    },
+    {
+      "id": "agents-k1",
+      "name": "Agents-K1 (agent-native scientific knowledge orchestration; full-paper multimodal KG)",
+      "paper": {
+        "title": "Agents-K1: Towards Agent-native Knowledge Orchestration",
+        "arxiv": "2606.13669",
+        "venue": "arXiv 2026 (submitted 2026-06-11)",
+        "code_url": "https://arxiv.org/html/2606.13669v1 (Scholar-KG 1M subset released)"
+      },
+      "est_difficulty": {
+        "score": 12,
+        "rationale": "4B information-extraction backbone trained with GRPO (RL) under rule-based reward + multimodal full-paper parser + processes 2.46M papers; requires GPU/finetuning/large-data and multimodal evidence — not faithfully reproducible as a deterministic MOCK"
+      },
+      "llm_dependency": "hf-local",
+      "verified": true,
+      "status": "deferred",
+      "approved_by_user": false,
+      "reason_deferred": "GPU + RL finetuning (GRPO 4B backbone) + multimodal + web-scale data; difficulty>=8, not MOCK-feasible (like sac-kg/hgnet/ark-sail). Needs dedicated effort.",
+      "source": "daily-search",
+      "discovered": "2026-06-24"
+    },
+    {
+      "id": "llms-graphs-survey",
+      "name": "LLMs+Graphs (position/survey on graph-native synergistic AI systems)",
+      "paper": {
+        "title": "LLMs+Graphs: Toward Graph-Native, Synergistic AI Systems",
+        "arxiv": "2606.11560",
+        "venue": "arXiv 2026",
+        "code_url": null
+      },
+      "est_difficulty": {
+        "score": 0,
+        "rationale": "position/survey paper describing synergies between LLMs and graphs (KG construction, constraint enforcement, agent planning); not a concrete construction pipeline with an input->ontology deliverable"
+      },
+      "llm_dependency": "n/a",
+      "verified": true,
+      "status": "deferred",
+      "approved_by_user": false,
+      "reason_deferred": "off-core: survey/position paper, not an implementable ontology/KG construction method. Recorded for dedup so future scans skip it.",
+      "source": "daily-search",
+      "discovered": "2026-06-24"
     }
   ]
 }
