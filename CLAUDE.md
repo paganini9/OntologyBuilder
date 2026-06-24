@@ -66,6 +66,11 @@ schtasks /Create /TN "OntologyResearch-DailyMethods" /SC DAILY /ST 07:00 `
 - **게이트**: 자동 구현은 `pytest` 전체 + `scripts/verify_ui.py`(UI 렌더) 통과 시에만 published+push. 실패는 `status="blocked"`로 두고 통지.
 - 새 방법은 `comparison.json`에도 행을 추가(양언어)해 비교표에 자동 반영.
 
+## git 프리플라이트 (Step 0 — 무인 실행 권한 최소화)
+무인(Cowork 스케줄) 실행은 **맨 처음** `bash scripts/preflight_git.sh` 로 git 상태를 점검한다.
+- `PREFLIGHT: CLEAN` → 파일 삭제 권한(`allow_cowork_file_delete`)을 **요청하지 않고** 바로 진행.
+- `PREFLIGHT: NEEDS_DELETE | <경로…>` (스테일 `.git/index.lock` / 손상 `.git/index` / `tmp_obj_*`, 직전 크래시 잔재) → 출력 경로에 한해 삭제 권한을 받은 뒤 `bash scripts/preflight_git.sh --fix`(락 제거 → 손상 시 HEAD에서 index 재빌드 → temp 정리). 정상 상태에선 권한 프롬프트가 안 뜬다. CRLF 워킹트리 수정은 정상이며 권한과 무관.
+
 ## git / GitHub
 - 이 폴더가 repo. 방법 published 시 `scripts/git_push_method.ps1 <id>`.
 - **GitHub 연결(최초 1회)**: 빈 repo 생성 후
