@@ -91,41 +91,85 @@ function renderList() {
 }
 
 /* ---------- overview / comparison table ---------- */
+let ovData = null;                       // cached overview.json
+let ovSort = { key: null, dir: 1 };      // active sort column + direction (1 asc, -1 desc)
+
 async function selectOverview() {
   current = "__overview__";
   document.querySelectorAll(".method-item").forEach(e =>
     e.classList.toggle("active", e.dataset.id === "__overview__"));
-  let data;
-  try {
-    data = await (await fetch("data/overview.json")).json();
-  } catch (e) {
-    $("#main").innerHTML = `<p class="err">overview.json not found</p>`;
-    return;
+  if (!ovData) {
+    try {
+      ovData = await (await fetch("data/overview.json")).json();
+    } catch (e) {
+      $("#main").innerHTML = `<p class="err">overview.json not found</p>`;
+      return;
+    }
   }
-  const c = data.columns || {};
-  const head = ["#", T.colMethod, c.input, c.mechanism, c.output_unit,
-    c.paradigm, c.distinct, T.difficulty, T.llmBackend, T.status];
-  let rows = "";
-  data.rows.forEach((r, i) => {
-    rows += `<tr class="ov-row" data-id="${r.id}">
-      <td class="ov-idx">${String(i + 1).padStart(2, "0")}</td>
-      <td><b>${esc(r.name)}</b></td>
-      <td>${esc(r.input || "")}</td>
-      <td>${esc(r.mechanism || "")}</td>
-      <td>${esc(r.output_unit || "")}</td>
-      <td>${esc(r.paradigm || "")}</td>
-      <td>${esc(r.distinct || "")}</td>
-      <td class="ov-num">${r.difficulty ?? ""}</td>
-      <td><code>${esc(r.llm || "")}</code></td>
-      <td><span class="badge ${r.status}">${statusLabel(r.status)}</span></td>
-    </tr>`;
-  });
+  renderOverview();
+}
+
+// Column spec: render each <td> + tell the sorter how to compare. `num` columns
+// sort numerically, the rest as locale strings. The leading "#" column is just a
+// post-sort position counter and is not itself sortable.
+function ovColumns() {
+  const c = (ovData && ovData.columns) || {};
+  return [
+    { key: "name",        label: T.colMethod,  type: "str", cell: r => `<b>${esc(r.name)}</b>` },
+    { key: "input",       label: c.input,      type: "str", cell: r => esc(r.input || "") },
+    { key: "mechanism",   label: c.mechanism,  type: "str", cell: r => esc(r.mechanism || "") },
+    { key: "output_unit", label: c.output_unit,type: "str", cell: r => esc(r.output_unit || "") },
+    { key: "paradigm",    label: c.paradigm,   type: "str", cell: r => esc(r.paradigm || "") },
+    { key: "distinct",    label: c.distinct,   type: "str", cell: r => esc(r.distinct || "") },
+    { key: "difficulty",  label: T.difficulty, type: "num", cls: "ov-num", cell: r => r.difficulty ?? "" },
+    { key: "llm",         label: T.llmBackend, type: "str", cell: r => `<code>${esc(r.llm || "")}</code>` },
+    { key: "status",      label: T.status,     type: "str",
+      cell: r => `<span class="badge ${r.status}">${statusLabel(r.status)}</span>` },
+  ];
+}
+
+function ovSortedRows(cols) {
+  const rows = ovData.rows.slice();
+  const col = cols.find(c => c.key === ovSort.key);
+  if (col) {
+    rows.sort((a, b) => {
+      let va = a[col.key], vb = b[col.key];
+      let d;
+      if (col.type === "num") {
+        d = (va == null ? -Infinity : va) - (vb == null ? -Infinity : vb);
+      } else {
+        d = String(va || "").localeCompare(String(vb || ""));
+      }
+      return d * ovSort.dir;
+    });
+  }
+  return rows;
+}
+
+function renderOverview() {
+  const cols = ovColumns();
+  const arrow = k => ovSort.key === k ? (ovSort.dir === 1 ? " ▲" : " ▼") : "";
+  const head = `<th>#</th>` + cols.map(c =>
+    `<th class="ov-sortable${ovSort.key === c.key ? " sorted" : ""}" data-key="${c.key}">` +
+    `${esc(c.label || "")}<span class="ov-arrow">${arrow(c.key)}</span></th>`).join("");
+  const rows = ovSortedRows(cols).map((r, i) =>
+    `<tr class="ov-row" data-id="${r.id}">` +
+    `<td class="ov-idx">${String(i + 1).padStart(2, "0")}</td>` +
+    cols.map(c => `<td${c.cls ? ` class="${c.cls}"` : ""}>${c.cell(r)}</td>`).join("") +
+    `</tr>`).join("");
   $("#main").innerHTML = `<h2>${esc(T.overviewTitle)}</h2>
     <p class="hint">${esc(T.overviewIntro)}</p>
     <div class="ov-wrap"><table class="ov-table">
-      <thead><tr>${head.map(h => `<th>${esc(h || "")}</th>`).join("")}</tr></thead>
+      <thead><tr>${head}</tr></thead>
       <tbody>${rows}</tbody>
     </table></div>`;
+  document.querySelectorAll(".ov-table th.ov-sortable").forEach(th =>
+    th.addEventListener("click", () => {
+      const k = th.dataset.key;
+      if (ovSort.key === k) ovSort.dir *= -1;     // toggle direction on re-click
+      else ovSort = { key: k, dir: 1 };           // new column: ascending
+      renderOverview();
+    }));
   document.querySelectorAll(".ov-row").forEach(tr =>
     tr.addEventListener("click", () => selectMethod(tr.dataset.id)));
 }

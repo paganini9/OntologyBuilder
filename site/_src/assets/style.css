@@ -227,6 +227,10 @@ a.dl:hover { border-color: var(--blue); }
 .ov-row:hover { background: var(--panel2); }
 .ov-idx { font-family: var(--mono); color: var(--faint); }
 .ov-num { font-family: var(--mono); color: var(--amber); text-align: center; font-weight: 600; }
+.ov-table th.ov-sortable { cursor: pointer; user-select: none; transition: color .14s, background .14s; }
+.ov-table th.ov-sortable:hover { color: var(--text); background: var(--line2); }
+.ov-table th.ov-sortable.sorted { color: var(--blue); }
+.ov-arrow { font-size: 9px; }
 .ov-table code { font-family: var(--mono); background: var(--ink); color: var(--blue);
   padding: 1px 6px; border-radius: 5px; font-size: 11px; }
 
