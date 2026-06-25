@@ -1,0 +1,12 @@
+# Dated medical abstracts: "[YYYY-MM-DD] text". MedKGent builds the KG day-by-day.
+# Entities are Capitalized; a relation verb (treats/causes/prevents/reduces/increases/...) links them.
+# Hedge words (may, preliminary, possible) lower confidence; strong words (confirmed, significantly) raise it.
+[2024-03-10] Metformin treats Diabetes in adults.
+[2025-01-22] A randomized trial confirmed Metformin significantly treats Diabetes.
+[2023-06-05] Preliminary findings suggest AspirinX may causes Bleeding.
+[2024-11-30] DrugY prevents Migraine.
+[2025-04-18] Recent evidence demonstrated DrugY robustly prevents Migraine.
+[2022-09-01] Early reports indicated StatinZ increases StrokeRisk.
+[2025-07-12] A randomized study confirmed StatinZ significantly reduces StrokeRisk.
+[2024-02-02] GeneABC regulates Inflammation.
+[2023-01-01] It is possible CompoundQ might possibly causes Nausea, evidence preliminary.

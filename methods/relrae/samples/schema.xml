@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Robotic lab automation record. Element nesting = containment relationships;
+     attributes ending in "Ref" reference another element type; other attributes
+     are data properties. RELRaE enriches this XML into an ontology schema. -->
+<Experiment id="EXP-1" operator="armA" date="2026-06-01">
+  <Sample id="S1" barcode="BC100">
+    <Measurement kind="absorbance" value="0.42" unit="AU" instrumentRef="INST-1"/>
+    <Measurement kind="pH" value="7.1" instrumentRef="INST-2"/>
+  </Sample>
+  <Sample id="S2" barcode="BC101">
+    <Measurement kind="absorbance" value="0.55" unit="AU" instrumentRef="INST-1"/>
+  </Sample>
+  <Protocol id="P1" stepCount="3" reagentRef="R-NaCl"/>
+  <Instrument id="INST-1" model="SpectroX"/>
+  <Instrument id="INST-2" model="pHmeter"/>
+</Experiment>

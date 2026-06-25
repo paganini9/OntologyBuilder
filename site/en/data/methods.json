@@ -1035,5 +1035,71 @@
       "ontology.json",
       "steps.json"
     ]
+  },
+  {
+    "id": "relrae",
+    "name": "RELRaE (XML schema → ontology relations: extract·label·refine·evaluate)",
+    "status": "published",
+    "difficulty": {
+      "score": 4,
+      "rank": 4,
+      "factors": {
+        "pipeline_stages": 4,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "four prompt-based LLM stages (extract implicit relations from XML structure -> label -> refine/canonicalise+dedup -> LLM-as-a-judge evaluate); deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Hannah_RELRaE",
+      "title": "RELRaE: LLM-Based Relationship Extraction, Labelling, Refinement, and Evaluation",
+      "arxiv": "2507.03829",
+      "venue": "arXiv 2025 (Univ. of Liverpool / Unilever)",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "schema.xml"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
+  },
+  {
+    "id": "medkgent",
+    "name": "MedKGent (two-agent, confidence-aware temporal medical KG)",
+    "status": "published",
+    "difficulty": {
+      "score": 5,
+      "rank": 5,
+      "factors": {
+        "pipeline_stages": 5,
+        "needs_finetuning": false,
+        "needs_gpu": false,
+        "needs_large_data": false,
+        "code_public": false
+      },
+      "rationale": "Extractor agent (triples + sampling-based confidence + low-confidence filter) + Constructor agent (day-by-day temporal integration, noisy-OR reinforcement, polar-conflict resolution); off-the-shelf prompted LLM, deterministic mock, no GPU/finetuning"
+    },
+    "llm_dependency": "mock",
+    "paper": {
+      "key": "Zhang_MedKGent",
+      "title": "MedKGent: A Large Language Model Agent Framework for Constructing Temporally Evolving Medical Knowledge Graph",
+      "arxiv": "2508.12393",
+      "venue": "arXiv 2025 (MBZUAI et al.)",
+      "code_url": null
+    },
+    "inputs_needed": [
+      "abstracts.txt"
+    ],
+    "produces": [
+      "ontology.ttl",
+      "ontology.json",
+      "steps.json"
+    ]
   }
 ]

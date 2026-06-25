@@ -1,0 +1,34 @@
+{
+  "id": "relrae",
+  "name": "RELRaE (XML schema → ontology relations: extract·label·refine·evaluate)",
+  "paper": {
+    "key": "Hannah_RELRaE",
+    "title": "RELRaE: LLM-Based Relationship Extraction, Labelling, Refinement, and Evaluation",
+    "arxiv": "2507.03829",
+    "venue": "arXiv 2025 (Univ. of Liverpool / Unilever)",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 4,
+    "rank": 4,
+    "factors": {
+      "pipeline_stages": 4,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "four prompt-based LLM stages (extract implicit relations from XML structure -> label -> refine/canonicalise+dedup -> LLM-as-a-judge evaluate); deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["schema.xml"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/schema.xml"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-26"
+}

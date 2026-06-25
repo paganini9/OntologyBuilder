@@ -1,0 +1,34 @@
+{
+  "id": "medkgent",
+  "name": "MedKGent (two-agent, confidence-aware temporal medical KG)",
+  "paper": {
+    "key": "Zhang_MedKGent",
+    "title": "MedKGent: A Large Language Model Agent Framework for Constructing Temporally Evolving Medical Knowledge Graph",
+    "arxiv": "2508.12393",
+    "venue": "arXiv 2025 (MBZUAI et al.)",
+    "code_url": null
+  },
+  "difficulty": {
+    "score": 5,
+    "rank": 5,
+    "factors": {
+      "pipeline_stages": 5,
+      "needs_finetuning": false,
+      "needs_gpu": false,
+      "needs_large_data": false,
+      "code_public": false
+    },
+    "rationale": "Extractor agent (triples + sampling-based confidence + low-confidence filter) + Constructor agent (day-by-day temporal integration, noisy-OR reinforcement, polar-conflict resolution); off-the-shelf prompted LLM, deterministic mock, no GPU/finetuning"
+  },
+  "llm_dependency": "mock",
+  "backend_default": "mock",
+  "entrypoint": "pipeline:run",
+  "inputs_needed": ["abstracts.txt"],
+  "produces": ["ontology.ttl", "ontology.json", "steps.json"],
+  "sample_inputs": ["samples/abstracts.txt"],
+  "golden_outputs": ["fixtures/ontology.json", "fixtures/steps.json"],
+  "graph_format": "json",
+  "i18n": {"ko": "method.ko.md", "en": "method.en.md"},
+  "status": "implemented",
+  "updated": "2026-06-26"
+}

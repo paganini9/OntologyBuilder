@@ -1,0 +1,941 @@
+[
+  {
+    "step": 1,
+    "stage": "extract+construct",
+    "date": "2022-09-01",
+    "abstract": "[2022-09-01] Early reports indicated StatinZ increases StrokeRisk.",
+    "extracted": [
+      {
+        "subject": "StatinZ",
+        "relation": "increases",
+        "object": "StrokeRisk",
+        "confidence": 0.6
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "add"
+    ],
+    "added_entities": [
+      "StatinZ",
+      "StrokeRisk"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "extract+construct",
+    "date": "2023-01-01",
+    "abstract": "[2023-01-01] It is possible CompoundQ might possibly causes Nausea, evidence preliminary.",
+    "extracted": [],
+    "filtered_low_confidence": 1,
+    "actions": [],
+    "added_entities": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "extract+construct",
+    "date": "2023-06-05",
+    "abstract": "[2023-06-05] Preliminary findings suggest AspirinX may causes Bleeding.",
+    "extracted": [],
+    "filtered_low_confidence": 1,
+    "actions": [],
+    "added_entities": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "extract+construct",
+    "date": "2024-02-02",
+    "abstract": "[2024-02-02] GeneABC regulates Inflammation.",
+    "extracted": [
+      {
+        "subject": "GeneABC",
+        "relation": "regulates",
+        "object": "Inflammation",
+        "confidence": 0.6
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "add"
+    ],
+    "added_entities": [
+      "GeneABC",
+      "Inflammation"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "extract+construct",
+    "date": "2024-03-10",
+    "abstract": "[2024-03-10] Metformin treats Diabetes in adults.",
+    "extracted": [
+      {
+        "subject": "Metformin",
+        "relation": "treats",
+        "object": "Diabetes",
+        "confidence": 0.6
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "add"
+    ],
+    "added_entities": [
+      "Metformin",
+      "Diabetes"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin",
+            "label": "Metformin",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Diabetes",
+            "label": "Diabetes",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin-treats-Diabetes",
+            "source": "Metformin",
+            "target": "Diabetes",
+            "label": "treats (0.6)",
+            "relation": "treats",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-03-10",
+            "last_seen": "2024-03-10",
+            "provenance": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "stage": "extract+construct",
+    "date": "2024-11-30",
+    "abstract": "[2024-11-30] DrugY prevents Migraine.",
+    "extracted": [
+      {
+        "subject": "DrugY",
+        "relation": "prevents",
+        "object": "Migraine",
+        "confidence": 0.6
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "add"
+    ],
+    "added_entities": [
+      "DrugY",
+      "Migraine"
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin",
+            "label": "Metformin",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Diabetes",
+            "label": "Diabetes",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY",
+            "label": "DrugY",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Migraine",
+            "label": "Migraine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin-treats-Diabetes",
+            "source": "Metformin",
+            "target": "Diabetes",
+            "label": "treats (0.6)",
+            "relation": "treats",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-03-10",
+            "last_seen": "2024-03-10",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY-prevents-Migraine",
+            "source": "DrugY",
+            "target": "Migraine",
+            "label": "prevents (0.6)",
+            "relation": "prevents",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-11-30",
+            "last_seen": "2024-11-30",
+            "provenance": 4
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "stage": "extract+construct",
+    "date": "2025-01-22",
+    "abstract": "[2025-01-22] A randomized trial confirmed Metformin significantly treats Diabetes.",
+    "extracted": [
+      {
+        "subject": "Metformin",
+        "relation": "treats",
+        "object": "Diabetes",
+        "confidence": 1.0
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "reinforce"
+    ],
+    "added_entities": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin",
+            "label": "Metformin",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Diabetes",
+            "label": "Diabetes",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY",
+            "label": "DrugY",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Migraine",
+            "label": "Migraine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin-treats-Diabetes",
+            "source": "Metformin",
+            "target": "Diabetes",
+            "label": "treats (1.0)",
+            "relation": "treats",
+            "confidence": 1.0,
+            "support": 2,
+            "first_seen": "2024-03-10",
+            "last_seen": "2025-01-22",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY-prevents-Migraine",
+            "source": "DrugY",
+            "target": "Migraine",
+            "label": "prevents (0.6)",
+            "relation": "prevents",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-11-30",
+            "last_seen": "2024-11-30",
+            "provenance": 4
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "stage": "extract+construct",
+    "date": "2025-04-18",
+    "abstract": "[2025-04-18] Recent evidence demonstrated DrugY robustly prevents Migraine.",
+    "extracted": [
+      {
+        "subject": "DrugY",
+        "relation": "prevents",
+        "object": "Migraine",
+        "confidence": 0.8
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "reinforce"
+    ],
+    "added_entities": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin",
+            "label": "Metformin",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Diabetes",
+            "label": "Diabetes",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY",
+            "label": "DrugY",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Migraine",
+            "label": "Migraine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "StatinZ-increases-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "increases (0.6)",
+            "relation": "increases",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2022-09-01",
+            "last_seen": "2022-09-01",
+            "provenance": 6
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin-treats-Diabetes",
+            "source": "Metformin",
+            "target": "Diabetes",
+            "label": "treats (1.0)",
+            "relation": "treats",
+            "confidence": 1.0,
+            "support": 2,
+            "first_seen": "2024-03-10",
+            "last_seen": "2025-01-22",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY-prevents-Migraine",
+            "source": "DrugY",
+            "target": "Migraine",
+            "label": "prevents (0.92)",
+            "relation": "prevents",
+            "confidence": 0.92,
+            "support": 2,
+            "first_seen": "2024-11-30",
+            "last_seen": "2025-04-18",
+            "provenance": 4
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "stage": "extract+construct",
+    "date": "2025-07-12",
+    "abstract": "[2025-07-12] A randomized study confirmed StatinZ significantly reduces StrokeRisk.",
+    "extracted": [
+      {
+        "subject": "StatinZ",
+        "relation": "reduces",
+        "object": "StrokeRisk",
+        "confidence": 1.0
+      }
+    ],
+    "filtered_low_confidence": 0,
+    "actions": [
+      "add"
+    ],
+    "added_entities": [],
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "StatinZ",
+            "label": "StatinZ",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "StrokeRisk",
+            "label": "StrokeRisk",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "GeneABC",
+            "label": "GeneABC",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Inflammation",
+            "label": "Inflammation",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin",
+            "label": "Metformin",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Diabetes",
+            "label": "Diabetes",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY",
+            "label": "DrugY",
+            "type": "class",
+            "attributes": []
+          }
+        },
+        {
+          "data": {
+            "id": "Migraine",
+            "label": "Migraine",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "GeneABC-regulates-Inflammation",
+            "source": "GeneABC",
+            "target": "Inflammation",
+            "label": "regulates (0.6)",
+            "relation": "regulates",
+            "confidence": 0.6,
+            "support": 1,
+            "first_seen": "2024-02-02",
+            "last_seen": "2024-02-02",
+            "provenance": 8
+          }
+        },
+        {
+          "data": {
+            "id": "Metformin-treats-Diabetes",
+            "source": "Metformin",
+            "target": "Diabetes",
+            "label": "treats (1.0)",
+            "relation": "treats",
+            "confidence": 1.0,
+            "support": 2,
+            "first_seen": "2024-03-10",
+            "last_seen": "2025-01-22",
+            "provenance": 1
+          }
+        },
+        {
+          "data": {
+            "id": "DrugY-prevents-Migraine",
+            "source": "DrugY",
+            "target": "Migraine",
+            "label": "prevents (0.92)",
+            "relation": "prevents",
+            "confidence": 0.92,
+            "support": 2,
+            "first_seen": "2024-11-30",
+            "last_seen": "2025-04-18",
+            "provenance": 4
+          }
+        },
+        {
+          "data": {
+            "id": "StatinZ-reduces-StrokeRisk",
+            "source": "StatinZ",
+            "target": "StrokeRisk",
+            "label": "reduces (1.0)",
+            "relation": "reduces",
+            "confidence": 1.0,
+            "support": 1,
+            "first_seen": "2025-07-12",
+            "last_seen": "2025-07-12",
+            "provenance": 7
+          }
+        }
+      ]
+    }
+  }
+]

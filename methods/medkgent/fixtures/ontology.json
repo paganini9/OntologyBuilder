@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "StatinZ",
+        "label": "StatinZ",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "StrokeRisk",
+        "label": "StrokeRisk",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "GeneABC",
+        "label": "GeneABC",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Inflammation",
+        "label": "Inflammation",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Metformin",
+        "label": "Metformin",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Diabetes",
+        "label": "Diabetes",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "DrugY",
+        "label": "DrugY",
+        "type": "class",
+        "attributes": []
+      }
+    },
+    {
+      "data": {
+        "id": "Migraine",
+        "label": "Migraine",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "GeneABC-regulates-Inflammation",
+        "source": "GeneABC",
+        "target": "Inflammation",
+        "label": "regulates (0.6)",
+        "relation": "regulates",
+        "confidence": 0.6,
+        "support": 1,
+        "first_seen": "2024-02-02",
+        "last_seen": "2024-02-02",
+        "provenance": 8
+      }
+    },
+    {
+      "data": {
+        "id": "Metformin-treats-Diabetes",
+        "source": "Metformin",
+        "target": "Diabetes",
+        "label": "treats (1.0)",
+        "relation": "treats",
+        "confidence": 1.0,
+        "support": 2,
+        "first_seen": "2024-03-10",
+        "last_seen": "2025-01-22",
+        "provenance": 1
+      }
+    },
+    {
+      "data": {
+        "id": "DrugY-prevents-Migraine",
+        "source": "DrugY",
+        "target": "Migraine",
+        "label": "prevents (0.92)",
+        "relation": "prevents",
+        "confidence": 0.92,
+        "support": 2,
+        "first_seen": "2024-11-30",
+        "last_seen": "2025-04-18",
+        "provenance": 4
+      }
+    },
+    {
+      "data": {
+        "id": "StatinZ-reduces-StrokeRisk",
+        "source": "StatinZ",
+        "target": "StrokeRisk",
+        "label": "reduces (1.0)",
+        "relation": "reduces",
+        "confidence": 1.0,
+        "support": 1,
+        "first_seen": "2025-07-12",
+        "last_seen": "2025-07-12",
+        "provenance": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,1364 @@
+[
+  {
+    "step": 1,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Experiment -[nest:nest]-> Sample",
+    "label": "hasSample",
+    "kind": "nest",
+    "score": 0.6,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 2,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Sample -[nest:nest]-> Measurement",
+    "label": "hasMeasurement",
+    "kind": "nest",
+    "score": 0.6,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 3,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Measurement -[ref:ref]-> Instrument",
+    "label": "measuredWith",
+    "kind": "ref",
+    "score": 0.95,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 4,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Sample -[nest:nest]-> Measurement",
+    "label": "hasMeasurement",
+    "kind": "nest",
+    "score": 0.6,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 5,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Measurement -[ref:ref]-> Instrument",
+    "label": "measuredWith",
+    "kind": "ref",
+    "score": 0.95,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 6,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Experiment -[nest:nest]-> Sample",
+    "label": "hasSample",
+    "kind": "nest",
+    "score": 0.6,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 7,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Sample -[nest:nest]-> Measurement",
+    "label": "hasMeasurement",
+    "kind": "nest",
+    "score": 0.6,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 8,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Measurement -[ref:ref]-> Instrument",
+    "label": "measuredWith",
+    "kind": "ref",
+    "score": 0.95,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 9,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Experiment -[nest:nest]-> Protocol",
+    "label": "hasProtocol",
+    "kind": "nest",
+    "score": 0.7,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasProtocol-Protocol",
+            "source": "Experiment",
+            "target": "Protocol",
+            "label": "hasProtocol",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 10,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Protocol -[ref:undefined]-> Reagent",
+    "label": "consumes",
+    "kind": "ref",
+    "score": 0.65,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Reagent",
+            "label": "Reagent",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasProtocol-Protocol",
+            "source": "Experiment",
+            "target": "Protocol",
+            "label": "hasProtocol",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol-consumes-Reagent",
+            "source": "Protocol",
+            "target": "Reagent",
+            "label": "consumes",
+            "kind": "ref",
+            "score": 0.65,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 11,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Experiment -[nest:nest]-> Instrument",
+    "label": "hasInstrument",
+    "kind": "nest",
+    "score": 0.7,
+    "accepted": true,
+    "rejected_reason": null,
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Reagent",
+            "label": "Reagent",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasProtocol-Protocol",
+            "source": "Experiment",
+            "target": "Protocol",
+            "label": "hasProtocol",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol-consumes-Reagent",
+            "source": "Protocol",
+            "target": "Reagent",
+            "label": "consumes",
+            "kind": "ref",
+            "score": 0.65,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasInstrument-Instrument",
+            "source": "Experiment",
+            "target": "Instrument",
+            "label": "hasInstrument",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  },
+  {
+    "step": 12,
+    "stage": "extract->label->refine->evaluate",
+    "relationship": "Experiment -[nest:nest]-> Instrument",
+    "label": "hasInstrument",
+    "kind": "nest",
+    "score": 0.7,
+    "accepted": false,
+    "rejected_reason": "duplicate",
+    "graph": {
+      "nodes": [
+        {
+          "data": {
+            "id": "Experiment",
+            "label": "Experiment",
+            "type": "class",
+            "attributes": [
+              "id",
+              "operator",
+              "date"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Sample",
+            "label": "Sample",
+            "type": "class",
+            "attributes": [
+              "id",
+              "barcode"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement",
+            "label": "Measurement",
+            "type": "class",
+            "attributes": [
+              "kind",
+              "value",
+              "unit"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol",
+            "label": "Protocol",
+            "type": "class",
+            "attributes": [
+              "id",
+              "stepCount"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Instrument",
+            "label": "Instrument",
+            "type": "class",
+            "attributes": [
+              "id",
+              "model"
+            ]
+          }
+        },
+        {
+          "data": {
+            "id": "Reagent",
+            "label": "Reagent",
+            "type": "class",
+            "attributes": []
+          }
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "Experiment-hasSample-Sample",
+            "source": "Experiment",
+            "target": "Sample",
+            "label": "hasSample",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Sample-hasMeasurement-Measurement",
+            "source": "Sample",
+            "target": "Measurement",
+            "label": "hasMeasurement",
+            "kind": "nest",
+            "score": 0.6,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Measurement-measuredWith-Instrument",
+            "source": "Measurement",
+            "target": "Instrument",
+            "label": "measuredWith",
+            "kind": "ref",
+            "score": 0.95,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasProtocol-Protocol",
+            "source": "Experiment",
+            "target": "Protocol",
+            "label": "hasProtocol",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Protocol-consumes-Reagent",
+            "source": "Protocol",
+            "target": "Reagent",
+            "label": "consumes",
+            "kind": "ref",
+            "score": 0.65,
+            "accepted": true
+          }
+        },
+        {
+          "data": {
+            "id": "Experiment-hasInstrument-Instrument",
+            "source": "Experiment",
+            "target": "Instrument",
+            "label": "hasInstrument",
+            "kind": "nest",
+            "score": 0.7,
+            "accepted": true
+          }
+        }
+      ]
+    }
+  }
+]

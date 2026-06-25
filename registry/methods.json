@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-06-25",
+  "updated": "2026-06-26",
   "difficulty_formula": "score = 1*pipeline_stages + 3*needs_finetuning + 3*needs_gpu + 2*needs_large_data + 1*(llm_dependency!='mock') - 1*code_public",
   "selection_rule": "pick lowest (difficulty.score, mock-before-api/hf, fewer inputs_needed) among status in {discovered,analyzed,queued} AND approved_by_user AND blockers==[]",
   "methods": [
@@ -1264,6 +1264,86 @@
         "dir": "methods/llms4ol-2025"
       },
       "updated": "2026-06-25"
+    },
+    {
+      "id": "relrae",
+      "name": "RELRaE (XML schema → ontology relations: extract·label·refine·evaluate)",
+      "paper": {
+        "key": "Hannah_RELRaE",
+        "title": "RELRaE: LLM-Based Relationship Extraction, Labelling, Refinement, and Evaluation",
+        "arxiv": "2507.03829",
+        "venue": "arXiv 2025 (Univ. of Liverpool / Unilever)",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 4,
+        "rank": 4,
+        "factors": {
+          "pipeline_stages": 4,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "four prompt-based LLM stages (extract implicit relations from XML structure -> label -> refine/canonicalise+dedup -> LLM-as-a-judge evaluate); deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "schema.xml"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/relrae"
+      },
+      "updated": "2026-06-26"
+    },
+    {
+      "id": "medkgent",
+      "name": "MedKGent (two-agent, confidence-aware temporal medical KG)",
+      "paper": {
+        "key": "Zhang_MedKGent",
+        "title": "MedKGent: A Large Language Model Agent Framework for Constructing Temporally Evolving Medical Knowledge Graph",
+        "arxiv": "2508.12393",
+        "venue": "arXiv 2025 (MBZUAI et al.)",
+        "code_url": null
+      },
+      "difficulty": {
+        "score": 5,
+        "rank": 5,
+        "factors": {
+          "pipeline_stages": 5,
+          "needs_finetuning": false,
+          "needs_gpu": false,
+          "needs_large_data": false,
+          "code_public": false
+        },
+        "rationale": "Extractor agent (triples + sampling-based confidence + low-confidence filter) + Constructor agent (day-by-day temporal integration, noisy-OR reinforcement, polar-conflict resolution); off-the-shelf prompted LLM, deterministic mock, no GPU/finetuning"
+      },
+      "llm_dependency": "mock",
+      "inputs_needed": [
+        "abstracts.txt"
+      ],
+      "produces": [
+        "ontology.ttl",
+        "ontology.json",
+        "steps.json"
+      ],
+      "status": "published",
+      "blockers": [],
+      "source": "daily-search",
+      "approved_by_user": true,
+      "paths": {
+        "dir": "methods/medkgent"
+      },
+      "updated": "2026-06-26"
     }
   ]
 }

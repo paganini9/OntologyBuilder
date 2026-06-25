@@ -1,0 +1,137 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "Experiment",
+        "label": "Experiment",
+        "type": "class",
+        "attributes": [
+          "id",
+          "operator",
+          "date"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Sample",
+        "label": "Sample",
+        "type": "class",
+        "attributes": [
+          "id",
+          "barcode"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Measurement",
+        "label": "Measurement",
+        "type": "class",
+        "attributes": [
+          "kind",
+          "value",
+          "unit"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Protocol",
+        "label": "Protocol",
+        "type": "class",
+        "attributes": [
+          "id",
+          "stepCount"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Instrument",
+        "label": "Instrument",
+        "type": "class",
+        "attributes": [
+          "id",
+          "model"
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "Reagent",
+        "label": "Reagent",
+        "type": "class",
+        "attributes": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "Experiment-hasSample-Sample",
+        "source": "Experiment",
+        "target": "Sample",
+        "label": "hasSample",
+        "kind": "nest",
+        "score": 0.6,
+        "accepted": true
+      }
+    },
+    {
+      "data": {
+        "id": "Sample-hasMeasurement-Measurement",
+        "source": "Sample",
+        "target": "Measurement",
+        "label": "hasMeasurement",
+        "kind": "nest",
+        "score": 0.6,
+        "accepted": true
+      }
+    },
+    {
+      "data": {
+        "id": "Measurement-measuredWith-Instrument",
+        "source": "Measurement",
+        "target": "Instrument",
+        "label": "measuredWith",
+        "kind": "ref",
+        "score": 0.95,
+        "accepted": true
+      }
+    },
+    {
+      "data": {
+        "id": "Experiment-hasProtocol-Protocol",
+        "source": "Experiment",
+        "target": "Protocol",
+        "label": "hasProtocol",
+        "kind": "nest",
+        "score": 0.7,
+        "accepted": true
+      }
+    },
+    {
+      "data": {
+        "id": "Protocol-consumes-Reagent",
+        "source": "Protocol",
+        "target": "Reagent",
+        "label": "consumes",
+        "kind": "ref",
+        "score": 0.65,
+        "accepted": true
+      }
+    },
+    {
+      "data": {
+        "id": "Experiment-hasInstrument-Instrument",
+        "source": "Experiment",
+        "target": "Instrument",
+        "label": "hasInstrument",
+        "kind": "nest",
+        "score": 0.7,
+        "accepted": true
+      }
+    }
+  ]
+}

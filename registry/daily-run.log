@@ -62,3 +62,12 @@ Credit balance is too low
   dedup 스킵: 2509.17289(CoDe-KG)=기존 code-de-kg 중복; trace-kg/usd2kg/anchor-cti/itext2kg/ollm/se-standards-zeroshot/ontology-grounded-wikidata/llm-external-onto-memory/multiagent-ontogen 등 이미 등록.
   승인 대기 신규 없음(기존 백로그 유지: agents-k1·agentic-kgr·ark-sail·hgnet·lec-kg·ontokg-routing GPU/RL, agrag·compcq·idea2-cq·industrial-asset-kg·autopkg·llms-graphs-survey off-core).
   실패/블로커: 없음. 상세는 new-candidates.md.
+[2026-06-26 08:25:17] daily-check (cowork)
+  큐(next_easiest): 없음(실행 전 32개 전부 published). 직전 실행(2026-06-24) 이후 신규 '구축' 논문은 이미 등록/중복 → 검증된 미등록 on-core MOCK 방법 2건 catch-up 자동구현·게시.
+  자동구현·게시: relrae (2507.03829, XML스키마→온톨로지 관계: 추출·라벨·정제·LLM심판), medkgent (2508.12393, 두 에이전트 신뢰도·시간진화 의료KG). 둘 다 MOCK 결정론, GPU/파인튜닝 불필요, 난이도<8.
+  검증: 전체 pytest 262 통과(248→+relrae 7 +medkgent 7). 사이트 KO/EN 34개 빌드(overview 34행, comparison.json 양언어 행 추가). UI 게이트=Playwright 미설치로 HTTP 렌더검증 대체(uvicorn :8137 → /ko·/en·overview 200, /api/methods/<id>/run(mock): relrae nodes=6/edges=6/steps=12/ttl, medkgent nodes=8/edges=4/steps=9/ttl 모두 비어있지 않음).
+  승인 대기 신규(자동구현 제외): vspo (2511.07991, Yonsei). 핵심 기법이 LLaMA-3.1-8B LoRA 파인튜닝(2×RTX3090) 필수 → GPU/파인튜닝, 난이도 10. /impl-approve 대기.
+  dedup 스킵: 2604.20795/2602.01276/2412.20942/2510.22590/2508.19428/2604.16258 등 이미 등록; 2510.20345·2606.11560 서베이/포지션(off-core).
+  복구: 직전 크래시가 남긴 stale .git/index.lock + 손상 index 제거 후 HEAD에서 재빌드(read-tree). anchor-cti/fixtures/steps.json 골든이 문장분할기 변경으로 마지막 cq 끝 마침표 1글자만 어긋나 전체 스위트 실패 → 결정론 출력으로 골든 재생성(그래프 동일, cq echo만 수정).
+  실패/블로커: 없음. 상세는 new-candidates.md.
+  로컬 커밋 1건 예정 (push 대기 — 사용자가 Windows에서 수동 push). 기존 CRLF/LF 디프 파일은 명시 경로 스테이징으로 제외.

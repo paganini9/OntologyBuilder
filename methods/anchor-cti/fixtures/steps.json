@@ -2476,7 +2476,7 @@
   {
     "step": 6,
     "stage": "discover",
-    "cq": "The ThreatActor exploits the Vulnerability against the System ApacheServer.",
+    "cq": "The ThreatActor exploits the Vulnerability against the System ApacheServer",
     "added": {
       "instances": [
         {

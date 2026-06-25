@@ -2,6 +2,7 @@
   "_note": "Qualitative comparison columns per method id, bilingual. build_site.py joins this with registry (name/difficulty/llm/status). A method missing here still shows basic columns. KEEP IN SYNC when adding methods.",
   "columns": {
     "ko": {
+      "domain": "분야/산업",
       "input": "입력",
       "mechanism": "핵심 메커니즘",
       "output_unit": "산출 단위",
@@ -9,6 +10,7 @@
       "distinct": "차별점"
     },
     "en": {
+      "domain": "Domain / Industry",
       "input": "Input",
       "mechanism": "Core mechanism",
       "output_unit": "Output unit",
@@ -18,6 +20,10 @@
   },
   "rows": {
     "cqbycq": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "CQ 목록",
         "en": "CQ list"
@@ -40,6 +46,10 @@
       }
     },
     "code-de-kg": {
+      "domain": {
+        "ko": "범용(도메인 비의존 텍스트)",
+        "en": "General / domain-agnostic text"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -62,6 +72,10 @@
       }
     },
     "ontogenia": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "CQ 목록",
         "en": "CQ list"
@@ -84,6 +98,10 @@
       }
     },
     "peshevski-product-kg": {
+      "domain": {
+        "ko": "전자상거래/제품",
+        "en": "E-commerce / products"
+      },
       "input": {
         "ko": "제품 설명",
         "en": "Product descriptions"
@@ -106,6 +124,10 @@
       }
     },
     "agentigraph": {
+      "domain": {
+        "ko": "교육(NLP 분야, TutorQA)",
+        "en": "Education (NLP, TutorQA)"
+      },
       "input": {
         "ko": "사용자 발화",
         "en": "User utterances"
@@ -128,6 +150,10 @@
       }
     },
     "are-llms-effective-kgc": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -150,6 +176,10 @@
       }
     },
     "ontology-grounded-wikidata": {
+      "domain": {
+        "ko": "범용(Wikidata 정렬)",
+        "en": "General / Wikidata-aligned"
+      },
       "input": {
         "ko": "CQ 목록",
         "en": "CQ list"
@@ -172,6 +202,10 @@
       }
     },
     "karma": {
+      "domain": {
+        "ko": "생의학(PubMed)",
+        "en": "Biomedical (PubMed)"
+      },
       "input": {
         "ko": "텍스트 (+seed KG)",
         "en": "Text (+seed KG)"
@@ -194,6 +228,10 @@
       }
     },
     "odke-plus": {
+      "domain": {
+        "ko": "오픈도메인(프로덕션)",
+        "en": "Open-domain (production-scale)"
+      },
       "input": {
         "ko": "엔티티 + 근거",
         "en": "Entities + evidence"
@@ -216,6 +254,10 @@
       }
     },
     "itext2kg": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "여러 문서",
         "en": "Multiple documents"
@@ -238,6 +280,10 @@
       }
     },
     "autoschemakg": {
+      "domain": {
+        "ko": "오픈도메인/웹스케일",
+        "en": "Open-domain / web-scale"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -260,6 +306,10 @@
       }
     },
     "gptkb": {
+      "domain": {
+        "ko": "범용(LLM 파라메트릭 지식)",
+        "en": "General (LLM parametric knowledge)"
+      },
       "input": {
         "ko": "시드 엔티티",
         "en": "Seed entities"
@@ -282,6 +332,10 @@
       }
     },
     "se-standards-zeroshot": {
+      "domain": {
+        "ko": "소프트웨어공학 표준",
+        "en": "Software-engineering standards"
+      },
       "input": {
         "ko": "표준 문서 텍스트",
         "en": "Standard document text"
@@ -304,6 +358,10 @@
       }
     },
     "elenchus": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "주장(claim) 목록",
         "en": "Claim list"
@@ -326,6 +384,10 @@
       }
     },
     "multiagent-ontogen": {
+      "domain": {
+        "ko": "범용(비정형 텍스트)",
+        "en": "General / unstructured text"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -348,6 +410,10 @@
       }
     },
     "onto-kg-completion": {
+      "domain": {
+        "ko": "범용(KG 완성)",
+        "en": "General (KG completion)"
+      },
       "input": {
         "ko": "부분 KG (seed)",
         "en": "Partial KG (seed)"
@@ -370,6 +436,10 @@
       }
     },
     "ollm": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -392,6 +462,10 @@
       }
     },
     "ontoekg": {
+      "domain": {
+        "ko": "엔터프라이즈",
+        "en": "Enterprise"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -414,6 +488,10 @@
       }
     },
     "raga": {
+      "domain": {
+        "ko": "범용(도메인 비의존)",
+        "en": "General / domain-agnostic"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -436,6 +514,10 @@
       }
     },
     "dial-kg": {
+      "domain": {
+        "ko": "범용(다중 도메인 벤치마크)",
+        "en": "General (multi-domain benchmark)"
+      },
       "input": {
         "ko": "여러 문서",
         "en": "Multiple documents"
@@ -458,6 +540,10 @@
       }
     },
     "hf-local-demo": {
+      "domain": {
+        "ko": "범용(온디바이스 데모)",
+        "en": "General (on-device demo)"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -480,6 +566,10 @@
       }
     },
     "sac-kg": {
+      "domain": {
+        "ko": "농업(벼/쌀)",
+        "en": "Agriculture (rice)"
+      },
       "input": {
         "ko": "시드 엔티티 + 도메인 코퍼스",
         "en": "Seed entities + domain corpus"
@@ -502,6 +592,10 @@
       }
     },
     "trace-kg": {
+      "domain": {
+        "ko": "범용(복합 문서)",
+        "en": "General / complex documents"
+      },
       "input": {
         "ko": "자유 텍스트",
         "en": "Free text"
@@ -524,6 +618,10 @@
       }
     },
     "ontokb-iterative": {
+      "domain": {
+        "ko": "차량 판매(사례연구)",
+        "en": "Vehicle sales (case study)"
+      },
       "input": {
         "ko": "자유 도메인 텍스트",
         "en": "Free domain text"
@@ -546,6 +644,10 @@
       }
     },
     "anchor-cti": {
+      "domain": {
+        "ko": "사이버위협정보(CTI)",
+        "en": "Cyber threat intelligence"
+      },
       "input": {
         "ko": "CTI 본문 텍스트",
         "en": "CTI body text"
@@ -568,6 +670,10 @@
       }
     },
     "usd2kg": {
+      "domain": {
+        "ko": "로보틱스/3D 씬(USD)",
+        "en": "Robotics / 3D scenes (USD)"
+      },
       "input": {
         "ko": "USD 장면 그래프(prim 이름·경로·bbox)",
         "en": "USD scene graph (prim name + path + bbox)"
@@ -590,6 +696,10 @@
       }
     },
     "lkd-kgc": {
+      "domain": {
+        "ko": "IT 시스템 기술문서",
+        "en": "IT systems technical docs"
+      },
       "input": {
         "ko": "도메인 문서 코퍼스(제목+본문)",
         "en": "Domain document corpus (title + text)"
@@ -612,6 +722,10 @@
       }
     },
     "ontometric": {
+      "domain": {
+        "ko": "ESG/지속가능성",
+        "en": "ESG / sustainability"
+      },
       "input": {
         "ko": "ESG 규제 문서 세그먼트(페이지+헤딩+본문)",
         "en": "ESG regulatory document segments (page + heading + text)"
@@ -634,6 +748,10 @@
       }
     },
     "wikontic": {
+      "domain": {
+        "ko": "오픈도메인(Wikidata 정렬)",
+        "en": "Open-domain / Wikidata-aligned"
+      },
       "input": {
         "ko": "열린 도메인 문장(한 줄당 하나)",
         "en": "Open-domain sentences (one per line)"
@@ -656,6 +774,10 @@
       }
     },
     "llm-external-onto-memory": {
+      "domain": {
+        "ko": "범용(하이브리드 시스템)",
+        "en": "General (hybrid systems)"
+      },
       "input": {
         "ko": "이기종 소스(문서·API·대화 로그)",
         "en": "Heterogeneous sources (documents, APIs, dialogue logs)"
@@ -678,6 +800,10 @@
       }
     },
     "atom-tkg": {
+      "domain": {
+        "ko": "범용(시간성 KG)",
+        "en": "General (temporal KG)"
+      },
       "input": {
         "ko": "날짜 달린 노트",
         "en": "Dated notes"
@@ -700,6 +826,10 @@
       }
     },
     "llms4ol-2025": {
+      "domain": {
+        "ko": "범용(OL 챌린지)",
+        "en": "General (OL challenge)"
+      },
       "input": {
         "ko": "용어/타입/분류 단서",
         "en": "Term/type/taxonomy clues"
@@ -719,6 +849,58 @@
       "distinct": {
         "ko": "미지 용어를 최근접 예시로 검색 타이핑(3 서브태스크)",
         "en": "Unseen terms typed by nearest example (3 subtasks)"
+      }
+    },
+    "relrae": {
+      "domain": {
+        "ko": "실험실 자동화(랩 XML)",
+        "en": "Lab automation (lab XML)"
+      },
+      "input": {
+        "ko": "XML 스키마/인스턴스",
+        "en": "XML schema / instance"
+      },
+      "mechanism": {
+        "ko": "암시 관계 추출→라벨링→정제→LLM 심판 평가",
+        "en": "Extract implicit relations→label→refine→LLM-as-judge evaluate"
+      },
+      "output_unit": {
+        "ko": "온톨로지 관계(객체속성)",
+        "en": "Ontology relations (object properties)"
+      },
+      "paradigm": {
+        "ko": "스키마 보강(XML→온톨로지)",
+        "en": "Schema enrichment (XML→ontology)"
+      },
+      "distinct": {
+        "ko": "4단계 + 심판 점수로 관계 선별",
+        "en": "4 stages + judge-score filtering of relations"
+      }
+    },
+    "medkgent": {
+      "domain": {
+        "ko": "의료/바이오(문헌 KG)",
+        "en": "Medical / biomedical (literature KG)"
+      },
+      "input": {
+        "ko": "날짜 달린 초록",
+        "en": "Dated abstracts"
+      },
+      "mechanism": {
+        "ko": "Extractor(신뢰도+필터) + Constructor(일자별 통합·강화·충돌해소)",
+        "en": "Extractor (confidence+filter) + Constructor (day-by-day integrate, reinforce, conflict-resolve)"
+      },
+      "output_unit": {
+        "ko": "신뢰도·시간 한정 관계",
+        "en": "Confidence- & time-scoped relations"
+      },
+      "paradigm": {
+        "ko": "두 에이전트·시간 진화 KG",
+        "en": "Two-agent, temporally evolving KG"
+      },
+      "distinct": {
+        "ko": "신뢰도 강화 + 극성 충돌 해소(supersede)",
+        "en": "Confidence reinforcement + polar conflict resolution (supersede)"
       }
     }
   }
